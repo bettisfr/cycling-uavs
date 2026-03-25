@@ -28,24 +28,23 @@ Default output folders:
 - `output/courses/` for Strava GPX
 - `output/flights/` for FlightAware CSV
 
-## Strava Export (No API Mode)
+## Strava Export (Web Session Only)
 
 ```bash
 /home/fra/uavenv/bin/python tracker_export.py strava \
-  --no-api \
   --local-tz Europe/Rome \
   "https://www.strava.com/activities/17805250943"
 ```
 
 Notes:
-- `--no-api` uses your web session cookie (`_strava4_session`).
+- Strava export uses your web session cookie (`_strava4_session`).
 - You can set `STRAVA_SESSION_COOKIE`, or rely on browser cookie extraction.
 - `--local-tz` is recommended when `startDateLocal` must be interpreted as local wall time.
 
 Manual cookie example:
 
 ```bash
-STRAVA_SESSION_COOKIE='...' /home/fra/uavenv/bin/python tracker_export.py strava --no-api "https://www.strava.com/activities/17805250943"
+STRAVA_SESSION_COOKIE='...' /home/fra/uavenv/bin/python tracker_export.py strava "https://www.strava.com/activities/17805250943"
 ```
 
 ## FlightAware Export
@@ -65,12 +64,6 @@ Generate interactive map:
 
 Output:
 - `output/map_tracks.html`
-
-Optional temporary time shift for specific tracks:
-
-```bash
-/home/fra/uavenv/bin/python visualize_tracks.py --shift-track ASR132_track:3600
-```
 
 ## Raw HTML Debug Workflow
 

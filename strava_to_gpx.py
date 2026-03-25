@@ -16,8 +16,6 @@ from zoneinfo import ZoneInfo
 import gpxpy.gpx
 import requests
 
-STRAVA_API_BASE = "https://www.strava.com/api/v3"
-STRAVA_OAUTH_URL = "https://www.strava.com/oauth/token"
 STRAVA_WEB_BASE = "https://www.strava.com"
 BROWSER_CHOICES = ["auto", "chrome", "chromium", "firefox", "edge", "brave", "opera"]
 
@@ -39,50 +37,6 @@ def parse_activity_id(value: str) -> int:
         "Could not extract activity id. Use an URL like "
         "https://www.strava.com/activities/123456789 or a numeric id."
     )
-
-
-def get_access_token() -> str:
-    access_token = os.getenv("STRAVA_ACCESS_TOKEN")
-    if access_token:
-        return access_token
-
-    client_id = os.getenv("STRAVA_CLIENT_ID")
-    client_secret = os.getenv("STRAVA_CLIENT_SECRET")
-    refresh_token = os.getenv("STRAVA_REFRESH_TOKEN")
-
-    if not (client_id and client_secret and refresh_token):
-        raise RuntimeError(
-            "Missing token. Set STRAVA_ACCESS_TOKEN or "
-            "STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET and STRAVA_REFRESH_TOKEN."
-        )
-
-    resp = requests.post(
-        STRAVA_OAUTH_URL,
-        json={
-            "client_id": client_id,
-            "client_secret": client_secret,
-            "grant_type": "refresh_token",
-            "refresh_token": refresh_token,
-        },
-        timeout=30,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    token = data.get("access_token")
-    if not token:
-        raise RuntimeError("OAuth response does not contain access_token.")
-    return token
-
-
-def strava_get(access_token: str, path: str, params: dict[str, Any] | None = None) -> Any:
-    resp = requests.get(
-        f"{STRAVA_API_BASE}{path}",
-        headers={"Authorization": f"Bearer {access_token}"},
-        params=params or {},
-        timeout=30,
-    )
-    resp.raise_for_status()
-    return resp.json()
 
 
 def create_web_session(session_cookie: str) -> requests.Session:
@@ -247,32 +201,6 @@ def fetch_streams_web(session: requests.Session, activity_id: int) -> dict[str, 
     return payload if isinstance(payload, dict) else {}
 
 
-def fetch_streams(access_token: str, activity_id: int) -> dict[str, Any]:
-    stream_data = strava_get(
-        access_token,
-        f"/activities/{activity_id}/streams",
-        params={
-            "keys": ",".join(
-                [
-                    "time",
-                    "latlng",
-                    "distance",
-                    "altitude",
-                    "velocity_smooth",
-                    "heartrate",
-                    "cadence",
-                    "watts",
-                    "temp",
-                    "grade_smooth",
-                    "moving",
-                ]
-            ),
-            "key_by_type": "true",
-        },
-    )
-    return stream_data if isinstance(stream_data, dict) else {}
-
-
 def parse_start_time(activity: dict[str, Any]) -> datetime:
     raw = activity.get("start_date")
     if not raw:
@@ -361,14 +289,9 @@ def build_gpx(activity: dict[str, Any], streams: dict[str, Any]) -> gpxpy.gpx.GP
 
 def run() -> int:
     parser = argparse.ArgumentParser(
-        description="Export a Strava activity URL/ID to GPX with stream data."
+        description="Export a Strava activity URL/ID to GPX with stream data (web session only)."
     )
     parser.add_argument("activity", help="Strava activity URL or numeric id")
-    parser.add_argument(
-        "--no-api",
-        action="store_true",
-        help="Use Strava website session cookie instead of official API token.",
-    )
     parser.add_argument(
         "--session-cookie",
         default=os.getenv("STRAVA_SESSION_COOKIE"),
@@ -397,17 +320,12 @@ def run() -> int:
     output_path = Path(args.output) if args.output else STRAVA_OUTPUT_DIR / f"activity_{activity_id}.gpx"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if args.no_api:
-        session_cookie = args.session_cookie
-        if not session_cookie:
-            session_cookie = load_session_cookie_from_browser(args.browser_cookie)
-        web_session = create_web_session(session_cookie)
-        activity = fetch_activity_web(web_session, activity_id, local_tz=args.local_tz)
-        streams = fetch_streams_web(web_session, activity_id)
-    else:
-        token = get_access_token()
-        activity = strava_get(token, f"/activities/{activity_id}")
-        streams = fetch_streams(token, activity_id)
+    session_cookie = args.session_cookie
+    if not session_cookie:
+        session_cookie = load_session_cookie_from_browser(args.browser_cookie)
+    web_session = create_web_session(session_cookie)
+    activity = fetch_activity_web(web_session, activity_id, local_tz=args.local_tz)
+    streams = fetch_streams_web(web_session, activity_id)
 
     gpx = build_gpx(activity, streams)
     with open(output_path, "w", encoding="utf-8") as f:

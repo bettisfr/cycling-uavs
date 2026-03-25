@@ -117,13 +117,6 @@ def downsample_timeline(times_ms: list[int], max_steps: int) -> list[int]:
     return out
 
 
-def build_popup(name: str, p: dict[str, Any], delta_s: int) -> str:
-    dt = datetime.fromtimestamp(p["t_ms"] / 1000, tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
-    alt = f"{p['alt_ft']} ft" if p.get("alt_ft") is not None else "n/a"
-    spd = f"{p['speed_kt']:.1f} kt" if p.get("speed_kt") is not None else "n/a"
-    return f"{name}<br>{dt}<br>Alt: {alt}<br>Speed: {spd}<br>Nearest: {delta_s}s"
-
-
 def run() -> int:
     parser = argparse.ArgumentParser(description="Create Folium map with static tracks + single nearest markers.")
     parser.add_argument("--courses-dir", default=str(COURSES_DIR))
@@ -131,12 +124,6 @@ def run() -> int:
     parser.add_argument("-o", "--output", default=str(OUTPUT_DIR / "map_tracks.html"))
     parser.add_argument("--max-points-per-track", type=int, default=2000)
     parser.add_argument("--max-timeline-steps", type=int, default=1800)
-    parser.add_argument(
-        "--shift-track",
-        action="append",
-        default=[],
-        help="Temporary time shift per track in seconds, format: <track_name>:<seconds> (repeatable).",
-    )
     args = parser.parse_args()
 
     courses_dir = Path(args.courses_dir)
@@ -160,22 +147,6 @@ def run() -> int:
             continue
         tracks.append({"name": csv_path.stem, "kind": "flight", "color": COLORS[color_idx % len(COLORS)], "idx": color_idx, "points": pts})
         color_idx += 1
-
-    shift_map: dict[str, int] = {}
-    for item in args.shift_track:
-        if ":" not in item:
-            raise RuntimeError(f"Invalid --shift-track format: {item}")
-        name, sec_raw = item.rsplit(":", 1)
-        shift_map[name.strip()] = int(sec_raw.strip())
-
-    if shift_map:
-        for t in tracks:
-            sec = shift_map.get(t["name"])
-            if sec is None:
-                continue
-            delta_ms = sec * 1000
-            for p in t["points"]:
-                p["t_ms"] += delta_ms
 
     if not tracks:
         raise RuntimeError("No files found in output/courses or output/flights.")

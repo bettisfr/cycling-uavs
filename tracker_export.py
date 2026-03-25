@@ -16,12 +16,9 @@ from strava_to_gpx import (
     build_gpx as strava_build_gpx,
     create_web_session as strava_create_web_session,
     fetch_activity_web as strava_fetch_activity_web,
-    fetch_streams as strava_fetch_streams,
     fetch_streams_web as strava_fetch_streams_web,
-    get_access_token as strava_get_access_token,
     load_session_cookie_from_browser as strava_load_session_cookie_from_browser,
     parse_activity_id as strava_parse_activity_id,
-    strava_get,
 )
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -35,18 +32,13 @@ def cmd_strava(args: argparse.Namespace) -> int:
     output_path = Path(args.output) if args.output else STRAVA_OUTPUT_DIR / f"activity_{activity_id}.gpx"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if args.no_api:
-        session_cookie = args.session_cookie
-        if not session_cookie:
-            session_cookie = strava_load_session_cookie_from_browser(args.browser_cookie)
+    session_cookie = args.session_cookie
+    if not session_cookie:
+        session_cookie = strava_load_session_cookie_from_browser(args.browser_cookie)
 
-        web_session = strava_create_web_session(session_cookie)
-        activity = strava_fetch_activity_web(web_session, activity_id, local_tz=args.local_tz)
-        streams = strava_fetch_streams_web(web_session, activity_id)
-    else:
-        token = strava_get_access_token()
-        activity = strava_get(token, f"/activities/{activity_id}")
-        streams = strava_fetch_streams(token, activity_id)
+    web_session = strava_create_web_session(session_cookie)
+    activity = strava_fetch_activity_web(web_session, activity_id, local_tz=args.local_tz)
+    streams = strava_fetch_streams_web(web_session, activity_id)
 
     gpx = strava_build_gpx(activity, streams)
     with open(output_path, "w", encoding="utf-8") as f:
@@ -78,11 +70,6 @@ def build_parser() -> argparse.ArgumentParser:
 
     strava = sub.add_parser("strava", help="Export Strava activity to GPX")
     strava.add_argument("activity", help="Strava activity URL or numeric id")
-    strava.add_argument(
-        "--no-api",
-        action="store_true",
-        help="Use Strava website session cookie instead of official API token.",
-    )
     strava.add_argument(
         "--session-cookie",
         default=None,
