@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local environments
+.venv/
+
+# Generated artifacts
+output/
+
+# Local secrets
+strava_session_cookie.txt
+
+# Local tool metadata
+.codex-project-id
