@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "stage_id": "S03",
+  "date": "2026-05-10",
+  "statuses": [
+    "found_public",
+    "private_or_missing",
+    "not_checked"
+  ],
+  "activities": []
+}

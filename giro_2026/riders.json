@@ -1,0 +1,40 @@
+{
+  "version": 3,
+  "race": "Giro d'Italia",
+  "edition": 2026,
+  "notes": "Minimal rider registry for Strava lookup workflow.",
+  "riders": [
+    {
+      "rider_id": "B001",
+      "bib": 1,
+      "name": "Primoz Roglic",
+      "nationality": "SVN",
+      "team_id": "T01",
+      "team_name": "Red Bull-Bora-Hansgrohe"
+    },
+    {
+      "rider_id": "B007",
+      "bib": 7,
+      "name": "Giulio Pellizzari",
+      "nationality": "ITA",
+      "team_id": "T01",
+      "team_name": "Red Bull-Bora-Hansgrohe"
+    },
+    {
+      "rider_id": "B111",
+      "bib": 111,
+      "name": "Giulio Ciccone",
+      "nationality": "ITA",
+      "team_id": "T11",
+      "team_name": "Lidl-Trek"
+    },
+    {
+      "rider_id": "B188",
+      "bib": 188,
+      "name": "Simon Yates",
+      "nationality": "GBR",
+      "team_id": "T19",
+      "team_name": "Team Visma-Lease a Bike"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "stage_id": "S01",
+  "date": "2026-05-08",
+  "statuses": [
+    "found_public",
+    "private_or_missing",
+    "not_checked"
+  ],
+  "activities": [
+    {
+      "rider_id": "R001",
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/17805250943",
+      "checked_at": "2026-04-12T20:00:00+02:00",
+      "notes": "Matched by date and route shape."
+    },
+    {
+      "rider_id": "R002",
+      "status": "private_or_missing",
+      "activity_url": null,
+      "checked_at": "2026-04-12T20:00:00+02:00",
+      "notes": "Profile exists but no public activity for stage date."
+    }
+  ]
+}

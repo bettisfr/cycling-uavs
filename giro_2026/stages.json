@@ -1,0 +1,412 @@
+{
+  "version": 1,
+  "race": "Giro d'Italia",
+  "edition": 2026,
+  "timezone": "Europe/Rome",
+  "rest_days": [
+    "2026-05-11",
+    "2026-05-18",
+    "2026-05-25"
+  ],
+  "stages": [
+    {
+      "stage_id": "S01",
+      "date": "2026-05-08",
+      "name": "Stage 1",
+      "start_city": "Nesebar",
+      "start_country": "BUL",
+      "finish_city": "Burgas",
+      "finish_country": "BUL",
+      "distance_km": 147,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S02",
+      "date": "2026-05-09",
+      "name": "Stage 2",
+      "start_city": "Burgas",
+      "start_country": "BUL",
+      "finish_city": "Veliko Tarnovo",
+      "finish_country": "BUL",
+      "distance_km": 221,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S03",
+      "date": "2026-05-10",
+      "name": "Stage 3",
+      "start_city": "Plovdiv",
+      "start_country": "BUL",
+      "finish_city": "Sofia",
+      "finish_country": "BUL",
+      "distance_km": 175,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S04",
+      "date": "2026-05-12",
+      "name": "Stage 4",
+      "start_city": "Catanzaro",
+      "start_country": "ITA",
+      "finish_city": "Cosenza",
+      "finish_country": "ITA",
+      "distance_km": 138,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S05",
+      "date": "2026-05-13",
+      "name": "Stage 5",
+      "start_city": "Praia a Mare",
+      "start_country": "ITA",
+      "finish_city": "Potenza",
+      "finish_country": "ITA",
+      "distance_km": 203,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S06",
+      "date": "2026-05-14",
+      "name": "Stage 6",
+      "start_city": "Paestum",
+      "start_country": "ITA",
+      "finish_city": "Napoli",
+      "finish_country": "ITA",
+      "distance_km": 142,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S07",
+      "date": "2026-05-15",
+      "name": "Stage 7",
+      "start_city": "Formia",
+      "start_country": "ITA",
+      "finish_city": "Blockhaus",
+      "finish_country": "ITA",
+      "distance_km": 244,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S08",
+      "date": "2026-05-16",
+      "name": "Stage 8",
+      "start_city": "Chieti",
+      "start_country": "ITA",
+      "finish_city": "Fermo",
+      "finish_country": "ITA",
+      "distance_km": 157,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S09",
+      "date": "2026-05-17",
+      "name": "Stage 9",
+      "start_city": "Cervia",
+      "start_country": "ITA",
+      "finish_city": "Corno alle Scale",
+      "finish_country": "ITA",
+      "distance_km": 184,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S10",
+      "date": "2026-05-19",
+      "name": "Stage 10",
+      "start_city": "Viareggio",
+      "start_country": "ITA",
+      "finish_city": "Massa",
+      "finish_country": "ITA",
+      "distance_km": 42,
+      "stage_type": "individual_time_trial",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S11",
+      "date": "2026-05-20",
+      "name": "Stage 11",
+      "start_city": "Porcari",
+      "start_country": "ITA",
+      "finish_city": "Chiavari",
+      "finish_country": "ITA",
+      "distance_km": 187,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S12",
+      "date": "2026-05-21",
+      "name": "Stage 12",
+      "start_city": "Imperia",
+      "start_country": "ITA",
+      "finish_city": "Novi Ligure",
+      "finish_country": "ITA",
+      "distance_km": 177,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S13",
+      "date": "2026-05-22",
+      "name": "Stage 13",
+      "start_city": "Alessandria",
+      "start_country": "ITA",
+      "finish_city": "Verbania",
+      "finish_country": "ITA",
+      "distance_km": 188,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S14",
+      "date": "2026-05-23",
+      "name": "Stage 14",
+      "start_city": "Aosta",
+      "start_country": "ITA",
+      "finish_city": "Pila",
+      "finish_country": "ITA",
+      "distance_km": 133,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S15",
+      "date": "2026-05-24",
+      "name": "Stage 15",
+      "start_city": "Voghera",
+      "start_country": "ITA",
+      "finish_city": "Milano",
+      "finish_country": "ITA",
+      "distance_km": 156,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S16",
+      "date": "2026-05-26",
+      "name": "Stage 16",
+      "start_city": "Bellinzona",
+      "start_country": "CHE",
+      "finish_city": "Cari",
+      "finish_country": "CHE",
+      "distance_km": 113,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S17",
+      "date": "2026-05-27",
+      "name": "Stage 17",
+      "start_city": "Cassano d'Adda",
+      "start_country": "ITA",
+      "finish_city": "Andalo",
+      "finish_country": "ITA",
+      "distance_km": 202,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S18",
+      "date": "2026-05-28",
+      "name": "Stage 18",
+      "start_city": "Fai della Paganella",
+      "start_country": "ITA",
+      "finish_city": "Pieve di Soligo",
+      "finish_country": "ITA",
+      "distance_km": 168,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S19",
+      "date": "2026-05-29",
+      "name": "Stage 19",
+      "start_city": "Feltre",
+      "start_country": "ITA",
+      "finish_city": "Alleghe",
+      "finish_country": "ITA",
+      "distance_km": 151,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S20",
+      "date": "2026-05-30",
+      "name": "Stage 20",
+      "start_city": "Gemona del Friuli",
+      "start_country": "ITA",
+      "finish_city": "Piancavallo",
+      "finish_country": "ITA",
+      "distance_km": 200,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    },
+    {
+      "stage_id": "S21",
+      "date": "2026-05-31",
+      "name": "Stage 21",
+      "start_city": "Roma",
+      "start_country": "ITA",
+      "finish_city": "Roma",
+      "finish_country": "ITA",
+      "distance_km": 131,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": ""
+      }
+    }
+  ]
+}

@@ -28,6 +28,10 @@ Default output folders:
 - `output/courses/` for Strava GPX
 - `output/flights/` for FlightAware CSV
 
+Catalog-aware output folders (when `--stage-id` is used):
+- `output/giro_2026/courses/Sxx/` for Strava GPX
+- `output/giro_2026/flights/Sxx/` for FlightAware CSV
+
 ## Strava Export (Web Session Only)
 
 ```bash
@@ -47,10 +51,28 @@ Manual cookie example:
 STRAVA_SESSION_COOKIE='...' /home/fra/uavenv/bin/python tracker_export.py strava "https://www.strava.com/activities/17805250943"
 ```
 
+Catalog-aware Strava export (auto-updates `giro_2026/stage_links/Sxx.json`):
+
+```bash
+STRAVA_SESSION_COOKIE='...' /home/fra/uavenv/bin/python tracker_export.py strava \
+  --stage-id S01 \
+  --rider-id B001 \
+  --local-tz Europe/Rome \
+  "https://www.strava.com/activities/17805250943"
+```
+
 ## FlightAware Export
 
 ```bash
 /home/fra/uavenv/bin/python tracker_export.py flightaware \
+  "https://it.flightaware.com/live/flight/MSA94S/history/20260323/2110Z/LICA/LIPO"
+```
+
+Catalog-aware FlightAware export (auto-updates `giro_2026/stages.json` flight fields):
+
+```bash
+/home/fra/uavenv/bin/python tracker_export.py flightaware \
+  --stage-id S01 \
   "https://it.flightaware.com/live/flight/MSA94S/history/20260323/2110Z/LICA/LIPO"
 ```
 

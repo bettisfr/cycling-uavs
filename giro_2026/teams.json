@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "race": "Giro d'Italia",
+  "edition": 2026,
+  "teams": [
+    {
+      "team_id": "T01",
+      "team_name": "Red Bull-Bora-Hansgrohe",
+      "country": "DEU"
+    },
+    {
+      "team_id": "T02",
+      "team_name": "Alpecin-Deceuninck",
+      "country": "BEL"
+    },
+    {
+      "team_id": "T03",
+      "team_name": "Arkea-B&B Hotels",
+      "country": "FRA"
+    }
+  ]
+}
