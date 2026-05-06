@@ -9,7 +9,7 @@ Unified Python tooling for:
 
 ```bash
 cd /home/fra/Desktop/github/cycling-uavs
-/home/fra/uavenv/bin/pip install -r requirements.txt
+/home/fra/pyvenv/bin/pip install -r requirements.txt
 ```
 
 ## Unified CLI
@@ -17,7 +17,7 @@ cd /home/fra/Desktop/github/cycling-uavs
 Base command:
 
 ```bash
-/home/fra/uavenv/bin/python tracker_export.py <provider> [options]
+/home/fra/pyvenv/bin/python tracker_export.py <provider> [options]
 ```
 
 Providers:
@@ -35,7 +35,7 @@ Catalog-aware output folders (when `--stage-id` is used):
 ## Strava Export (Web Session Only)
 
 ```bash
-/home/fra/uavenv/bin/python tracker_export.py strava \
+/home/fra/pyvenv/bin/python tracker_export.py strava \
   --local-tz Europe/Rome \
   "https://www.strava.com/activities/17805250943"
 ```
@@ -48,13 +48,13 @@ Notes:
 Manual cookie example:
 
 ```bash
-STRAVA_SESSION_COOKIE='...' /home/fra/uavenv/bin/python tracker_export.py strava "https://www.strava.com/activities/17805250943"
+STRAVA_SESSION_COOKIE='...' /home/fra/pyvenv/bin/python tracker_export.py strava "https://www.strava.com/activities/17805250943"
 ```
 
 Catalog-aware Strava export (auto-updates `giro_2026/stage_links/Sxx.json`):
 
 ```bash
-STRAVA_SESSION_COOKIE='...' /home/fra/uavenv/bin/python tracker_export.py strava \
+STRAVA_SESSION_COOKIE='...' /home/fra/pyvenv/bin/python tracker_export.py strava \
   --stage-id S01 \
   --rider-id B001 \
   --local-tz Europe/Rome \
@@ -64,14 +64,14 @@ STRAVA_SESSION_COOKIE='...' /home/fra/uavenv/bin/python tracker_export.py strava
 ## FlightAware Export
 
 ```bash
-/home/fra/uavenv/bin/python tracker_export.py flightaware \
+/home/fra/pyvenv/bin/python tracker_export.py flightaware \
   "https://it.flightaware.com/live/flight/MSA94S/history/20260323/2110Z/LICA/LIPO"
 ```
 
 Catalog-aware FlightAware export (auto-updates `giro_2026/stages.json` flight fields):
 
 ```bash
-/home/fra/uavenv/bin/python tracker_export.py flightaware \
+/home/fra/pyvenv/bin/python tracker_export.py flightaware \
   --stage-id S01 \
   "https://it.flightaware.com/live/flight/MSA94S/history/20260323/2110Z/LICA/LIPO"
 ```
@@ -81,7 +81,7 @@ Catalog-aware FlightAware export (auto-updates `giro_2026/stages.json` flight fi
 Generate interactive map:
 
 ```bash
-/home/fra/uavenv/bin/python visualize_tracks.py
+/home/fra/pyvenv/bin/python visualize_tracks.py
 ```
 
 Output:

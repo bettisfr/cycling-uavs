@@ -1,22 +1,118 @@
 {
-  "version": 1,
+  "version": 5,
   "race": "Giro d'Italia",
   "edition": 2026,
+  "notes": "Generated from /home/fra/Downloads/raw.txt participants list. Team country and rider nationality not available in source.",
   "teams": [
     {
       "team_id": "T01",
-      "team_name": "Red Bull-Bora-Hansgrohe",
-      "country": "DEU"
+      "team_name": "Alpecin\u2013Premier Tech",
+      "country": null
     },
     {
       "team_id": "T02",
-      "team_name": "Alpecin-Deceuninck",
-      "country": "BEL"
+      "team_name": "Team Bahrain Victorious",
+      "country": null
     },
     {
       "team_id": "T03",
-      "team_name": "Arkea-B&B Hotels",
-      "country": "FRA"
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "country": null
+    },
+    {
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "country": null
+    },
+    {
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "country": null
+    },
+    {
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "country": null
+    },
+    {
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "country": null
+    },
+    {
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "country": null
+    },
+    {
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "country": null
+    },
+    {
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "country": null
+    },
+    {
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "country": null
+    },
+    {
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "country": null
+    },
+    {
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "country": null
+    },
+    {
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "country": null
+    },
+    {
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "country": null
+    },
+    {
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "country": null
+    },
+    {
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "country": null
+    },
+    {
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "country": null
+    },
+    {
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "country": null
+    },
+    {
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "country": null
+    },
+    {
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "country": null
+    },
+    {
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "country": null
     }
   ]
 }

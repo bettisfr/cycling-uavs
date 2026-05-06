@@ -1,40 +1,1664 @@
 {
-  "version": 3,
+  "version": 8,
   "race": "Giro d'Italia",
   "edition": 2026,
-  "notes": "Minimal rider registry for Strava lookup workflow.",
+  "notes": "Generated from /home/fra/Downloads/raw.txt participants list with normalized rider names (GivenName Surname). Nationality not available in source. Includes strava_athlete_url field per rider.",
   "riders": [
     {
       "rider_id": "B001",
       "bib": 1,
-      "name": "Primoz Roglic",
-      "nationality": "SVN",
+      "name": "Kaden Groves",
+      "nationality": null,
       "team_id": "T01",
-      "team_name": "Red Bull-Bora-Hansgrohe"
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B002",
+      "bib": 2,
+      "name": "Tobias Bayer",
+      "nationality": null,
+      "team_id": "T01",
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B003",
+      "bib": 3,
+      "name": "Francesco Busatto",
+      "nationality": null,
+      "team_id": "T01",
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B004",
+      "bib": 4,
+      "name": "Jonas Geens",
+      "nationality": null,
+      "team_id": "T01",
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B005",
+      "bib": 5,
+      "name": "Edward Planckaert",
+      "nationality": null,
+      "team_id": "T01",
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B006",
+      "bib": 6,
+      "name": "Jensen Plowright",
+      "nationality": null,
+      "team_id": "T01",
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
     },
     {
       "rider_id": "B007",
       "bib": 7,
-      "name": "Giulio Pellizzari",
-      "nationality": "ITA",
+      "name": "Johan Price Pejtersen",
+      "nationality": null,
       "team_id": "T01",
-      "team_name": "Red Bull-Bora-Hansgrohe"
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B008",
+      "bib": 8,
+      "name": "Luca Vergallito",
+      "nationality": null,
+      "team_id": "T01",
+      "team_name": "Alpecin\u2013Premier Tech",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B011",
+      "bib": 11,
+      "name": "Santiago Buitrago Sanchez",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B012",
+      "bib": 12,
+      "name": "Damiano Caruso",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B013",
+      "bib": 13,
+      "name": "Robert Stannard",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B014",
+      "bib": 14,
+      "name": "Fran Miholjevi\u0107",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B015",
+      "bib": 15,
+      "name": "Afonso Oliveira Eul\u00e1lio",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B016",
+      "bib": 16,
+      "name": "Mathijs Paasschens",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B017",
+      "bib": 17,
+      "name": "Alec Segaert",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B018",
+      "bib": 18,
+      "name": "Edoardo Zambanini",
+      "nationality": null,
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B021",
+      "bib": 21,
+      "name": "Filippo Magli",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B022",
+      "bib": 22,
+      "name": "Martin Marcellusi",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B023",
+      "bib": 23,
+      "name": "Luca Paletti",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B024",
+      "bib": 24,
+      "name": "Vicente Rojas",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B025",
+      "bib": 25,
+      "name": "Manuele Tarozzi",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B026",
+      "bib": 26,
+      "name": "Nikita Tsvetkov",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B027",
+      "bib": 27,
+      "name": "Filippo Turconi",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B028",
+      "bib": 28,
+      "name": "Enrico Zanoncello",
+      "nationality": null,
+      "team_id": "T03",
+      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B031",
+      "bib": 31,
+      "name": "Felix Gall",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B032",
+      "bib": 32,
+      "name": "Tobias Lund Andresen",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B033",
+      "bib": 33,
+      "name": "Tord Gudmestad",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B034",
+      "bib": 34,
+      "name": "Gregor M\u00fchlberger",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B035",
+      "bib": 35,
+      "name": "Oliver Naesen",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B036",
+      "bib": 36,
+      "name": "S\u00f8jberg Rasmus Pedersen",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B037",
+      "bib": 37,
+      "name": "Callum Scotson",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B038",
+      "bib": 38,
+      "name": "Johannes Staune-Mittet",
+      "nationality": null,
+      "team_id": "T04",
+      "team_name": "Decathlon CMA CGM",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B041",
+      "bib": 41,
+      "name": "Vincenzo Albanese",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B042",
+      "bib": 42,
+      "name": "Samuele Battistella",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B043",
+      "bib": 43,
+      "name": "Markel Beloki",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B044",
+      "bib": 44,
+      "name": "Madis Mihkels",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B045",
+      "bib": 45,
+      "name": "Darren Rafferty",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B046",
+      "bib": 46,
+      "name": "James Shaw",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B047",
+      "bib": 47,
+      "name": "Michael Valgren",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B048",
+      "bib": 48,
+      "name": "Jardi Christiaan Van Der Lee",
+      "nationality": null,
+      "team_id": "T05",
+      "team_name": "EF Education\u2013EasyPost",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B051",
+      "bib": 51,
+      "name": "R\u00e9mi Cavagna",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B052",
+      "bib": 52,
+      "name": "Cyril Barthe",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B053",
+      "bib": 53,
+      "name": "Axel Huens",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B054",
+      "bib": 54,
+      "name": "Johan Jacobs",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B055",
+      "bib": 55,
+      "name": "Joshua Kench",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B056",
+      "bib": 56,
+      "name": "Paul Penhoet",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B057",
+      "bib": 57,
+      "name": "R\u00e9my Rochas",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B058",
+      "bib": 58,
+      "name": "Brieuc Rolland",
+      "nationality": null,
+      "team_id": "T06",
+      "team_name": "Groupama\u2013FDJ United",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B061",
+      "bib": 61,
+      "name": "Giulio Ciccone",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B062",
+      "bib": 62,
+      "name": "Simone Consonni",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B063",
+      "bib": 63,
+      "name": "Derek Gee",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B064",
+      "bib": 64,
+      "name": "Amanuel Ghebreigzabhier",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B065",
+      "bib": 65,
+      "name": "Jonathan Milan",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B066",
+      "bib": 66,
+      "name": "Matteo Sobrero",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B067",
+      "bib": 67,
+      "name": "Tim Torn Teutenberg",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B068",
+      "bib": 68,
+      "name": "Maximilian Richard Walscheid",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B071",
+      "bib": 71,
+      "name": "Arnaud De Lie",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B072",
+      "bib": 72,
+      "name": "Toon Aerts",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B073",
+      "bib": 73,
+      "name": "Simone Gualdi",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B074",
+      "bib": 74,
+      "name": "Milan Menten",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B075",
+      "bib": 75,
+      "name": "Lorenzo Rota",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B076",
+      "bib": 76,
+      "name": "Jonas Rutsch",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B077",
+      "bib": 77,
+      "name": "Liam Slock",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B078",
+      "bib": 78,
+      "name": "Lennert Van Eetvelt",
+      "nationality": null,
+      "team_id": "T07",
+      "team_name": "Lidl\u2013Trek",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B081",
+      "bib": 81,
+      "name": "Enric Mas",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B082",
+      "bib": 82,
+      "name": "Orluis Aular",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B083",
+      "bib": 83,
+      "name": "Ivan Garcia Cortina",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B084",
+      "bib": 84,
+      "name": "Juan Pedro Lopez",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B085",
+      "bib": 85,
+      "name": "Lorenzo Milesi",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B086",
+      "bib": 86,
+      "name": "Nelson Oliveira",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B087",
+      "bib": 87,
+      "name": "Javier Romo",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B091",
+      "bib": 91,
+      "name": "Egan Arley Bernal",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B092",
+      "bib": 92,
+      "name": "Thymen Arensman",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B093",
+      "bib": 93,
+      "name": "Filippo Ganna",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B094",
+      "bib": 94,
+      "name": "Jack Haig",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B095",
+      "bib": 95,
+      "name": "Magnus Sheffield",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B096",
+      "bib": 96,
+      "name": "Embret Svestad-B\u00e5rdseng",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B097",
+      "bib": 97,
+      "name": "Connor Swift",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B098",
+      "bib": 98,
+      "name": "Einer Rubio",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B098",
+      "bib": 98,
+      "name": "Ben Turner",
+      "nationality": null,
+      "team_id": "T09",
+      "team_name": "Netcompany INEOS",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B101",
+      "bib": 101,
+      "name": "Alessandro Pinarello",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B102",
+      "bib": 102,
+      "name": "Jan Hirt",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B103",
+      "bib": 103,
+      "name": "Ryan William Mullen",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B104",
+      "bib": 104,
+      "name": "Nicholas Schultz",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B105",
+      "bib": 105,
+      "name": "Dion Allan Smith",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B106",
+      "bib": 106,
+      "name": "Jake Stewart",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B107",
+      "bib": 107,
+      "name": "Corbin John Strong",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B109",
+      "bib": 109,
+      "name": "Ethan Vernon",
+      "nationality": null,
+      "team_id": "T10",
+      "team_name": "NSN Cycling Team",
+      "strava_athlete_url": null
     },
     {
       "rider_id": "B111",
       "bib": 111,
-      "name": "Giulio Ciccone",
-      "nationality": "ITA",
+      "name": "Sjoerd Bax",
+      "nationality": null,
       "team_id": "T11",
-      "team_name": "Lidl-Trek"
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B112",
+      "bib": 112,
+      "name": "Fabio Christen",
+      "nationality": null,
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B113",
+      "bib": 113,
+      "name": "David De La Cruz",
+      "nationality": null,
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B114",
+      "bib": 114,
+      "name": "Mark Donovan",
+      "nationality": null,
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B115",
+      "bib": 115,
+      "name": "David Gonzalez",
+      "nationality": null,
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B116",
+      "bib": 116,
+      "name": "Christopher Harper",
+      "nationality": null,
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B117",
+      "bib": 117,
+      "name": "Matteo Moschetti",
+      "nationality": null,
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B118",
+      "bib": 118,
+      "name": "Nickolas Zukowsky",
+      "nationality": null,
+      "team_id": "T11",
+      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B121",
+      "bib": 121,
+      "name": "Jai Hindley",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B122",
+      "bib": 122,
+      "name": "Giovanni Aleotti",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B123",
+      "bib": 123,
+      "name": "Nico Denz",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B124",
+      "bib": 124,
+      "name": "Gianni Moscon",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B125",
+      "bib": 125,
+      "name": "Giulio Pellizzari",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B126",
+      "bib": 126,
+      "name": "Mick Van Dijke",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B127",
+      "bib": 127,
+      "name": "Aleksandr Vlasov",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B128",
+      "bib": 128,
+      "name": "Ben Zwiehoff",
+      "nationality": null,
+      "team_id": "T12",
+      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B131",
+      "bib": 131,
+      "name": "Paul Magnier",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B132",
+      "bib": 132,
+      "name": "Ayco Bastiaens",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B133",
+      "bib": 133,
+      "name": "Gianmarco Garofoli",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B134",
+      "bib": 134,
+      "name": "Andrea Raccagni Noviero",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B135",
+      "bib": 135,
+      "name": "Jasper Stuyven",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B136",
+      "bib": 136,
+      "name": "Fabio Van Den Bossche",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B137",
+      "bib": 137,
+      "name": "Dries Van Gestel",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B138",
+      "bib": 138,
+      "name": "Filippo Zana",
+      "nationality": null,
+      "team_id": "T13",
+      "team_name": "Soudal\u2013Quick-Step",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B141",
+      "bib": 141,
+      "name": "Ben O'Connor",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B142",
+      "bib": 142,
+      "name": "Pascal Ackermann",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B143",
+      "bib": 143,
+      "name": "Koen Bouwman",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B144",
+      "bib": 144,
+      "name": "Robert Donaldson",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B145",
+      "bib": 145,
+      "name": "Felix Engelhardt",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B146",
+      "bib": 146,
+      "name": "Alan Hatherly",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B147",
+      "bib": 147,
+      "name": "Christopher Juul-Jensen",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B148",
+      "bib": 148,
+      "name": "Andrea Vendrame",
+      "nationality": null,
+      "team_id": "T14",
+      "team_name": "Team Jayco\u2013AlUla",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B151",
+      "bib": 151,
+      "name": "Warren Barguil",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B152",
+      "bib": 152,
+      "name": "Timo De Jong",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B153",
+      "bib": 153,
+      "name": "Sean Flynn",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B154",
+      "bib": 154,
+      "name": "Chris Hamilton",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B155",
+      "bib": 155,
+      "name": "Gijs Leemreize",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B156",
+      "bib": 156,
+      "name": "Tim Naberman",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B157",
+      "bib": 157,
+      "name": "Frank Van Den Broek",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B158",
+      "bib": 158,
+      "name": "Casper Van Uden",
+      "nationality": null,
+      "team_id": "T15",
+      "team_name": "Team Picnic\u2013PostNL",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B161",
+      "bib": 161,
+      "name": "Mattia Bais",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B162",
+      "bib": 162,
+      "name": "Ludovico Crescioli",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B163",
+      "bib": 163,
+      "name": "Giovanni Lonardi",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B164",
+      "bib": 164,
+      "name": "Mirco Maestri",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B165",
+      "bib": 165,
+      "name": "Andr\u00e9a Mifsud",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B166",
+      "bib": 166,
+      "name": "Thomas Pesenti",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B167",
+      "bib": 167,
+      "name": "Diego Pablo Sevilla",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B168",
+      "bib": 168,
+      "name": "Alessandro Tonelli",
+      "nationality": null,
+      "team_id": "T16",
+      "team_name": "Team Polti VisitMalta",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B171",
+      "bib": 171,
+      "name": "Jonas Vingegaard",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B172",
+      "bib": 172,
+      "name": "Victor Campenaerts",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B173",
+      "bib": 173,
+      "name": "Wilco Kelderman",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B174",
+      "bib": 174,
+      "name": "Timo Kielich",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B175",
+      "bib": 175,
+      "name": "Sepp Kuss",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B176",
+      "bib": 176,
+      "name": "Bart Lemmen",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B177",
+      "bib": 177,
+      "name": "Davide Piganzoli",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B178",
+      "bib": 178,
+      "name": "Tim Rex",
+      "nationality": null,
+      "team_id": "T17",
+      "team_name": "Visma\u2013Lease a Bike",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B181",
+      "bib": 181,
+      "name": "Michael Storer",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B182",
+      "bib": 182,
+      "name": "William Barta",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B183",
+      "bib": 183,
+      "name": "Robin Froidevaux",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B184",
+      "bib": 184,
+      "name": "Fabian Lienhard",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B185",
+      "bib": 185,
+      "name": "Luca Mozzato",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B186",
+      "bib": 186,
+      "name": "Mathys Rondel",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B187",
+      "bib": 187,
+      "name": "Florian Stork",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
     },
     {
       "rider_id": "B188",
       "bib": 188,
-      "name": "Simon Yates",
-      "nationality": "GBR",
+      "name": "Lawrence Warbasse",
+      "nationality": null,
+      "team_id": "T18",
+      "team_name": "Tudor Pro Cycling Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B191",
+      "bib": 191,
+      "name": "Adam Yates",
+      "nationality": null,
       "team_id": "T19",
-      "team_name": "Team Visma-Lease a Bike"
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B192",
+      "bib": 192,
+      "name": "Igor Arrieta",
+      "nationality": null,
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B193",
+      "bib": 193,
+      "name": "Mikkel Bjerg",
+      "nationality": null,
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B194",
+      "bib": 194,
+      "name": "Jan Christen",
+      "nationality": null,
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B195",
+      "bib": 195,
+      "name": "Jhonatan Narvaez",
+      "nationality": null,
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B196",
+      "bib": 196,
+      "name": "Marc Soler",
+      "nationality": null,
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B197",
+      "bib": 197,
+      "name": "Ant\u00f3nio Morgado",
+      "nationality": null,
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B198",
+      "bib": 198,
+      "name": "Jay Vine",
+      "nationality": null,
+      "team_id": "T19",
+      "team_name": "UAE Team Emirates XRG",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B201",
+      "bib": 201,
+      "name": "Dylan Groenewegen",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B202",
+      "bib": 202,
+      "name": "Hartthijs De Vries",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B203",
+      "bib": 203,
+      "name": "Maty\u00e1\u0161 Kopeck\u00fd",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B204",
+      "bib": 204,
+      "name": "Cornelius Tom\u00e1\u0161 Kopeck\u00fd",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B205",
+      "bib": 205,
+      "name": "Luk\u00e1\u0161 Kubi\u0161",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B206",
+      "bib": 206,
+      "name": "Niklas Larsen",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B207",
+      "bib": 207,
+      "name": "Wouter Poels",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B208",
+      "bib": 208,
+      "name": "Elmar Reinders",
+      "nationality": null,
+      "team_id": "T20",
+      "team_name": "Unibet Rose Rockets",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B211",
+      "bib": 211,
+      "name": "Markus Hoelgaard",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B212",
+      "bib": 212,
+      "name": "\u00c5dne Holter",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B213",
+      "bib": 213,
+      "name": "Johannes Kulset",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B214",
+      "bib": 214,
+      "name": "Fredrik Dversnes",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B215",
+      "bib": 215,
+      "name": "Andreas Leknessund",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B216",
+      "bib": 216,
+      "name": "William Levy",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B217",
+      "bib": 217,
+      "name": "Sakarias Koller L\u00f8land",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B218",
+      "bib": 218,
+      "name": "Martin Tj\u00f8tta",
+      "nationality": null,
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B221",
+      "bib": 221,
+      "name": "Davide Ballerini",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B222",
+      "bib": 222,
+      "name": "Alberto Bettiol",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B223",
+      "bib": 223,
+      "name": "Arjen Livyns",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B224",
+      "bib": 224,
+      "name": "Harold Martin Lopez",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B225",
+      "bib": 225,
+      "name": "Matteo Malucelli",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B226",
+      "bib": 226,
+      "name": "Christian Scaroni",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B227",
+      "bib": 227,
+      "name": "Guillermo Thomas Silva",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
+    },
+    {
+      "rider_id": "B228",
+      "bib": 228,
+      "name": "Diego Ulissi",
+      "nationality": null,
+      "team_id": "T22",
+      "team_name": "XDS Astana Team",
+      "strava_athlete_url": null
     }
   ]
 }
