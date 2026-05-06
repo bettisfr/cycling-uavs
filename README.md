@@ -87,6 +87,19 @@ Generate interactive map:
 Output:
 - `output/map_tracks.html`
 
+## PCS Startlist -> Strava Profiles
+
+If you saved a ProCyclingStats startlist HTML locally, you can download all rider pages and extract Strava athlete URLs:
+
+```bash
+/home/fra/pyvenv/bin/python pcs_strava_from_startlist.py \
+  --startlist-html "/home/fra/Downloads/Startlist for Giro d'Italia 2026.html" \
+  --output-json output/giro_2026/pcs_strava_links.json \
+  --update-riders-json giro_2026/riders.json
+```
+
+This script also caches rider pages in `/tmp/cycling-uavs-riders/pages`.
+
 ## Raw HTML Debug Workflow
 
 If needed for debugging/reproducibility, save raw activity pages in:
