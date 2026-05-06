@@ -644,6 +644,15 @@
       "strava_athlete_url": null
     },
     {
+      "rider_id": "B089",
+      "bib": 89,
+      "name": "Einer Rubio",
+      "nationality": null,
+      "team_id": "T08",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null
+    },
+    {
       "rider_id": "B091",
       "bib": 91,
       "name": "Egan Arley Bernal",
@@ -704,15 +713,6 @@
       "nationality": null,
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": null
-    },
-    {
-      "rider_id": "B098",
-      "bib": 98,
-      "name": "Einer Rubio",
-      "nationality": null,
-      "team_id": "T08",
-      "team_name": "Movistar Team",
       "strava_athlete_url": null
     },
     {
