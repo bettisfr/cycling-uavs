@@ -96,7 +96,6 @@ def update_stage_link_record(
         "activity_url": activity_url,
         "checked_at": now_iso_local(),
         "gpx_path": str(output_path),
-        "notes": "Exported via tracker_export.py",
     }
     if existing is None:
         activities.append(record)

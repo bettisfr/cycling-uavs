@@ -21,11 +21,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260508/1006Z/LBBG/LBWN"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/output/giro_2026/flights/S01/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-08T17:34:41+02:00"
       }
     },
     {
@@ -40,11 +45,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260509/0755Z/LBWN/LBSF"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/output/giro_2026/flights/S02/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-09T19:27:40+02:00"
       }
     },
     {

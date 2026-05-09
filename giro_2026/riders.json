@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 21,
   "race": "Giro d'Italia",
   "edition": 2026,
   "notes": "Generated from /home/fra/Downloads/raw.txt participants list with normalized rider names (GivenName Surname). Nationality filled manually. Includes strava_athlete_url field per rider. Strava links synced from output/giro_2026/pcs_strava_links.json excluding bib 41, 77, 216.",
@@ -10,7 +10,7 @@
       "name": "Kaden Groves",
       "nationality": "Australia",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
+      "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/6728810"
     },
     {
@@ -19,7 +19,7 @@
       "name": "Tobias Bayer",
       "nationality": "Austria",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
+      "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/8409483"
     },
     {
@@ -28,7 +28,7 @@
       "name": "Francesco Busatto",
       "nationality": "Italy",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
+      "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/16710841"
     },
     {
@@ -37,7 +37,7 @@
       "name": "Jonas Geens",
       "nationality": "Belgium",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
+      "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/26500769"
     },
     {
@@ -46,7 +46,7 @@
       "name": "Edward Planckaert",
       "nationality": "Belgium",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
+      "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/31541211"
     },
     {
@@ -55,7 +55,7 @@
       "name": "Jensen Plowright",
       "nationality": "Australia",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
+      "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/29260396"
     },
     {
@@ -64,7 +64,7 @@
       "name": "Johan Price Pejtersen",
       "nationality": "Denmark",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
+      "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/13150937"
     },
     {
@@ -73,13 +73,13 @@
       "name": "Luca Vergallito",
       "nationality": "Italy",
       "team_id": "T01",
-      "team_name": "Alpecin\u2013Premier Tech",
-      "strava_athlete_url": "https://www.strava.com/athletes/2004466"
+      "team_name": "Alpecin–Premier Tech",
+      "strava_athlete_url": "https://www.strava.com/pros/ilbandito"
     },
     {
       "rider_id": "B011",
       "bib": 11,
-      "name": "Santiago Buitrago Sanchez",
+      "name": "Santiago Buitrago",
       "nationality": "Colombia",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
@@ -97,33 +97,24 @@
     {
       "rider_id": "B013",
       "bib": 13,
-      "name": "Robert Stannard",
-      "nationality": "Australia",
-      "team_id": "T02",
-      "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/6394625"
-    },
-    {
-      "rider_id": "B014",
-      "bib": 14,
-      "name": "Fran Miholjevi\u0107",
+      "name": "Fran Miholjević",
       "nationality": "Croatia",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
       "strava_athlete_url": "https://www.strava.com/athletes/14691945"
     },
     {
-      "rider_id": "B015",
-      "bib": 15,
-      "name": "Afonso Oliveira Eul\u00e1lio",
+      "rider_id": "B014",
+      "bib": 14,
+      "name": "Afonso Eulálio",
       "nationality": "Portugal",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
       "strava_athlete_url": "https://www.strava.com/athletes/28548607"
     },
     {
-      "rider_id": "B016",
-      "bib": 16,
+      "rider_id": "B015",
+      "bib": 15,
       "name": "Mathijs Paasschens",
       "nationality": "Netherlands",
       "team_id": "T02",
@@ -131,13 +122,22 @@
       "strava_athlete_url": "https://www.strava.com/athletes/2543430"
     },
     {
-      "rider_id": "B017",
-      "bib": 17,
+      "rider_id": "B016",
+      "bib": 16,
       "name": "Alec Segaert",
       "nationality": "Belgium",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
       "strava_athlete_url": "https://www.strava.com/athletes/12017824"
+    },
+    {
+      "rider_id": "B017",
+      "bib": 17,
+      "name": "Robert Stannard",
+      "nationality": "Australia",
+      "team_id": "T02",
+      "team_name": "Team Bahrain Victorious",
+      "strava_athlete_url": "https://www.strava.com/athletes/6394625"
     },
     {
       "rider_id": "B018",
@@ -154,7 +154,7 @@
       "name": "Filippo Magli",
       "nationality": "Italy",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/pros/32609601"
     },
     {
@@ -163,7 +163,7 @@
       "name": "Martin Marcellusi",
       "nationality": "Italy",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/athletes/33207958"
     },
     {
@@ -172,7 +172,7 @@
       "name": "Luca Paletti",
       "nationality": "Italy",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/pros/32191553"
     },
     {
@@ -181,7 +181,7 @@
       "name": "Vicente Rojas",
       "nationality": "Chile",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/athletes/21629398"
     },
     {
@@ -190,7 +190,7 @@
       "name": "Manuele Tarozzi",
       "nationality": "Italy",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/athletes/21133879"
     },
     {
@@ -199,7 +199,7 @@
       "name": "Nikita Tsvetkov",
       "nationality": "Uzbekistan",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/athletes/48327613"
     },
     {
@@ -208,7 +208,7 @@
       "name": "Filippo Turconi",
       "nationality": "Italy",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/athletes/113211679"
     },
     {
@@ -217,7 +217,7 @@
       "name": "Enrico Zanoncello",
       "nationality": "Italy",
       "team_id": "T03",
-      "team_name": "Bardiani\u2013CSF 7 Saber",
+      "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/athletes/4941184"
     },
     {
@@ -250,7 +250,7 @@
     {
       "rider_id": "B034",
       "bib": 34,
-      "name": "Gregor M\u00fchlberger",
+      "name": "Gregor Mühlberger",
       "nationality": "Austria",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
@@ -268,7 +268,7 @@
     {
       "rider_id": "B036",
       "bib": 36,
-      "name": "S\u00f8jberg Rasmus Pedersen",
+      "name": "Rasmus Søjberg Pedersen",
       "nationality": "Denmark",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
@@ -295,11 +295,11 @@
     {
       "rider_id": "B041",
       "bib": 41,
-      "name": "Vincenzo Albanese",
-      "nationality": "Italy",
+      "name": "Jefferson Alexander Cepeda",
+      "nationality": "Ecuador",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
-      "strava_athlete_url": "https://www.strava.com/pros/3488983"
+      "team_name": "EF Education–EasyPost",
+      "strava_athlete_url": "https://www.strava.com/athletes/21922069"
     },
     {
       "rider_id": "B042",
@@ -307,7 +307,7 @@
       "name": "Samuele Battistella",
       "nationality": "Italy",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
+      "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/16571022"
     },
     {
@@ -316,7 +316,7 @@
       "name": "Markel Beloki",
       "nationality": "Spain",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
+      "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/24287973"
     },
     {
@@ -325,7 +325,7 @@
       "name": "Madis Mihkels",
       "nationality": "Estonia",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
+      "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/27288979"
     },
     {
@@ -334,7 +334,7 @@
       "name": "Darren Rafferty",
       "nationality": "Ireland",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
+      "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/23336540"
     },
     {
@@ -343,7 +343,7 @@
       "name": "James Shaw",
       "nationality": "Great Britain",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
+      "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/4848511"
     },
     {
@@ -352,25 +352,25 @@
       "name": "Michael Valgren",
       "nationality": "Denmark",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
+      "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/pros/2109462"
     },
     {
       "rider_id": "B048",
       "bib": 48,
-      "name": "Jardi Christiaan Van Der Lee",
+      "name": "Jardi  van der Lee",
       "nationality": "Netherlands",
       "team_id": "T05",
-      "team_name": "EF Education\u2013EasyPost",
+      "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/24409607"
     },
     {
       "rider_id": "B051",
       "bib": 51,
-      "name": "R\u00e9mi Cavagna",
+      "name": "Rémi Cavagna",
       "nationality": "France",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/pros/2203430"
     },
     {
@@ -379,7 +379,7 @@
       "name": "Cyril Barthe",
       "nationality": "France",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/athletes/12856902"
     },
     {
@@ -388,7 +388,7 @@
       "name": "Axel Huens",
       "nationality": "France",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/athletes/11968925"
     },
     {
@@ -397,16 +397,16 @@
       "name": "Johan Jacobs",
       "nationality": "Switzerland",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/pros/461374"
     },
     {
       "rider_id": "B055",
       "bib": 55,
-      "name": "Joshua Kench",
+      "name": "Josh Kench",
       "nationality": "New Zealand",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/athletes/7373422"
     },
     {
@@ -415,16 +415,16 @@
       "name": "Paul Penhoet",
       "nationality": "France",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/athletes/9019175"
     },
     {
       "rider_id": "B057",
       "bib": 57,
-      "name": "R\u00e9my Rochas",
+      "name": "Rémy Rochas",
       "nationality": "France",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/athletes/3286366"
     },
     {
@@ -433,7 +433,7 @@
       "name": "Brieuc Rolland",
       "nationality": "France",
       "team_id": "T06",
-      "team_name": "Groupama\u2013FDJ United",
+      "team_name": "Groupama–FDJ United",
       "strava_athlete_url": "https://www.strava.com/athletes/27671946"
     },
     {
@@ -442,7 +442,7 @@
       "name": "Giulio Ciccone",
       "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/pros/29028250"
     },
     {
@@ -451,16 +451,16 @@
       "name": "Simone Consonni",
       "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/2824377"
     },
     {
       "rider_id": "B063",
       "bib": 63,
-      "name": "Derek Gee",
+      "name": "Derek Gee-West",
       "nationality": "Canada",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/5571896"
     },
     {
@@ -469,7 +469,7 @@
       "name": "Amanuel Ghebreigzabhier",
       "nationality": "Eritrea",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/63330472"
     },
     {
@@ -478,7 +478,7 @@
       "name": "Jonathan Milan",
       "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/39026315"
     },
     {
@@ -487,7 +487,7 @@
       "name": "Matteo Sobrero",
       "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/7181420"
     },
     {
@@ -496,16 +496,16 @@
       "name": "Tim Torn Teutenberg",
       "nationality": "Germany",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/1030434"
     },
     {
       "rider_id": "B068",
       "bib": 68,
-      "name": "Maximilian Richard Walscheid",
+      "name": "Max Walscheid",
       "nationality": "Germany",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/2323575"
     },
     {
@@ -514,7 +514,7 @@
       "name": "Arnaud De Lie",
       "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/28980231"
     },
     {
@@ -523,53 +523,53 @@
       "name": "Toon Aerts",
       "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/577221"
     },
     {
       "rider_id": "B073",
       "bib": 73,
-      "name": "Simone Gualdi",
-      "nationality": "Italy",
+      "name": "Joshua Giddings",
+      "nationality": "Great Britain",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
-      "strava_athlete_url": "https://www.strava.com/athletes/21332567"
+      "team_name": "Lidl–Trek",
+      "strava_athlete_url": "https://www.strava.com/pros/giddings_josh"
     },
     {
       "rider_id": "B074",
       "bib": 74,
-      "name": "Milan Menten",
-      "nationality": "Belgium",
+      "name": "Simone Gualdi",
+      "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
-      "strava_athlete_url": "https://www.strava.com/pros/2219780"
+      "team_name": "Lidl–Trek",
+      "strava_athlete_url": "https://www.strava.com/athletes/21332567"
     },
     {
       "rider_id": "B075",
       "bib": 75,
-      "name": "Lorenzo Rota",
-      "nationality": "Italy",
+      "name": "Milan Menten",
+      "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
-      "strava_athlete_url": "https://www.strava.com/pros/lorenzorota1995"
+      "team_name": "Lidl–Trek",
+      "strava_athlete_url": "https://www.strava.com/pros/2219780"
     },
     {
       "rider_id": "B076",
       "bib": 76,
-      "name": "Jonas Rutsch",
-      "nationality": "Germany",
+      "name": "Lorenzo Rota",
+      "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
-      "strava_athlete_url": "https://www.strava.com/pros/jonas-rutsch-18722207?hl=fr-FR"
+      "team_name": "Lidl–Trek",
+      "strava_athlete_url": "https://www.strava.com/pros/lorenzorota1995"
     },
     {
       "rider_id": "B077",
       "bib": 77,
-      "name": "Liam Slock",
-      "nationality": "Belgium",
+      "name": "Jonas Rutsch",
+      "nationality": "Germany",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
-      "strava_athlete_url": "https://www.strava.com/pros/15942611"
+      "team_name": "Lidl–Trek",
+      "strava_athlete_url": "https://www.strava.com/pros/jonas-rutsch-18722207"
     },
     {
       "rider_id": "B078",
@@ -577,7 +577,7 @@
       "name": "Lennert Van Eetvelt",
       "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl\u2013Trek",
+      "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/6061359"
     },
     {
@@ -646,7 +646,7 @@
     {
       "rider_id": "B088",
       "bib": 88,
-      "name": "Einer Augusto Rubio Reyes",
+      "name": "Einer Rubio",
       "nationality": "Colombia",
       "team_id": "T08",
       "team_name": "Movistar Team",
@@ -655,7 +655,7 @@
     {
       "rider_id": "B091",
       "bib": 91,
-      "name": "Egan Arley Bernal",
+      "name": "Egan Bernal",
       "nationality": "Colombia",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
@@ -700,7 +700,7 @@
     {
       "rider_id": "B096",
       "bib": 96,
-      "name": "Embret Svestad-B\u00e5rdseng",
+      "name": "Embret Svestad-Bårdseng",
       "nationality": "Norway",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
@@ -745,7 +745,7 @@
     {
       "rider_id": "B103",
       "bib": 103,
-      "name": "Ryan William Mullen",
+      "name": "Ryan Mullen",
       "nationality": "Ireland",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
@@ -754,7 +754,7 @@
     {
       "rider_id": "B104",
       "bib": 104,
-      "name": "Nicholas Schultz",
+      "name": "Nick Schultz",
       "nationality": "Australia",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
@@ -763,7 +763,7 @@
     {
       "rider_id": "B105",
       "bib": 105,
-      "name": "Dion Allan Smith",
+      "name": "Dion Smith",
       "nationality": "New Zealand",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
@@ -781,7 +781,7 @@
     {
       "rider_id": "B107",
       "bib": 107,
-      "name": "Corbin John Strong",
+      "name": "Corbin Strong",
       "nationality": "New Zealand",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
@@ -802,7 +802,7 @@
       "name": "Sjoerd Bax",
       "nationality": "Netherlands",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/5706594"
     },
     {
@@ -811,7 +811,7 @@
       "name": "Fabio Christen",
       "nationality": "Switzerland",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/28864199"
     },
     {
@@ -820,7 +820,7 @@
       "name": "David De La Cruz",
       "nationality": "Spain",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/pros/2014488"
     },
     {
@@ -829,25 +829,25 @@
       "name": "Mark Donovan",
       "nationality": "Great Britain",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/pros/1284150"
     },
     {
       "rider_id": "B115",
       "bib": 115,
-      "name": "David Gonzalez",
+      "name": "David González López",
       "nationality": "Spain",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/13720238"
     },
     {
       "rider_id": "B116",
       "bib": 116,
-      "name": "Christopher Harper",
+      "name": "Chris Harper",
       "nationality": "Australia",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/2836335"
     },
     {
@@ -856,7 +856,7 @@
       "name": "Matteo Moschetti",
       "nationality": "Italy",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/18788312"
     },
     {
@@ -865,7 +865,7 @@
       "name": "Nickolas Zukowsky",
       "nationality": "Canada",
       "team_id": "T11",
-      "team_name": "Pinarello\u2013Q36.5 Pro Cycling Team",
+      "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/pros/5190714"
     },
     {
@@ -874,7 +874,7 @@
       "name": "Jai Hindley",
       "nationality": "Australia",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/pros/1760759"
     },
     {
@@ -883,7 +883,7 @@
       "name": "Giovanni Aleotti",
       "nationality": "Italy",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/athletes/21536765"
     },
     {
@@ -892,7 +892,7 @@
       "name": "Nico Denz",
       "nationality": "Germany",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/pros/3423315"
     },
     {
@@ -901,7 +901,7 @@
       "name": "Gianni Moscon",
       "nationality": "Italy",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/athletes/gmoscon"
     },
     {
@@ -910,7 +910,7 @@
       "name": "Giulio Pellizzari",
       "nationality": "Italy",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/athletes/30808559"
     },
     {
@@ -919,17 +919,17 @@
       "name": "Mick Van Dijke",
       "nationality": "Netherlands",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/athletes/26465206"
     },
     {
       "rider_id": "B127",
       "bib": 127,
       "name": "Aleksandr Vlasov",
-      "nationality": "Russia",
+      "nationality": "RUS",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
-      "strava_athlete_url": "https://www.strava.com/pros/19916624?hl=fr-FR"
+      "team_name": "Red Bull–Bora–Hansgrohe",
+      "strava_athlete_url": "https://www.strava.com/pros/19916624"
     },
     {
       "rider_id": "B128",
@@ -937,7 +937,7 @@
       "name": "Ben Zwiehoff",
       "nationality": "Germany",
       "team_id": "T12",
-      "team_name": "Red Bull\u2013Bora\u2013Hansgrohe",
+      "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/athletes/1118391"
     },
     {
@@ -946,7 +946,7 @@
       "name": "Paul Magnier",
       "nationality": "France",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/athletes/25788579"
     },
     {
@@ -955,7 +955,7 @@
       "name": "Ayco Bastiaens",
       "nationality": "Belgium",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/pros/10705535"
     },
     {
@@ -964,16 +964,16 @@
       "name": "Gianmarco Garofoli",
       "nationality": "Italy",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/athletes/15781522"
     },
     {
       "rider_id": "B134",
       "bib": 134,
-      "name": "Andrea Raccagni Noviero",
+      "name": "Andrea Raccagni",
       "nationality": "Italy",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/athletes/21852715"
     },
     {
@@ -982,7 +982,7 @@
       "name": "Jasper Stuyven",
       "nationality": "Belgium",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/pros/288335"
     },
     {
@@ -991,7 +991,7 @@
       "name": "Fabio Van Den Bossche",
       "nationality": "Belgium",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/athletes/1867924"
     },
     {
@@ -1000,7 +1000,7 @@
       "name": "Dries Van Gestel",
       "nationality": "Belgium",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/athletes/13142575"
     },
     {
@@ -1009,7 +1009,7 @@
       "name": "Filippo Zana",
       "nationality": "Italy",
       "team_id": "T13",
-      "team_name": "Soudal\u2013Quick-Step",
+      "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/athletes/39169689"
     },
     {
@@ -1018,7 +1018,7 @@
       "name": "Ben O'Connor",
       "nationality": "Australia",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/4097457"
     },
     {
@@ -1027,7 +1027,7 @@
       "name": "Pascal Ackermann",
       "nationality": "Germany",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/12274527"
     },
     {
@@ -1036,7 +1036,7 @@
       "name": "Koen Bouwman",
       "nationality": "Netherlands",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/pros/1993533"
     },
     {
@@ -1045,7 +1045,7 @@
       "name": "Robert Donaldson",
       "nationality": "Great Britain",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/15937095"
     },
     {
@@ -1054,16 +1054,16 @@
       "name": "Felix Engelhardt",
       "nationality": "Germany",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/6903975"
     },
     {
       "rider_id": "B146",
       "bib": 146,
       "name": "Alan Hatherly",
-      "nationality": "South Africa",
+      "nationality": "ZAF",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/19264705"
     },
     {
@@ -1072,7 +1072,7 @@
       "name": "Christopher Juul-Jensen",
       "nationality": "Denmark",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": null
     },
     {
@@ -1081,7 +1081,7 @@
       "name": "Andrea Vendrame",
       "nationality": "Italy",
       "team_id": "T14",
-      "team_name": "Team Jayco\u2013AlUla",
+      "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/49920031"
     },
     {
@@ -1090,7 +1090,7 @@
       "name": "Warren Barguil",
       "nationality": "France",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/pros/722861"
     },
     {
@@ -1099,7 +1099,7 @@
       "name": "Timo De Jong",
       "nationality": "Netherlands",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/athletes/2639794"
     },
     {
@@ -1108,7 +1108,7 @@
       "name": "Sean Flynn",
       "nationality": "Great Britain",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/athletes/1928834"
     },
     {
@@ -1117,7 +1117,7 @@
       "name": "Chris Hamilton",
       "nationality": "Australia",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/pros/2754904"
     },
     {
@@ -1126,7 +1126,7 @@
       "name": "Gijs Leemreize",
       "nationality": "Netherlands",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/pros/7968141"
     },
     {
@@ -1135,7 +1135,7 @@
       "name": "Tim Naberman",
       "nationality": "Netherlands",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/athletes/6449536"
     },
     {
@@ -1144,7 +1144,7 @@
       "name": "Frank Van Den Broek",
       "nationality": "Netherlands",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/athletes/11270161"
     },
     {
@@ -1153,7 +1153,7 @@
       "name": "Casper Van Uden",
       "nationality": "Netherlands",
       "team_id": "T15",
-      "team_name": "Team Picnic\u2013PostNL",
+      "team_name": "Team Picnic–PostNL",
       "strava_athlete_url": "https://www.strava.com/athletes/30579397"
     },
     {
@@ -1195,7 +1195,7 @@
     {
       "rider_id": "B165",
       "bib": 165,
-      "name": "Andr\u00e9a Mifsud",
+      "name": "Andréa Mifsud",
       "nationality": "France",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
@@ -1234,7 +1234,7 @@
       "name": "Jonas Vingegaard",
       "nationality": "Denmark",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/athletes/10495058"
     },
     {
@@ -1243,7 +1243,7 @@
       "name": "Victor Campenaerts",
       "nationality": "Belgium",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/athletes/620617"
     },
     {
@@ -1252,7 +1252,7 @@
       "name": "Wilco Kelderman",
       "nationality": "Netherlands",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/pros/wilco_kelderman"
     },
     {
@@ -1261,7 +1261,7 @@
       "name": "Timo Kielich",
       "nationality": "Belgium",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://strava.com/athletes/3732430"
     },
     {
@@ -1270,7 +1270,7 @@
       "name": "Sepp Kuss",
       "nationality": "United States",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/athletes/254096"
     },
     {
@@ -1279,7 +1279,7 @@
       "name": "Bart Lemmen",
       "nationality": "Netherlands",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/athletes/10416992"
     },
     {
@@ -1288,7 +1288,7 @@
       "name": "Davide Piganzoli",
       "nationality": "Italy",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/pros/23174762"
     },
     {
@@ -1297,7 +1297,7 @@
       "name": "Tim Rex",
       "nationality": "Belgium",
       "team_id": "T17",
-      "team_name": "Visma\u2013Lease a Bike",
+      "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/athletes/15322328"
     },
     {
@@ -1307,12 +1307,12 @@
       "nationality": "Australia",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/michael-storer-17191487?hl=fr-FR"
+      "strava_athlete_url": "https://www.strava.com/pros/michael-storer-17191487"
     },
     {
       "rider_id": "B182",
       "bib": 182,
-      "name": "William Barta",
+      "name": "Will Barta",
       "nationality": "United States",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
@@ -1429,7 +1429,7 @@
     {
       "rider_id": "B197",
       "bib": 197,
-      "name": "Ant\u00f3nio Morgado",
+      "name": "António Morgado",
       "nationality": "Portugal",
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
@@ -1451,7 +1451,7 @@
       "nationality": "Netherlands",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
-      "strava_athlete_url": "https://www.strava.com/pros/dylan_groenewegen?hl=fr-FR"
+      "strava_athlete_url": "https://www.strava.com/pros/dylan_groenewegen"
     },
     {
       "rider_id": "B202",
@@ -1465,7 +1465,7 @@
     {
       "rider_id": "B203",
       "bib": 203,
-      "name": "Maty\u00e1\u0161 Kopeck\u00fd",
+      "name": "Matyáš Kopecký",
       "nationality": "Czech Republic",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
@@ -1474,7 +1474,7 @@
     {
       "rider_id": "B204",
       "bib": 204,
-      "name": "Cornelius Tom\u00e1\u0161 Kopeck\u00fd",
+      "name": "Tomáš Kopecký",
       "nationality": "Czech Republic",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
@@ -1483,7 +1483,7 @@
     {
       "rider_id": "B205",
       "bib": 205,
-      "name": "Luk\u00e1\u0161 Kubi\u0161",
+      "name": "Lukáš Kubiš",
       "nationality": "Slovakia",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
@@ -1501,7 +1501,7 @@
     {
       "rider_id": "B207",
       "bib": 207,
-      "name": "Wouter Poels",
+      "name": "Wout Poels",
       "nationality": "Netherlands",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
@@ -1519,6 +1519,15 @@
     {
       "rider_id": "B211",
       "bib": 211,
+      "name": "Erlend Blikra",
+      "nationality": "Norway",
+      "team_id": "T21",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": "https://www.strava.com/athletes/4013766"
+    },
+    {
+      "rider_id": "B212",
+      "bib": 212,
       "name": "Markus Hoelgaard",
       "nationality": "Norway",
       "team_id": "T21",
@@ -1526,17 +1535,17 @@
       "strava_athlete_url": "https://www.strava.com/athletes/4047775"
     },
     {
-      "rider_id": "B212",
-      "bib": 212,
-      "name": "\u00c5dne Holter",
+      "rider_id": "B213",
+      "bib": 213,
+      "name": "Ådne Holter",
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
       "strava_athlete_url": "https://www.strava.com/athletes/7333853"
     },
     {
-      "rider_id": "B213",
-      "bib": 213,
+      "rider_id": "B214",
+      "bib": 214,
       "name": "Johannes Kulset",
       "nationality": "Norway",
       "team_id": "T21",
@@ -1544,8 +1553,8 @@
       "strava_athlete_url": "https://www.strava.com/athletes/5495962"
     },
     {
-      "rider_id": "B214",
-      "bib": 214,
+      "rider_id": "B215",
+      "bib": 215,
       "name": "Fredrik Dversnes",
       "nationality": "Norway",
       "team_id": "T21",
@@ -1553,27 +1562,18 @@
       "strava_athlete_url": "https://www.strava.com/athletes/15517763/"
     },
     {
-      "rider_id": "B215",
-      "bib": 215,
+      "rider_id": "B216",
+      "bib": 216,
       "name": "Andreas Leknessund",
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/pros/andreas_leknessund?hl=fr-FR"
-    },
-    {
-      "rider_id": "B216",
-      "bib": 216,
-      "name": "William Levy",
-      "nationality": "Denmark",
-      "team_id": "T21",
-      "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/2578581"
+      "strava_athlete_url": "https://www.strava.com/pros/andreas_leknessund"
     },
     {
       "rider_id": "B217",
       "bib": 217,
-      "name": "Sakarias Koller L\u00f8land",
+      "name": "Sakarias Koller Løland",
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
@@ -1582,7 +1582,7 @@
     {
       "rider_id": "B218",
       "bib": 218,
-      "name": "Martin Tj\u00f8tta",
+      "name": "Martin Tjøtta",
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
@@ -1595,7 +1595,7 @@
       "nationality": "Italy",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/1930273"
+      "strava_athlete_url": "https://www.strava.com/pros/b94"
     },
     {
       "rider_id": "B222",
@@ -1646,7 +1646,7 @@
       "rider_id": "B227",
       "bib": 227,
       "name": "Guillermo Thomas Silva",
-      "nationality": "Uruguay",
+      "nationality": "URY",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
       "strava_athlete_url": "https://www.strava.com/athletes/26893059"

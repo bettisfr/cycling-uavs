@@ -100,6 +100,21 @@ If you saved a ProCyclingStats startlist HTML locally, you can download all ride
 
 This script also caches rider pages in `/tmp/cycling-uavs-riders/pages`.
 
+
+## Giro 2026 Output Paths
+
+When using stage-aware exports, files are organized by stage:
+
+- Rider GPX: `output/giro_2026/courses/Sxx/`
+  - example: `output/giro_2026/courses/S01/B001__activity_123456789.gpx`
+- Flight CSV: `output/giro_2026/flights/Sxx/`
+  - example: `output/giro_2026/flights/S01/ASR132_track.csv`
+
+Catalog files updated in parallel:
+
+- Rider-stage links: `giro_2026/stage_links/Sxx.json`
+- Flight metadata: `giro_2026/stages.json` (`stages[].flight`)
+
 ## Raw HTML Debug Workflow
 
 If needed for debugging/reproducibility, save raw activity pages in:
