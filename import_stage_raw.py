@@ -172,6 +172,27 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         finish_city = stage_meta.get("finish_city", "")
         date = stage_meta.get("date", "")
         title = f"{stage_id} - {start_city} to {finish_city} ({date})"
+    flight = stage_meta.get("flight", {}) if stage_meta else {}
+    flight_status = str(flight.get("track_status", "not_checked"))
+    flight_csv = flight.get("track_csv_path")
+    flight_sources = flight.get("source_urls", [])
+
+    flight_csv_link = "-"
+    if flight_csv:
+        try:
+            csv_abs = Path(str(flight_csv))
+            if csv_abs.exists():
+                rel = csv_abs.relative_to(dataset_dir.parent)
+                flight_csv_link = f'<a href="{html.escape(str(rel), quote=True)}" target="_blank" rel="noopener noreferrer">csv</a>'
+            else:
+                flight_csv_link = html.escape(str(flight_csv))
+        except Exception:
+            flight_csv_link = html.escape(str(flight_csv))
+
+    flight_source_link = "-"
+    if isinstance(flight_sources, list) and flight_sources:
+        src = str(flight_sources[0])
+        flight_source_link = f'<a href="{html.escape(src, quote=True)}" target="_blank" rel="noopener noreferrer">source</a>'
 
     stage_payload = json.loads((dataset_dir / "stage_links" / f"{stage_id}.json").read_text(encoding="utf-8"))
     rows = stage_payload["activities"]
@@ -189,9 +210,31 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         status = row.get("status", "")
         profile_url = rider.get("strava_athlete_url")
         activity_url = row.get("activity_url")
+        gpx_cell = "-"
+        if activity_url:
+            m = re.search(r"/activities/(\d+)", activity_url)
+            if m:
+                aid = m.group(1)
+                gpx_path = (
+                    dataset_dir
+                    / "courses"
+                    / stage_id
+                    / f"{row['rider_id']}__activity_{aid}.gpx"
+                )
+                if gpx_path.exists() and gpx_path.stat().st_size > 0:
+                    safe_path = html.escape(str(gpx_path), quote=True)
+                    gpx_cell = f'<a href="file://{safe_path}" target="_blank" rel="noopener noreferrer">yes</a>'
+
+        row_class = ""
+        try:
+            bib_int = int(bib)
+            if bib_int % 10 == 1 and bib_int != 1:
+                row_class = ' class="team-sep"'
+        except Exception:
+            pass
 
         body_rows.append(
-            "<tr>"
+            f"<tr{row_class}>"
             f"<td>{html.escape(str(bib))}</td>"
             f"<td>{html.escape(str(name))}</td>"
             f"<td>{html.escape(str(team))}</td>"
@@ -199,6 +242,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
             f"<td>{html.escape(str(status))}</td>"
             f"<td>{_link(profile_url, 'profile')}</td>"
             f"<td>{_link(activity_url, 'activity')}</td>"
+            f"<td>{gpx_cell}</td>"
             "</tr>"
         )
 
@@ -216,16 +260,18 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
     th, td {{ border: 1px solid #ddd; padding: 7px; text-align: left; font-size: 13px; }}
     th {{ background: #f5f5f5; }}
     tr:nth-child(even) {{ background: #fafafa; }}
+    tr.team-sep td {{ border-top: 3px solid #999; }}
   </style>
 </head>
 <body>
   <h1>{html.escape(title)}</h1>
   <div class="meta">Total riders: {total} | Activity links found: {with_activity} | Missing: {missing}</div>
+  <div class="meta">Flight track: {html.escape(flight_status)} | CSV: {flight_csv_link} | Source: {flight_source_link}</div>
   <p><a href="index.html">Back to stage index</a></p>
   <table>
     <thead>
       <tr>
-        <th>Bib</th><th>Name</th><th>Team</th><th>Nationality</th><th>Status</th><th>Strava Profile</th><th>Stage Activity</th>
+        <th>Bib</th><th>Name</th><th>Team</th><th>Nationality</th><th>Status</th><th>Strava Profile</th><th>Stage Activity</th><th>GPX</th>
       </tr>
     </thead>
     <tbody>
@@ -261,6 +307,9 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
             total = 0
         missing = max(total - found, 0)
         route = f"{stage.get('start_city', '')} \u2192 {stage.get('finish_city', '')}"
+        map_rel = f"../maps/map_{stage_id}.html"
+        map_abs = dataset_dir / "html" / "maps" / f"map_{stage_id}.html"
+        map_cell = f'<a href="{html.escape(map_rel, quote=True)}">open</a>' if map_abs.exists() else "-"
         rows_html.append(
             "<tr>"
             f"<td>{html.escape(stage_id)}</td>"
@@ -269,6 +318,7 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
             f"<td>{found}</td>"
             f"<td>{missing}</td>"
             f'<td><a href="{html.escape(stage_id)}.html">open</a></td>'
+            f"<td>{map_cell}</td>"
             "</tr>"
         )
 
@@ -291,7 +341,7 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
   <p>Per-stage pages with rider info, Strava profile links, and stage activity links.</p>
   <table>
     <thead>
-      <tr><th>Stage</th><th>Date</th><th>Route</th><th>Found</th><th>Missing</th><th>Page</th></tr>
+      <tr><th>Stage</th><th>Date</th><th>Route</th><th>Found</th><th>Missing</th><th>Page</th><th>Map</th></tr>
     </thead>
     <tbody>
       {''.join(rows_html)}

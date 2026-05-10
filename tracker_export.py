@@ -28,6 +28,8 @@ OUTPUT_DIR = BASE_DIR / "output"
 STRAVA_OUTPUT_DIR = OUTPUT_DIR / "courses"
 FLIGHT_OUTPUT_DIR = OUTPUT_DIR / "flights"
 DEFAULT_DATASET_DIR = BASE_DIR / "giro_2026"
+DATASET_COURSES_DIR = DEFAULT_DATASET_DIR / "courses"
+DATASET_FLIGHTS_DIR = DEFAULT_DATASET_DIR / "flights"
 
 
 def now_iso_local() -> str:
@@ -159,9 +161,7 @@ def cmd_strava(args: argparse.Namespace) -> int:
     if args.output:
         output_path = Path(args.output)
     elif args.stage_id and args.rider_id:
-        output_path = (
-            OUTPUT_DIR / "giro_2026" / "courses" / args.stage_id / f"{args.rider_id}__activity_{activity_id}.gpx"
-        )
+        output_path = DATASET_COURSES_DIR / args.stage_id / f"{args.rider_id}__activity_{activity_id}.gpx"
     else:
         output_path = STRAVA_OUTPUT_DIR / f"activity_{activity_id}.gpx"
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -199,7 +199,7 @@ def cmd_flightaware(args: argparse.Namespace) -> int:
     if args.output:
         output = Path(args.output)
     elif args.stage_id:
-        output = OUTPUT_DIR / "giro_2026" / "flights" / args.stage_id / f"{ident}_track.csv"
+        output = DATASET_FLIGHTS_DIR / args.stage_id / f"{ident}_track.csv"
     else:
         output = FLIGHT_OUTPUT_DIR / f"{ident}_track.csv"
     output.parent.mkdir(parents=True, exist_ok=True)

@@ -16,8 +16,9 @@ from branca.element import Element
 
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "output"
-COURSES_DIR = OUTPUT_DIR / "courses"
-FLIGHTS_DIR = OUTPUT_DIR / "flights"
+DATASET_DIR = BASE_DIR / "giro_2026"
+COURSES_DIR = DATASET_DIR / "courses"
+FLIGHTS_DIR = DATASET_DIR / "flights"
 
 COLORS = [
     "#e41a1c",
@@ -76,6 +77,20 @@ def load_gpx(path: Path, max_points: int) -> list[dict[str, Any]]:
     return out
 
 
+def select_time_coherent_tracks(candidates: list[dict[str, Any]], count: int) -> list[dict[str, Any]]:
+    if count <= 0 or len(candidates) <= count:
+        return candidates
+    starts = sorted(t["points"][0]["t_ms"] for t in candidates if t.get("points"))
+    if not starts:
+        return candidates[:count]
+    median_start = starts[len(starts) // 2]
+    ranked = sorted(
+        candidates,
+        key=lambda t: abs(t["points"][0]["t_ms"] - median_start) if t.get("points") else 10**18,
+    )
+    return ranked[:count]
+
+
 def load_flight_csv(path: Path, max_points: int) -> list[dict[str, Any]]:
     with path.open("r", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
@@ -119,37 +134,77 @@ def downsample_timeline(times_ms: list[int], max_steps: int) -> list[int]:
 
 def run() -> int:
     parser = argparse.ArgumentParser(description="Create Folium map with static tracks + single nearest markers.")
+    parser.add_argument("--stage-id", default=None, help="Stage id (e.g. S01). Uses giro_2026/courses/<stage> and flights/<stage>.")
     parser.add_argument("--courses-dir", default=str(COURSES_DIR))
     parser.add_argument("--flights-dir", default=str(FLIGHTS_DIR))
-    parser.add_argument("-o", "--output", default=str(OUTPUT_DIR / "map_tracks.html"))
-    parser.add_argument("--max-points-per-track", type=int, default=2000)
+    parser.add_argument("-o", "--output", default=str(DATASET_DIR / "html" / "maps" / "map_tracks.html"))
+    parser.add_argument("--max-points-per-track", type=int, default=600)
     parser.add_argument("--max-timeline-steps", type=int, default=1800)
+    parser.add_argument("--course-tracks", type=int, default=5, help="Number of rider GPX tracks to load.")
+    parser.add_argument("--bibs", nargs="*", type=int, default=None, help="Explicit rider bib list (e.g. --bibs 6 131 192).")
+    parser.add_argument("--flight-offset-min", type=float, default=60.0, help="Offset (minutes) applied to flight timestamps.")
     args = parser.parse_args()
 
     courses_dir = Path(args.courses_dir)
     flights_dir = Path(args.flights_dir)
+    if args.stage_id:
+        courses_dir = courses_dir / args.stage_id
+        flights_dir = flights_dir / args.stage_id
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
 
     tracks: list[dict[str, Any]] = []
     color_idx = 0
 
-    for gpx in sorted(courses_dir.glob("*.gpx")):
+    course_files = sorted(courses_dir.glob("*.gpx"))
+    selected_files: list[Path] = []
+    if args.bibs:
+        wanted = {f"B{int(b):03d}" for b in args.bibs}
+        by_bib: dict[str, list[Path]] = {}
+        for gpx in course_files:
+            stem = gpx.stem
+            bib = stem.split("__", 1)[0]
+            by_bib.setdefault(bib, []).append(gpx)
+        for bib in sorted(wanted):
+            files = sorted(by_bib.get(bib, []))
+            if files:
+                selected_files.append(files[0])
+    else:
+        selected_files = course_files
+
+    course_candidates: list[dict[str, Any]] = []
+    for gpx in selected_files:
         pts = load_gpx(gpx, args.max_points_per_track)
         if not pts:
             continue
-        tracks.append({"name": gpx.stem, "kind": "course", "color": COLORS[color_idx % len(COLORS)], "idx": color_idx, "points": pts})
+        course_candidates.append({"name": gpx.stem, "kind": "course", "points": pts})
+
+    selected_courses = course_candidates if args.bibs else select_time_coherent_tracks(course_candidates, args.course_tracks)
+    for c in selected_courses:
+        tracks.append(
+            {
+                "name": c["name"],
+                "kind": "course",
+                "color": COLORS[color_idx % len(COLORS)],
+                "idx": color_idx,
+                "points": c["points"],
+            }
+        )
         color_idx += 1
 
     for csv_path in sorted(flights_dir.glob("*.csv")):
         pts = load_flight_csv(csv_path, args.max_points_per_track)
         if not pts:
             continue
+        if args.flight_offset_min:
+            delta_ms = int(args.flight_offset_min * 60_000)
+            for p in pts:
+                p["t_ms"] += delta_ms
         tracks.append({"name": csv_path.stem, "kind": "flight", "color": COLORS[color_idx % len(COLORS)], "idx": color_idx, "points": pts})
         color_idx += 1
 
     if not tracks:
-        raise RuntimeError("No files found in output/courses or output/flights.")
+        raise RuntimeError("No files found in giro_2026/courses or giro_2026/flights.")
 
     center = (tracks[0]["points"][0]["lat"], tracks[0]["points"][0]["lon"])
     m = folium.Map(location=center, zoom_start=6, tiles="CartoDB positron")

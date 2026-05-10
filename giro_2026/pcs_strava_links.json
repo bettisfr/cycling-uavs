@@ -1,0 +1,1479 @@
+{
+  "source_startlist_html": "/home/fra/Downloads/Startlist for Giro d'Italia 2026.html",
+  "total_riders": 184,
+  "found_strava": 131,
+  "records": [
+    {
+      "bib": 1,
+      "name": "GROVES Kaden",
+      "rider_url": "https://www.procyclingstats.com/rider/kaden-groves",
+      "strava_athlete_url": "https://www.strava.com/athletes/6728810",
+      "status": "found",
+      "page_source": "cache"
+    },
+    {
+      "bib": 2,
+      "name": "BAYER Tobias",
+      "rider_url": "https://www.procyclingstats.com/rider/tobias-bayer",
+      "strava_athlete_url": "https://www.strava.com/athletes/8409483",
+      "status": "found",
+      "page_source": "cache"
+    },
+    {
+      "bib": 3,
+      "name": "BUSATTO Francesco",
+      "rider_url": "https://www.procyclingstats.com/rider/francesco-busatto",
+      "strava_athlete_url": "https://www.strava.com/athletes/16710841",
+      "status": "found",
+      "page_source": "cache"
+    },
+    {
+      "bib": 4,
+      "name": "GEENS Jonas",
+      "rider_url": "https://www.procyclingstats.com/rider/jonas-geens",
+      "strava_athlete_url": "https://www.strava.com/athletes/26500769",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 5,
+      "name": "PLANCKAERT Edward",
+      "rider_url": "https://www.procyclingstats.com/rider/edward-planckaert",
+      "strava_athlete_url": "https://www.strava.com/athletes/31541211",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 6,
+      "name": "PLOWRIGHT Jensen",
+      "rider_url": "https://www.procyclingstats.com/rider/jensen-plowright",
+      "strava_athlete_url": "https://www.strava.com/athletes/29260396",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 7,
+      "name": "PRICE-PEJTERSEN Johan",
+      "rider_url": "https://www.procyclingstats.com/rider/johan-price-pejtersen",
+      "strava_athlete_url": "https://www.strava.com/athletes/13150937",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 8,
+      "name": "VERGALLITO Luca",
+      "rider_url": "https://www.procyclingstats.com/rider/luca-vergallito",
+      "strava_athlete_url": "https://www.strava.com/athletes/2004466",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 11,
+      "name": "BUITRAGO Santiago",
+      "rider_url": "https://www.procyclingstats.com/rider/santiago-buitrago-sanchez",
+      "strava_athlete_url": "https://www.strava.com/athletes/7310716?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 12,
+      "name": "CARUSO Damiano",
+      "rider_url": "https://www.procyclingstats.com/rider/damiano-caruso",
+      "strava_athlete_url": "https://www.strava.com/athletes/4084289",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 13,
+      "name": "STANNARD Robert",
+      "rider_url": "https://www.procyclingstats.com/rider/robert-stannard",
+      "strava_athlete_url": "https://www.strava.com/athletes/6394625",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 14,
+      "name": "MIHOLJEVI\u0106 Fran",
+      "rider_url": "https://www.procyclingstats.com/rider/fran-miholjevic",
+      "strava_athlete_url": "https://www.strava.com/athletes/14691945?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 15,
+      "name": "EUL\u00c1LIO Afonso",
+      "rider_url": "https://www.procyclingstats.com/rider/afonso-eulalio",
+      "strava_athlete_url": "https://www.strava.com/athletes/28548607",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 16,
+      "name": "PAASSCHENS Mathijs",
+      "rider_url": "https://www.procyclingstats.com/rider/mathijs-paasschens",
+      "strava_athlete_url": "https://www.strava.com/athletes/2543430",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 17,
+      "name": "SEGAERT Alec",
+      "rider_url": "https://www.procyclingstats.com/rider/alec-segaert",
+      "strava_athlete_url": "https://www.strava.com/athletes/12017824",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 18,
+      "name": "ZAMBANINI Edoardo",
+      "rider_url": "https://www.procyclingstats.com/rider/edoardo-zambanini",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 21,
+      "name": "MAGLI Filippo",
+      "rider_url": "https://www.procyclingstats.com/rider/filippo-magli2",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 22,
+      "name": "MARCELLUSI Martin",
+      "rider_url": "https://www.procyclingstats.com/rider/martin-marcellusi",
+      "strava_athlete_url": "https://www.strava.com/athletes/33207958",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 23,
+      "name": "PALETTI Luca",
+      "rider_url": "https://www.procyclingstats.com/rider/luca-paletti",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 24,
+      "name": "ROJAS Vicente",
+      "rider_url": "https://www.procyclingstats.com/rider/vicente-rojas",
+      "strava_athlete_url": "https://www.strava.com/athletes/21629398",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 25,
+      "name": "TAROZZI Manuele",
+      "rider_url": "https://www.procyclingstats.com/rider/manuele-tarozzi",
+      "strava_athlete_url": "https://www.strava.com/athletes/21133879",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 26,
+      "name": "TSVETKOV Nikita",
+      "rider_url": "https://www.procyclingstats.com/rider/nikita-tsvetkov",
+      "strava_athlete_url": "https://www.strava.com/athletes/48327613",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 27,
+      "name": "TURCONI Filippo",
+      "rider_url": "https://www.procyclingstats.com/rider/filippo-turconi",
+      "strava_athlete_url": "https://www.strava.com/athletes/113211679",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 28,
+      "name": "ZANONCELLO Enrico",
+      "rider_url": "https://www.procyclingstats.com/rider/enrico-zanoncello",
+      "strava_athlete_url": "https://www.strava.com/athletes/4941184?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 31,
+      "name": "GALL Felix",
+      "rider_url": "https://www.procyclingstats.com/rider/felix-gall",
+      "strava_athlete_url": "https://www.strava.com/athletes/5060232",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 32,
+      "name": "ANDRESEN Tobias Lund",
+      "rider_url": "https://www.procyclingstats.com/rider/tobias-lund-andresen",
+      "strava_athlete_url": "https://www.strava.com/athletes/29035689",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 33,
+      "name": "GUDMESTAD Tord",
+      "rider_url": "https://www.procyclingstats.com/rider/tord-gudmestad",
+      "strava_athlete_url": "https://www.strava.com/athletes/9533389?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 34,
+      "name": "M\u00dcHLBERGER Gregor",
+      "rider_url": "https://www.procyclingstats.com/rider/gregor-muhlberger",
+      "strava_athlete_url": "https://www.strava.com/athletes/20676777",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 35,
+      "name": "NAESEN Oliver",
+      "rider_url": "https://www.procyclingstats.com/rider/oliver-naesen",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 36,
+      "name": "PEDERSEN Rasmus S\u00f8jberg",
+      "rider_url": "https://www.procyclingstats.com/rider/rasmus-sojbergpedersen",
+      "strava_athlete_url": "https://www.strava.com/athletes/22889836",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 37,
+      "name": "SCOTSON Callum",
+      "rider_url": "https://www.procyclingstats.com/rider/callum-scotson",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 38,
+      "name": "STAUNE-MITTET Johannes",
+      "rider_url": "https://www.procyclingstats.com/rider/johannes-staune-mittet",
+      "strava_athlete_url": "https://www.strava.com/athletes/21804778",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 41,
+      "name": "CEPEDA Jefferson Alexander",
+      "rider_url": "https://www.procyclingstats.com/rider/jefferson-alexander-cepeda",
+      "strava_athlete_url": "https://www.strava.com/athletes/21922069",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 42,
+      "name": "BATTISTELLA Samuele",
+      "rider_url": "https://www.procyclingstats.com/rider/samuele-battistella",
+      "strava_athlete_url": "https://www.strava.com/athletes/16571022",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 43,
+      "name": "BELOKI Markel",
+      "rider_url": "https://www.procyclingstats.com/rider/markel-beloki",
+      "strava_athlete_url": "https://www.strava.com/athletes/24287973",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 44,
+      "name": "MIHKELS Madis",
+      "rider_url": "https://www.procyclingstats.com/rider/madis-mihkels",
+      "strava_athlete_url": "https://www.strava.com/athletes/27288979",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 45,
+      "name": "RAFFERTY Darren",
+      "rider_url": "https://www.procyclingstats.com/rider/darren-rafferty",
+      "strava_athlete_url": "https://www.strava.com/athletes/23336540",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 46,
+      "name": "SHAW James",
+      "rider_url": "https://www.procyclingstats.com/rider/james-shaw",
+      "strava_athlete_url": "https://www.strava.com/athletes/4848511",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 47,
+      "name": "VALGREN Michael",
+      "rider_url": "https://www.procyclingstats.com/rider/michael-valgren-andersen",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 48,
+      "name": "VAN DER LEE Jardi Christiaan",
+      "rider_url": "https://www.procyclingstats.com/rider/jardi-christiaan-van-der-lee",
+      "strava_athlete_url": "https://www.strava.com/athletes/24409607",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 51,
+      "name": "CAVAGNA R\u00e9mi",
+      "rider_url": "https://www.procyclingstats.com/rider/remi-cavagna",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 52,
+      "name": "BARTHE Cyril",
+      "rider_url": "https://www.procyclingstats.com/rider/cyril-barthe",
+      "strava_athlete_url": "https://www.strava.com/athletes/12856902",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 53,
+      "name": "HUENS Axel",
+      "rider_url": "https://www.procyclingstats.com/rider/axel-huens",
+      "strava_athlete_url": "https://www.strava.com/athletes/11968925",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 54,
+      "name": "JACOBS Johan",
+      "rider_url": "https://www.procyclingstats.com/rider/johan-jacobs",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 55,
+      "name": "KENCH Josh",
+      "rider_url": "https://www.procyclingstats.com/rider/josh-kench",
+      "strava_athlete_url": "https://www.strava.com/athletes/7373422?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 56,
+      "name": "PENHO\u00cbT Paul",
+      "rider_url": "https://www.procyclingstats.com/rider/paul-penhoet",
+      "strava_athlete_url": "https://www.strava.com/athletes/9019175",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 57,
+      "name": "ROCHAS R\u00e9my",
+      "rider_url": "https://www.procyclingstats.com/rider/remy-rochas",
+      "strava_athlete_url": "https://www.strava.com/athletes/3286366",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 58,
+      "name": "ROLLAND Brieuc",
+      "rider_url": "https://www.procyclingstats.com/rider/brieuc-rolland",
+      "strava_athlete_url": "https://www.strava.com/athletes/27671946",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 61,
+      "name": "CICCONE Giulio",
+      "rider_url": "https://www.procyclingstats.com/rider/giulio-ciccone",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 62,
+      "name": "CONSONNI Simone",
+      "rider_url": "https://www.procyclingstats.com/rider/simone-consonni",
+      "strava_athlete_url": "https://www.strava.com/athletes/2824377",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 63,
+      "name": "GEE-WEST Derek",
+      "rider_url": "https://www.procyclingstats.com/rider/derek-gee",
+      "strava_athlete_url": "https://www.strava.com/athletes/5571896",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 64,
+      "name": "GHEBREIGZABHIER Amanuel",
+      "rider_url": "https://www.procyclingstats.com/rider/amanuel-ghebreigzabhier",
+      "strava_athlete_url": "https://www.strava.com/athletes/63330472",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 65,
+      "name": "MILAN Jonathan",
+      "rider_url": "https://www.procyclingstats.com/rider/jonathan-milan",
+      "strava_athlete_url": "https://www.strava.com/athletes/39026315",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 66,
+      "name": "SOBRERO Matteo",
+      "rider_url": "https://www.procyclingstats.com/rider/matteo-sobrero",
+      "strava_athlete_url": "https://www.strava.com/athletes/7181420",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 67,
+      "name": "TEUTENBERG Tim Torn",
+      "rider_url": "https://www.procyclingstats.com/rider/tim-torn-teutenberg",
+      "strava_athlete_url": "https://www.strava.com/athletes/1030434",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 68,
+      "name": "WALSCHEID Max",
+      "rider_url": "https://www.procyclingstats.com/rider/max-walscheid",
+      "strava_athlete_url": "https://www.strava.com/athletes/2323575",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 71,
+      "name": "DE LIE Arnaud",
+      "rider_url": "https://www.procyclingstats.com/rider/arnaud-de-lie",
+      "strava_athlete_url": "https://www.strava.com/athletes/28980231",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 72,
+      "name": "AERTS Toon",
+      "rider_url": "https://www.procyclingstats.com/rider/toon-aerts",
+      "strava_athlete_url": "https://www.strava.com/athletes/577221",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 73,
+      "name": "GUALDI Simone",
+      "rider_url": "https://www.procyclingstats.com/rider/simone-gualdi",
+      "strava_athlete_url": "https://www.strava.com/athletes/21332567",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 74,
+      "name": "MENTEN Milan",
+      "rider_url": "https://www.procyclingstats.com/rider/milan-menten",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 75,
+      "name": "ROTA Lorenzo",
+      "rider_url": "https://www.procyclingstats.com/rider/lorenzo-rota",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 76,
+      "name": "RUTSCH Jonas",
+      "rider_url": "https://www.procyclingstats.com/rider/jonas-rutsch",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 77,
+      "name": "GIDDINGS Joshua",
+      "rider_url": "https://www.procyclingstats.com/rider/joshua-giddings",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 78,
+      "name": "VAN EETVELT Lennert",
+      "rider_url": "https://www.procyclingstats.com/rider/lennert-van-eetvelt",
+      "strava_athlete_url": "https://www.strava.com/athletes/6061359",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 81,
+      "name": "MAS Enric",
+      "rider_url": "https://www.procyclingstats.com/rider/enric-mas",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 82,
+      "name": "AULAR Orluis",
+      "rider_url": "https://www.procyclingstats.com/rider/orluis-aular",
+      "strava_athlete_url": "https://www.strava.com/athletes/17546094",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 83,
+      "name": "GARC\u00cdA CORTINA Iv\u00e1n",
+      "rider_url": "https://www.procyclingstats.com/rider/ivan-garcia-cortina",
+      "strava_athlete_url": "https://www.strava.com/athletes/1292406",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 84,
+      "name": "L\u00d3PEZ Juan Pedro",
+      "rider_url": "https://www.procyclingstats.com/rider/juan-pedro-lopez",
+      "strava_athlete_url": "https://www.strava.com/athletes/3098895?hl=es-419",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 85,
+      "name": "MILESI Lorenzo",
+      "rider_url": "https://www.procyclingstats.com/rider/lorenzo-milesi",
+      "strava_athlete_url": "https://www.strava.com/athletes/33591061?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 86,
+      "name": "OLIVEIRA Nelson",
+      "rider_url": "https://www.procyclingstats.com/rider/nelson-oliveira",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 87,
+      "name": "ROMO Javier",
+      "rider_url": "https://www.procyclingstats.com/rider/javier-romo",
+      "strava_athlete_url": "https://www.strava.com/athletes/21190846",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 88,
+      "name": "RUBIO Einer",
+      "rider_url": "https://www.procyclingstats.com/rider/einer-rubio",
+      "strava_athlete_url": "https://www.strava.com/athletes/13090041",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 91,
+      "name": "BERNAL Egan",
+      "rider_url": "https://www.procyclingstats.com/rider/egan-bernal",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 92,
+      "name": "ARENSMAN Thymen",
+      "rider_url": "https://www.procyclingstats.com/rider/thymen-arensman",
+      "strava_athlete_url": "https://www.strava.com/athletes/1936233",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 93,
+      "name": "GANNA Filippo",
+      "rider_url": "https://www.procyclingstats.com/rider/filippo-ganna",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 94,
+      "name": "HAIG Jack",
+      "rider_url": "https://www.procyclingstats.com/rider/jack-haig",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 95,
+      "name": "SHEFFIELD Magnus",
+      "rider_url": "https://www.procyclingstats.com/rider/magnus-sheffield",
+      "strava_athlete_url": "https://www.strava.com/athletes/12291626",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 96,
+      "name": "SVESTAD-B\u00c5RDSENG Embret",
+      "rider_url": "https://www.procyclingstats.com/rider/embret-svestad-bardseng",
+      "strava_athlete_url": "https://www.strava.com/athletes/16520242",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 97,
+      "name": "SWIFT Connor",
+      "rider_url": "https://www.procyclingstats.com/rider/connor-swift",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 98,
+      "name": "TURNER Ben",
+      "rider_url": "https://www.procyclingstats.com/rider/ben-turner",
+      "strava_athlete_url": "https://strava.com/athletes/18956034",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 101,
+      "name": "PINARELLO Alessandro",
+      "rider_url": "https://www.procyclingstats.com/rider/alessandro-pinarello",
+      "strava_athlete_url": "https://www.strava.com/athletes/42771820",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 102,
+      "name": "HIRT Jan",
+      "rider_url": "https://www.procyclingstats.com/rider/jan-hirt",
+      "strava_athlete_url": "https://www.strava.com/athletes/591813",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 103,
+      "name": "MULLEN Ryan",
+      "rider_url": "https://www.procyclingstats.com/rider/ryan-mullen",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 104,
+      "name": "SCHULTZ Nick",
+      "rider_url": "https://www.procyclingstats.com/rider/nick-schultz",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 105,
+      "name": "SMITH Dion",
+      "rider_url": "https://www.procyclingstats.com/rider/dion-smith",
+      "strava_athlete_url": "https://www.strava.com/athletes/1323252",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 106,
+      "name": "STEWART Jake",
+      "rider_url": "https://www.procyclingstats.com/rider/jake-stewart",
+      "strava_athlete_url": "https://www.strava.com/athletes/17096447",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 107,
+      "name": "STRONG Corbin",
+      "rider_url": "https://www.procyclingstats.com/rider/corbin-strong",
+      "strava_athlete_url": "https://www.strava.com/athletes/3419730",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 109,
+      "name": "VERNON Ethan",
+      "rider_url": "https://www.procyclingstats.com/rider/ethan-vernon",
+      "strava_athlete_url": "https://www.strava.com/athletes/2348563",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 111,
+      "name": "BAX Sjoerd",
+      "rider_url": "https://www.procyclingstats.com/rider/sjoerd-bax",
+      "strava_athlete_url": "https://www.strava.com/athletes/5706594",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 112,
+      "name": "CHRISTEN Fabio",
+      "rider_url": "https://www.procyclingstats.com/rider/fabio-christen",
+      "strava_athlete_url": "https://www.strava.com/athletes/28864199",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 113,
+      "name": "DE LA CRUZ David",
+      "rider_url": "https://www.procyclingstats.com/rider/david-de-la-cruz",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 114,
+      "name": "DONOVAN Mark",
+      "rider_url": "https://www.procyclingstats.com/rider/mark-donovan",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 115,
+      "name": "GONZ\u00c1LEZ David",
+      "rider_url": "https://www.procyclingstats.com/rider/david-gonzalez-lopez",
+      "strava_athlete_url": "https://www.strava.com/athletes/13720238",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 116,
+      "name": "HARPER Chris",
+      "rider_url": "https://www.procyclingstats.com/rider/chris-harper",
+      "strava_athlete_url": "https://www.strava.com/athletes/2836335",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 117,
+      "name": "MOSCHETTI Matteo",
+      "rider_url": "https://www.procyclingstats.com/rider/matteo-moschetti",
+      "strava_athlete_url": "https://www.strava.com/athletes/18788312",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 118,
+      "name": "ZUKOWSKY Nickolas",
+      "rider_url": "https://www.procyclingstats.com/rider/nickolas-zukowsky",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 121,
+      "name": "HINDLEY Jai",
+      "rider_url": "https://www.procyclingstats.com/rider/jai-hindley",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 122,
+      "name": "ALEOTTI Giovanni",
+      "rider_url": "https://www.procyclingstats.com/rider/giovanni-aleotti",
+      "strava_athlete_url": "https://www.strava.com/athletes/21536765",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 123,
+      "name": "DENZ Nico",
+      "rider_url": "https://www.procyclingstats.com/rider/nico-denz",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 124,
+      "name": "MOSCON Gianni",
+      "rider_url": "https://www.procyclingstats.com/rider/gianni-moscon",
+      "strava_athlete_url": "https://www.strava.com/athletes/gmoscon",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 125,
+      "name": "PELLIZZARI Giulio",
+      "rider_url": "https://www.procyclingstats.com/rider/giulio-pellizzari",
+      "strava_athlete_url": "https://www.strava.com/athletes/30808559",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 126,
+      "name": "VAN DIJKE Mick",
+      "rider_url": "https://www.procyclingstats.com/rider/mick-van-dijke",
+      "strava_athlete_url": "https://www.strava.com/athletes/26465206",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 127,
+      "name": "VLASOV Aleksandr",
+      "rider_url": "https://www.procyclingstats.com/rider/aleksandr-vlasov",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 128,
+      "name": "ZWIEHOFF Ben",
+      "rider_url": "https://www.procyclingstats.com/rider/ben-zwiehoff",
+      "strava_athlete_url": "https://www.strava.com/athletes/1118391",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 131,
+      "name": "MAGNIER Paul",
+      "rider_url": "https://www.procyclingstats.com/rider/paul-magnier",
+      "strava_athlete_url": "https://www.strava.com/athletes/25788579",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 132,
+      "name": "BASTIAENS Ayco",
+      "rider_url": "https://www.procyclingstats.com/rider/ayco-bastiaens",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 133,
+      "name": "GAROFOLI Gianmarco",
+      "rider_url": "https://www.procyclingstats.com/rider/gianmarco-garofoli",
+      "strava_athlete_url": "https://www.strava.com/athletes/15781522",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 134,
+      "name": "RACCAGNI NOVIERO Andrea",
+      "rider_url": "https://www.procyclingstats.com/rider/andrea-raccagni-noviero",
+      "strava_athlete_url": "https://www.strava.com/athletes/21852715",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 135,
+      "name": "STUYVEN Jasper",
+      "rider_url": "https://www.procyclingstats.com/rider/jasper-stuyven",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 136,
+      "name": "VAN DEN BOSSCHE Fabio",
+      "rider_url": "https://www.procyclingstats.com/rider/fabio-van-den-bossche",
+      "strava_athlete_url": "https://www.strava.com/athletes/1867924",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 137,
+      "name": "VAN GESTEL Dries",
+      "rider_url": "https://www.procyclingstats.com/rider/dries-van-gestel",
+      "strava_athlete_url": "https://www.strava.com/athletes/13142575",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 138,
+      "name": "ZANA Filippo",
+      "rider_url": "https://www.procyclingstats.com/rider/filippo-zana",
+      "strava_athlete_url": "https://www.strava.com/athletes/39169689",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 141,
+      "name": "O'CONNOR Ben",
+      "rider_url": "https://www.procyclingstats.com/rider/ben-o-connor",
+      "strava_athlete_url": "https://www.strava.com/athletes/4097457",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 142,
+      "name": "ACKERMANN Pascal",
+      "rider_url": "https://www.procyclingstats.com/rider/pascal-ackermann",
+      "strava_athlete_url": "https://www.strava.com/athletes/12274527",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 143,
+      "name": "BOUWMAN Koen",
+      "rider_url": "https://www.procyclingstats.com/rider/koen-bouwman",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 144,
+      "name": "DONALDSON Robert",
+      "rider_url": "https://www.procyclingstats.com/rider/robert-donaldson",
+      "strava_athlete_url": "https://www.strava.com/athletes/15937095",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 145,
+      "name": "ENGELHARDT Felix",
+      "rider_url": "https://www.procyclingstats.com/rider/felix-engelhardt",
+      "strava_athlete_url": "https://www.strava.com/athletes/6903975",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 146,
+      "name": "HATHERLY Alan",
+      "rider_url": "https://www.procyclingstats.com/rider/alan-hatherly",
+      "strava_athlete_url": "https://www.strava.com/athletes/19264705",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 147,
+      "name": "JUUL-JENSEN Christopher",
+      "rider_url": "https://www.procyclingstats.com/rider/christopher-juul-jensen",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 148,
+      "name": "VENDRAME Andrea",
+      "rider_url": "https://www.procyclingstats.com/rider/andrea-vendrame",
+      "strava_athlete_url": "https://www.strava.com/athletes/49920031",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 151,
+      "name": "BARGUIL Warren",
+      "rider_url": "https://www.procyclingstats.com/rider/warren-barguil",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 152,
+      "name": "DE JONG Timo",
+      "rider_url": "https://www.procyclingstats.com/rider/timo-de-jong",
+      "strava_athlete_url": "https://www.strava.com/athletes/2639794",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 153,
+      "name": "FLYNN Sean",
+      "rider_url": "https://www.procyclingstats.com/rider/sean-flynn",
+      "strava_athlete_url": "https://www.strava.com/athletes/1928834",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 154,
+      "name": "HAMILTON Chris",
+      "rider_url": "https://www.procyclingstats.com/rider/chris-hamilton",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 155,
+      "name": "LEEMREIZE Gijs",
+      "rider_url": "https://www.procyclingstats.com/rider/gijs-leemreize",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 156,
+      "name": "NABERMAN Tim",
+      "rider_url": "https://www.procyclingstats.com/rider/tim-naberman",
+      "strava_athlete_url": "https://www.strava.com/athletes/6449536?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 157,
+      "name": "VAN DEN BROEK Frank",
+      "rider_url": "https://www.procyclingstats.com/rider/frank-van-den-broek",
+      "strava_athlete_url": "https://www.strava.com/athletes/11270161",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 158,
+      "name": "VAN UDEN Casper",
+      "rider_url": "https://www.procyclingstats.com/rider/casper-van-uden",
+      "strava_athlete_url": "https://www.strava.com/athletes/30579397",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 161,
+      "name": "BAIS Mattia",
+      "rider_url": "https://www.procyclingstats.com/rider/mattia-bais",
+      "strava_athlete_url": "https://www.strava.com/athletes/2573969",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 162,
+      "name": "CRESCIOLI Ludovico",
+      "rider_url": "https://www.procyclingstats.com/rider/ludovico-crescioli",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 163,
+      "name": "LONARDI Giovanni",
+      "rider_url": "https://www.procyclingstats.com/rider/giovanni-lonardi",
+      "strava_athlete_url": "https://www.strava.com/athletes/7806936?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 164,
+      "name": "MAESTRI Mirco",
+      "rider_url": "https://www.procyclingstats.com/rider/mirco-maestri",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 165,
+      "name": "MIFSUD Andrea",
+      "rider_url": "https://www.procyclingstats.com/rider/andrea-mifsud",
+      "strava_athlete_url": "https://www.strava.com/athletes/19218926",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 166,
+      "name": "PESENTI Thomas",
+      "rider_url": "https://www.procyclingstats.com/rider/thomas-pesenti",
+      "strava_athlete_url": "https://www.strava.com/athletes/13718983",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 167,
+      "name": "SEVILLA Diego Pablo",
+      "rider_url": "https://www.procyclingstats.com/rider/diego-pablo-sevilla",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 168,
+      "name": "TONELLI Alessandro",
+      "rider_url": "https://www.procyclingstats.com/rider/alessandro-tonelli",
+      "strava_athlete_url": "https://www.strava.com/athletes/3194779",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 171,
+      "name": "VINGEGAARD Jonas",
+      "rider_url": "https://www.procyclingstats.com/rider/jonas-vingegaard",
+      "strava_athlete_url": "https://www.strava.com/athletes/10495058",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 172,
+      "name": "CAMPENAERTS Victor",
+      "rider_url": "https://www.procyclingstats.com/rider/victor-campenaerts",
+      "strava_athlete_url": "https://www.strava.com/athletes/620617",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 173,
+      "name": "KELDERMAN Wilco",
+      "rider_url": "https://www.procyclingstats.com/rider/wilco-kelderman",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 174,
+      "name": "KIELICH Timo",
+      "rider_url": "https://www.procyclingstats.com/rider/timo-kielich",
+      "strava_athlete_url": "https://strava.com/athletes/3732430",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 175,
+      "name": "KUSS Sepp",
+      "rider_url": "https://www.procyclingstats.com/rider/sepp-kuss",
+      "strava_athlete_url": "https://www.strava.com/athletes/254096",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 176,
+      "name": "LEMMEN Bart",
+      "rider_url": "https://www.procyclingstats.com/rider/bart-lemmen",
+      "strava_athlete_url": "https://www.strava.com/athletes/10416992",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 177,
+      "name": "PIGANZOLI Davide",
+      "rider_url": "https://www.procyclingstats.com/rider/davide-piganzoli",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 178,
+      "name": "REX Tim",
+      "rider_url": "https://www.procyclingstats.com/rider/tim-rex",
+      "strava_athlete_url": "https://www.strava.com/athletes/15322328",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 181,
+      "name": "STORER Michael",
+      "rider_url": "https://www.procyclingstats.com/rider/michael-storer",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 182,
+      "name": "BARTA Will",
+      "rider_url": "https://www.procyclingstats.com/rider/william-barta",
+      "strava_athlete_url": "https://www.strava.com/athletes/831403",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 183,
+      "name": "FROIDEVAUX Robin",
+      "rider_url": "https://www.procyclingstats.com/rider/robin-froidevaux",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 184,
+      "name": "LIENHARD Fabian",
+      "rider_url": "https://www.procyclingstats.com/rider/fabian-lienhard",
+      "strava_athlete_url": "https://www.strava.com/athletes/19161146",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 185,
+      "name": "MOZZATO Luca",
+      "rider_url": "https://www.procyclingstats.com/rider/luca-mozzato",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 186,
+      "name": "RONDEL Mathys",
+      "rider_url": "https://www.procyclingstats.com/rider/mathys-rondel",
+      "strava_athlete_url": "https://www.strava.com/athletes/19346074",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 187,
+      "name": "STORK Florian",
+      "rider_url": "https://www.procyclingstats.com/rider/florian-stork",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 188,
+      "name": "WARBASSE Larry",
+      "rider_url": "https://www.procyclingstats.com/rider/lawrence-warbasse",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 191,
+      "name": "YATES Adam",
+      "rider_url": "https://www.procyclingstats.com/rider/adam-yates",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 192,
+      "name": "ARRIETA Igor",
+      "rider_url": "https://www.procyclingstats.com/rider/igor-arrieta-lizarraga",
+      "strava_athlete_url": "https://www.strava.com/athletes/20793265",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 193,
+      "name": "BJERG Mikkel",
+      "rider_url": "https://www.procyclingstats.com/rider/mikkel-bjerg",
+      "strava_athlete_url": "https://www.strava.com/athletes/9640608",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 194,
+      "name": "CHRISTEN Jan",
+      "rider_url": "https://www.procyclingstats.com/rider/jan-christen",
+      "strava_athlete_url": "https://www.strava.com/athletes/31134894",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 195,
+      "name": "NARV\u00c1EZ Jhonatan",
+      "rider_url": "https://www.procyclingstats.com/rider/jhonatan-narvaez",
+      "strava_athlete_url": "https://www.strava.com/athletes/101626706",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 196,
+      "name": "SOLER Marc",
+      "rider_url": "https://www.procyclingstats.com/rider/marc-soler",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 197,
+      "name": "MORGADO Ant\u00f3nio",
+      "rider_url": "https://www.procyclingstats.com/rider/antonio-morgado",
+      "strava_athlete_url": "https://www.strava.com/athletes/29016945",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 198,
+      "name": "VINE Jay",
+      "rider_url": "https://www.procyclingstats.com/rider/jay-vine",
+      "strava_athlete_url": "https://www.strava.com/athletes/4057312",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 201,
+      "name": "GROENEWEGEN Dylan",
+      "rider_url": "https://www.procyclingstats.com/rider/dylan-groenewegen",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 202,
+      "name": "DE VRIES Hartthijs",
+      "rider_url": "https://www.procyclingstats.com/rider/hartthijs-de-vries",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 203,
+      "name": "KOPECK\u00dd Maty\u00e1\u0161",
+      "rider_url": "https://www.procyclingstats.com/rider/matyas-kopecky",
+      "strava_athlete_url": "https://strava.com/athletes/32028762",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 204,
+      "name": "KOPECK\u00dd Tom\u00e1\u0161",
+      "rider_url": "https://www.procyclingstats.com/rider/tomas-kopecky",
+      "strava_athlete_url": "https://strava.com/athletes/29740629",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 205,
+      "name": "KUBI\u0160 Luk\u00e1\u0161",
+      "rider_url": "https://www.procyclingstats.com/rider/lukas-kubis",
+      "strava_athlete_url": "https://www.strava.com/athletes/1987758",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 206,
+      "name": "LARSEN Niklas",
+      "rider_url": "https://www.procyclingstats.com/rider/niklas-larsen",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 207,
+      "name": "POELS Wout",
+      "rider_url": "https://www.procyclingstats.com/rider/wout-poels",
+      "strava_athlete_url": "https://www.strava.com/athletes/37745230",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 208,
+      "name": "REINDERS Elmar",
+      "rider_url": "https://www.procyclingstats.com/rider/elmar-reinders",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 211,
+      "name": "HOELGAARD Markus",
+      "rider_url": "https://www.procyclingstats.com/rider/markus-hoelgaard",
+      "strava_athlete_url": "https://www.strava.com/athletes/4047775",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 212,
+      "name": "HOLTER \u00c5dne",
+      "rider_url": "https://www.procyclingstats.com/rider/adne-holter",
+      "strava_athlete_url": "https://www.strava.com/athletes/7333853",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 213,
+      "name": "KULSET Johannes",
+      "rider_url": "https://www.procyclingstats.com/rider/johannes-kulset",
+      "strava_athlete_url": "https://www.strava.com/athletes/5495962?hl=fr-FR",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 214,
+      "name": "DVERSNES LAVIK Fredrik",
+      "rider_url": "https://www.procyclingstats.com/rider/fredrik-dversnes",
+      "strava_athlete_url": "https://www.strava.com/athletes/15517763/",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 215,
+      "name": "LEKNESSUND Andreas",
+      "rider_url": "https://www.procyclingstats.com/rider/andreas-leknessund",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 216,
+      "name": "BLIKRA Erlend",
+      "rider_url": "https://www.procyclingstats.com/rider/erlend-blikra",
+      "strava_athlete_url": "https://www.strava.com/athletes/4013766",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 217,
+      "name": "L\u00d8LAND Sakarias Koller",
+      "rider_url": "https://www.procyclingstats.com/rider/sakarias-koller-loland",
+      "strava_athlete_url": "https://www.strava.com/athletes/1633428",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 218,
+      "name": "TJ\u00d8TTA Martin",
+      "rider_url": "https://www.procyclingstats.com/rider/martin-tjotta",
+      "strava_athlete_url": "https://www.strava.com/athletes/2008467",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 221,
+      "name": "BALLERINI Davide",
+      "rider_url": "https://www.procyclingstats.com/rider/davide-ballerini",
+      "strava_athlete_url": "https://www.strava.com/athletes/1930273",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 222,
+      "name": "BETTIOL Alberto",
+      "rider_url": "https://www.procyclingstats.com/rider/alberto-bettiol",
+      "strava_athlete_url": "https://www.strava.com/athletes/16874183",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 223,
+      "name": "LIVYNS Arjen",
+      "rider_url": "https://www.procyclingstats.com/rider/arjen-livyns",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    },
+    {
+      "bib": 224,
+      "name": "L\u00d3PEZ Harold Mart\u00edn",
+      "rider_url": "https://www.procyclingstats.com/rider/harold-martin-lopez",
+      "strava_athlete_url": "https://www.strava.com/athletes/26320565",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 225,
+      "name": "MALUCELLI Matteo",
+      "rider_url": "https://www.procyclingstats.com/rider/matteo-malucelli",
+      "strava_athlete_url": "https://www.strava.com/athletes/1732923",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 226,
+      "name": "SCARONI Christian",
+      "rider_url": "https://www.procyclingstats.com/rider/christian-scaroni",
+      "strava_athlete_url": "https://www.strava.com/athletes/18777210",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 227,
+      "name": "SILVA Guillermo Thomas",
+      "rider_url": "https://www.procyclingstats.com/rider/guillermo-thomas-silva-coussan",
+      "strava_athlete_url": "https://www.strava.com/athletes/26893059",
+      "status": "found",
+      "page_source": "download"
+    },
+    {
+      "bib": 228,
+      "name": "ULISSI Diego",
+      "rider_url": "https://www.procyclingstats.com/rider/diego-ulissi",
+      "strava_athlete_url": null,
+      "status": "not_found",
+      "page_source": "download"
+    }
+  ]
+}

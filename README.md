@@ -25,12 +25,12 @@ Providers:
 - `flightaware`
 
 Default output folders:
-- `output/courses/` for Strava GPX
-- `output/flights/` for FlightAware CSV
+- `giro_2026/courses/` for Strava GPX
+- `giro_2026/flights/` for FlightAware CSV
 
 Catalog-aware output folders (when `--stage-id` is used):
-- `output/giro_2026/courses/Sxx/` for Strava GPX
-- `output/giro_2026/flights/Sxx/` for FlightAware CSV
+- `giro_2026/courses/Sxx/` for Strava GPX
+- `giro_2026/flights/Sxx/` for FlightAware CSV
 
 ## Strava Export (Web Session Only)
 
@@ -94,7 +94,7 @@ If you saved a ProCyclingStats startlist HTML locally, you can download all ride
 ```bash
 /home/fra/pyvenv/bin/python pcs_strava_from_startlist.py \
   --startlist-html "/home/fra/Downloads/Startlist for Giro d'Italia 2026.html" \
-  --output-json output/giro_2026/pcs_strava_links.json \
+  --output-json giro_2026/pcs_strava_links.json \
   --update-riders-json giro_2026/riders.json
 ```
 
@@ -105,10 +105,10 @@ This script also caches rider pages in `/tmp/cycling-uavs-riders/pages`.
 
 When using stage-aware exports, files are organized by stage:
 
-- Rider GPX: `output/giro_2026/courses/Sxx/`
-  - example: `output/giro_2026/courses/S01/B001__activity_123456789.gpx`
-- Flight CSV: `output/giro_2026/flights/Sxx/`
-  - example: `output/giro_2026/flights/S01/ASR132_track.csv`
+- Rider GPX: `giro_2026/courses/Sxx/`
+  - example: `giro_2026/courses/S01/B001__activity_123456789.gpx`
+- Flight CSV: `giro_2026/flights/Sxx/`
+  - example: `giro_2026/flights/S01/ASR132_track.csv`
 
 Catalog files updated in parallel:
 

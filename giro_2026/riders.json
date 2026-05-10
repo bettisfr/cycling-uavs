@@ -2,7 +2,7 @@
   "version": 21,
   "race": "Giro d'Italia",
   "edition": 2026,
-  "notes": "Generated from /home/fra/Downloads/raw.txt participants list with normalized rider names (GivenName Surname). Nationality filled manually. Includes strava_athlete_url field per rider. Strava links synced from output/giro_2026/pcs_strava_links.json excluding bib 41, 77, 216.",
+  "notes": "Generated from /home/fra/Downloads/raw.txt participants list with normalized rider names (GivenName Surname). Nationality filled manually. Includes strava_athlete_url field per rider. Strava links synced from giro_2026/pcs_strava_links.json excluding bib 41, 77, 216.",
   "riders": [
     {
       "rider_id": "B001",
@@ -514,7 +514,7 @@
       "name": "Arnaud De Lie",
       "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/athletes/28980231"
     },
     {
@@ -523,7 +523,7 @@
       "name": "Toon Aerts",
       "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/athletes/577221"
     },
     {
@@ -532,7 +532,7 @@
       "name": "Joshua Giddings",
       "nationality": "Great Britain",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/pros/giddings_josh"
     },
     {
@@ -541,7 +541,7 @@
       "name": "Simone Gualdi",
       "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/athletes/21332567"
     },
     {
@@ -550,7 +550,7 @@
       "name": "Milan Menten",
       "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/pros/2219780"
     },
     {
@@ -559,7 +559,7 @@
       "name": "Lorenzo Rota",
       "nationality": "Italy",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/pros/lorenzorota1995"
     },
     {
@@ -568,7 +568,7 @@
       "name": "Jonas Rutsch",
       "nationality": "Germany",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/pros/jonas-rutsch-18722207"
     },
     {
@@ -577,7 +577,7 @@
       "name": "Lennert Van Eetvelt",
       "nationality": "Belgium",
       "team_id": "T07",
-      "team_name": "Lidl–Trek",
+      "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/athletes/6061359"
     },
     {

@@ -7,6 +7,8 @@ __pycache__/
 
 # Generated artifacts
 output/
+giro_2026/courses/
+giro_2026/flights/
 
 # Local secrets
 strava_session_cookie.txt

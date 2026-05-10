@@ -21,9 +21,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument('--retries', type=int, default=2, help='Retries per activity on failure')
     p.add_argument('--local-tz', default='Europe/Rome')
     p.add_argument(
-        '--all-missing',
+        '--one',
         action='store_true',
-        help='Process all activities that are not already downloaded. Default: only one.',
+        help='Process only one missing activity (default processes all missing).',
     )
     return p.parse_args()
 
@@ -33,7 +33,7 @@ def main() -> int:
     repo = Path(args.repo_dir)
     stage_path = repo / 'giro_2026' / 'stage_links' / f'{args.stage_id}.json'
     cookie_path = repo / 'strava_session_cookie.txt'
-    out_dir = repo / 'output' / 'giro_2026' / 'courses' / args.stage_id
+    out_dir = repo / 'giro_2026' / 'courses' / args.stage_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
     stage = json.loads(stage_path.read_text(encoding='utf-8'))
@@ -64,7 +64,7 @@ def main() -> int:
         print('No missing GPX to download.')
         return 0
 
-    queue = pending if args.all_missing else pending[:1]
+    queue = pending[:1] if args.one else pending
     print(f'Pending activities: {len(pending)} | Processing now: {len(queue)}')
 
     for idx, a in enumerate(queue, start=1):
