@@ -9,6 +9,8 @@ __pycache__/
 output/
 giro_2026/courses/
 giro_2026/flights/
+giro_2026/raw/
+giro_2026/html/
 
 # Local secrets
 strava_session_cookie.txt

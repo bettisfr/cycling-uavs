@@ -85,7 +85,37 @@ Generate interactive map:
 ```
 
 Output:
-- `output/map_tracks.html`
+- `giro_2026/html/maps/map_tracks.html`
+
+## Stage Workflow (4 Commands)
+
+Example for `S03`:
+
+```bash
+# 1) Import raw stage HTML -> updates S03.json + S03.html + index.html
+/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/import_stage_raw.py --stage-id S03
+```
+
+```bash
+# 2) Import flight track -> saves CSV + updates stages.json flight section
+/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/tracker_export.py flightaware \
+  --stage-id S03 \
+  "https://it.flightaware.com/live/flight/ASR251/history/20260510/0000Z/AAAA/BBBB"
+```
+
+```bash
+# 3) Download missing rider GPX for stage
+/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/download_stage_gpx.py --stage-id S03
+```
+
+```bash
+# 4) Build stage map (air + selected riders) and auto-refresh stage index map links
+/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/visualize_tracks.py \
+  --stage-id S03 \
+  --bibs 6 131 192 187 176 \
+  --flight-offset-min 60 \
+  -o /home/fra/Desktop/github/cycling-uavs/giro_2026/html/maps/S03.html
+```
 
 ## PCS Startlist -> Strava Profiles
 
@@ -118,6 +148,6 @@ Catalog files updated in parallel:
 ## Raw HTML Debug Workflow
 
 If needed for debugging/reproducibility, save raw activity pages in:
-- `output/raw/strava/`
+- `giro_2026/raw/`
 
 This lets you inspect and parse local copies without new network requests.

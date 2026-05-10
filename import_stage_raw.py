@@ -307,8 +307,8 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
             total = 0
         missing = max(total - found, 0)
         route = f"{stage.get('start_city', '')} \u2192 {stage.get('finish_city', '')}"
-        map_rel = f"../maps/map_{stage_id}.html"
-        map_abs = dataset_dir / "html" / "maps" / f"map_{stage_id}.html"
+        map_rel = f"../maps/{stage_id}.html"
+        map_abs = dataset_dir / "html" / "maps" / f"{stage_id}.html"
         map_cell = f'<a href="{html.escape(map_rel, quote=True)}">open</a>' if map_abs.exists() else "-"
         rows_html.append(
             "<tr>"

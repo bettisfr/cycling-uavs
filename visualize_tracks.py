@@ -13,6 +13,7 @@ from typing import Any
 import folium
 import gpxpy
 from branca.element import Element
+import import_stage_raw
 
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "output"
@@ -333,6 +334,12 @@ padding: 10px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); font-family: sans-se
     m.get_root().html.add_child(Element(slider_html))
     m.get_root().script.add_child(Element(slider_js))
     m.save(str(out))
+    if args.stage_id:
+        try:
+            import_stage_raw.render_stage_index_html(DATASET_DIR)
+        except Exception:
+            # Keep map generation successful even if index refresh fails.
+            pass
     print(f"Map created: {out}")
     print(f"Loaded tracks: {len(tracks)}")
     return 0
