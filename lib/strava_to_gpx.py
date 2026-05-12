@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Export a Strava activity to GPX, including telemetry extensions."""
+"""Export a Strava activity to GPX, including telemetry extensions (internal module).
+
+Used by user-facing scripts (`tracker_export.py`, `download_stage_gpx.py`).
+Direct CLI usage is supported for debugging but is not the main workflow.
+"""
 
 from __future__ import annotations
 
@@ -19,7 +23,7 @@ import requests
 STRAVA_WEB_BASE = "https://www.strava.com"
 BROWSER_CHOICES = ["auto", "chrome", "chromium", "firefox", "edge", "brave", "opera"]
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = BASE_DIR / "output"
 STRAVA_OUTPUT_DIR = OUTPUT_DIR / "courses"
 

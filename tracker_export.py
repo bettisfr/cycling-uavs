@@ -5,16 +5,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 
-from flightaware_to_csv import (
+from lib.flightaware_to_csv import (
     extract_ident as fa_extract_ident,
     extract_track_points as fa_extract_track_points,
     fetch_html as fa_fetch_html,
     write_csv as fa_write_csv,
 )
-from strava_to_gpx import (
+from lib.strava_to_gpx import (
     build_gpx as strava_build_gpx,
     create_web_session as strava_create_web_session,
     fetch_activity_web as strava_fetch_activity_web,
@@ -286,7 +287,16 @@ def build_parser() -> argparse.ArgumentParser:
 
 def run() -> int:
     parser = build_parser()
-    args = parser.parse_args()
+    argv = sys.argv[1:]
+    providers = {"strava", "flightaware"}
+    has_provider = any(token in providers for token in argv)
+    if not has_provider:
+        joined = " ".join(argv)
+        if "flightaware.com" in joined:
+            argv = ["flightaware", *argv]
+        elif "strava.com/activities/" in joined:
+            argv = ["strava", *argv]
+    args = parser.parse_args(argv)
 
     if args.provider == "strava" and args.session_cookie is None:
         # Keep compatibility with existing env-based workflow.

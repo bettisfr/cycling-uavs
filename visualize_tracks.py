@@ -138,7 +138,7 @@ def run() -> int:
     parser.add_argument("--stage-id", default=None, help="Stage id (e.g. S01). Uses giro_2026/courses/<stage> and flights/<stage>.")
     parser.add_argument("--courses-dir", default=str(COURSES_DIR))
     parser.add_argument("--flights-dir", default=str(FLIGHTS_DIR))
-    parser.add_argument("-o", "--output", default=str(DATASET_DIR / "html" / "maps" / "map_tracks.html"))
+    parser.add_argument("-o", "--output", default=None, help="Output HTML path. Default: giro_2026/html/maps/<stage>.html when --stage-id is set.")
     parser.add_argument("--max-points-per-track", type=int, default=600)
     parser.add_argument("--max-timeline-steps", type=int, default=1800)
     parser.add_argument("--course-tracks", type=int, default=5, help="Number of rider GPX tracks to load.")
@@ -151,7 +151,12 @@ def run() -> int:
     if args.stage_id:
         courses_dir = courses_dir / args.stage_id
         flights_dir = flights_dir / args.stage_id
-    out = Path(args.output)
+    if args.output:
+        out = Path(args.output)
+    elif args.stage_id:
+        out = DATASET_DIR / "html" / "maps" / f"{args.stage_id}.html"
+    else:
+        out = DATASET_DIR / "html" / "maps" / "map_tracks.html"
     out.parent.mkdir(parents=True, exist_ok=True)
 
     tracks: list[dict[str, Any]] = []

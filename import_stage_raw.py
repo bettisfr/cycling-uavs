@@ -370,7 +370,12 @@ def main() -> int:
     stage_path = dataset_dir / "stage_links" / f"{args.stage_id}.json"
     riders_path = dataset_dir / "riders.json"
 
-    raw_path = Path(args.raw_file) if args.raw_file else dataset_dir / "raw" / f"{args.stage_id.lower()}.txt"
+    if args.raw_file:
+        raw_path = Path(args.raw_file)
+    else:
+        raw_upper = dataset_dir / "raw" / f"{args.stage_id}.txt"
+        raw_lower = dataset_dir / "raw" / f"{args.stage_id.lower()}.txt"
+        raw_path = raw_upper if raw_upper.exists() else raw_lower
     if not raw_path.exists():
         raise SystemExit(f"Raw file not found: {raw_path}")
     if not stage_path.exists():

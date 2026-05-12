@@ -80,7 +80,7 @@ def main() -> int:
 
         cmd = [
             '/home/fra/pyvenv/bin/python',
-            str(repo / 'strava_to_gpx.py'),
+            str(repo / 'lib' / 'strava_to_gpx.py'),
             '--session-cookie',
             cookie,
             '--local-tz',

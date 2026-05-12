@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Export FlightAware history page track to CSV.
+"""Export FlightAware history page track to CSV (internal module).
+
+Used by user-facing script `tracker_export.py`.
+Direct CLI usage is supported for debugging but is not the main workflow.
 
 Input example:
 https://it.flightaware.com/live/flight/MSA94S/history/20260323/2110Z/LICA/LIPO
@@ -18,7 +21,7 @@ from typing import Any
 
 import requests
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = BASE_DIR / "output"
 FLIGHT_OUTPUT_DIR = OUTPUT_DIR / "flights"
 

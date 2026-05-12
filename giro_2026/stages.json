@@ -54,7 +54,7 @@
         "track_status": "found",
         "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S02/ASR251_track.csv",
         "notes": "",
-        "checked_at": "2026-05-09T19:27:40+02:00"
+        "checked_at": "2026-05-10T21:21:51+02:00"
       }
     },
     {
@@ -69,11 +69,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260510/0912Z/LBSF/LRAR"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S03/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-10T21:06:18+02:00"
       }
     },
     {
