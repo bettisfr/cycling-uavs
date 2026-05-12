@@ -6,6 +6,7 @@ import html
 import json
 import re
 import unicodedata
+from datetime import timezone
 from pathlib import Path
 
 
@@ -159,13 +160,79 @@ def _link(url: str | None, label: str) -> str:
     return f'<a href="{safe}" target="_blank" rel="noopener noreferrer">{label}</a>'
 
 
+def _extract_start_hhmm_from_gpx(gpx_path: Path) -> str:
+    # Fast path: scan only for the first <time> tag instead of full GPX parsing.
+    try:
+        with gpx_path.open("r", encoding="utf-8", errors="ignore") as fh:
+            for _ in range(2000):
+                line = fh.readline()
+                if not line:
+                    break
+                m = re.search(r"<time>([^<]+)</time>", line)
+                if not m:
+                    continue
+                raw = m.group(1).strip()
+                dt = None
+                if raw.endswith("Z"):
+                    dt = __import__("datetime").datetime.fromisoformat(raw.replace("Z", "+00:00"))
+                else:
+                    dt = __import__("datetime").datetime.fromisoformat(raw)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone().strftime("%H:%M")
+    except Exception:
+        return "-"
+    return "-"
+
+
+def ensure_stage_css(dataset_dir: Path) -> Path:
+    out_dir = dataset_dir / "html" / "stages"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    style_path = out_dir / "style.css"
+    style_path.write_text(
+        """\
+:root {
+  --bg: #f4f7ff;
+  --panel: #ffffff;
+  --ink: #12253f;
+  --muted: #496184;
+  --line: #d5deee;
+  --head: #e8eefb;
+  --accent: #2f64d6;
+}
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", Arial, sans-serif; }
+.wrap { max-width: 1320px; margin: 24px auto; padding: 0 16px; }
+h1 { margin: 0 0 10px 0; font-size: 28px; letter-spacing: .2px; }
+p { margin: 0 0 12px; color: var(--muted); }
+.meta-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin: 0 0 14px 0; }
+.meta-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--muted); }
+.meta-card b { color: var(--ink); }
+.toolbar { margin: 8px 0 14px; }
+.toolbar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.stage-nav { display: flex; justify-content: space-between; align-items: center; margin: 8px 0 10px; font-size: 13px; }
+.tbl { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+table { border-collapse: collapse; width: 100%; }
+thead th { position: sticky; top: 0; z-index: 2; background: var(--head); }
+th, td { border-bottom: 1px solid var(--line); padding: 8px 9px; text-align: left; font-size: 12.5px; vertical-align: middle; }
+tbody tr:nth-child(even) { background: #f9fbff; }
+tr.team-sep td { border-top: 3px solid #9fb7e6; }
+.start-midnight { color: #b00020; font-weight: 700; }
+a { color: var(--accent); text-decoration: none; }
+""",
+        encoding="utf-8",
+    )
+    return style_path
+
+
 def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
+    ensure_stage_css(dataset_dir)
     riders_payload = json.loads((dataset_dir / "riders.json").read_text(encoding="utf-8"))
     riders = riders_payload["riders"]
     riders_by_id = {r["rider_id"]: r for r in riders}
 
     stages_payload = json.loads((dataset_dir / "stages.json").read_text(encoding="utf-8"))
-    stage_meta = next((s for s in stages_payload["stages"] if s["stage_id"] == stage_id), None)
+    stages_list = stages_payload["stages"]
+    stage_meta = next((s for s in stages_list if s["stage_id"] == stage_id), None)
     title = stage_id
     if stage_meta:
         start_city = stage_meta.get("start_city", "")
@@ -194,11 +261,30 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         src = str(flight_sources[0])
         flight_source_link = f'<a href="{html.escape(src, quote=True)}" target="_blank" rel="noopener noreferrer">source</a>'
 
+    prev_stage = None
+    next_stage = None
+    for i, s in enumerate(stages_list):
+        if s.get("stage_id") == stage_id:
+            if i > 0:
+                prev_stage = stages_list[i - 1].get("stage_id")
+            if i < len(stages_list) - 1:
+                next_stage = stages_list[i + 1].get("stage_id")
+            break
+    prev_link = f'<a href="{html.escape(prev_stage)}.html">← {html.escape(prev_stage)}</a>' if prev_stage else ""
+    next_link = f'<a href="{html.escape(next_stage)}.html">{html.escape(next_stage)} →</a>' if next_stage else ""
+
     stage_payload = json.loads((dataset_dir / "stage_links" / f"{stage_id}.json").read_text(encoding="utf-8"))
     rows = stage_payload["activities"]
-    with_activity = sum(1 for row in rows if row.get("activity_url"))
+    eligible = 0
+    with_activity = 0
+    for row in rows:
+        rider = riders_by_id.get(row["rider_id"], {})
+        if rider.get("strava_athlete_url"):
+            eligible += 1
+            if row.get("activity_url"):
+                with_activity += 1
     total = len(rows)
-    missing = total - with_activity
+    missing = max(eligible - with_activity, 0)
 
     body_rows: list[str] = []
     for row in rows:
@@ -207,10 +293,10 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         name = rider.get("name", row["rider_id"])
         team = rider.get("team_name", "")
         nationality = rider.get("nationality", "")
-        status = row.get("status", "")
         profile_url = rider.get("strava_athlete_url")
         activity_url = row.get("activity_url")
         gpx_cell = "-"
+        start_hhmm = "-"
         if activity_url:
             m = re.search(r"/activities/(\d+)", activity_url)
             if m:
@@ -224,6 +310,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
                 if gpx_path.exists() and gpx_path.stat().st_size > 0:
                     safe_path = html.escape(str(gpx_path), quote=True)
                     gpx_cell = f'<a href="file://{safe_path}" target="_blank" rel="noopener noreferrer">yes</a>'
+                    start_hhmm = _extract_start_hhmm_from_gpx(gpx_path)
 
         row_class = ""
         try:
@@ -239,10 +326,10 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
             f"<td>{html.escape(str(name))}</td>"
             f"<td>{html.escape(str(team))}</td>"
             f"<td>{html.escape(str(nationality))}</td>"
-            f"<td>{html.escape(str(status))}</td>"
             f"<td>{_link(profile_url, 'profile')}</td>"
             f"<td>{_link(activity_url, 'activity')}</td>"
             f"<td>{gpx_cell}</td>"
+            f"<td{' class=\"start-midnight\"' if start_hhmm.startswith('00:') else ''}>{start_hhmm}</td>"
             "</tr>"
         )
 
@@ -252,32 +339,32 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{html.escape(title)}</title>
-  <style>
-    body {{ font-family: Arial, sans-serif; margin: 20px; }}
-    h1 {{ margin-bottom: 4px; }}
-    .meta {{ color: #555; margin-bottom: 16px; }}
-    table {{ border-collapse: collapse; width: 100%; }}
-    th, td {{ border: 1px solid #ddd; padding: 7px; text-align: left; font-size: 13px; }}
-    th {{ background: #f5f5f5; }}
-    tr:nth-child(even) {{ background: #fafafa; }}
-    tr.team-sep td {{ border-top: 3px solid #999; }}
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="wrap">
   <h1>{html.escape(title)}</h1>
-  <div class="meta">Total riders: {total} | Activity links found: {with_activity} | Missing: {missing}</div>
-  <div class="meta">Flight track: {html.escape(flight_status)} | CSV: {flight_csv_link} | Source: {flight_source_link}</div>
-  <p><a href="index.html">Back to stage index</a></p>
-  <table>
+  <div class="meta-grid">
+    <div class="meta-card"><b>Total riders:</b> {total}</div>
+    <div class="meta-card"><b>Eligible (has Strava):</b> {eligible}</div>
+    <div class="meta-card"><b>Activity links found:</b> {with_activity}</div>
+    <div class="meta-card"><b>Missing (eligible only):</b> {missing}</div>
+    <div class="meta-card"><b>Flight track:</b> {html.escape(flight_status)}</div>
+    <div class="meta-card"><b>Flight source:</b> {flight_source_link}</div>
+  </div>
+  <div class="toolbar"><a href="index.html">Back to stage index</a></div>
+  <div class="stage-nav"><span>{prev_link}</span><span>{next_link}</span></div>
+  <div class="tbl"><table>
     <thead>
       <tr>
-        <th>Bib</th><th>Name</th><th>Team</th><th>Nationality</th><th>Status</th><th>Strava Profile</th><th>Stage Activity</th><th>GPX</th>
+        <th>Bib</th><th>Name</th><th>Team</th><th>Nationality</th><th>Strava Profile</th><th>Stage Activity</th><th>GPX</th><th>Start</th>
       </tr>
     </thead>
     <tbody>
       {''.join(body_rows)}
     </tbody>
-  </table>
+  </table></div>
+  </div>
 </body>
 </html>
 """
@@ -290,8 +377,12 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
 
 
 def render_stage_index_html(dataset_dir: Path) -> Path:
+    ensure_stage_css(dataset_dir)
     stages_payload = json.loads((dataset_dir / "stages.json").read_text(encoding="utf-8"))
     stages = stages_payload["stages"]
+    riders_payload = json.loads((dataset_dir / "riders.json").read_text(encoding="utf-8"))
+    riders = riders_payload["riders"]
+    riders_by_id = {r["rider_id"]: r for r in riders}
 
     rows_html: list[str] = []
     for stage in stages:
@@ -300,12 +391,20 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
         if stage_file.exists():
             payload = json.loads(stage_file.read_text(encoding="utf-8"))
             activities = payload.get("activities", [])
-            found = sum(1 for a in activities if a.get("activity_url"))
+            eligible = 0
+            found = 0
             total = len(activities)
+            for a in activities:
+                rider = riders_by_id.get(a.get("rider_id"), {})
+                if rider.get("strava_athlete_url"):
+                    eligible += 1
+                    if a.get("activity_url"):
+                        found += 1
         else:
             found = 0
             total = 0
-        missing = max(total - found, 0)
+            eligible = 0
+        missing = max(eligible - found, 0)
         route = f"{stage.get('start_city', '')} \u2192 {stage.get('finish_city', '')}"
         map_rel = f"../maps/{stage_id}.html"
         map_abs = dataset_dir / "html" / "maps" / f"{stage_id}.html"
@@ -328,25 +427,21 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Giro 2026 Stage Pages</title>
-  <style>
-    body {{ font-family: Arial, sans-serif; margin: 20px; }}
-    table {{ border-collapse: collapse; width: 100%; }}
-    th, td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
-    th {{ background: #f5f5f5; }}
-    tr:nth-child(even) {{ background: #fafafa; }}
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="wrap">
   <h1>Giro 2026 - Stage HTML Pages</h1>
   <p>Per-stage pages with rider info, Strava profile links, and stage activity links.</p>
-  <table>
+  <div class="tbl"><table>
     <thead>
       <tr><th>Stage</th><th>Date</th><th>Route</th><th>Found</th><th>Missing</th><th>Page</th><th>Map</th></tr>
     </thead>
     <tbody>
       {''.join(rows_html)}
     </tbody>
-  </table>
+  </table></div>
+  </div>
 </body>
 </html>
 """

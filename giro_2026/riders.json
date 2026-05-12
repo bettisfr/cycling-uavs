@@ -2,7 +2,7 @@
   "version": 21,
   "race": "Giro d'Italia",
   "edition": 2026,
-  "notes": "Generated from /home/fra/Downloads/raw.txt participants list with normalized rider names (GivenName Surname). Nationality filled manually. Includes strava_athlete_url field per rider. Strava links synced from giro_2026/pcs_strava_links.json excluding bib 41, 77, 216.",
+  "notes": "Generated from /home/fra/Downloads/raw.txt participants list with normalized rider names (GivenName Surname). Nationality filled manually. Includes strava_athlete_url field per rider.",
   "riders": [
     {
       "rider_id": "B001",
