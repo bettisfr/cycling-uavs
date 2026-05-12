@@ -75,6 +75,17 @@ Also auto-updates:
 /home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/download_stage_gpx.py --stage-id S03
 ```
 
+### Optional: Regenerate HTML pages (one command)
+
+```bash
+/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/refresh_html.py
+```
+
+This regenerates:
+- all `giro_2026/html/stages/Sxx.html`
+- `giro_2026/html/stages/index.html`
+- all `giro_2026/html/riders/Bxxx.html`
+
 ## Practical Notes
 
 - Single data root: everything is under `giro_2026/`.
