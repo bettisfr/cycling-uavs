@@ -330,10 +330,13 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         except Exception:
             pass
 
+        rider_page_rel = f"../riders/{row['rider_id']}.html"
+        name_cell = f'<a href="{html.escape(rider_page_rel, quote=True)}">{html.escape(str(name))}</a>'
+
         body_rows.append(
             f"<tr{row_class}>"
             f"<td>{html.escape(str(bib))}</td>"
-            f"<td>{html.escape(str(name))}</td>"
+            f"<td>{name_cell}</td>"
             f"<td>{html.escape(str(team))}</td>"
             f"<td>{html.escape(str(nationality))}</td>"
             f"<td>{_link(profile_url, 'profile')}</td>"
