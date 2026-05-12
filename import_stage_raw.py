@@ -6,7 +6,7 @@ import html
 import json
 import re
 import unicodedata
-from datetime import timezone
+from datetime import date, timezone
 from pathlib import Path
 
 
@@ -207,15 +207,25 @@ p { margin: 0 0 12px; color: var(--muted); }
 .meta-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin: 0 0 14px 0; }
 .meta-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--muted); }
 .meta-card b { color: var(--ink); }
-.toolbar { margin: 8px 0 14px; }
-.toolbar a { color: var(--accent); text-decoration: none; font-weight: 600; }
-.stage-nav { display: flex; justify-content: space-between; align-items: center; margin: 8px 0 10px; font-size: 13px; }
+.stage-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 14px;
+  font-size: 13px;
+}
+.stage-nav .left { justify-self: start; }
+.stage-nav .center { justify-self: center; }
+.stage-nav .right { justify-self: end; }
+.stage-nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .tbl { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
 table { border-collapse: collapse; width: 100%; }
 thead th { position: sticky; top: 0; z-index: 2; background: var(--head); }
 th, td { border-bottom: 1px solid var(--line); padding: 8px 9px; text-align: left; font-size: 12.5px; vertical-align: middle; }
 tbody tr:nth-child(even) { background: #f9fbff; }
 tr.team-sep td { border-top: 3px solid #9fb7e6; }
+.week-sep td { border-top: 3px solid #5e7fbd; }
 .start-midnight { color: #b00020; font-weight: 700; }
 a { color: var(--accent); text-decoration: none; }
 """,
@@ -346,14 +356,15 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
   <h1>{html.escape(title)}</h1>
   <div class="meta-grid">
     <div class="meta-card"><b>Total riders:</b> {total}</div>
-    <div class="meta-card"><b>Eligible (has Strava):</b> {eligible}</div>
-    <div class="meta-card"><b>Activity links found:</b> {with_activity}</div>
-    <div class="meta-card"><b>Missing (eligible only):</b> {missing}</div>
+    <div class="meta-card"><b>Missing:</b> {missing}/{eligible}</div>
     <div class="meta-card"><b>Flight track:</b> {html.escape(flight_status)}</div>
     <div class="meta-card"><b>Flight source:</b> {flight_source_link}</div>
   </div>
-  <div class="toolbar"><a href="index.html">Back to stage index</a></div>
-  <div class="stage-nav"><span>{prev_link}</span><span>{next_link}</span></div>
+  <div class="stage-nav">
+    <span class="left">{prev_link}</span>
+    <span class="center"><a href="index.html">Back to stage index</a></span>
+    <span class="right">{next_link}</span>
+  </div>
   <div class="tbl"><table>
     <thead>
       <tr>
@@ -409,8 +420,16 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
         map_rel = f"../maps/{stage_id}.html"
         map_abs = dataset_dir / "html" / "maps" / f"{stage_id}.html"
         map_cell = f'<a href="{html.escape(map_rel, quote=True)}">open</a>' if map_abs.exists() else "-"
+        row_class = ""
+        try:
+            d = date.fromisoformat(str(stage.get("date", "")))
+            if d.weekday() == 1:  # Tuesday
+                row_class = ' class="week-sep"'
+        except Exception:
+            row_class = ""
+
         rows_html.append(
-            "<tr>"
+            f"<tr{row_class}>"
             f"<td>{html.escape(stage_id)}</td>"
             f"<td>{html.escape(str(stage.get('date', '')))}</td>"
             f"<td>{html.escape(route)}</td>"

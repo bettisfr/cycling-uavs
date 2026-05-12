@@ -52,6 +52,7 @@ Strava (provider autodetected from activity URL):
 Notes:
 - Strava export uses `_strava4_session` from `STRAVA_SESSION_COOKIE` or browser cookie extraction.
 - with `--stage-id Sxx`, outputs are stage-scoped and catalogs are updated.
+- provider is autodetected from input URL (`strava.com/activities/...` or `flightaware.com/...`).
 
 ### 3) Build stage map (`visualize_tracks.py`)
 
@@ -73,6 +74,20 @@ Also auto-updates:
 ```bash
 /home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/download_stage_gpx.py --stage-id S03
 ```
+
+## Practical Notes
+
+- Single data root: everything is under `giro_2026/`.
+- Generated heavy artifacts are local-only (ignored by git):
+  - `giro_2026/courses/`
+  - `giro_2026/flights/`
+  - `giro_2026/raw/`
+  - `giro_2026/html/`
+- Stage pages include:
+  - flight status/source
+  - GPX presence
+  - start time (`HH:mm`, midnight entries highlighted)
+  - previous/next stage navigation
 
 ## Giro 2026 Output Paths
 
