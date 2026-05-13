@@ -23,7 +23,7 @@ cd /home/fra/Desktop/github/cycling-uavs
 What it updates:
 - `giro_2026/stage_links/Sxx.json`
 - `giro_2026/html/stages/Sxx.html`
-- `giro_2026/html/stages/index.html`
+- `giro_2026/html/index.html`
 
 Raw file resolution:
 - first: `giro_2026/raw/S03.txt`
@@ -67,7 +67,7 @@ Output (default with `--stage-id`):
 - `giro_2026/html/maps/S03.html`
 
 Also auto-updates:
-- `giro_2026/html/stages/index.html` (Map links)
+- `giro_2026/html/index.html` (Map links)
 
 ### Optional: Download all missing rider GPX
 
@@ -83,7 +83,7 @@ Also auto-updates:
 
 This regenerates:
 - all `giro_2026/html/stages/Sxx.html`
-- `giro_2026/html/stages/index.html`
+- `giro_2026/html/index.html`
 - all `giro_2026/html/riders/Bxxx.html`
 
 ## Practical Notes

@@ -69,7 +69,7 @@ def generate_rider_page(base: Path, rider: dict, stages: list[dict], stage_links
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{rider['rider_id']} - {rider['name']}</title>
-  <link rel="stylesheet" href="../stages/style.css" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <div class="wrap">
@@ -80,7 +80,7 @@ def generate_rider_page(base: Path, rider: dict, stages: list[dict], stage_links
       <div class="meta-card"><b>Nationality:</b> {rider.get('nationality', '')}</div>
       <div class="meta-card"><b>Strava profile:</b> {profile_cell}</div>
     </div>
-    <div class="toolbar"><a href="../stages/index.html">Back to stage index</a></div>
+    <div class="toolbar"><a href="../index.html">Back to stage index</a></div>
     <div class="tbl"><table>
       <thead>
         <tr><th>Stage</th><th>Date</th><th>Route</th><th>Stage Activity</th><th>GPX</th><th>Start</th></tr>

@@ -15,8 +15,8 @@
     },
     {
       "rider_id": "B002",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18495497533"
     },
     {
       "rider_id": "B003",
@@ -305,8 +305,8 @@
     },
     {
       "rider_id": "B074",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492491280"
     },
     {
       "rider_id": "B075",

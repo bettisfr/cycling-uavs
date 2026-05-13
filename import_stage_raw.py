@@ -186,7 +186,7 @@ def _extract_start_hhmm_from_gpx(gpx_path: Path) -> str:
 
 
 def ensure_stage_css(dataset_dir: Path) -> Path:
-    out_dir = dataset_dir / "html" / "stages"
+    out_dir = dataset_dir / "html"
     out_dir.mkdir(parents=True, exist_ok=True)
     style_path = out_dir / "style.css"
     style_path.write_text(
@@ -351,12 +351,12 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{html.escape(title)}</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <title>Giro 2026 - {html.escape(stage_id)}</title>
+  <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
   <div class="wrap">
-  <h1>{html.escape(title)}</h1>
+  <h1>Stage {html.escape(stage_id)}</h1>
   <div class="meta-grid">
     <div class="meta-card"><b>Total riders:</b> {total}</div>
     <div class="meta-card"><b>Missing:</b> {missing}/{eligible}</div>
@@ -365,7 +365,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
   </div>
   <div class="stage-nav">
     <span class="left">{prev_link}</span>
-    <span class="center"><a href="index.html">Back to stage index</a></span>
+    <span class="center"><a href="../index.html">Back to stage index</a></span>
     <span class="right">{next_link}</span>
   </div>
   <div class="tbl"><table>
@@ -420,7 +420,7 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
             eligible = 0
         missing = max(eligible - found, 0)
         route = f"{stage.get('start_city', '')} \u2192 {stage.get('finish_city', '')}"
-        map_rel = f"../maps/{stage_id}.html"
+        map_rel = f"maps/{stage_id}.html"
         map_abs = dataset_dir / "html" / "maps" / f"{stage_id}.html"
         map_cell = f'<a href="{html.escape(map_rel, quote=True)}">open</a>' if map_abs.exists() else "-"
         row_class = ""
@@ -438,7 +438,7 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
             f"<td>{html.escape(route)}</td>"
             f"<td>{found}</td>"
             f"<td>{missing}</td>"
-            f'<td><a href="{html.escape(stage_id)}.html">open</a></td>'
+            f'<td><a href="stages/{html.escape(stage_id)}.html">open</a></td>'
             f"<td>{map_cell}</td>"
             "</tr>"
         )
@@ -468,7 +468,7 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
 </html>
 """
 
-    out_dir = dataset_dir / "html" / "stages"
+    out_dir = dataset_dir / "html"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "index.html"
     out_path.write_text(html_out, encoding="utf-8")
