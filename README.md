@@ -63,6 +63,8 @@ Notes:
   --flight-offset-min 60
 ```
 
+*Note: Use `--flight-offset-min 60` only for Bulgarian stages (S01-S03) to account for time zone differences. For all other stages, set it to 0.*
+
 Output (default with `--stage-id`):
 - `giro_2026/html/maps/S03.html`
 
