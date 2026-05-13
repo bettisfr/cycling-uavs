@@ -20,18 +20,18 @@
     },
     {
       "rider_id": "B003",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492473170"
     },
     {
       "rider_id": "B004",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493118450"
     },
     {
       "rider_id": "B005",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492503096"
     },
     {
       "rider_id": "B006",
@@ -45,8 +45,8 @@
     },
     {
       "rider_id": "B008",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492500520"
     },
     {
       "rider_id": "B011",
@@ -250,8 +250,8 @@
     },
     {
       "rider_id": "B061",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18494480378"
     },
     {
       "rider_id": "B062",
@@ -295,8 +295,8 @@
     },
     {
       "rider_id": "B072",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493225310"
     },
     {
       "rider_id": "B073",
@@ -335,8 +335,8 @@
     },
     {
       "rider_id": "B082",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493164450"
     },
     {
       "rider_id": "B083",
@@ -380,8 +380,8 @@
     },
     {
       "rider_id": "B093",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492878351"
     },
     {
       "rider_id": "B094",
@@ -410,8 +410,8 @@
     },
     {
       "rider_id": "B101",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492433496"
     },
     {
       "rider_id": "B102",
@@ -450,8 +450,8 @@
     },
     {
       "rider_id": "B111",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493032881"
     },
     {
       "rider_id": "B112",
@@ -465,8 +465,8 @@
     },
     {
       "rider_id": "B114",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492785358"
     },
     {
       "rider_id": "B115",
@@ -530,8 +530,8 @@
     },
     {
       "rider_id": "B131",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493007771"
     },
     {
       "rider_id": "B132",
@@ -565,8 +565,8 @@
     },
     {
       "rider_id": "B138",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492669878"
     },
     {
       "rider_id": "B141",
@@ -580,8 +580,8 @@
     },
     {
       "rider_id": "B143",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493721872"
     },
     {
       "rider_id": "B144",
@@ -630,8 +630,8 @@
     },
     {
       "rider_id": "B155",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492833955"
     },
     {
       "rider_id": "B156",
@@ -650,8 +650,8 @@
     },
     {
       "rider_id": "B161",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492976120"
     },
     {
       "rider_id": "B162",
@@ -715,8 +715,8 @@
     },
     {
       "rider_id": "B176",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492517238"
     },
     {
       "rider_id": "B177",
@@ -760,8 +760,8 @@
     },
     {
       "rider_id": "B187",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493087220"
     },
     {
       "rider_id": "B188",
@@ -840,8 +840,8 @@
     },
     {
       "rider_id": "B207",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492441038"
     },
     {
       "rider_id": "B208",
@@ -885,13 +885,13 @@
     },
     {
       "rider_id": "B218",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492331439"
     },
     {
       "rider_id": "B221",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493024072"
     },
     {
       "rider_id": "B222",
