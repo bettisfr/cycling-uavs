@@ -97,12 +97,13 @@
           "ASR251"
         ],
         "source_urls": [
-          "https://it.flightaware.com/live/flight/ASR251/history/20260511/0854Z/LFPM/LICA"
+          "https://it.flightaware.com/live/flight/ASR251/history/20260511/0854Z/LFPM/LICA",
+          "https://it.flightaware.com/live/flight/ASR251/history/20260512/1103Z"
         ],
         "track_status": "found",
         "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S04/ASR251_track.csv",
         "notes": "",
-        "checked_at": "2026-05-12T18:18:23+02:00"
+        "checked_at": "2026-05-13T09:15:54+02:00"
       }
     },
     {

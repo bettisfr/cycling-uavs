@@ -15,8 +15,8 @@
     },
     {
       "rider_id": "B002",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478543663"
     },
     {
       "rider_id": "B003",
@@ -25,13 +25,13 @@
     },
     {
       "rider_id": "B004",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18479121292"
     },
     {
       "rider_id": "B005",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478523099"
     },
     {
       "rider_id": "B006",
@@ -45,8 +45,8 @@
     },
     {
       "rider_id": "B008",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18479109342"
     },
     {
       "rider_id": "B011",
@@ -165,8 +165,8 @@
     },
     {
       "rider_id": "B038",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478921388"
     },
     {
       "rider_id": "B041",
@@ -190,8 +190,8 @@
     },
     {
       "rider_id": "B045",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478412803"
     },
     {
       "rider_id": "B046",
@@ -250,13 +250,13 @@
     },
     {
       "rider_id": "B061",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18482091433"
     },
     {
       "rider_id": "B062",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18479381391"
     },
     {
       "rider_id": "B063",
@@ -410,8 +410,8 @@
     },
     {
       "rider_id": "B101",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478383848"
     },
     {
       "rider_id": "B102",
@@ -420,8 +420,8 @@
     },
     {
       "rider_id": "B103",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478894769"
     },
     {
       "rider_id": "B104",
@@ -445,13 +445,13 @@
     },
     {
       "rider_id": "B109",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478545163"
     },
     {
       "rider_id": "B111",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478501218"
     },
     {
       "rider_id": "B112",
@@ -530,8 +530,8 @@
     },
     {
       "rider_id": "B131",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18480196585"
     },
     {
       "rider_id": "B132",
@@ -565,8 +565,8 @@
     },
     {
       "rider_id": "B138",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478659516"
     },
     {
       "rider_id": "B141",
@@ -640,8 +640,8 @@
     },
     {
       "rider_id": "B157",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18479231092"
     },
     {
       "rider_id": "B158",
@@ -790,8 +790,8 @@
     },
     {
       "rider_id": "B195",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18479969838"
     },
     {
       "rider_id": "B196",
