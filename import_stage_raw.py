@@ -222,6 +222,10 @@ p { margin: 0 0 12px; color: var(--muted); }
 .meta-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin: 0 0 14px 0; }
 .meta-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--muted); }
 .meta-card b { color: var(--ink); }
+.stage-images { display: grid; grid-template-columns: repeat(auto-fit,minmax(360px,1fr)); gap: 12px; margin: 0 0 14px 0; }
+.stage-images figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+.stage-images img { width: 100%; height: auto; border-radius: 8px; display: block; }
+.stage-images figcaption { margin-top: 6px; font-size: 12px; color: var(--muted); }
 .stage-nav {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -286,6 +290,22 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
     if isinstance(flight_sources, list) and flight_sources:
         src = str(flight_sources[0])
         flight_source_link = f'<a href="{html.escape(src, quote=True)}" target="_blank" rel="noopener noreferrer">source</a>'
+
+    assets_dir = dataset_dir / "html" / "stages" / "assets" / stage_id
+    plan_img = assets_dir / "planimetry.png"
+    elev_img = assets_dir / "elevation.png"
+    images_block = ""
+    if plan_img.exists() or elev_img.exists():
+        parts: list[str] = []
+        if plan_img.exists():
+            parts.append(
+                f'<figure><img src="assets/{html.escape(stage_id)}/planimetry.png" alt="Stage planimetry" /><figcaption>Planimetry</figcaption></figure>'
+            )
+        if elev_img.exists():
+            parts.append(
+                f'<figure><img src="assets/{html.escape(stage_id)}/elevation.png" alt="Stage elevation profile" /><figcaption>Elevation Profile</figcaption></figure>'
+            )
+        images_block = f'<div class="stage-images">{"".join(parts)}</div>'
 
     prev_stage = None
     next_stage = None
@@ -384,6 +404,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
     <div class="meta-card"><b>Flight track:</b> {html.escape(flight_status)}</div>
     <div class="meta-card"><b>Flight source:</b> {flight_source_link}</div>
   </div>
+  {images_block}
   <div class="stage-nav">
     <span class="left">{prev_link}</span>
     <span class="center"><a href="../index.html">Back to stage index</a></span>
