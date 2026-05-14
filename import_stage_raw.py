@@ -242,6 +242,7 @@ tbody tr:nth-child(even) { background: #f9fbff; }
 tr.team-sep td { border-top: 3px solid #9fb7e6; }
 .week-sep td { border-top: 3px solid #5e7fbd; }
 .start-midnight { color: #b00020; font-weight: 700; }
+.missing-activity { color: #b00020; font-weight: 700; }
 a { color: var(--accent); text-decoration: none; }
 """,
         encoding="utf-8",
@@ -320,6 +321,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         nationality = rider.get("nationality", "")
         profile_url = rider.get("strava_athlete_url") if _rider_strava_enabled(rider) else None
         activity_url = row.get("activity_url")
+        has_profile = _rider_strava_enabled(rider) and bool(rider.get("strava_athlete_url"))
         gpx_cell = "-"
         start_hhmm = "-"
         if activity_url:
@@ -348,6 +350,10 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         rider_page_rel = f"../riders/{row['rider_id']}.html"
         name_cell = f'<a href="{html.escape(rider_page_rel, quote=True)}">{html.escape(str(name))}</a>'
 
+        activity_cell = _link(activity_url, "activity")
+        if not activity_url and has_profile:
+            activity_cell = '<span class="missing-activity">missing</span>'
+
         body_rows.append(
             f"<tr{row_class}>"
             f"<td>{html.escape(str(bib))}</td>"
@@ -355,7 +361,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
             f"<td>{html.escape(str(team))}</td>"
             f"<td>{html.escape(str(nationality))}</td>"
             f"<td>{_link(profile_url, 'profile')}</td>"
-            f"<td>{_link(activity_url, 'activity')}</td>"
+            f"<td>{activity_cell}</td>"
             f"<td>{gpx_cell}</td>"
             f"<td{' class=\"start-midnight\"' if start_hhmm.startswith('00:') else ''}>{start_hhmm}</td>"
             "</tr>"
