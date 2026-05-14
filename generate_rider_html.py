@@ -28,6 +28,17 @@ def extract_start_hhmm(gpx_path: Path) -> str:
     return "-"
 
 
+def rider_strava_enabled(rider: dict) -> bool:
+    if rider.get("enabled", True) is False:
+        return False
+    if rider.get("strava_enabled", True) is False:
+        return False
+    strava_cfg = rider.get("strava")
+    if isinstance(strava_cfg, dict) and strava_cfg.get("enabled", True) is False:
+        return False
+    return True
+
+
 def generate_rider_page(base: Path, rider: dict, stages: list[dict], stage_links: dict[str, dict]) -> Path:
     rows: list[str] = []
     for s in stages:
@@ -59,7 +70,7 @@ def generate_rider_page(base: Path, rider: dict, stages: list[dict], stage_links
             f"<tr><td>{sid}</td><td>{s.get('date', '')}</td><td>{route}</td><td>{activity_cell}</td><td>{gpx_cell}</td><td>{start}</td></tr>"
         )
 
-    profile = rider.get("strava_athlete_url") or ""
+    profile = rider.get("strava_athlete_url") if rider_strava_enabled(rider) else ""
     profile_cell = (
         f'<a href="{profile}" target="_blank" rel="noopener noreferrer">profile</a>' if profile else "-"
     )

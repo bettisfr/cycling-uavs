@@ -160,6 +160,21 @@ def _link(url: str | None, label: str) -> str:
     return f'<a href="{safe}" target="_blank" rel="noopener noreferrer">{label}</a>'
 
 
+def _rider_strava_enabled(rider: dict) -> bool:
+    # Backward-compatible support:
+    # - enabled: false
+    # - strava_enabled: false
+    # - strava: { enabled: false }
+    if rider.get("enabled", True) is False:
+        return False
+    if rider.get("strava_enabled", True) is False:
+        return False
+    strava_cfg = rider.get("strava")
+    if isinstance(strava_cfg, dict) and strava_cfg.get("enabled", True) is False:
+        return False
+    return True
+
+
 def _extract_start_hhmm_from_gpx(gpx_path: Path) -> str:
     # Fast path: scan only for the first <time> tag instead of full GPX parsing.
     try:
@@ -289,7 +304,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
     with_activity = 0
     for row in rows:
         rider = riders_by_id.get(row["rider_id"], {})
-        if rider.get("strava_athlete_url"):
+        if _rider_strava_enabled(rider) and rider.get("strava_athlete_url"):
             eligible += 1
             if row.get("activity_url"):
                 with_activity += 1
@@ -303,7 +318,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         name = rider.get("name", row["rider_id"])
         team = rider.get("team_name", "")
         nationality = rider.get("nationality", "")
-        profile_url = rider.get("strava_athlete_url")
+        profile_url = rider.get("strava_athlete_url") if _rider_strava_enabled(rider) else None
         activity_url = row.get("activity_url")
         gpx_cell = "-"
         start_hhmm = "-"
@@ -410,7 +425,7 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
             total = len(activities)
             for a in activities:
                 rider = riders_by_id.get(a.get("rider_id"), {})
-                if rider.get("strava_athlete_url"):
+                if _rider_strava_enabled(rider) and rider.get("strava_athlete_url"):
                     eligible += 1
                     if a.get("activity_url"):
                         found += 1
