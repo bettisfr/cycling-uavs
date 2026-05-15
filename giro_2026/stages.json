@@ -166,11 +166,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260515/0921Z"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S07/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-15T18:20:34+02:00"
       }
     },
     {

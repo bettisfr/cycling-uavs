@@ -4,8 +4,10 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import math
 import re
 import unicodedata
+import xml.etree.ElementTree as ET
 from datetime import date, timezone
 from pathlib import Path
 
@@ -200,6 +202,56 @@ def _extract_start_hhmm_from_gpx(gpx_path: Path) -> str:
     return "-"
 
 
+def _stage_gpx_metrics(dataset_dir: Path, stage_id: str) -> tuple[float | None, int | None]:
+    stage_dir = dataset_dir / "courses" / stage_id
+    gpx_files = sorted(stage_dir.glob("B*__activity_*.gpx"))
+    if not gpx_files:
+        return None, None
+    gpx_path = gpx_files[0]
+    try:
+        root = ET.parse(gpx_path).getroot()
+        pts: list[tuple[float, float, float | None]] = []
+        for p in root.iter():
+            if not p.tag.endswith("trkpt"):
+                continue
+            lat = p.attrib.get("lat")
+            lon = p.attrib.get("lon")
+            if lat is None or lon is None:
+                continue
+            ele = None
+            for c in p:
+                if c.tag.endswith("ele"):
+                    try:
+                        ele = float((c.text or "").strip())
+                    except Exception:
+                        ele = None
+                    break
+            pts.append((float(lat), float(lon), ele))
+        if len(pts) < 2:
+            return None, None
+
+        def h_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+            r = 6371000.0
+            p1 = math.radians(lat1)
+            p2 = math.radians(lat2)
+            dp = math.radians(lat2 - lat1)
+            dl = math.radians(lon2 - lon1)
+            a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+            return 2 * r * math.asin(math.sqrt(a))
+
+        dist_km = 0.0
+        elev_gain = 0.0
+        for i in range(1, len(pts)):
+            a = pts[i - 1]
+            b = pts[i]
+            dist_km += h_m(a[0], a[1], b[0], b[1]) / 1000.0
+            if a[2] is not None and b[2] is not None and b[2] > a[2]:
+                elev_gain += b[2] - a[2]
+        return round(dist_km, 1), int(round(elev_gain))
+    except Exception:
+        return None, None
+
+
 def ensure_stage_css(dataset_dir: Path) -> Path:
     out_dir = dataset_dir / "html"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -269,6 +321,11 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         finish_city = stage_meta.get("finish_city", "")
         date = stage_meta.get("date", "")
         title = f"{stage_id} - {start_city} to {finish_city} ({date})"
+    gpx_distance_km, gpx_elev_gain_m = _stage_gpx_metrics(dataset_dir, stage_id)
+    length_text = "-"
+    if gpx_distance_km is not None:
+        length_text = f"{gpx_distance_km:.1f}"
+    elev_text = str(gpx_elev_gain_m) if gpx_elev_gain_m is not None else "-"
     flight = stage_meta.get("flight", {}) if stage_meta else {}
     flight_status = str(flight.get("track_status", "not_checked"))
     flight_csv = flight.get("track_csv_path")
@@ -401,8 +458,9 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
   <div class="meta-grid">
     <div class="meta-card"><b>Total riders:</b> {total}</div>
     <div class="meta-card"><b>Missing:</b> {missing}/{eligible}</div>
-    <div class="meta-card"><b>Flight track:</b> {html.escape(flight_status)}</div>
-    <div class="meta-card"><b>Flight source:</b> {flight_source_link}</div>
+    <div class="meta-card"><b>Flight:</b> {html.escape(flight_status)} ({flight_source_link})</div>
+    <div class="meta-card"><b>Length (km):</b> {length_text}</div>
+    <div class="meta-card"><b>Elevation gain (m):</b> {elev_text}</div>
   </div>
   {images_block}
   <div class="stage-nav">

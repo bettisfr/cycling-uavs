@@ -11,6 +11,8 @@ import subprocess
 import time
 from pathlib import Path
 
+import requests
+
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description='Download stage GPX files from stage_links JSON.')
@@ -100,6 +102,25 @@ def main() -> int:
             last_err = (r.stderr or r.stdout or 'unknown error').strip()
             if attempt < args.retries:
                 time.sleep(args.sleep + random.uniform(0.0, args.jitter))
+
+        # Fallback: direct Strava GPX export endpoint (no gpxpy dependency).
+        if not success:
+            try:
+                export_url = f'https://www.strava.com/activities/{aid}/export_gpx'
+                rr = requests.get(
+                    export_url,
+                    cookies={'_strava4_session': cookie},
+                    headers={'User-Agent': 'Mozilla/5.0'},
+                    timeout=45,
+                    allow_redirects=True,
+                )
+                text = rr.text if rr.text is not None else ''
+                if rr.status_code == 200 and '<gpx' in text:
+                    out.write_text(text, encoding='utf-8')
+                    success = True
+            except Exception as exc:
+                if not last_err:
+                    last_err = str(exc)
 
         if success:
             ok += 1
