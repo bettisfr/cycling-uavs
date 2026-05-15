@@ -80,8 +80,8 @@
     },
     {
       "rider_id": "B017",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18505827359"
     },
     {
       "rider_id": "B018",
