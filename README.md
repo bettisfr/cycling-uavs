@@ -1,9 +1,6 @@
 # Cycling UAVs
 
-Stage-based tooling for Giro datasets:
-- import stage raw HTML and update stage catalogs
-- export tracks from Strava/FlightAware
-- build lightweight stage maps
+Daily workflow for Giro stage data (Strava riders + FlightAware aircraft), without Strava API.
 
 ## Setup
 
@@ -12,109 +9,102 @@ cd /home/fra/Desktop/github/cycling-uavs
 /home/fra/pyvenv/bin/pip install -r requirements.txt
 ```
 
-## User Entry Points (3 Scripts)
+## Daily Pipeline
 
-### 1) Import stage raw (`import_stage_raw.py`)
+Use `SXX` as stage id (example: `S07`).
+
+### 1) Fetch rider raw pages (Brave + session cookie)
 
 ```bash
-/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/import_stage_raw.py --stage-id S03
+/home/fra/pyvenv/bin/python fetch_all_rider_raws.py --timeout-sec 20 --headless
 ```
 
-What it updates:
-- `giro_2026/stage_links/Sxx.json`
-- `giro_2026/html/stages/Sxx.html`
+Outputs:
+- `giro_2026/raw/riders/Bxxx.txt`
+
+### 2) Parse rider raws and update stage links
+
+```bash
+/home/fra/pyvenv/bin/python import_rider_raw.py --all
+```
+
+Outputs/updates:
+- `giro_2026/stage_links/SXX.json`
+
+### 3) (Optional) Import stage raw page for one stage
+
+If you also have a stage raw file (`giro_2026/raw/stages/SXX.txt`):
+
+```bash
+/home/fra/pyvenv/bin/python import_stage_raw.py --stage-id S07
+```
+
+Updates:
+- `giro_2026/stage_links/S07.json`
+
+### 4) Download missing rider GPX for one stage
+
+```bash
+/home/fra/pyvenv/bin/python download_stage_gpx.py --stage-id S07
+
+# all stages
+/home/fra/pyvenv/bin/python download_stage_gpx.py --all
+```
+
+Outputs:
+- `giro_2026/courses/S07/*.gpx`
+
+### 5) Download aircraft track for one stage
+
+```bash
+/home/fra/pyvenv/bin/python tracker_export.py   --stage-id S07   "https://it.flightaware.com/live/flight/ASR251/history/..."
+```
+
+Outputs:
+- `giro_2026/flights/S07/*.csv`
+- `giro_2026/stages.json` flight metadata update
+
+### 6) Generate stage map
+
+For `S01-S03` use `--flight-offset-min 60`.
+For `S04+` use `--flight-offset-min 0`.
+
+```bash
+# Example S02 (offset 60)
+/home/fra/pyvenv/bin/python visualize_tracks.py   --stage-id S02   --course-tracks 9999   --flight-offset-min 60
+
+# Example S07 (offset 0)
+/home/fra/pyvenv/bin/python visualize_tracks.py   --stage-id S07   --course-tracks 9999   --flight-offset-min 0
+```
+
+Output:
+- `giro_2026/html/maps/SXX.html`
+
+Note:
+- `--course-tracks` should be >= number of GPX you want to include.
+
+### 7) Refresh all HTML pages
+
+```bash
+/home/fra/pyvenv/bin/python refresh_html.py
+```
+
+Regenerates:
 - `giro_2026/html/index.html`
+- `giro_2026/html/stages/SXX.html`
+- `giro_2026/html/riders/BXXX.html`
 
-Raw file resolution:
-- first: `giro_2026/raw/S03.txt`
-- fallback: `giro_2026/raw/s03.txt`
+## Data Layout
 
-### 2) Export tracks (`tracker_export.py`)
+- Stage links: `giro_2026/stage_links/SXX.json`
+- Rider GPX: `giro_2026/courses/SXX/`
+- Flight CSV: `giro_2026/flights/SXX/`
+- Rider raws: `giro_2026/raw/riders/`
+- Stage raws: `giro_2026/raw/stages/`
+- HTML output: `giro_2026/html/`
 
-FlightAware (provider autodetected from URL):
+## Notes
 
-```bash
-/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/tracker_export.py \
-  --stage-id S03 \
-  "https://it.flightaware.com/live/flight/ASR251/history/20260510/0000Z/AAAA/BBBB"
-```
-
-Strava (provider autodetected from activity URL):
-
-```bash
-/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/tracker_export.py \
-  --stage-id S03 \
-  --rider-id B006 \
-  --local-tz Europe/Rome \
-  "https://www.strava.com/activities/17805250943"
-```
-
-Notes:
-- Strava export uses `_strava4_session` from `STRAVA_SESSION_COOKIE` or browser cookie extraction.
-- with `--stage-id Sxx`, outputs are stage-scoped and catalogs are updated.
-- provider is autodetected from input URL (`strava.com/activities/...` or `flightaware.com/...`).
-
-### 3) Build stage map (`visualize_tracks.py`)
-
-```bash
-/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/visualize_tracks.py \
-  --stage-id S03 \
-  --bibs 6 131 192 187 176 \
-  --flight-offset-min 60
-```
-
-*Note: Use `--flight-offset-min 60` only for Bulgarian stages (S01-S03) to account for time zone differences. For all other stages, set it to 0.*
-
-Output (default with `--stage-id`):
-- `giro_2026/html/maps/S03.html`
-
-Also auto-updates:
-- `giro_2026/html/index.html` (Map links)
-
-### Optional: Download all missing rider GPX
-
-```bash
-/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/download_stage_gpx.py --stage-id S03
-```
-
-### Optional: Regenerate HTML pages (one command)
-
-```bash
-/home/fra/pyvenv/bin/python /home/fra/Desktop/github/cycling-uavs/refresh_html.py
-```
-
-This regenerates:
-- all `giro_2026/html/stages/Sxx.html`
-- `giro_2026/html/index.html`
-- all `giro_2026/html/riders/Bxxx.html`
-
-## Practical Notes
-
-- Single data root: everything is under `giro_2026/`.
-- Generated heavy artifacts are local-only (ignored by git):
-  - `giro_2026/courses/`
-  - `giro_2026/flights/`
-  - `giro_2026/raw/`
-  - `giro_2026/html/`
-- Stage pages include:
-  - flight status/source
-  - GPX presence
-  - start time (`HH:mm`, midnight entries highlighted)
-  - previous/next stage navigation
-
-## Giro 2026 Output Paths
-
-- Rider GPX: `giro_2026/courses/Sxx/`
-  - example: `giro_2026/courses/S01/B001__activity_123456789.gpx`
-- Flight CSV: `giro_2026/flights/Sxx/`
-  - example: `giro_2026/flights/S01/ASR132_track.csv`
-
-Catalog files updated in parallel:
-
-- Rider-stage links: `giro_2026/stage_links/Sxx.json`
-- Flight metadata: `giro_2026/stages.json` (`stages[].flight`)
-
-## Raw HTML Debug Workflow
-
-Save raw stage pages in:
-- `giro_2026/raw/`
+- Project uses Strava website session cookie (`_strava4_session`) in `strava_session_cookie.txt`.
+- Heavy/generated local artifacts are not committed.
+- If a rider has `activity_url` but GPX download fails, check `giro_2026/courses/SXX/_download_failures.txt`.

@@ -133,30 +133,18 @@ def downsample_timeline(times_ms: list[int], max_steps: int) -> list[int]:
     return out
 
 
-def run() -> int:
-    parser = argparse.ArgumentParser(description="Create Folium map with static tracks + single nearest markers.")
-    parser.add_argument("--stage-id", default=None, help="Stage id (e.g. S01). Uses giro_2026/courses/<stage> and flights/<stage>.")
-    parser.add_argument("--courses-dir", default=str(COURSES_DIR))
-    parser.add_argument("--flights-dir", default=str(FLIGHTS_DIR))
-    parser.add_argument("-o", "--output", default=None, help="Output HTML path. Default: giro_2026/html/maps/<stage>.html when --stage-id is set.")
-    parser.add_argument("--max-points-per-track", type=int, default=600)
-    parser.add_argument("--max-timeline-steps", type=int, default=1800)
-    parser.add_argument("--course-tracks", type=int, default=5, help="Number of rider GPX tracks to load.")
-    parser.add_argument("--bibs", nargs="*", type=int, default=None, help="Explicit rider bib list (e.g. --bibs 6 131 192).")
-    parser.add_argument("--flight-offset-min", type=float, default=60.0, help="Offset (minutes) applied to flight timestamps.")
-    args = parser.parse_args()
+def default_flight_offset_for_stage(stage_id: str) -> float:
+    try:
+        n = int(stage_id[1:])
+    except Exception:
+        return 0.0
+    return 60.0 if 1 <= n <= 3 else 0.0
 
-    courses_dir = Path(args.courses_dir)
-    flights_dir = Path(args.flights_dir)
-    if args.stage_id:
-        courses_dir = courses_dir / args.stage_id
-        flights_dir = flights_dir / args.stage_id
-    if args.output:
-        out = Path(args.output)
-    elif args.stage_id:
-        out = DATASET_DIR / "html" / "maps" / f"{args.stage_id}.html"
-    else:
-        out = DATASET_DIR / "html" / "maps" / "map_tracks.html"
+
+def render_stage_map(args: argparse.Namespace, stage_id: str, flight_offset_min: float) -> int:
+    courses_dir = Path(args.courses_dir) / stage_id
+    flights_dir = Path(args.flights_dir) / stage_id
+    out = DATASET_DIR / "html" / "maps" / f"{stage_id}.html"
     out.parent.mkdir(parents=True, exist_ok=True)
 
     tracks: list[dict[str, Any]] = []
@@ -185,7 +173,12 @@ def run() -> int:
             continue
         course_candidates.append({"name": gpx.stem, "kind": "course", "points": pts})
 
-    selected_courses = course_candidates if args.bibs else select_time_coherent_tracks(course_candidates, args.course_tracks)
+    if args.bibs:
+        selected_courses = course_candidates
+    elif args.all:
+        selected_courses = course_candidates
+    else:
+        selected_courses = select_time_coherent_tracks(course_candidates, args.course_tracks)
     for c in selected_courses:
         tracks.append(
             {
@@ -202,15 +195,15 @@ def run() -> int:
         pts = load_flight_csv(csv_path, args.max_points_per_track)
         if not pts:
             continue
-        if args.flight_offset_min:
-            delta_ms = int(args.flight_offset_min * 60_000)
+        if flight_offset_min:
+            delta_ms = int(flight_offset_min * 60_000)
             for p in pts:
                 p["t_ms"] += delta_ms
         tracks.append({"name": csv_path.stem, "kind": "flight", "color": COLORS[color_idx % len(COLORS)], "idx": color_idx, "points": pts})
         color_idx += 1
 
     if not tracks:
-        raise RuntimeError("No files found in giro_2026/courses or giro_2026/flights.")
+        raise RuntimeError(f"No files found for stage {stage_id} in courses/flights.")
 
     center = (tracks[0]["points"][0]["lat"], tracks[0]["points"][0]["lon"])
     m = folium.Map(location=center, zoom_start=6, tiles="CartoDB positron")
@@ -339,14 +332,67 @@ padding: 10px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); font-family: sans-se
     m.get_root().html.add_child(Element(slider_html))
     m.get_root().script.add_child(Element(slider_js))
     m.save(str(out))
-    if args.stage_id:
-        try:
-            import_stage_raw.render_stage_index_html(DATASET_DIR)
-        except Exception:
-            # Keep map generation successful even if index refresh fails.
-            pass
-    print(f"Map created: {out}")
-    print(f"Loaded tracks: {len(tracks)}")
+    print(
+        f"[OK] {stage_id} | tracks={len(tracks)} | "
+        f"offset_min={flight_offset_min:g} | map={out}"
+    )
+    return len(tracks)
+
+
+def run() -> int:
+    parser = argparse.ArgumentParser(description="Create Folium map with static tracks + single nearest markers.")
+    parser.add_argument("--stage-id", default=None, help="Stage id (e.g. S01). Uses giro_2026/courses/<stage> and flights/<stage>.")
+    parser.add_argument("--courses-dir", default=str(COURSES_DIR))
+    parser.add_argument("--flights-dir", default=str(FLIGHTS_DIR))
+    parser.add_argument("-o", "--output", default=None, help="Output HTML path. Default: giro_2026/html/maps/<stage>.html when --stage-id is set.")
+    parser.add_argument("--max-points-per-track", type=int, default=600)
+    parser.add_argument("--max-timeline-steps", type=int, default=1800)
+    parser.add_argument("--course-tracks", type=int, default=5, help="Number of rider GPX tracks to load.")
+    parser.add_argument("--bibs", nargs="*", type=int, default=None, help="Explicit rider bib list (e.g. --bibs 6 131 192).")
+    parser.add_argument("--flight-offset-min", type=float, default=60.0, help="Offset (minutes) applied to flight timestamps.")
+    parser.add_argument("--all", action="store_true", help="Generate maps for all stages in giro_2026/stages.json.")
+    args = parser.parse_args()
+
+    if args.all:
+        stages_path = DATASET_DIR / "stages.json"
+        stages = json.loads(stages_path.read_text(encoding="utf-8")).get("stages", [])
+        stage_ids = [s.get("stage_id") for s in stages if s.get("stage_id")]
+        if not stage_ids:
+            raise RuntimeError("No stages found in giro_2026/stages.json")
+        print(f"Generating maps for {len(stage_ids)} stages...")
+        total_tracks = 0
+        ok = 0
+        fail = 0
+        for sid in stage_ids:
+            auto_offset = default_flight_offset_for_stage(str(sid))
+            try:
+                n = render_stage_map(args, str(sid), auto_offset)
+                total_tracks += n
+                ok += 1
+            except Exception as exc:
+                fail += 1
+                print(f"[FAIL] {sid} | {exc}")
+        print()
+        print("=== Map Summary ===")
+        print(f"stages_total: {len(stage_ids)}")
+        print(f"stages_ok: {ok}")
+        print(f"stages_fail: {fail}")
+        print(f"tracks_loaded_total: {total_tracks}")
+    else:
+        if not args.stage_id:
+            raise RuntimeError("Provide --stage-id or use --all.")
+        n = render_stage_map(args, args.stage_id, args.flight_offset_min)
+        print("=== Map Summary ===")
+        print("stages_total: 1")
+        print("stages_ok: 1")
+        print("stages_fail: 0")
+        print(f"tracks_loaded_total: {n}")
+
+    try:
+        import_stage_raw.render_stage_index_html(DATASET_DIR)
+    except Exception:
+        # Keep map generation successful even if index refresh fails.
+        pass
     return 0
 
 

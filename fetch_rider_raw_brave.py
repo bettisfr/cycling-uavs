@@ -50,8 +50,11 @@ def main() -> int:
             page = ctx.new_page()
             timeout_ms = max(1, int(args.timeout_sec)) * 1000
             page.goto(args.url, wait_until="domcontentloaded", timeout=timeout_ms)
-            # Wait for feed cards to appear in rendered DOM.
-            page.wait_for_selector(".CQdSY", timeout=timeout_ms)
+            # Prefer feed cards, but do not fail if they are missing/late.
+            try:
+                page.wait_for_selector(".CQdSY", timeout=timeout_ms)
+            except PlaywrightTimeoutError:
+                page.wait_for_selector("main#main, main", timeout=timeout_ms)
             html = page.evaluate(
                 """() => {
                     const main = document.querySelector('main#main') || document.querySelector('main');

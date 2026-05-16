@@ -28,27 +28,35 @@ def main() -> int:
             stage_links[sid] = json.loads(p.read_text(encoding="utf-8"))
 
     stage_count = 0
+    print("Refreshing HTML pages...")
     if args.stage_id:
         render_stage_html(base, args.stage_id)
         stage_count = 1
+        print(f"[OK] stage page: {args.stage_id}")
     else:
         for s in stages:
             render_stage_html(base, s["stage_id"])
             stage_count += 1
+        print(f"[OK] stage pages: {stage_count}")
     render_stage_index_html(base)
+    print("[OK] stage index")
 
     rider_count = 0
     if not args.skip_riders:
         for rider in riders:
             generate_rider_page(base, rider, stages, stage_links)
             rider_count += 1
+        print(f"[OK] rider pages: {rider_count}")
+    else:
+        print("[SKIP] rider pages")
 
-    print(f"stage_pages={stage_count}")
-    print("stage_index=1")
-    print(f"rider_pages={rider_count}")
+    print()
+    print("=== Refresh Summary ===")
+    print(f"stage_pages: {stage_count}")
+    print("stage_index: 1")
+    print(f"rider_pages: {rider_count}")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

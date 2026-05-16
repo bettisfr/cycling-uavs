@@ -10,13 +10,13 @@ from pathlib import Path
 def main() -> int:
     ap = argparse.ArgumentParser(description="Fetch rendered raw rider pages for all enabled riders.")
     ap.add_argument("--dataset-dir", default="giro_2026")
-    ap.add_argument("--session-cookie-file", default="strava_session_cookie.txt")
     ap.add_argument("--timeout-sec", type=int, default=10)
     ap.add_argument("--headless", action="store_true")
     ap.add_argument("--from-rider-id", default=None, help="Start from rider id (inclusive), e.g. B026")
     args = ap.parse_args()
 
     repo = Path(__file__).resolve().parent
+    cookie_file = repo / "strava_session_cookie.txt"
     dataset_dir = Path(args.dataset_dir)
     riders = json.loads((dataset_dir / "riders.json").read_text(encoding="utf-8"))["riders"]
     fetch_script = repo / "fetch_rider_raw_brave.py"
@@ -46,7 +46,7 @@ def main() -> int:
             "--dataset-dir",
             str(dataset_dir),
             "--session-cookie-file",
-            str(args.session_cookie_file),
+            str(cookie_file),
             "--timeout-sec",
             str(args.timeout_sec),
         ]
@@ -69,4 +69,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

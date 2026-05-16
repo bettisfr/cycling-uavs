@@ -16,7 +16,8 @@ import requests
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description='Download stage GPX files from stage_links JSON.')
-    p.add_argument('--stage-id', required=True, help='Stage id, e.g. S01')
+    p.add_argument('--stage-id', default=None, help='Stage id, e.g. S01')
+    p.add_argument('--all', action='store_true', help='Process all stage_links/SXX.json files.')
     p.add_argument('--repo-dir', default='/home/fra/Desktop/github/cycling-uavs')
     p.add_argument('--sleep', type=float, default=5.0, help='Base seconds between requests')
     p.add_argument('--jitter', type=float, default=1.0, help='Random seconds added to sleep')
@@ -27,16 +28,22 @@ def parse_args() -> argparse.Namespace:
         action='store_true',
         help='Process only one missing activity (default processes all missing).',
     )
-    return p.parse_args()
+    args = p.parse_args()
+    if not args.all and not args.stage_id:
+        p.error('either --stage-id or --all is required')
+    return args
 
 
-def main() -> int:
-    args = parse_args()
-    repo = Path(args.repo_dir)
-    stage_path = repo / 'giro_2026' / 'stage_links' / f'{args.stage_id}.json'
+def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[str, int]:
+    stage_path = repo / 'giro_2026' / 'stage_links' / f'{stage_id}.json'
     cookie_path = repo / 'strava_session_cookie.txt'
-    out_dir = repo / 'giro_2026' / 'courses' / args.stage_id
+    out_dir = repo / 'giro_2026' / 'courses' / stage_id
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    if not stage_path.exists():
+        print(f'\n=== {stage_id} ===')
+        print(f'[SKIP] missing stage file: {stage_path}')
+        return {'ok': 0, 'fail': 0, 'pending': 0, 'processed': 0, 'total': 0}
 
     stage = json.loads(stage_path.read_text(encoding='utf-8'))
     activities = [a for a in stage.get('activities', []) if a.get('activity_url')]
@@ -63,11 +70,13 @@ def main() -> int:
         pending.append(a)
 
     if not pending:
-        print('No missing GPX to download.')
-        return 0
+        print(f'\n=== {stage_id} ===')
+        print('[OK] no missing GPX')
+        return {'ok': 0, 'fail': 0, 'pending': 0, 'processed': 0, 'total': len(activities)}
 
     queue = pending[:1] if args.one else pending
-    print(f'Pending activities: {len(pending)} | Processing now: {len(queue)}')
+    print(f'\n=== {stage_id} ===')
+    print(f'activities_with_url={len(activities)} pending={len(pending)} processing={len(queue)}')
 
     for idx, a in enumerate(queue, start=1):
         rider_id = str(a.get('rider_id', 'UNKNOWN'))
@@ -124,30 +133,56 @@ def main() -> int:
 
         if success:
             ok += 1
-            print(f'[{idx}/{len(queue)}] OK   {rider_id} {aid}')
+            print(f'[{idx:03d}/{len(queue):03d}] OK   {rider_id} {aid}')
         else:
             fail += 1
             fails.append((rider_id, url, last_err))
-            print(f'[{idx}/{len(queue)}] FAIL {rider_id} {aid}')
+            print(f'[{idx:03d}/{len(queue):03d}] FAIL {rider_id} {aid}')
 
         time.sleep(args.sleep + random.uniform(0.0, args.jitter))
 
-    print('\nSUMMARY')
-    print(f'stage={args.stage_id}')
-    print(f'total_with_activity_url={len(activities)}')
-    print(f'total_pending_before_run={len(pending)}')
-    print(f'processed_now={len(queue)}')
-    print(f'download_ok={ok}')
-    print(f'download_fail={fail}')
-    print(f'output_dir={out_dir}')
+    print('summary:')
+    print(f'  total_with_activity_url: {len(activities)}')
+    print(f'  total_pending_before_run: {len(pending)}')
+    print(f'  processed_now: {len(queue)}')
+    print(f'  download_ok: {ok}')
+    print(f'  download_fail: {fail}')
+    print(f'  output_dir: {out_dir}')
 
     if fails:
         fail_log = out_dir / '_download_failures.txt'
         with fail_log.open('w', encoding='utf-8') as f:
             for rider_id, url, err in fails:
                 f.write(f'{rider_id}\t{url}\t{err}\n')
-        print(f'failure_log={fail_log}')
+        print(f'  failure_log: {fail_log}')
 
+    return {'ok': ok, 'fail': fail, 'pending': len(pending), 'processed': len(queue), 'total': len(activities)}
+
+
+def main() -> int:
+    args = parse_args()
+    repo = Path(args.repo_dir)
+
+    if args.all:
+        stage_dir = repo / 'giro_2026' / 'stage_links'
+        stage_ids = sorted(p.stem for p in stage_dir.glob('S*.json'))
+    else:
+        stage_ids = [args.stage_id]
+
+    grand = {'ok': 0, 'fail': 0, 'pending': 0, 'processed': 0, 'total': 0}
+    for sid in stage_ids:
+        res = process_stage(args, repo, sid)
+        for k in grand:
+            grand[k] += int(res[k])
+
+    if len(stage_ids) > 1:
+        print('\n=== GRAND TOTAL ===')
+        print(f"stages: {len(stage_ids)}")
+        print(f"total_with_activity_url: {grand['total']}")
+        print(f"total_pending_before_run: {grand['pending']}")
+        print(f"processed_now: {grand['processed']}")
+        print(f"download_ok: {grand['ok']}")
+        print(f"download_fail: {grand['fail']}")
     return 0
 
 
