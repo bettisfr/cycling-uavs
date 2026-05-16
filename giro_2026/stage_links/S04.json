@@ -120,8 +120,8 @@
     },
     {
       "rider_id": "B027",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18501516091"
     },
     {
       "rider_id": "B028",
@@ -140,8 +140,8 @@
     },
     {
       "rider_id": "B033",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18487586774"
     },
     {
       "rider_id": "B034",
@@ -210,8 +210,8 @@
     },
     {
       "rider_id": "B051",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478715370"
     },
     {
       "rider_id": "B052",
@@ -235,8 +235,8 @@
     },
     {
       "rider_id": "B056",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478529582"
     },
     {
       "rider_id": "B057",
@@ -310,8 +310,8 @@
     },
     {
       "rider_id": "B075",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18525348282"
     },
     {
       "rider_id": "B076",
@@ -465,13 +465,13 @@
     },
     {
       "rider_id": "B114",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18478496341"
     },
     {
       "rider_id": "B115",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18480935146"
     },
     {
       "rider_id": "B116",
@@ -745,8 +745,8 @@
     },
     {
       "rider_id": "B184",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18493011562"
     },
     {
       "rider_id": "B185",
