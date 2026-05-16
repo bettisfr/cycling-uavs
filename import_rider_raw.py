@@ -17,7 +17,10 @@ DIST_RE = re.compile(r"\bDistance\s+([0-9]+(?:\.[0-9]+)?)\s*km\b", re.IGNORECASE
 
 def parse_date_label(label: str, today: date) -> str | None:
     label = label.strip()
-    if label == "Yesterday":
+    low = label.lower()
+    if low.startswith("today") or low.startswith("oggi"):
+        return today.isoformat()
+    if low.startswith("yesterday") or low.startswith("ieri"):
         return (today - timedelta(days=1)).isoformat()
     m = DATE_RE.match(label)
     if m:
@@ -161,7 +164,7 @@ def main() -> int:
                 # Strava feed often uses /athletes/<id> for pros pages.
                 if m.group(1) == "pros":
                     expected_owner_paths.add(f"/athletes/{m.group(2)}")
-        pairs = extract_pairs(html, today=date(args.year, 5, 16), expected_owner_paths=expected_owner_paths or None)
+        pairs = extract_pairs(html, today=date.today(), expected_owner_paths=expected_owner_paths or None)
 
         # Group candidates by day (some riders may have more than one activity/day).
         by_day: dict[str, list[dict[str, str | float | None]]] = {}

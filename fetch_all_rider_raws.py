@@ -90,7 +90,7 @@ def main() -> int:
                     expected_owner_paths.add(f"/{m.group(1)}/{m.group(2)}")
                     if m.group(1) == "pros":
                         expected_owner_paths.add(f"/athletes/{m.group(2)}")
-                pairs = extract_pairs(html, today=date(2026, 5, 16), expected_owner_paths=expected_owner_paths or None)
+                pairs = extract_pairs(html, today=date.today(), expected_owner_paths=expected_owner_paths or None)
                 stage_km: dict[str, float] = {}
                 for p in pairs:
                     sid = by_date.get(str(p.get("date")))
