@@ -28,7 +28,7 @@
           "https://it.flightaware.com/live/flight/ASR251/history/20260508/1006Z/LBBG/LBWN"
         ],
         "track_status": "found",
-        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S01/ASR251_track.csv",
+        "track_csv_path": "giro_2026/flights/S01/ASR251_track.csv",
         "notes": "",
         "checked_at": "2026-05-08T17:34:41+02:00"
       }
@@ -52,7 +52,7 @@
           "https://it.flightaware.com/live/flight/ASR251/history/20260509/0755Z/LBWN/LBSF"
         ],
         "track_status": "found",
-        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S02/ASR251_track.csv",
+        "track_csv_path": "giro_2026/flights/S02/ASR251_track.csv",
         "notes": "",
         "checked_at": "2026-05-10T21:21:51+02:00"
       }
@@ -76,7 +76,7 @@
           "https://it.flightaware.com/live/flight/ASR251/history/20260510/0912Z/LBSF/LRAR"
         ],
         "track_status": "found",
-        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S03/ASR251_track.csv",
+        "track_csv_path": "giro_2026/flights/S03/ASR251_track.csv",
         "notes": "",
         "checked_at": "2026-05-10T21:06:18+02:00"
       }
@@ -97,11 +97,10 @@
           "ASR251"
         ],
         "source_urls": [
-          "https://it.flightaware.com/live/flight/ASR251/history/20260511/0854Z/LFPM/LICA",
-          "https://it.flightaware.com/live/flight/ASR251/history/20260512/1103Z"
+          "https://it.flightaware.com/live/flight/ASR251/history/20260512/1103Z/tracklog"
         ],
         "track_status": "found",
-        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S04/ASR251_track.csv",
+        "track_csv_path": "giro_2026/flights/S04/ASR251_track.csv",
         "notes": "",
         "checked_at": "2026-05-13T09:15:54+02:00"
       }
@@ -122,10 +121,10 @@
           "ASR251"
         ],
         "source_urls": [
-          "https://it.flightaware.com/live/flight/ASR251/history/20260513/0920Z"
+          "https://it.flightaware.com/live/flight/ASR251/history/20260513/0920Z/tracklog"
         ],
         "track_status": "found",
-        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S05/ASR251_track.csv",
+        "track_csv_path": "giro_2026/flights/S05/ASR251_track.csv",
         "notes": "",
         "checked_at": "2026-05-13T18:43:22+02:00"
       }
@@ -146,10 +145,10 @@
           "ASR251"
         ],
         "source_urls": [
-          "https://it.flightaware.com/live/flight/ASR251/history/20260514/1058Z"
+          "https://it.flightaware.com/live/flight/ASR251/history/20260514/1058Z/tracklog"
         ],
         "track_status": "found",
-        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S06/ASR251_track.csv",
+        "track_csv_path": "giro_2026/flights/S06/ASR251_track.csv",
         "notes": "",
         "checked_at": "2026-05-14T21:48:05+02:00"
       }
@@ -170,10 +169,10 @@
           "ASR251"
         ],
         "source_urls": [
-          "https://it.flightaware.com/live/flight/ASR251/history/20260515/0921Z"
+          "https://it.flightaware.com/live/flight/ASR251/history/20260515/0921Z/tracklog"
         ],
         "track_status": "found",
-        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S07/ASR251_track.csv",
+        "track_csv_path": "giro_2026/flights/S07/ASR251_track.csv",
         "notes": "",
         "checked_at": "2026-05-15T18:20:34+02:00"
       }

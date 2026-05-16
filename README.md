@@ -54,15 +54,17 @@ Updates:
 Outputs:
 - `giro_2026/courses/S07/*.gpx`
 
-### 5) Download aircraft track for one stage
+### 5) Download aircraft tracks
+
+Single stage:
 
 ```bash
 /home/fra/pyvenv/bin/python tracker_export.py   --stage-id S07   "https://it.flightaware.com/live/flight/ASR251/history/..."
 ```
 
 Outputs:
-- `giro_2026/flights/S07/*.csv`
-- `giro_2026/stages.json` flight metadata update
+- `giro_2026/flights/SXX/*.csv`
+- `giro_2026/stages.json` flight metadata update (`source_urls`, `track_csv_path`, `track_status`)
 
 ### 6) Generate stage map
 
