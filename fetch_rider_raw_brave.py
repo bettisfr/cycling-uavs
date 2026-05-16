@@ -17,6 +17,8 @@ def main() -> int:
     ap.add_argument("--session-cookie-file", default="strava_session_cookie.txt")
     ap.add_argument("--headless", action="store_true", help="Run headless (default: headed)")
     ap.add_argument("--timeout-sec", type=int, default=10, help="Selector/page timeout in seconds")
+    ap.add_argument("--scroll-steps", type=int, default=0, help="Number of downward scroll steps before saving HTML")
+    ap.add_argument("--scroll-wait-ms", type=int, default=1200, help="Wait between scroll steps in milliseconds")
     args = ap.parse_args()
 
     out_dir = Path(args.dataset_dir) / "raw" / "riders"
@@ -55,6 +57,12 @@ def main() -> int:
                 page.wait_for_selector(".CQdSY", timeout=timeout_ms)
             except PlaywrightTimeoutError:
                 page.wait_for_selector("main#main, main", timeout=timeout_ms)
+            if args.scroll_steps > 0:
+                wait_ms = max(0, int(args.scroll_wait_ms))
+                for _ in range(int(args.scroll_steps)):
+                    page.mouse.wheel(0, 4000)
+                    if wait_ms:
+                        page.wait_for_timeout(wait_ms)
             html = page.evaluate(
                 """() => {
                     const main = document.querySelector('main#main') || document.querySelector('main');

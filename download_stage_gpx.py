@@ -46,7 +46,35 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
         return {'ok': 0, 'fail': 0, 'pending': 0, 'processed': 0, 'total': 0}
 
     stage = json.loads(stage_path.read_text(encoding='utf-8'))
-    activities = [a for a in stage.get('activities', []) if a.get('activity_url')]
+    riders_path = repo / 'giro_2026' / 'riders.json'
+    riders_payload = json.loads(riders_path.read_text(encoding='utf-8')).get('riders', []) if riders_path.exists() else []
+    withdraw_by_rider: dict[str, int] = {}
+    for r in riders_payload:
+        if not isinstance(r, dict):
+            continue
+        rid = r.get('rider_id')
+        if not isinstance(rid, str):
+            continue
+        try:
+            ws = int(r.get('withdraw_stage', -1))
+        except Exception:
+            ws = -1
+        withdraw_by_rider[rid] = ws if ws >= 0 else -1
+
+    try:
+        stage_num = int(str(stage_id).lstrip('S'))
+    except Exception:
+        stage_num = -1
+
+    activities = []
+    for a in stage.get('activities', []):
+        if not a.get('activity_url'):
+            continue
+        rid = str(a.get('rider_id', ''))
+        ws = withdraw_by_rider.get(rid, -1)
+        if ws >= 0 and stage_num > ws:
+            continue
+        activities.append(a)
 
     cookie = cookie_path.read_text(encoding='utf-8').strip()
     if not cookie:

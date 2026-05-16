@@ -25,18 +25,23 @@ def parse_date_label(label: str, today: date) -> str | None:
     return None
 
 
-def extract_pairs(html: str, today: date) -> list[dict[str, str | float | None]]:
+def extract_pairs(
+    html: str,
+    today: date,
+    expected_owner_paths: set[str] | None = None,
+) -> list[dict[str, str | float | None]]:
     soup = BeautifulSoup(html, "html.parser")
     entries = soup.select(".CQdSY")
     if not entries:
         return []
 
-    text = soup.get_text("\n", strip=True)
-    labels = re.findall(r"\b(?:Yesterday|May\s+\d{1,2},\s+2026)\b", text)
-    labels = labels[: len(entries)]
-
     out: list[dict[str, str | float | None]] = []
-    for i, entry in enumerate(entries):
+    for entry in entries:
+        if expected_owner_paths:
+            owner_link = entry.select_one('a[data-testid="owners-name"]')
+            owner_href = owner_link.get("href", "").strip() if owner_link else ""
+            if owner_href not in expected_owner_paths:
+                continue
         aid = None
         h3 = entry.find("h3")
         if h3:
@@ -47,14 +52,30 @@ def extract_pairs(html: str, today: date) -> list[dict[str, str | float | None]]
                     break
         if not aid:
             continue
-        if i >= len(labels):
+        date_node = entry.select_one('time[data-testid="date_at_time"]')
+        if not date_node:
             continue
-        d = parse_date_label(labels[i], today)
+        d = parse_date_label(date_node.get_text(" ", strip=True), today)
         if not d:
             continue
-        txt = " ".join(entry.get_text(" ", strip=True).split())
-        m_dist = DIST_RE.search(txt)
-        dist_km = float(m_dist.group(1)) if m_dist else None
+        dist_km = None
+        # Preferred: structured lookup from activity stats list.
+        for li in entry.select("ul.fmAtV li"):
+            label = li.select_one("span.U5UN2")
+            value = li.select_one("div.vNsSU")
+            if not label or not value:
+                continue
+            if label.get_text(" ", strip=True).lower().startswith("distance"):
+                raw = value.get_text(" ", strip=True).replace(",", "")
+                m_num = re.search(r"([0-9]+(?:\.[0-9]+)?)", raw)
+                if m_num:
+                    dist_km = float(m_num.group(1))
+                break
+        # Fallback: text regex.
+        if dist_km is None:
+            txt = " ".join(entry.get_text(" ", strip=True).split())
+            m_dist = DIST_RE.search(txt)
+            dist_km = float(m_dist.group(1)) if m_dist else None
         out.append({"date": d, "activity_id": aid, "distance_km": dist_km})
     return out
 
@@ -77,6 +98,24 @@ def main() -> int:
     overrides = {}
     if overrides_path.exists():
         overrides = json.loads(overrides_path.read_text(encoding="utf-8"))
+
+    riders_payload = json.loads((base / "riders.json").read_text(encoding="utf-8")).get("riders", [])
+    riders_by_id = {r.get("rider_id"): r for r in riders_payload if isinstance(r, dict)}
+
+    def stage_num(stage_id: str) -> int:
+        try:
+            return int(str(stage_id).lstrip("S"))
+        except Exception:
+            return -1
+
+    def withdraw_stage_of(rider_id: str) -> int:
+        meta = riders_by_id.get(rider_id, {})
+        value = meta.get("withdraw_stage", -1) if isinstance(meta, dict) else -1
+        try:
+            v = int(value)
+            return v if v >= 0 else -1
+        except Exception:
+            return -1
 
     if args.all:
         raw_dir = base / "raw" / "riders"
@@ -112,7 +151,17 @@ def main() -> int:
             continue
         total_riders += 1
         html = raw_path.read_text(encoding="utf-8", errors="ignore")
-        pairs = extract_pairs(html, today=date(args.year, 5, 16))
+        expected_owner_paths: set[str] = set()
+        rider_meta = riders_by_id.get(rider_id, {})
+        athlete_url = rider_meta.get("strava_athlete_url") if isinstance(rider_meta, dict) else None
+        if isinstance(athlete_url, str) and athlete_url.strip():
+            m = re.search(r"strava\.com/(pros|athletes)/([^/?#]+)", athlete_url)
+            if m:
+                expected_owner_paths.add(f"/{m.group(1)}/{m.group(2)}")
+                # Strava feed often uses /athletes/<id> for pros pages.
+                if m.group(1) == "pros":
+                    expected_owner_paths.add(f"/athletes/{m.group(2)}")
+        pairs = extract_pairs(html, today=date(args.year, 5, 16), expected_owner_paths=expected_owner_paths or None)
 
         # Group candidates by day (some riders may have more than one activity/day).
         by_day: dict[str, list[dict[str, str | float | None]]] = {}
@@ -132,27 +181,35 @@ def main() -> int:
             sid = stage_by_date.get(d)
             if not sid:
                 continue
+            ws = withdraw_stage_of(rider_id)
+            if ws >= 0 and stage_num(sid) > ws:
+                # Rider withdrawn after stage ws, ignore later stages.
+                continue
             matched_dates += 1
 
             # Selection rule:
-            # - consider only candidates with distance > 100 km
-            # - among them, choose min abs(distance - stage.distance_km)
+            # - road stages (>100km): keep candidates with distance > 100km, then pick max distance
+            # - short stages (<=100km): pick max distance among all parsed distances
+            # - if none has parsed distance, fallback to first candidate
             stage_distance = stage_meta_by_id.get(sid, {}).get("distance_km")
             if not isinstance(stage_distance, (int, float)):
                 stage_distance = None
+            enforce_long_filter = bool(stage_distance is None or float(stage_distance) > 100.0)
 
             valid: list[dict[str, str | float | None]] = []
             for c in candidates:
                 dist = c.get("distance_km")
-                if isinstance(dist, (int, float)) and float(dist) > 100.0:
-                    valid.append(c)
+                if isinstance(dist, (int, float)):
+                    if (not enforce_long_filter) or float(dist) > 100.0:
+                        valid.append(c)
             if not valid:
-                skipped_no_candidate += 1
-                continue
-            if stage_distance is not None:
-                chosen = min(valid, key=lambda c: abs(float(c["distance_km"]) - float(stage_distance)))  # type: ignore[index]
+                # On long stages we require >100km; if nothing matches, skip update.
+                if enforce_long_filter:
+                    skipped_no_candidate += 1
+                    continue
+                chosen = candidates[0]
             else:
-                chosen = valid[0]
+                chosen = max(valid, key=lambda c: float(c["distance_km"]))  # type: ignore[index]
             selected += 1
 
             aid = str(chosen["activity_id"])
@@ -162,6 +219,8 @@ def main() -> int:
             payload = json.loads(p.read_text(encoding="utf-8"))
             row = next((a for a in payload.get("activities", []) if a.get("rider_id") == rider_id), None)
             if not row:
+                continue
+            if bool(row.get("locked")):
                 continue
             new_url = f"https://www.strava.com/activities/{aid}"
             if row.get("activity_url") != new_url:
@@ -189,6 +248,8 @@ def main() -> int:
             row = next((a for a in payload.get("activities", []) if a.get("rider_id") == rider_id), None)
             if not row:
                 continue
+            if bool(row.get("locked")):
+                continue
             if forced is None:
                 wanted_url = None
                 wanted_status = "not_checked"
@@ -214,7 +275,7 @@ def main() -> int:
             f"stage_days={matched_dates} "
             f"selected={selected} "
             f"updated={updated} "
-            f"skip_lt100={skipped_no_candidate} "
+            f"fallback_first={skipped_no_candidate} "
             f"ignored_out={ignored_out_of_stage_calendar}"
         )
 
@@ -225,7 +286,7 @@ def main() -> int:
         print(f"pairs_found: {total_pairs}")
         print(f"pairs_with_stage_date: {total_matched_dates}")
         print(f"selected_for_update: {total_selected}")
-        print(f"skipped_no_candidate_gt_100km: {total_skipped_no_candidate}")
+        print(f"fallback_selected_without_distance: {total_skipped_no_candidate}")
         print(f"ignored_out_of_stage_calendar: {total_ignored_out}")
         print(f"total_stage_links_updated: {total_updated}")
     return 0

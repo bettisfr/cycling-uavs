@@ -12,7 +12,8 @@
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/6728810",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": 4
     },
     {
       "rider_id": "B002",
@@ -21,7 +22,8 @@
       "nationality": "Austria",
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
-      "strava_athlete_url": "https://www.strava.com/athletes/8409483"
+      "strava_athlete_url": "https://www.strava.com/athletes/8409483",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B003",
@@ -30,7 +32,8 @@
       "nationality": "Italy",
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
-      "strava_athlete_url": "https://www.strava.com/athletes/16710841"
+      "strava_athlete_url": "https://www.strava.com/athletes/16710841",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B004",
@@ -39,7 +42,8 @@
       "nationality": "Belgium",
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
-      "strava_athlete_url": "https://www.strava.com/athletes/26500769"
+      "strava_athlete_url": "https://www.strava.com/athletes/26500769",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B005",
@@ -48,7 +52,8 @@
       "nationality": "Belgium",
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
-      "strava_athlete_url": "https://www.strava.com/athletes/31541211"
+      "strava_athlete_url": "https://www.strava.com/athletes/31541211",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B006",
@@ -57,7 +62,8 @@
       "nationality": "Australia",
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
-      "strava_athlete_url": "https://www.strava.com/athletes/29260396"
+      "strava_athlete_url": "https://www.strava.com/athletes/29260396",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B007",
@@ -67,7 +73,8 @@
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/13150937",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B008",
@@ -76,7 +83,8 @@
       "nationality": "Italy",
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
-      "strava_athlete_url": "https://www.strava.com/pros/ilbandito"
+      "strava_athlete_url": "https://www.strava.com/pros/2004466",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B011",
@@ -85,7 +93,8 @@
       "nationality": "Colombia",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/7310716"
+      "strava_athlete_url": "https://www.strava.com/athletes/7310716",
+      "withdraw_stage": 2
     },
     {
       "rider_id": "B012",
@@ -94,7 +103,8 @@
       "nationality": "Italy",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/4084289"
+      "strava_athlete_url": "https://www.strava.com/athletes/4084289",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B013",
@@ -103,7 +113,8 @@
       "nationality": "Croatia",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/14691945"
+      "strava_athlete_url": "https://www.strava.com/athletes/14691945",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B014",
@@ -112,7 +123,8 @@
       "nationality": "Portugal",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/28548607"
+      "strava_athlete_url": "https://www.strava.com/athletes/28548607",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B015",
@@ -121,7 +133,8 @@
       "nationality": "Netherlands",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/2543430"
+      "strava_athlete_url": "https://www.strava.com/athletes/2543430",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B016",
@@ -130,7 +143,8 @@
       "nationality": "Belgium",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/12017824"
+      "strava_athlete_url": "https://www.strava.com/athletes/12017824",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B017",
@@ -139,7 +153,8 @@
       "nationality": "Australia",
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
-      "strava_athlete_url": "https://www.strava.com/athletes/6394625"
+      "strava_athlete_url": "https://www.strava.com/athletes/6394625",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B018",
@@ -149,7 +164,8 @@
       "team_id": "T02",
       "team_name": "Team Bahrain Victorious",
       "strava_athlete_url": "https://www.strava.com/pros/11149986",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B021",
@@ -158,7 +174,8 @@
       "nationality": "Italy",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/pros/32609601"
+      "strava_athlete_url": "https://www.strava.com/pros/32609601",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B022",
@@ -167,7 +184,8 @@
       "nationality": "Italy",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/athletes/33207958"
+      "strava_athlete_url": "https://www.strava.com/athletes/33207958",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B023",
@@ -176,7 +194,8 @@
       "nationality": "Italy",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/pros/32191553"
+      "strava_athlete_url": "https://www.strava.com/pros/32191553",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B024",
@@ -185,7 +204,8 @@
       "nationality": "Chile",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/athletes/21629398"
+      "strava_athlete_url": "https://www.strava.com/athletes/21629398",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B025",
@@ -194,7 +214,8 @@
       "nationality": "Italy",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/athletes/21133879"
+      "strava_athlete_url": "https://www.strava.com/athletes/21133879",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B026",
@@ -203,7 +224,8 @@
       "nationality": "Uzbekistan",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/athletes/48327613"
+      "strava_athlete_url": "https://www.strava.com/athletes/48327613",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B027",
@@ -212,7 +234,8 @@
       "nationality": "Italy",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/athletes/113211679"
+      "strava_athlete_url": "https://www.strava.com/athletes/113211679",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B028",
@@ -221,7 +244,8 @@
       "nationality": "Italy",
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
-      "strava_athlete_url": "https://www.strava.com/athletes/4941184"
+      "strava_athlete_url": "https://www.strava.com/athletes/4941184",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B031",
@@ -231,7 +255,8 @@
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
       "strava_athlete_url": "https://www.strava.com/athletes/5060232",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B032",
@@ -240,7 +265,8 @@
       "nationality": "Denmark",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
-      "strava_athlete_url": "https://www.strava.com/athletes/29035689"
+      "strava_athlete_url": "https://www.strava.com/athletes/29035689",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B033",
@@ -249,7 +275,8 @@
       "nationality": "Norway",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
-      "strava_athlete_url": "https://www.strava.com/athletes/9533389"
+      "strava_athlete_url": "https://www.strava.com/athletes/9533389",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B034",
@@ -259,7 +286,8 @@
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
       "strava_athlete_url": "https://www.strava.com/athletes/20676777",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B035",
@@ -268,7 +296,8 @@
       "nationality": "Belgium",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
-      "strava_athlete_url": "https://www.strava.com/pros/440227"
+      "strava_athlete_url": "https://www.strava.com/pros/440227",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B036",
@@ -277,7 +306,8 @@
       "nationality": "Denmark",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
-      "strava_athlete_url": "https://www.strava.com/athletes/22889836"
+      "strava_athlete_url": "https://www.strava.com/athletes/22889836",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B037",
@@ -286,7 +316,8 @@
       "nationality": "Australia",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
-      "strava_athlete_url": null
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B038",
@@ -295,7 +326,8 @@
       "nationality": "Norway",
       "team_id": "T04",
       "team_name": "Decathlon CMA CGM",
-      "strava_athlete_url": "https://www.strava.com/athletes/21804778"
+      "strava_athlete_url": "https://www.strava.com/athletes/21804778",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B041",
@@ -304,7 +336,8 @@
       "nationality": "Ecuador",
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
-      "strava_athlete_url": "https://www.strava.com/athletes/21922069"
+      "strava_athlete_url": "https://www.strava.com/athletes/21922069",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B042",
@@ -313,7 +346,8 @@
       "nationality": "Italy",
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
-      "strava_athlete_url": "https://www.strava.com/athletes/16571022"
+      "strava_athlete_url": "https://www.strava.com/athletes/16571022",
+      "withdraw_stage": 5
     },
     {
       "rider_id": "B043",
@@ -323,7 +357,8 @@
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/24287973",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B044",
@@ -332,7 +367,8 @@
       "nationality": "Estonia",
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
-      "strava_athlete_url": "https://www.strava.com/athletes/27288979"
+      "strava_athlete_url": "https://www.strava.com/athletes/27288979",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B045",
@@ -341,7 +377,8 @@
       "nationality": "Ireland",
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
-      "strava_athlete_url": "https://www.strava.com/athletes/23336540"
+      "strava_athlete_url": "https://www.strava.com/athletes/23336540",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B046",
@@ -351,7 +388,8 @@
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/4848511",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B047",
@@ -360,7 +398,8 @@
       "nationality": "Denmark",
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
-      "strava_athlete_url": "https://www.strava.com/pros/2109462"
+      "strava_athlete_url": "https://www.strava.com/pros/2109462",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B048",
@@ -370,7 +409,8 @@
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/24409607",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B051",
@@ -379,7 +419,8 @@
       "nationality": "France",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/pros/2203430"
+      "strava_athlete_url": "https://www.strava.com/pros/2203430",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B052",
@@ -388,7 +429,8 @@
       "nationality": "France",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/athletes/12856902"
+      "strava_athlete_url": "https://www.strava.com/athletes/12856902",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B053",
@@ -397,7 +439,8 @@
       "nationality": "France",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/athletes/11968925"
+      "strava_athlete_url": "https://www.strava.com/athletes/11968925",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B054",
@@ -406,7 +449,8 @@
       "nationality": "Switzerland",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/pros/461374"
+      "strava_athlete_url": "https://www.strava.com/pros/461374",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B055",
@@ -415,7 +459,8 @@
       "nationality": "New Zealand",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/athletes/7373422"
+      "strava_athlete_url": "https://www.strava.com/athletes/7373422",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B056",
@@ -424,7 +469,8 @@
       "nationality": "France",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/athletes/9019175"
+      "strava_athlete_url": "https://www.strava.com/athletes/9019175",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B057",
@@ -433,7 +479,8 @@
       "nationality": "France",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/athletes/3286366"
+      "strava_athlete_url": "https://www.strava.com/athletes/3286366",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B058",
@@ -442,7 +489,8 @@
       "nationality": "France",
       "team_id": "T06",
       "team_name": "Groupama–FDJ United",
-      "strava_athlete_url": "https://www.strava.com/athletes/27671946"
+      "strava_athlete_url": "https://www.strava.com/athletes/27671946",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B061",
@@ -451,7 +499,8 @@
       "nationality": "Italy",
       "team_id": "T07",
       "team_name": "Lidl–Trek",
-      "strava_athlete_url": "https://www.strava.com/pros/29028250"
+      "strava_athlete_url": "https://www.strava.com/pros/29028250",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B062",
@@ -460,7 +509,8 @@
       "nationality": "Italy",
       "team_id": "T07",
       "team_name": "Lidl–Trek",
-      "strava_athlete_url": "https://www.strava.com/athletes/2824377"
+      "strava_athlete_url": "https://www.strava.com/athletes/2824377",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B063",
@@ -469,7 +519,8 @@
       "nationality": "Canada",
       "team_id": "T07",
       "team_name": "Lidl–Trek",
-      "strava_athlete_url": "https://www.strava.com/athletes/5571896"
+      "strava_athlete_url": "https://www.strava.com/athletes/5571896",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B064",
@@ -479,7 +530,8 @@
       "team_id": "T07",
       "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/63330472",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B065",
@@ -489,7 +541,8 @@
       "team_id": "T07",
       "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/39026315",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B066",
@@ -498,7 +551,8 @@
       "nationality": "Italy",
       "team_id": "T07",
       "team_name": "Lidl–Trek",
-      "strava_athlete_url": "https://www.strava.com/athletes/7181420"
+      "strava_athlete_url": "https://www.strava.com/athletes/7181420",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B067",
@@ -508,7 +562,8 @@
       "team_id": "T07",
       "team_name": "Lidl–Trek",
       "strava_athlete_url": "https://www.strava.com/athletes/1030434",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B068",
@@ -517,7 +572,8 @@
       "nationality": "Germany",
       "team_id": "T07",
       "team_name": "Lidl–Trek",
-      "strava_athlete_url": "https://www.strava.com/athletes/2323575"
+      "strava_athlete_url": "https://www.strava.com/athletes/2323575",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B071",
@@ -527,7 +583,8 @@
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/athletes/28980231",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": 4
     },
     {
       "rider_id": "B072",
@@ -536,7 +593,8 @@
       "nationality": "Belgium",
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
-      "strava_athlete_url": "https://www.strava.com/athletes/577221"
+      "strava_athlete_url": "https://www.strava.com/athletes/577221",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B073",
@@ -545,7 +603,8 @@
       "nationality": "Great Britain",
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
-      "strava_athlete_url": "https://www.strava.com/pros/giddings_josh"
+      "strava_athlete_url": "https://www.strava.com/pros/giddings_josh",
+      "withdraw_stage": 5
     },
     {
       "rider_id": "B074",
@@ -554,7 +613,8 @@
       "nationality": "Italy",
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
-      "strava_athlete_url": "https://www.strava.com/athletes/21332567"
+      "strava_athlete_url": "https://www.strava.com/athletes/21332567",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B075",
@@ -563,7 +623,8 @@
       "nationality": "Belgium",
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
-      "strava_athlete_url": "https://www.strava.com/pros/2219780"
+      "strava_athlete_url": "https://www.strava.com/pros/2219780",
+      "withdraw_stage": 5
     },
     {
       "rider_id": "B076",
@@ -573,7 +634,8 @@
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/pros/lorenzorota1995",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B077",
@@ -582,7 +644,8 @@
       "nationality": "Germany",
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
-      "strava_athlete_url": "https://www.strava.com/pros/jonas-rutsch-18722207"
+      "strava_athlete_url": "https://www.strava.com/pros/jonas-rutsch-18722207",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B078",
@@ -591,7 +654,8 @@
       "nationality": "Belgium",
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
-      "strava_athlete_url": "https://www.strava.com/athletes/6061359"
+      "strava_athlete_url": "https://www.strava.com/athletes/6061359",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B081",
@@ -601,7 +665,8 @@
       "team_id": "T08",
       "team_name": "Movistar Team",
       "strava_athlete_url": "https://www.strava.com/pros/28808807",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B082",
@@ -610,7 +675,8 @@
       "nationality": "Venezuela",
       "team_id": "T08",
       "team_name": "Movistar Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/17546094"
+      "strava_athlete_url": "https://www.strava.com/athletes/17546094",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B083",
@@ -619,7 +685,8 @@
       "nationality": "Spain",
       "team_id": "T08",
       "team_name": "Movistar Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/1292406"
+      "strava_athlete_url": "https://www.strava.com/athletes/1292406",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B084",
@@ -628,7 +695,8 @@
       "nationality": "Spain",
       "team_id": "T08",
       "team_name": "Movistar Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/3098895"
+      "strava_athlete_url": "https://www.strava.com/athletes/3098895",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B085",
@@ -637,7 +705,8 @@
       "nationality": "Italy",
       "team_id": "T08",
       "team_name": "Movistar Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/33591061"
+      "strava_athlete_url": "https://www.strava.com/athletes/33591061",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B086",
@@ -646,7 +715,8 @@
       "nationality": "Portugal",
       "team_id": "T08",
       "team_name": "Movistar Team",
-      "strava_athlete_url": "https://www.strava.com/pros/1366105"
+      "strava_athlete_url": "https://www.strava.com/pros/1366105",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B087",
@@ -656,7 +726,8 @@
       "team_id": "T08",
       "team_name": "Movistar Team",
       "strava_athlete_url": "https://www.strava.com/athletes/21190846",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B088",
@@ -666,7 +737,8 @@
       "team_id": "T08",
       "team_name": "Movistar Team",
       "strava_athlete_url": "https://www.strava.com/athletes/13090041",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B091",
@@ -675,7 +747,8 @@
       "nationality": "Colombia",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": "https://www.strava.com/pros/2119306"
+      "strava_athlete_url": "https://www.strava.com/pros/2119306",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B092",
@@ -684,7 +757,8 @@
       "nationality": "Netherlands",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": "https://www.strava.com/athletes/1936233"
+      "strava_athlete_url": "https://www.strava.com/athletes/1936233",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B093",
@@ -693,7 +767,8 @@
       "nationality": "Italy",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": "https://www.strava.com/pros/3574069"
+      "strava_athlete_url": "https://www.strava.com/pros/3574069",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B094",
@@ -703,7 +778,8 @@
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
       "strava_athlete_url": "https://www.strava.com/pros/283726",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B095",
@@ -712,7 +788,8 @@
       "nationality": "United States",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": "https://www.strava.com/athletes/12291626"
+      "strava_athlete_url": "https://www.strava.com/athletes/12291626",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B096",
@@ -721,7 +798,8 @@
       "nationality": "Norway",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": "https://www.strava.com/athletes/16520242"
+      "strava_athlete_url": "https://www.strava.com/athletes/16520242",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B097",
@@ -730,7 +808,8 @@
       "nationality": "Great Britain",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": "https://www.strava.com/pros/863203"
+      "strava_athlete_url": "https://www.strava.com/pros/863203",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B098",
@@ -739,7 +818,8 @@
       "nationality": "Great Britain",
       "team_id": "T09",
       "team_name": "Netcompany INEOS",
-      "strava_athlete_url": "https://strava.com/athletes/18956034"
+      "strava_athlete_url": "https://strava.com/athletes/18956034",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B101",
@@ -748,7 +828,8 @@
       "nationality": "Italy",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/42771820"
+      "strava_athlete_url": "https://www.strava.com/athletes/42771820",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B102",
@@ -758,7 +839,8 @@
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/591813",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B103",
@@ -767,7 +849,8 @@
       "nationality": "Ireland",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/307079"
+      "strava_athlete_url": "https://www.strava.com/pros/307079",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B104",
@@ -776,7 +859,8 @@
       "nationality": "Australia",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/358580"
+      "strava_athlete_url": "https://www.strava.com/pros/358580",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B105",
@@ -785,7 +869,8 @@
       "nationality": "New Zealand",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/1323252"
+      "strava_athlete_url": "https://www.strava.com/athletes/1323252",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B106",
@@ -794,7 +879,8 @@
       "nationality": "Great Britain",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/17096447"
+      "strava_athlete_url": "https://www.strava.com/athletes/17096447",
+      "withdraw_stage": 8
     },
     {
       "rider_id": "B107",
@@ -803,7 +889,8 @@
       "nationality": "New Zealand",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/3419730"
+      "strava_athlete_url": "https://www.strava.com/athletes/3419730",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B109",
@@ -812,7 +899,8 @@
       "nationality": "Great Britain",
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/2348563"
+      "strava_athlete_url": "https://www.strava.com/athletes/2348563",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B111",
@@ -821,7 +909,8 @@
       "nationality": "Netherlands",
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/5706594"
+      "strava_athlete_url": "https://www.strava.com/athletes/5706594",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B112",
@@ -830,7 +919,8 @@
       "nationality": "Switzerland",
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/28864199"
+      "strava_athlete_url": "https://www.strava.com/athletes/28864199",
+      "withdraw_stage": 8
     },
     {
       "rider_id": "B113",
@@ -840,7 +930,8 @@
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/pros/2014488",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B114",
@@ -849,7 +940,8 @@
       "nationality": "Great Britain",
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/1284150"
+      "strava_athlete_url": "https://www.strava.com/pros/1284150",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B115",
@@ -858,7 +950,8 @@
       "nationality": "Spain",
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/13720238"
+      "strava_athlete_url": "https://www.strava.com/athletes/13720238",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B116",
@@ -868,7 +961,8 @@
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/2836335",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B117",
@@ -877,7 +971,8 @@
       "nationality": "Italy",
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/18788312"
+      "strava_athlete_url": "https://www.strava.com/athletes/18788312",
+      "withdraw_stage": 2
     },
     {
       "rider_id": "B118",
@@ -886,7 +981,8 @@
       "nationality": "Canada",
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/5190714"
+      "strava_athlete_url": "https://www.strava.com/pros/5190714",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B121",
@@ -896,7 +992,8 @@
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/pros/1760759",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B122",
@@ -905,7 +1002,8 @@
       "nationality": "Italy",
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
-      "strava_athlete_url": "https://www.strava.com/athletes/21536765"
+      "strava_athlete_url": "https://www.strava.com/athletes/21536765",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B123",
@@ -914,7 +1012,8 @@
       "nationality": "Germany",
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
-      "strava_athlete_url": "https://www.strava.com/pros/3423315"
+      "strava_athlete_url": "https://www.strava.com/pros/3423315",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B124",
@@ -924,7 +1023,8 @@
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/athletes/gmoscon",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B125",
@@ -933,7 +1033,8 @@
       "nationality": "Italy",
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
-      "strava_athlete_url": "https://www.strava.com/athletes/30808559"
+      "strava_athlete_url": "https://www.strava.com/athletes/30808559",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B126",
@@ -942,7 +1043,8 @@
       "nationality": "Netherlands",
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
-      "strava_athlete_url": "https://www.strava.com/athletes/26465206"
+      "strava_athlete_url": "https://www.strava.com/athletes/26465206",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B127",
@@ -952,7 +1054,8 @@
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
       "strava_athlete_url": "https://www.strava.com/pros/19916624",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B128",
@@ -961,7 +1064,8 @@
       "nationality": "Germany",
       "team_id": "T12",
       "team_name": "Red Bull–Bora–Hansgrohe",
-      "strava_athlete_url": "https://www.strava.com/athletes/1118391"
+      "strava_athlete_url": "https://www.strava.com/athletes/1118391",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B131",
@@ -970,7 +1074,8 @@
       "nationality": "France",
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
-      "strava_athlete_url": "https://www.strava.com/athletes/25788579"
+      "strava_athlete_url": "https://www.strava.com/athletes/25788579",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B132",
@@ -980,7 +1085,8 @@
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/pros/10705535",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B133",
@@ -989,7 +1095,8 @@
       "nationality": "Italy",
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
-      "strava_athlete_url": "https://www.strava.com/athletes/15781522"
+      "strava_athlete_url": "https://www.strava.com/athletes/15781522",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B134",
@@ -998,7 +1105,8 @@
       "nationality": "Italy",
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
-      "strava_athlete_url": "https://www.strava.com/athletes/21852715"
+      "strava_athlete_url": "https://www.strava.com/athletes/21852715",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B135",
@@ -1007,7 +1115,8 @@
       "nationality": "Belgium",
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
-      "strava_athlete_url": "https://www.strava.com/pros/288335"
+      "strava_athlete_url": "https://www.strava.com/pros/288335",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B136",
@@ -1016,7 +1125,8 @@
       "nationality": "Belgium",
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
-      "strava_athlete_url": "https://www.strava.com/athletes/1867924"
+      "strava_athlete_url": "https://www.strava.com/athletes/1867924",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B137",
@@ -1026,7 +1136,8 @@
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
       "strava_athlete_url": "https://www.strava.com/athletes/13142575",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B138",
@@ -1035,7 +1146,8 @@
       "nationality": "Italy",
       "team_id": "T13",
       "team_name": "Soudal–Quick-Step",
-      "strava_athlete_url": "https://www.strava.com/athletes/39169689"
+      "strava_athlete_url": "https://www.strava.com/athletes/39169689",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B141",
@@ -1044,7 +1156,8 @@
       "nationality": "Australia",
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
-      "strava_athlete_url": "https://www.strava.com/athletes/4097457"
+      "strava_athlete_url": "https://www.strava.com/athletes/4097457",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B142",
@@ -1053,7 +1166,8 @@
       "nationality": "Germany",
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
-      "strava_athlete_url": "https://www.strava.com/athletes/12274527"
+      "strava_athlete_url": "https://www.strava.com/athletes/12274527",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B143",
@@ -1062,7 +1176,8 @@
       "nationality": "Netherlands",
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
-      "strava_athlete_url": "https://www.strava.com/pros/1993533"
+      "strava_athlete_url": "https://www.strava.com/pros/1993533",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B144",
@@ -1071,7 +1186,8 @@
       "nationality": "Great Britain",
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
-      "strava_athlete_url": "https://www.strava.com/athletes/15937095"
+      "strava_athlete_url": "https://www.strava.com/athletes/15937095",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B145",
@@ -1080,7 +1196,8 @@
       "nationality": "Germany",
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
-      "strava_athlete_url": "https://www.strava.com/athletes/6903975"
+      "strava_athlete_url": "https://www.strava.com/athletes/6903975",
+      "withdraw_stage": 6
     },
     {
       "rider_id": "B146",
@@ -1090,7 +1207,8 @@
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/19264705",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B147",
@@ -1099,7 +1217,8 @@
       "nationality": "Denmark",
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
-      "strava_athlete_url": null
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B148",
@@ -1108,7 +1227,8 @@
       "nationality": "Italy",
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
-      "strava_athlete_url": "https://www.strava.com/athletes/49920031"
+      "strava_athlete_url": "https://www.strava.com/athletes/49920031",
+      "withdraw_stage": 3
     },
     {
       "rider_id": "B151",
@@ -1117,7 +1237,8 @@
       "nationality": "France",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/pros/722861"
+      "strava_athlete_url": "https://www.strava.com/pros/722861",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B152",
@@ -1126,7 +1247,8 @@
       "nationality": "Netherlands",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/athletes/2639794"
+      "strava_athlete_url": "https://www.strava.com/athletes/2639794",
+      "withdraw_stage": 5
     },
     {
       "rider_id": "B153",
@@ -1135,7 +1257,8 @@
       "nationality": "Great Britain",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/athletes/1928834"
+      "strava_athlete_url": "https://www.strava.com/athletes/1928834",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B154",
@@ -1144,7 +1267,8 @@
       "nationality": "Australia",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/pros/2754904"
+      "strava_athlete_url": "https://www.strava.com/pros/2754904",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B155",
@@ -1153,7 +1277,8 @@
       "nationality": "Netherlands",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/pros/7968141"
+      "strava_athlete_url": "https://www.strava.com/pros/7968141",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B156",
@@ -1162,7 +1287,8 @@
       "nationality": "Netherlands",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/athletes/6449536"
+      "strava_athlete_url": "https://www.strava.com/athletes/6449536",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B157",
@@ -1171,7 +1297,8 @@
       "nationality": "Netherlands",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/athletes/11270161"
+      "strava_athlete_url": "https://www.strava.com/athletes/11270161",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B158",
@@ -1180,7 +1307,8 @@
       "nationality": "Netherlands",
       "team_id": "T15",
       "team_name": "Team Picnic–PostNL",
-      "strava_athlete_url": "https://www.strava.com/athletes/30579397"
+      "strava_athlete_url": "https://www.strava.com/athletes/30579397",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B161",
@@ -1189,7 +1317,8 @@
       "nationality": "Italy",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": "https://www.strava.com/athletes/2573969"
+      "strava_athlete_url": "https://www.strava.com/athletes/2573969",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B162",
@@ -1198,7 +1327,8 @@
       "nationality": "Italy",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": null
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B163",
@@ -1207,7 +1337,8 @@
       "nationality": "Italy",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": "https://www.strava.com/athletes/7806936"
+      "strava_athlete_url": "https://www.strava.com/athletes/7806936",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B164",
@@ -1216,7 +1347,8 @@
       "nationality": "Italy",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": "https://www.strava.com/pros/mirco-maestri-23666757"
+      "strava_athlete_url": "https://www.strava.com/pros/mirco-maestri-23666757",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B165",
@@ -1225,7 +1357,8 @@
       "nationality": "France",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": "https://www.strava.com/athletes/19218926"
+      "strava_athlete_url": "https://www.strava.com/athletes/19218926",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B166",
@@ -1234,7 +1367,8 @@
       "nationality": "Italy",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": "https://www.strava.com/athletes/13718983"
+      "strava_athlete_url": "https://www.strava.com/athletes/13718983",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B167",
@@ -1243,7 +1377,8 @@
       "nationality": "Spain",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": "https://www.strava.com/pros/13244352"
+      "strava_athlete_url": "https://www.strava.com/pros/13244352",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B168",
@@ -1252,7 +1387,8 @@
       "nationality": "Italy",
       "team_id": "T16",
       "team_name": "Team Polti VisitMalta",
-      "strava_athlete_url": "https://www.strava.com/athletes/3194779"
+      "strava_athlete_url": "https://www.strava.com/athletes/3194779",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B171",
@@ -1262,7 +1398,8 @@
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/athletes/10495058",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B172",
@@ -1272,7 +1409,8 @@
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/athletes/620617",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B173",
@@ -1282,7 +1420,8 @@
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
       "strava_athlete_url": "https://www.strava.com/pros/wilco_kelderman",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": 4
     },
     {
       "rider_id": "B174",
@@ -1291,7 +1430,8 @@
       "nationality": "Belgium",
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
-      "strava_athlete_url": "https://strava.com/athletes/3732430"
+      "strava_athlete_url": "https://strava.com/athletes/3732430",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B175",
@@ -1300,7 +1440,8 @@
       "nationality": "United States",
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
-      "strava_athlete_url": "https://www.strava.com/athletes/254096"
+      "strava_athlete_url": "https://www.strava.com/athletes/254096",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B176",
@@ -1309,7 +1450,8 @@
       "nationality": "Netherlands",
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
-      "strava_athlete_url": "https://www.strava.com/athletes/10416992"
+      "strava_athlete_url": "https://www.strava.com/athletes/10416992",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B177",
@@ -1318,7 +1460,8 @@
       "nationality": "Italy",
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
-      "strava_athlete_url": "https://www.strava.com/pros/23174762"
+      "strava_athlete_url": "https://www.strava.com/pros/23174762",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B178",
@@ -1327,7 +1470,8 @@
       "nationality": "Belgium",
       "team_id": "T17",
       "team_name": "Visma–Lease a Bike",
-      "strava_athlete_url": "https://www.strava.com/athletes/15322328"
+      "strava_athlete_url": "https://www.strava.com/athletes/15322328",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B181",
@@ -1337,7 +1481,8 @@
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/pros/michael-storer-17191487",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B182",
@@ -1346,7 +1491,8 @@
       "nationality": "United States",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/831403"
+      "strava_athlete_url": "https://www.strava.com/athletes/831403",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B183",
@@ -1355,7 +1501,8 @@
       "nationality": "Switzerland",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
-      "strava_athlete_url": null
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B184",
@@ -1364,7 +1511,8 @@
       "nationality": "Switzerland",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/19161146"
+      "strava_athlete_url": "https://www.strava.com/athletes/19161146",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B185",
@@ -1373,7 +1521,8 @@
       "nationality": "Italy",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/3404110"
+      "strava_athlete_url": "https://www.strava.com/pros/3404110",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B186",
@@ -1383,7 +1532,8 @@
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/19346074",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B187",
@@ -1392,7 +1542,8 @@
       "nationality": "Germany",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/33232423"
+      "strava_athlete_url": "https://www.strava.com/pros/33232423",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B188",
@@ -1401,7 +1552,8 @@
       "nationality": "United States",
       "team_id": "T18",
       "team_name": "Tudor Pro Cycling Team",
-      "strava_athlete_url": "https://www.strava.com/pros/197359"
+      "strava_athlete_url": "https://www.strava.com/pros/197359",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B191",
@@ -1411,7 +1563,8 @@
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
       "strava_athlete_url": "http://www.strava.com/pros/259171",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": 3
     },
     {
       "rider_id": "B192",
@@ -1420,7 +1573,8 @@
       "nationality": "Spain",
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
-      "strava_athlete_url": "https://www.strava.com/athletes/20793265"
+      "strava_athlete_url": "https://www.strava.com/athletes/20793265",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B193",
@@ -1430,7 +1584,8 @@
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
       "strava_athlete_url": "https://www.strava.com/athletes/9640608",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B194",
@@ -1439,7 +1594,8 @@
       "nationality": "Switzerland",
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
-      "strava_athlete_url": "https://www.strava.com/athletes/31134894"
+      "strava_athlete_url": "https://www.strava.com/athletes/31134894",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B195",
@@ -1448,7 +1604,8 @@
       "nationality": "Ecuador",
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
-      "strava_athlete_url": "https://www.strava.com/athletes/101626706"
+      "strava_athlete_url": "https://www.strava.com/athletes/101626706",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B196",
@@ -1458,7 +1615,8 @@
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
       "strava_athlete_url": "https://www.strava.com/pros/1996868",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": 2
     },
     {
       "rider_id": "B197",
@@ -1467,7 +1625,8 @@
       "nationality": "Portugal",
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
-      "strava_athlete_url": "https://www.strava.com/athletes/29016945"
+      "strava_athlete_url": "https://www.strava.com/athletes/29016945",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B198",
@@ -1476,7 +1635,8 @@
       "nationality": "Australia",
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
-      "strava_athlete_url": "https://www.strava.com/athletes/4057312"
+      "strava_athlete_url": "https://www.strava.com/athletes/4057312",
+      "withdraw_stage": 2
     },
     {
       "rider_id": "B201",
@@ -1486,7 +1646,8 @@
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
       "strava_athlete_url": "https://www.strava.com/pros/dylan_groenewegen",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B202",
@@ -1495,7 +1656,8 @@
       "nationality": "Netherlands",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
-      "strava_athlete_url": "https://www.strava.com/pros/1591473"
+      "strava_athlete_url": "https://www.strava.com/pros/1591473",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B203",
@@ -1505,7 +1667,8 @@
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
       "strava_athlete_url": "https://strava.com/athletes/32028762",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B204",
@@ -1514,7 +1677,8 @@
       "nationality": "Czech Republic",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
-      "strava_athlete_url": "https://strava.com/athletes/29740629"
+      "strava_athlete_url": "https://strava.com/athletes/29740629",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B205",
@@ -1523,7 +1687,8 @@
       "nationality": "Slovakia",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
-      "strava_athlete_url": "https://www.strava.com/athletes/1987758"
+      "strava_athlete_url": "https://www.strava.com/athletes/1987758",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B206",
@@ -1532,7 +1697,8 @@
       "nationality": "Denmark",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
-      "strava_athlete_url": null
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B207",
@@ -1541,7 +1707,8 @@
       "nationality": "Netherlands",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
-      "strava_athlete_url": "https://www.strava.com/athletes/37745230"
+      "strava_athlete_url": "https://www.strava.com/athletes/37745230",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B208",
@@ -1550,7 +1717,8 @@
       "nationality": "Netherlands",
       "team_id": "T20",
       "team_name": "Unibet Rose Rockets",
-      "strava_athlete_url": "https://www.strava.com/pros/elmar_reinders"
+      "strava_athlete_url": "https://www.strava.com/pros/elmar_reinders",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B211",
@@ -1559,7 +1727,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/4013766"
+      "strava_athlete_url": "https://www.strava.com/athletes/4013766",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B212",
@@ -1568,7 +1737,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/4047775"
+      "strava_athlete_url": "https://www.strava.com/athletes/4047775",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B213",
@@ -1577,7 +1747,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/7333853"
+      "strava_athlete_url": "https://www.strava.com/athletes/7333853",
+      "withdraw_stage": 2
     },
     {
       "rider_id": "B214",
@@ -1586,7 +1757,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/5495962"
+      "strava_athlete_url": "https://www.strava.com/athletes/5495962",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B215",
@@ -1595,7 +1767,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/15517763/"
+      "strava_athlete_url": "https://www.strava.com/athletes/15517763/",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B216",
@@ -1604,7 +1777,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/pros/andreas_leknessund"
+      "strava_athlete_url": "https://www.strava.com/pros/andreas_leknessund",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B217",
@@ -1613,7 +1787,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/1633428"
+      "strava_athlete_url": "https://www.strava.com/athletes/1633428",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B218",
@@ -1622,7 +1797,8 @@
       "nationality": "Norway",
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": "https://www.strava.com/athletes/2008467"
+      "strava_athlete_url": "https://www.strava.com/athletes/2008467",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B221",
@@ -1631,7 +1807,8 @@
       "nationality": "Italy",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
-      "strava_athlete_url": "https://www.strava.com/pros/b94"
+      "strava_athlete_url": "https://www.strava.com/pros/b94",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B222",
@@ -1640,7 +1817,8 @@
       "nationality": "Italy",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/16874183"
+      "strava_athlete_url": "https://www.strava.com/athletes/16874183",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B223",
@@ -1649,7 +1827,8 @@
       "nationality": "Belgium",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
-      "strava_athlete_url": "https://www.strava.com/pros/1614461"
+      "strava_athlete_url": "https://www.strava.com/pros/1614461",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B224",
@@ -1658,7 +1837,8 @@
       "nationality": "Ecuador",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/156641541"
+      "strava_athlete_url": "https://www.strava.com/athletes/156641541",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B225",
@@ -1668,7 +1848,8 @@
       "team_id": "T22",
       "team_name": "XDS Astana Team",
       "strava_athlete_url": "https://www.strava.com/athletes/1732923",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B226",
@@ -1677,7 +1858,8 @@
       "nationality": "Italy",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/18777210"
+      "strava_athlete_url": "https://www.strava.com/athletes/18777210",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B227",
@@ -1686,7 +1868,8 @@
       "nationality": "Uruguay",
       "team_id": "T22",
       "team_name": "XDS Astana Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/26893059"
+      "strava_athlete_url": "https://www.strava.com/athletes/26893059",
+      "withdraw_stage": -1
     },
     {
       "rider_id": "B228",
@@ -1696,7 +1879,8 @@
       "team_id": "T22",
       "team_name": "XDS Astana Team",
       "strava_athlete_url": "https://www.strava.com/athletes/7076880",
-      "enabled": false
+      "enabled": false,
+      "withdraw_stage": -1
     }
   ]
 }

@@ -39,20 +39,41 @@ def rider_strava_enabled(rider: dict) -> bool:
     return True
 
 
+def stage_num(stage_id: str) -> int:
+    try:
+        return int(str(stage_id).lstrip("S"))
+    except Exception:
+        return -1
+
+
+def is_withdrawn_for_stage(rider: dict, sid: str) -> bool:
+    try:
+        ws = int(rider.get("withdraw_stage", -1))
+    except Exception:
+        ws = -1
+    if ws < 0:
+        return False
+    return stage_num(sid) > ws
+
+
 def generate_rider_page(base: Path, rider: dict, stages: list[dict], stage_links: dict[str, dict]) -> Path:
     rows: list[str] = []
     for s in stages:
         sid = s["stage_id"]
         route = f"{s.get('start_city', '')} \u2192 {s.get('finish_city', '')}"
         activity_url = ""
+        cached_start = "-"
         payload = stage_links.get(sid, {})
         for a in payload.get("activities", []):
             if a.get("rider_id") == rider["rider_id"]:
                 activity_url = a.get("activity_url") or ""
+                cached_start = a.get("gpx_start_hhmm") or "-"
                 break
+        if is_withdrawn_for_stage(rider, sid):
+            activity_url = ""
 
         gpx_cell = "-"
-        start = "-"
+        start = cached_start
         if activity_url:
             m = re.search(r"/activities/(\d+)", activity_url)
             if m:
@@ -60,7 +81,8 @@ def generate_rider_page(base: Path, rider: dict, stages: list[dict], stage_links
                 gpx = base / "courses" / sid / f"{rider['rider_id']}__activity_{aid}.gpx"
                 if gpx.exists() and gpx.stat().st_size > 0:
                     gpx_cell = f'<a href="file://{gpx}" target="_blank" rel="noopener noreferrer">yes</a>'
-                    start = extract_start_hhmm(gpx)
+                    if start == "-":
+                        start = extract_start_hhmm(gpx)
         activity_cell = (
             f'<a href="{activity_url}" target="_blank" rel="noopener noreferrer">activity</a>'
             if activity_url

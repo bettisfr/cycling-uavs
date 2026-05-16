@@ -177,6 +177,29 @@ def _rider_strava_enabled(rider: dict) -> bool:
     return True
 
 
+def _stage_num(stage_id: str) -> int:
+    try:
+        return int(str(stage_id).lstrip("S"))
+    except Exception:
+        return -1
+
+
+def _withdraw_stage(rider: dict) -> int:
+    try:
+        ws = int(rider.get("withdraw_stage", -1))
+        return ws if ws >= 0 else -1
+    except Exception:
+        return -1
+
+
+def _is_withdrawn_for_stage(rider: dict, stage_id: str) -> bool:
+    ws = _withdraw_stage(rider)
+    if ws < 0:
+        return False
+    sn = _stage_num(stage_id)
+    return sn > ws
+
+
 def _extract_start_hhmm_from_gpx(gpx_path: Path) -> str:
     # Fast path: scan only for the first <time> tag instead of full GPX parsing.
     try:
@@ -200,6 +223,40 @@ def _extract_start_hhmm_from_gpx(gpx_path: Path) -> str:
     except Exception:
         return "-"
     return "-"
+
+
+def _extract_distance_km_from_gpx(gpx_path: Path) -> str:
+    try:
+        root = ET.parse(gpx_path).getroot()
+        pts: list[tuple[float, float]] = []
+        for p in root.iter():
+            if not p.tag.endswith("trkpt"):
+                continue
+            lat = p.attrib.get("lat")
+            lon = p.attrib.get("lon")
+            if lat is None or lon is None:
+                continue
+            pts.append((float(lat), float(lon)))
+        if len(pts) < 2:
+            return "-"
+
+        def h_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+            r = 6371000.0
+            p1 = math.radians(lat1)
+            p2 = math.radians(lat2)
+            dp = math.radians(lat2 - lat1)
+            dl = math.radians(lon2 - lon1)
+            a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+            return 2 * r * math.asin(math.sqrt(a))
+
+        dist_km = 0.0
+        for i in range(1, len(pts)):
+            a = pts[i - 1]
+            b = pts[i]
+            dist_km += h_m(a[0], a[1], b[0], b[1]) / 1000.0
+        return f"{dist_km:.1f}"
+    except Exception:
+        return "-"
 
 
 def _stage_gpx_metrics(dataset_dir: Path, stage_id: str) -> tuple[float | None, int | None]:
@@ -378,11 +435,12 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
 
     stage_payload = json.loads((dataset_dir / "stage_links" / f"{stage_id}.json").read_text(encoding="utf-8"))
     rows = stage_payload["activities"]
+    stage_payload_changed = False
     eligible = 0
     with_activity = 0
     for row in rows:
         rider = riders_by_id.get(row["rider_id"], {})
-        if _rider_strava_enabled(rider) and rider.get("strava_athlete_url"):
+        if _rider_strava_enabled(rider) and rider.get("strava_athlete_url") and not _is_withdrawn_for_stage(rider, stage_id):
             eligible += 1
             if row.get("activity_url"):
                 with_activity += 1
@@ -396,11 +454,15 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
         name = rider.get("name", row["rider_id"])
         team = rider.get("team_name", "")
         nationality = rider.get("nationality", "")
-        profile_url = rider.get("strava_athlete_url") if _rider_strava_enabled(rider) else None
+        withdrawn_now = _is_withdrawn_for_stage(rider, stage_id)
+        profile_url = rider.get("strava_athlete_url") if (_rider_strava_enabled(rider) and not withdrawn_now) else None
         activity_url = row.get("activity_url")
-        has_profile = _rider_strava_enabled(rider) and bool(rider.get("strava_athlete_url"))
+        has_profile = (_rider_strava_enabled(rider) and bool(rider.get("strava_athlete_url")) and not withdrawn_now)
+        if withdrawn_now:
+            activity_url = None
         gpx_cell = "-"
         start_hhmm = "-"
+        gpx_km = "-"
         if activity_url:
             m = re.search(r"/activities/(\d+)", activity_url)
             if m:
@@ -414,7 +476,20 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
                 if gpx_path.exists() and gpx_path.stat().st_size > 0:
                     safe_path = html.escape(str(gpx_path), quote=True)
                     gpx_cell = f'<a href="file://{safe_path}" target="_blank" rel="noopener noreferrer">yes</a>'
-                    start_hhmm = _extract_start_hhmm_from_gpx(gpx_path)
+                    start_hhmm = row.get("gpx_start_hhmm") or "-"
+                    gpx_km = row.get("gpx_km") or "-"
+                    if start_hhmm == "-" or gpx_km == "-":
+                        start_hhmm = _extract_start_hhmm_from_gpx(gpx_path)
+                        gpx_km = _extract_distance_km_from_gpx(gpx_path)
+                        row["gpx_start_hhmm"] = start_hhmm if start_hhmm != "-" else None
+                        row["gpx_km"] = gpx_km if gpx_km != "-" else None
+                        row["gpx_path"] = str(gpx_path)
+                        stage_payload_changed = True
+                else:
+                    if row.get("gpx_start_hhmm") is not None or row.get("gpx_km") is not None:
+                        row["gpx_start_hhmm"] = None
+                        row["gpx_km"] = None
+                        stage_payload_changed = True
 
         row_class = ""
         try:
@@ -441,6 +516,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
             f"<td>{activity_cell}</td>"
             f"<td>{gpx_cell}</td>"
             f"<td{' class=\"start-midnight\"' if start_hhmm.startswith('00:') else ''}>{start_hhmm}</td>"
+            f"<td>{gpx_km}</td>"
             "</tr>"
         )
 
@@ -471,7 +547,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
   <div class="tbl"><table>
     <thead>
       <tr>
-        <th>Bib</th><th>Name</th><th>Team</th><th>Nationality</th><th>Strava Profile</th><th>Stage Activity</th><th>GPX</th><th>Start</th>
+        <th>Bib</th><th>Name</th><th>Team</th><th>Nationality</th><th>Strava Profile</th><th>Stage Activity</th><th>GPX</th><th>Start</th><th>Km</th>
       </tr>
     </thead>
     <tbody>
@@ -487,6 +563,11 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{stage_id}.html"
     out_path.write_text(html_out, encoding="utf-8")
+    if stage_payload_changed:
+        (dataset_dir / "stage_links" / f"{stage_id}.json").write_text(
+            json.dumps(stage_payload, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
     return out_path
 
 
@@ -510,7 +591,7 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
             total = len(activities)
             for a in activities:
                 rider = riders_by_id.get(a.get("rider_id"), {})
-                if _rider_strava_enabled(rider) and rider.get("strava_athlete_url"):
+                if _rider_strava_enabled(rider) and rider.get("strava_athlete_url") and not _is_withdrawn_for_stage(rider, stage_id):
                     eligible += 1
                     if a.get("activity_url"):
                         found += 1

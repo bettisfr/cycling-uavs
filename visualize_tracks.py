@@ -31,6 +31,7 @@ COLORS = [
     "#f781bf",
     "#999999",
 ]
+FLIGHT_COLOR = "#DFFF00"
 
 
 def parse_iso_utc(value: str) -> datetime | None:
@@ -199,7 +200,7 @@ def render_stage_map(args: argparse.Namespace, stage_id: str, flight_offset_min:
             delta_ms = int(flight_offset_min * 60_000)
             for p in pts:
                 p["t_ms"] += delta_ms
-        tracks.append({"name": csv_path.stem, "kind": "flight", "color": COLORS[color_idx % len(COLORS)], "idx": color_idx, "points": pts})
+        tracks.append({"name": csv_path.stem, "kind": "flight", "color": FLIGHT_COLOR, "idx": color_idx, "points": pts})
         color_idx += 1
 
     if not tracks:
@@ -219,7 +220,7 @@ def render_stage_map(args: argparse.Namespace, stage_id: str, flight_offset_min:
             color=t["color"],
             weight=3 if t["kind"] == "flight" else 2,
             opacity=0.9 if t["kind"] == "flight" else 0.75,
-            dash_array="8,6" if t["kind"] == "course" and (t.get("idx", 0) % 2 == 1) else None,
+            dash_array="8,6" if t["kind"] == "flight" else ("8,6" if t["kind"] == "course" and (t.get("idx", 0) % 2 == 1) else None),
             tooltip=t["name"],
         ).add_to(m)
 

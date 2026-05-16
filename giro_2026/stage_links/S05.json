@@ -16,27 +16,47 @@
     {
       "rider_id": "B002",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18495497533"
+      "activity_url": "https://www.strava.com/activities/18495497533",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "200.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B002__activity_18495497533.gpx"
     },
     {
       "rider_id": "B003",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492473170"
+      "activity_url": "https://www.strava.com/activities/18492473170",
+      "locked": true,
+      "gpx_start_hhmm": "00:00",
+      "gpx_km": "200.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B003__activity_18492473170.gpx"
     },
     {
       "rider_id": "B004",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493118450"
+      "activity_url": "https://www.strava.com/activities/18493118450",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B004__activity_18493118450.gpx"
     },
     {
       "rider_id": "B005",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492503096"
+      "activity_url": "https://www.strava.com/activities/18492503096",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B005__activity_18492503096.gpx"
     },
     {
       "rider_id": "B006",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492853299"
+      "activity_url": "https://www.strava.com/activities/18492853299",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B006__activity_18492853299.gpx"
     },
     {
       "rider_id": "B007",
@@ -46,7 +66,11 @@
     {
       "rider_id": "B008",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492500520"
+      "activity_url": "https://www.strava.com/activities/18492500520",
+      "locked": true,
+      "gpx_start_hhmm": "12:20",
+      "gpx_km": "206.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B008__activity_18492500520.gpx"
     },
     {
       "rider_id": "B011",
@@ -56,12 +80,20 @@
     {
       "rider_id": "B012",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492861718"
+      "activity_url": "https://www.strava.com/activities/18492861718",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B012__activity_18492861718.gpx"
     },
     {
       "rider_id": "B013",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492770958"
+      "activity_url": "https://www.strava.com/activities/18492770958",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B013__activity_18492770958.gpx"
     },
     {
       "rider_id": "B014",
@@ -71,17 +103,29 @@
     {
       "rider_id": "B015",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492746502"
+      "activity_url": "https://www.strava.com/activities/18492746502",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B015__activity_18492746502.gpx"
     },
     {
       "rider_id": "B016",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492840707"
+      "activity_url": "https://www.strava.com/activities/18492840707",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "210.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B016__activity_18492840707.gpx"
     },
     {
       "rider_id": "B017",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492566365"
+      "activity_url": "https://www.strava.com/activities/18492566365",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "206.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B017__activity_18492566365.gpx"
     },
     {
       "rider_id": "B018",
@@ -91,42 +135,74 @@
     {
       "rider_id": "B021",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492668735"
+      "activity_url": "https://www.strava.com/activities/18492668735",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "200.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B021__activity_18492668735.gpx"
     },
     {
       "rider_id": "B022",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492630795"
+      "activity_url": "https://www.strava.com/activities/18492630795",
+      "locked": true,
+      "gpx_start_hhmm": "00:01",
+      "gpx_km": "197.4",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B022__activity_18492630795.gpx"
     },
     {
       "rider_id": "B023",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492664199"
+      "activity_url": "https://www.strava.com/activities/18492664199",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B023__activity_18492664199.gpx"
     },
     {
       "rider_id": "B024",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492517663"
+      "activity_url": "https://www.strava.com/activities/18492517663",
+      "locked": true,
+      "gpx_start_hhmm": "12:28",
+      "gpx_km": "198.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B024__activity_18492517663.gpx"
     },
     {
       "rider_id": "B025",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492683471"
+      "activity_url": "https://www.strava.com/activities/18492683471",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "199.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B025__activity_18492683471.gpx"
     },
     {
       "rider_id": "B026",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492776192"
+      "activity_url": "https://www.strava.com/activities/18492776192",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "200.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B026__activity_18492776192.gpx"
     },
     {
       "rider_id": "B027",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493909271"
+      "activity_url": "https://www.strava.com/activities/18493909271",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "197.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B027__activity_18493909271.gpx"
     },
     {
       "rider_id": "B028",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493019148"
+      "activity_url": "https://www.strava.com/activities/18493019148",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "196.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B028__activity_18493019148.gpx"
     },
     {
       "rider_id": "B031",
@@ -136,7 +212,11 @@
     {
       "rider_id": "B032",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492470832"
+      "activity_url": "https://www.strava.com/activities/18492470832",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B032__activity_18492470832.gpx"
     },
     {
       "rider_id": "B033",
@@ -151,12 +231,20 @@
     {
       "rider_id": "B035",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492570735"
+      "activity_url": "https://www.strava.com/activities/18492570735",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "205.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B035__activity_18492570735.gpx"
     },
     {
       "rider_id": "B036",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492895223"
+      "activity_url": "https://www.strava.com/activities/18492895223",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B036__activity_18492895223.gpx"
     },
     {
       "rider_id": "B037",
@@ -166,12 +254,20 @@
     {
       "rider_id": "B038",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492919423"
+      "activity_url": "https://www.strava.com/activities/18492919423",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "209.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B038__activity_18492919423.gpx"
     },
     {
       "rider_id": "B041",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492557821"
+      "activity_url": "https://www.strava.com/activities/18492557821",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "201.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B041__activity_18492557821.gpx"
     },
     {
       "rider_id": "B042",
@@ -186,7 +282,11 @@
     {
       "rider_id": "B044",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492656266"
+      "activity_url": "https://www.strava.com/activities/18492656266",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B044__activity_18492656266.gpx"
     },
     {
       "rider_id": "B045",
@@ -201,7 +301,11 @@
     {
       "rider_id": "B047",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492763140"
+      "activity_url": "https://www.strava.com/activities/18492763140",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "105.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B047__activity_18492763140.gpx"
     },
     {
       "rider_id": "B048",
@@ -211,57 +315,97 @@
     {
       "rider_id": "B051",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492810868"
+      "activity_url": "https://www.strava.com/activities/18492810868",
+      "locked": true,
+      "gpx_start_hhmm": "13:56",
+      "gpx_km": "147.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B051__activity_18492810868.gpx"
     },
     {
       "rider_id": "B052",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492821579"
+      "activity_url": "https://www.strava.com/activities/18492821579",
+      "locked": true,
+      "gpx_start_hhmm": "00:05",
+      "gpx_km": "208.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B052__activity_18492821579.gpx"
     },
     {
       "rider_id": "B053",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492760493"
+      "activity_url": "https://www.strava.com/activities/18492760493",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "201.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B053__activity_18492760493.gpx"
     },
     {
       "rider_id": "B054",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492502228"
+      "activity_url": "https://www.strava.com/activities/18492502228",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "206.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B054__activity_18492502228.gpx"
     },
     {
       "rider_id": "B055",
-      "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492323957"
+      "status": "not_checked",
+      "activity_url": null
     },
     {
       "rider_id": "B056",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492737510"
+      "activity_url": "https://www.strava.com/activities/18492737510",
+      "locked": true,
+      "gpx_start_hhmm": "12:14",
+      "gpx_km": "207.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B056__activity_18492737510.gpx"
     },
     {
       "rider_id": "B057",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492560537"
+      "activity_url": "https://www.strava.com/activities/18492560537",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "209.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B057__activity_18492560537.gpx"
     },
     {
       "rider_id": "B058",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492796889"
+      "activity_url": "https://www.strava.com/activities/18492796889",
+      "locked": true,
+      "gpx_start_hhmm": "17:23",
+      "gpx_km": "286.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B058__activity_18492796889.gpx"
     },
     {
       "rider_id": "B061",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18494480378"
+      "activity_url": "https://www.strava.com/activities/18494480378",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "201.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B061__activity_18494480378.gpx"
     },
     {
       "rider_id": "B062",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493053767"
+      "activity_url": "https://www.strava.com/activities/18493053767",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "207.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B062__activity_18493053767.gpx"
     },
     {
       "rider_id": "B063",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492625046"
+      "activity_url": "https://www.strava.com/activities/18492625046",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B063__activity_18492625046.gpx"
     },
     {
       "rider_id": "B064",
@@ -276,7 +420,11 @@
     {
       "rider_id": "B066",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493034316"
+      "activity_url": "https://www.strava.com/activities/18493034316",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "209.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B066__activity_18493034316.gpx"
     },
     {
       "rider_id": "B067",
@@ -296,7 +444,11 @@
     {
       "rider_id": "B072",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493225310"
+      "activity_url": "https://www.strava.com/activities/18493225310",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B072__activity_18493225310.gpx"
     },
     {
       "rider_id": "B073",
@@ -306,7 +458,11 @@
     {
       "rider_id": "B074",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492491280"
+      "activity_url": "https://www.strava.com/activities/18492491280",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B074__activity_18492491280.gpx"
     },
     {
       "rider_id": "B075",
@@ -321,12 +477,20 @@
     {
       "rider_id": "B077",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493001531"
+      "activity_url": "https://www.strava.com/activities/18493001531",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "201.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B077__activity_18493001531.gpx"
     },
     {
       "rider_id": "B078",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492764086"
+      "activity_url": "https://www.strava.com/activities/18492764086",
+      "locked": true,
+      "gpx_start_hhmm": "12:15",
+      "gpx_km": "207.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B078__activity_18492764086.gpx"
     },
     {
       "rider_id": "B081",
@@ -336,7 +500,11 @@
     {
       "rider_id": "B082",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493164450"
+      "activity_url": "https://www.strava.com/activities/18493164450",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B082__activity_18493164450.gpx"
     },
     {
       "rider_id": "B083",
@@ -346,12 +514,20 @@
     {
       "rider_id": "B084",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492362204"
+      "activity_url": "https://www.strava.com/activities/18492362204",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "208.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B084__activity_18492362204.gpx"
     },
     {
       "rider_id": "B085",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493086387"
+      "activity_url": "https://www.strava.com/activities/18493086387",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "206.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B085__activity_18493086387.gpx"
     },
     {
       "rider_id": "B086",
@@ -370,18 +546,26 @@
     },
     {
       "rider_id": "B091",
-      "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493194029"
+      "status": "not_checked",
+      "activity_url": null
     },
     {
       "rider_id": "B092",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492697732"
+      "activity_url": "https://www.strava.com/activities/18492697732",
+      "locked": true,
+      "gpx_start_hhmm": "12:21",
+      "gpx_km": "205.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B092__activity_18492697732.gpx"
     },
     {
       "rider_id": "B093",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492878351"
+      "activity_url": "https://www.strava.com/activities/18492878351",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "209.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B093__activity_18492878351.gpx"
     },
     {
       "rider_id": "B094",
@@ -391,17 +575,29 @@
     {
       "rider_id": "B095",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492823768"
+      "activity_url": "https://www.strava.com/activities/18492823768",
+      "locked": true,
+      "gpx_start_hhmm": "00:00",
+      "gpx_km": "210.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B095__activity_18492823768.gpx"
     },
     {
       "rider_id": "B096",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492771300"
+      "activity_url": "https://www.strava.com/activities/18492771300",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B096__activity_18492771300.gpx"
     },
     {
       "rider_id": "B097",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492680517"
+      "activity_url": "https://www.strava.com/activities/18492680517",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.4",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B097__activity_18492680517.gpx"
     },
     {
       "rider_id": "B098",
@@ -411,7 +607,11 @@
     {
       "rider_id": "B101",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492433496"
+      "activity_url": "https://www.strava.com/activities/18492433496",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "120.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B101__activity_18492433496.gpx"
     },
     {
       "rider_id": "B102",
@@ -421,42 +621,73 @@
     {
       "rider_id": "B103",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492594014"
+      "activity_url": "https://www.strava.com/activities/18492594014",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B103__activity_18492594014.gpx"
     },
     {
       "rider_id": "B104",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492441447"
+      "activity_url": "https://www.strava.com/activities/18492441447",
+      "locked": true,
+      "gpx_start_hhmm": "00:00",
+      "gpx_km": "209.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B104__activity_18492441447.gpx"
     },
     {
       "rider_id": "B105",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492559552"
+      "activity_url": "https://www.strava.com/activities/18492559552",
+      "locked": true,
+      "gpx_start_hhmm": "12:02",
+      "gpx_km": "210.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B105__activity_18492559552.gpx"
     },
     {
       "rider_id": "B106",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492546862"
+      "activity_url": "https://www.strava.com/activities/18492546862",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "210.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B106__activity_18492546862.gpx"
     },
     {
       "rider_id": "B107",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492905701"
+      "activity_url": "https://www.strava.com/activities/18492905701",
+      "gpx_start_hhmm": "11:27",
+      "gpx_km": "212.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B107__activity_18492905701.gpx"
     },
     {
       "rider_id": "B109",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492565264"
+      "activity_url": "https://www.strava.com/activities/18492565264",
+      "locked": true,
+      "gpx_start_hhmm": "12:30",
+      "gpx_km": "197.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B109__activity_18492565264.gpx"
     },
     {
       "rider_id": "B111",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493032881"
+      "activity_url": "https://www.strava.com/activities/18493032881",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.4",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B111__activity_18493032881.gpx"
     },
     {
       "rider_id": "B112",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492701198"
+      "activity_url": "https://www.strava.com/activities/18492701198",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "210.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B112__activity_18492701198.gpx"
     },
     {
       "rider_id": "B113",
@@ -466,12 +697,20 @@
     {
       "rider_id": "B114",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492785358"
+      "activity_url": "https://www.strava.com/activities/18492785358",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "210.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B114__activity_18492785358.gpx"
     },
     {
       "rider_id": "B115",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493041285"
+      "activity_url": "https://www.strava.com/activities/18493041285",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "202.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B115__activity_18493041285.gpx"
     },
     {
       "rider_id": "B116",
@@ -486,7 +725,11 @@
     {
       "rider_id": "B118",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492477394"
+      "activity_url": "https://www.strava.com/activities/18492477394",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B118__activity_18492477394.gpx"
     },
     {
       "rider_id": "B121",
@@ -511,12 +754,20 @@
     {
       "rider_id": "B125",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492719569"
+      "activity_url": "https://www.strava.com/activities/18492719569",
+      "locked": true,
+      "gpx_start_hhmm": "00:00",
+      "gpx_km": "202.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B125__activity_18492719569.gpx"
     },
     {
       "rider_id": "B126",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492705179"
+      "activity_url": "https://www.strava.com/activities/18492705179",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B126__activity_18492705179.gpx"
     },
     {
       "rider_id": "B127",
@@ -526,12 +777,20 @@
     {
       "rider_id": "B128",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492546779"
+      "activity_url": "https://www.strava.com/activities/18492546779",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B128__activity_18492546779.gpx"
     },
     {
       "rider_id": "B131",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493007771"
+      "activity_url": "https://www.strava.com/activities/18493007771",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B131__activity_18493007771.gpx"
     },
     {
       "rider_id": "B132",
@@ -541,22 +800,37 @@
     {
       "rider_id": "B133",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492337877"
+      "activity_url": "https://www.strava.com/activities/18492337877",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "202.4",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B133__activity_18492337877.gpx"
     },
     {
       "rider_id": "B134",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492344407"
+      "activity_url": "https://www.strava.com/activities/18492344407",
+      "locked": true,
+      "gpx_start_hhmm": "00:00",
+      "gpx_km": "207.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B134__activity_18492344407.gpx"
     },
     {
       "rider_id": "B135",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492739363",
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "210.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B135__activity_18492739363.gpx"
     },
     {
       "rider_id": "B136",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492568343"
+      "activity_url": "https://www.strava.com/activities/18492568343",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "201.4",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B136__activity_18492568343.gpx"
     },
     {
       "rider_id": "B137",
@@ -566,12 +840,20 @@
     {
       "rider_id": "B138",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492669878"
+      "activity_url": "https://www.strava.com/activities/18492669878",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "202.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B138__activity_18492669878.gpx"
     },
     {
       "rider_id": "B141",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492849374"
+      "activity_url": "https://www.strava.com/activities/18492849374",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B141__activity_18492849374.gpx"
     },
     {
       "rider_id": "B142",
@@ -581,17 +863,29 @@
     {
       "rider_id": "B143",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493721872"
+      "activity_url": "https://www.strava.com/activities/18493721872",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B143__activity_18493721872.gpx"
     },
     {
       "rider_id": "B144",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492674703"
+      "activity_url": "https://www.strava.com/activities/18492674703",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B144__activity_18492674703.gpx"
     },
     {
       "rider_id": "B145",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492899775"
+      "activity_url": "https://www.strava.com/activities/18492899775",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B145__activity_18492899775.gpx"
     },
     {
       "rider_id": "B146",
@@ -611,47 +905,83 @@
     {
       "rider_id": "B151",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492893304"
+      "activity_url": "https://www.strava.com/activities/18492893304",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B151__activity_18492893304.gpx"
     },
     {
       "rider_id": "B152",
-      "status": "not_checked",
-      "activity_url": null
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492381817",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "31.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B152__activity_18492381817.gpx"
     },
     {
       "rider_id": "B153",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492851695"
+      "activity_url": "https://www.strava.com/activities/18492851695",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B153__activity_18492851695.gpx"
     },
     {
       "rider_id": "B154",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492812441"
+      "activity_url": "https://www.strava.com/activities/18492812441",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B154__activity_18492812441.gpx"
     },
     {
       "rider_id": "B155",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492833955"
+      "activity_url": "https://www.strava.com/activities/18492833955",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "201.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B155__activity_18492833955.gpx"
     },
     {
       "rider_id": "B156",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492775686"
+      "activity_url": "https://www.strava.com/activities/18492775686",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B156__activity_18492775686.gpx"
     },
     {
       "rider_id": "B157",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492862595"
+      "activity_url": "https://www.strava.com/activities/18492862595",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B157__activity_18492862595.gpx"
     },
     {
       "rider_id": "B158",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492611924"
+      "activity_url": "https://www.strava.com/activities/18492611924",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B158__activity_18492611924.gpx"
     },
     {
       "rider_id": "B161",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492976120"
+      "activity_url": "https://www.strava.com/activities/18492976120",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "209.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B161__activity_18492976120.gpx"
     },
     {
       "rider_id": "B162",
@@ -661,7 +991,11 @@
     {
       "rider_id": "B163",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492592428"
+      "activity_url": "https://www.strava.com/activities/18492592428",
+      "locked": true,
+      "gpx_start_hhmm": "12:19",
+      "gpx_km": "199.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B163__activity_18492592428.gpx"
     },
     {
       "rider_id": "B164",
@@ -676,7 +1010,11 @@
     {
       "rider_id": "B166",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492668191"
+      "activity_url": "https://www.strava.com/activities/18492668191",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "208.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B166__activity_18492668191.gpx"
     },
     {
       "rider_id": "B167",
@@ -686,7 +1024,11 @@
     {
       "rider_id": "B168",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492740722"
+      "activity_url": "https://www.strava.com/activities/18492740722",
+      "locked": true,
+      "gpx_start_hhmm": "12:30",
+      "gpx_km": "199.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B168__activity_18492740722.gpx"
     },
     {
       "rider_id": "B171",
@@ -706,27 +1048,47 @@
     {
       "rider_id": "B174",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492480199"
+      "activity_url": "https://www.strava.com/activities/18492480199",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "210.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B174__activity_18492480199.gpx"
     },
     {
       "rider_id": "B175",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492393376"
+      "activity_url": "https://www.strava.com/activities/18492393376",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B175__activity_18492393376.gpx"
     },
     {
       "rider_id": "B176",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492517238"
+      "activity_url": "https://www.strava.com/activities/18492517238",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "210.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B176__activity_18492517238.gpx"
     },
     {
       "rider_id": "B177",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492640791"
+      "activity_url": "https://www.strava.com/activities/18492640791",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "209.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B177__activity_18492640791.gpx"
     },
     {
       "rider_id": "B178",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492679981"
+      "activity_url": "https://www.strava.com/activities/18492679981",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B178__activity_18492679981.gpx"
     },
     {
       "rider_id": "B181",
@@ -736,7 +1098,11 @@
     {
       "rider_id": "B182",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492673219"
+      "activity_url": "https://www.strava.com/activities/18492673219",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "209.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B182__activity_18492673219.gpx"
     },
     {
       "rider_id": "B183",
@@ -746,12 +1112,20 @@
     {
       "rider_id": "B184",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493011849"
+      "activity_url": "https://www.strava.com/activities/18493011849",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "211.4",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B184__activity_18493011849.gpx"
     },
     {
       "rider_id": "B185",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492848924"
+      "activity_url": "https://www.strava.com/activities/18492848924",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.8",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B185__activity_18492848924.gpx"
     },
     {
       "rider_id": "B186",
@@ -761,12 +1135,20 @@
     {
       "rider_id": "B187",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493087220"
+      "activity_url": "https://www.strava.com/activities/18493087220",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "206.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B187__activity_18493087220.gpx"
     },
     {
       "rider_id": "B188",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492447277"
+      "activity_url": "https://www.strava.com/activities/18492447277",
+      "locked": true,
+      "gpx_start_hhmm": "12:19",
+      "gpx_km": "208.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B188__activity_18492447277.gpx"
     },
     {
       "rider_id": "B191",
@@ -786,7 +1168,11 @@
     {
       "rider_id": "B194",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493165378"
+      "activity_url": "https://www.strava.com/activities/18493165378",
+      "locked": true,
+      "gpx_start_hhmm": "12:29",
+      "gpx_km": "201.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B194__activity_18493165378.gpx"
     },
     {
       "rider_id": "B195",
@@ -801,7 +1187,11 @@
     {
       "rider_id": "B197",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493062169"
+      "activity_url": "https://www.strava.com/activities/18493062169",
+      "locked": true,
+      "gpx_start_hhmm": "12:28",
+      "gpx_km": "201.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B197__activity_18493062169.gpx"
     },
     {
       "rider_id": "B198",
@@ -816,7 +1206,11 @@
     {
       "rider_id": "B202",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492559649"
+      "activity_url": "https://www.strava.com/activities/18492559649",
+      "locked": true,
+      "gpx_start_hhmm": "12:30",
+      "gpx_km": "201.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B202__activity_18492559649.gpx"
     },
     {
       "rider_id": "B203",
@@ -826,12 +1220,20 @@
     {
       "rider_id": "B204",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492989434"
+      "activity_url": "https://www.strava.com/activities/18492989434",
+      "locked": true,
+      "gpx_start_hhmm": null,
+      "gpx_km": "203.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B204__activity_18492989434.gpx"
     },
     {
       "rider_id": "B205",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492855686"
+      "activity_url": "https://www.strava.com/activities/18492855686",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "206.7",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B205__activity_18492855686.gpx"
     },
     {
       "rider_id": "B206",
@@ -841,17 +1243,29 @@
     {
       "rider_id": "B207",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492441038"
+      "activity_url": "https://www.strava.com/activities/18492441038",
+      "locked": true,
+      "gpx_start_hhmm": "12:18",
+      "gpx_km": "205.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B207__activity_18492441038.gpx"
     },
     {
       "rider_id": "B208",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492850991"
+      "activity_url": "https://www.strava.com/activities/18492850991",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B208__activity_18492850991.gpx"
     },
     {
       "rider_id": "B211",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492636144"
+      "activity_url": "https://www.strava.com/activities/18492636144",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.3",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B211__activity_18492636144.gpx"
     },
     {
       "rider_id": "B212",
@@ -866,32 +1280,56 @@
     {
       "rider_id": "B214",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492374842"
+      "activity_url": "https://www.strava.com/activities/18492374842",
+      "locked": true,
+      "gpx_start_hhmm": "12:16",
+      "gpx_km": "207.9",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B214__activity_18492374842.gpx"
     },
     {
       "rider_id": "B215",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492452658"
+      "activity_url": "https://www.strava.com/activities/18492452658",
+      "locked": true,
+      "gpx_start_hhmm": "11:51",
+      "gpx_km": "212.6",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B215__activity_18492452658.gpx"
     },
     {
       "rider_id": "B216",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492916473"
+      "activity_url": "https://www.strava.com/activities/18492916473",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "210.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B216__activity_18492916473.gpx"
     },
     {
       "rider_id": "B217",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492582777"
+      "activity_url": "https://www.strava.com/activities/18492582777",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.0",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B217__activity_18492582777.gpx"
     },
     {
       "rider_id": "B218",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492331439"
+      "activity_url": "https://www.strava.com/activities/18492331439",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.5",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B218__activity_18492331439.gpx"
     },
     {
       "rider_id": "B221",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493024072"
+      "activity_url": "https://www.strava.com/activities/18493024072",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "210.2",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B221__activity_18493024072.gpx"
     },
     {
       "rider_id": "B222",
@@ -901,7 +1339,11 @@
     {
       "rider_id": "B223",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18492924410"
+      "activity_url": "https://www.strava.com/activities/18492924410",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "210.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B223__activity_18492924410.gpx"
     },
     {
       "rider_id": "B224",
@@ -921,7 +1363,11 @@
     {
       "rider_id": "B227",
       "status": "found_public",
-      "activity_url": "https://www.strava.com/activities/18493262175"
+      "activity_url": "https://www.strava.com/activities/18493262175",
+      "locked": true,
+      "gpx_start_hhmm": "12:17",
+      "gpx_km": "207.1",
+      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S05/B227__activity_18493262175.gpx"
     },
     {
       "rider_id": "B228",
