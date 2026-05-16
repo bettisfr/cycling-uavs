@@ -590,9 +590,20 @@ def main() -> int:
     if args.raw_file:
         raw_path = Path(args.raw_file)
     else:
-        raw_upper = dataset_dir / "raw" / f"{args.stage_id}.txt"
-        raw_lower = dataset_dir / "raw" / f"{args.stage_id.lower()}.txt"
-        raw_path = raw_upper if raw_upper.exists() else raw_lower
+        # Preferred: giro_2026/raw/stages/SXX.txt
+        raw_upper_new = dataset_dir / "raw" / "stages" / f"{args.stage_id}.txt"
+        raw_lower_new = dataset_dir / "raw" / "stages" / f"{args.stage_id.lower()}.txt"
+        # Backward compatibility: giro_2026/raw/SXX.txt
+        raw_upper_old = dataset_dir / "raw" / f"{args.stage_id}.txt"
+        raw_lower_old = dataset_dir / "raw" / f"{args.stage_id.lower()}.txt"
+        if raw_upper_new.exists():
+            raw_path = raw_upper_new
+        elif raw_lower_new.exists():
+            raw_path = raw_lower_new
+        elif raw_upper_old.exists():
+            raw_path = raw_upper_old
+        else:
+            raw_path = raw_lower_old
     if not raw_path.exists():
         raise SystemExit(f"Raw file not found: {raw_path}")
     if not stage_path.exists():
