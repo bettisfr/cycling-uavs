@@ -70,6 +70,9 @@ For `S01-S03` use `--flight-offset-min 60`.
 For `S04+` use `--flight-offset-min 0`.
 
 ```bash
+# all stages (auto offset: S01-S03 => 60, S04+ => 0, and all GPX per stage)
+/home/fra/pyvenv/bin/python visualize_tracks.py --all
+
 # Example S02 (offset 60)
 /home/fra/pyvenv/bin/python visualize_tracks.py   --stage-id S02   --course-tracks 9999   --flight-offset-min 60
 
