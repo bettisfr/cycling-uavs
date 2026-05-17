@@ -16,7 +16,11 @@ Use `SXX` as stage id (example: `S07`).
 ### 1) Fetch rider raw pages (Brave + session cookie)
 
 ```bash
-/home/fra/pyvenv/bin/python fetch_all_rider_raws.py --timeout-sec 20 --headless
+/home/fra/pyvenv/bin/python fetch_all_rider_raws.py \
+  --timeout-sec 20 \
+  --headless \
+  --scroll-steps 12 \
+  --scroll-wait-ms 1200
 ```
 
 Outputs:
@@ -53,7 +57,33 @@ Updates:
 ```
 
 Outputs:
-- `giro_2026/courses/S07/*.gpx`
+- `giro_2026/gpx_store/*.gpx` (single source of truth)
+- `giro_2026/courses/SXX/*.gpx` (symlinks)
+
+### 4b) Rebuild stage GPX links from `gpx_store`
+
+```bash
+/home/fra/pyvenv/bin/python refresh_gpx_links.py --seed-store-from-courses
+```
+
+Outputs:
+- `giro_2026/courses/SXX/*.gpx` synced to `stage_links/SXX.json`
+
+### 4c) Validate duplicates/date mismatches
+
+```bash
+/home/fra/pyvenv/bin/python validate_stage_links.py
+```
+
+### 4d) Reassign stages from GPX date (recommended after GPX download)
+
+```bash
+# preview
+/home/fra/pyvenv/bin/python assign_stage_from_gpx.py --dry-run
+
+# apply
+/home/fra/pyvenv/bin/python assign_stage_from_gpx.py
+```
 
 ### 5) Download aircraft tracks
 
@@ -93,31 +123,42 @@ Note:
 
 ```bash
 # all stages
-/home/fra/pyvenv/bin/python generate_stage_images.py
+/home/fra/pyvenv/bin/python generate_stage_images.py --all
 
 # single stage
 /home/fra/pyvenv/bin/python generate_stage_images.py --stage-id S07
 ```
 
 Outputs:
-- `giro_2026/html/images/SXX_planimetry.png`
-- `giro_2026/html/images/SXX_elevation.png`
+- `giro_2026/html/stages/assets/SXX/planimetry.png`
+- `giro_2026/html/stages/assets/SXX/elevation.png`
 
-### 8) Refresh all HTML pages
+### 8) Step 3: Refresh HTML + Maps
 
 ```bash
-/home/fra/pyvenv/bin/python refresh_html.py
+/home/fra/pyvenv/bin/python step3_refresh_outputs.py
 ```
 
 Regenerates:
 - `giro_2026/html/index.html`
 - `giro_2026/html/stages/SXX.html`
 - `giro_2026/html/riders/BXXX.html`
+- `giro_2026/html/maps/SXX.html`
+
+### 9) Step 4: Lock confirmed activities (run only after visual map check)
+
+```bash
+/home/fra/pyvenv/bin/python step4_lock_confirmed_activities.py
+```
+
+Effect:
+- sets `locked=true` for every row with non-null `activity_url` in `stage_links/SXX.json`
 
 ## Data Layout
 
 - Stage links: `giro_2026/stage_links/SXX.json`
 - Rider GPX: `giro_2026/courses/SXX/`
+- GPX store: `giro_2026/gpx_store/`
 - Flight CSV: `giro_2026/flights/SXX/`
 - Rider raws: `giro_2026/raw/riders/`
 - Stage raws: `giro_2026/raw/stages/`
@@ -131,3 +172,19 @@ Regenerates:
   - `withdraw_stage: N` => rider considered withdrawn after stage `SNN` (excluded from `S(N+1)+` updates/downloads)
 - Heavy/generated local artifacts are not committed.
 - If a rider has `activity_url` but GPX download fails, check `giro_2026/courses/SXX/_download_failures.txt`.
+
+## Quick 4-Step Run
+
+```bash
+# 1) Fetch raw + parse + download GPX pool
+/home/fra/pyvenv/bin/python step1_collect_gpx_pool.py
+
+# 2) Assign stages from GPX pool
+/home/fra/pyvenv/bin/python step2_assign_stages_from_pool.py
+
+# 3) Refresh HTML + maps
+/home/fra/pyvenv/bin/python step3_refresh_outputs.py
+
+# 4) Lock confirmed activities
+/home/fra/pyvenv/bin/python step4_lock_confirmed_activities.py
+```

@@ -10,8 +10,13 @@ import re
 import subprocess
 import time
 from pathlib import Path
+import shutil
 
 import requests
+
+IGNORE_DOWNLOADS: set[tuple[str, str, str]] = {
+    ("S02", "B063", "18441681959"),
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -19,7 +24,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument('--stage-id', default=None, help='Stage id, e.g. S01')
     p.add_argument('--all', action='store_true', help='Process all stage_links/SXX.json files.')
     p.add_argument('--repo-dir', default='/home/fra/Desktop/github/cycling-uavs')
-    p.add_argument('--sleep', type=float, default=5.0, help='Base seconds between requests')
+    p.add_argument('--sleep', type=float, default=2.0, help='Base seconds between requests')
     p.add_argument('--jitter', type=float, default=1.0, help='Random seconds added to sleep')
     p.add_argument('--retries', type=int, default=2, help='Retries per activity on failure')
     p.add_argument('--local-tz', default='Europe/Rome')
@@ -39,6 +44,8 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
     cookie_path = repo / 'strava_session_cookie.txt'
     out_dir = repo / 'giro_2026' / 'courses' / stage_id
     out_dir.mkdir(parents=True, exist_ok=True)
+    store_dir = repo / 'giro_2026' / 'gpx_store'
+    store_dir.mkdir(parents=True, exist_ok=True)
 
     if not stage_path.exists():
         print(f'\n=== {stage_id} ===')
@@ -49,6 +56,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
     riders_path = repo / 'giro_2026' / 'riders.json'
     riders_payload = json.loads(riders_path.read_text(encoding='utf-8')).get('riders', []) if riders_path.exists() else []
     withdraw_by_rider: dict[str, int] = {}
+    enabled_by_rider: dict[str, bool] = {}
     for r in riders_payload:
         if not isinstance(r, dict):
             continue
@@ -60,6 +68,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
         except Exception:
             ws = -1
         withdraw_by_rider[rid] = ws if ws >= 0 else -1
+        enabled_by_rider[rid] = bool(r.get('enabled', True))
 
     try:
         stage_num = int(str(stage_id).lstrip('S'))
@@ -71,6 +80,8 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
         if not a.get('activity_url'):
             continue
         rid = str(a.get('rider_id', ''))
+        if enabled_by_rider.get(rid, True) is False:
+            continue
         ws = withdraw_by_rider.get(rid, -1)
         if ws >= 0 and stage_num > ws:
             continue
@@ -85,6 +96,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
     fails: list[tuple[str, str, str]] = []
 
     pending: list[dict] = []
+    ignored = 0
     for a in activities:
         rider_id = str(a.get('rider_id', 'UNKNOWN'))
         url = str(a.get('activity_url', '')).strip()
@@ -92,8 +104,18 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
         if not m:
             continue
         aid = m.group(1)
-        out = out_dir / f'{rider_id}__activity_{aid}.gpx'
-        if out.exists() and out.stat().st_size > 0:
+        if (stage_id, rider_id, aid) in IGNORE_DOWNLOADS:
+            ignored += 1
+            continue
+        name = f'{rider_id}__activity_{aid}.gpx'
+        out = out_dir / name
+        store = store_dir / name
+        if store.exists() and store.stat().st_size > 0:
+            if not out.exists():
+                try:
+                    out.symlink_to(Path('..') / '..' / 'gpx_store' / name)
+                except Exception:
+                    shutil.copy2(store, out)
             continue
         pending.append(a)
 
@@ -104,7 +126,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
 
     queue = pending[:1] if args.one else pending
     print(f'\n=== {stage_id} ===')
-    print(f'activities_with_url={len(activities)} pending={len(pending)} processing={len(queue)}')
+    print(f'activities_with_url={len(activities)} pending={len(pending)} processing={len(queue)} ignored={ignored}')
 
     for idx, a in enumerate(queue, start=1):
         rider_id = str(a.get('rider_id', 'UNKNOWN'))
@@ -115,7 +137,9 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
             fails.append((rider_id, url, 'invalid activity url'))
             continue
         aid = m.group(1)
-        out = out_dir / f'{rider_id}__activity_{aid}.gpx'
+        name = f'{rider_id}__activity_{aid}.gpx'
+        out = out_dir / name
+        store = store_dir / name
 
         cmd = [
             '/home/fra/pyvenv/bin/python',
@@ -126,7 +150,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
             args.local_tz,
             url,
             '-o',
-            str(out),
+            str(store),
         ]
 
         success = False
@@ -153,13 +177,19 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
                 )
                 text = rr.text if rr.text is not None else ''
                 if rr.status_code == 200 and '<gpx' in text:
-                    out.write_text(text, encoding='utf-8')
+                    store.write_text(text, encoding='utf-8')
                     success = True
             except Exception as exc:
                 if not last_err:
                     last_err = str(exc)
 
         if success:
+            if out.exists() or out.is_symlink():
+                out.unlink(missing_ok=True)
+            try:
+                out.symlink_to(Path('..') / '..' / 'gpx_store' / name)
+            except Exception:
+                shutil.copy2(store, out)
             ok += 1
             print(f'[{idx:03d}/{len(queue):03d}] OK   {rider_id} {aid}')
         else:

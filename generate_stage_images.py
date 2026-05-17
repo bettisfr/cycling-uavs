@@ -110,73 +110,85 @@ def build_profiles(pts: list[tuple[float, float, float | None]]) -> tuple[list[f
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Generate stage planimetry/elevation PNG images from first GPX.")
-    ap.add_argument("--stage-id", required=True, help="e.g. S06")
+    ap.add_argument("--stage-id", default=None, help="e.g. S06")
+    ap.add_argument("--all", action="store_true", help="Generate images for all SXX folders in courses/")
     ap.add_argument("--dataset-dir", default="giro_2026")
     args = ap.parse_args()
+    if not args.all and not args.stage_id:
+        ap.error("either --stage-id or --all is required")
 
     base = Path(args.dataset_dir)
-    gpx_dir = base / "courses" / args.stage_id
-    gpx_path = pick_first_gpx(gpx_dir)
-    pts = load_points(gpx_path)
-    d_km, ele = build_profiles(pts)
+    if args.all:
+        stage_ids = sorted(p.name for p in (base / "courses").glob("S*") if p.is_dir())
+    else:
+        stage_ids = [str(args.stage_id)]
 
-    out_dir = base / "html" / "stages" / "assets" / args.stage_id
-    out_dir.mkdir(parents=True, exist_ok=True)
-    plan_path = out_dir / "planimetry.png"
-    elev_path = out_dir / "elevation.png"
+    for stage_id in stage_ids:
+        gpx_dir = base / "courses" / stage_id
+        try:
+            gpx_path = pick_first_gpx(gpx_dir)
+            pts = load_points(gpx_path)
+        except Exception as exc:
+            print(f"[SKIP] {stage_id} {exc}")
+            continue
+        d_km, ele = build_profiles(pts)
 
-    lats = [p[0] for p in pts]
-    lons = [p[1] for p in pts]
+        out_dir = base / "html" / "stages" / "assets" / stage_id
+        out_dir.mkdir(parents=True, exist_ok=True)
+        plan_path = out_dir / "planimetry.png"
+        elev_path = out_dir / "elevation.png"
 
-    try:
-        bg, z, x0, y0, _, _ = build_osm_background(lats, lons)
-        fig, ax = plt.subplots(figsize=(8, 6), dpi=150)
-        ax.imshow(bg, extent=[0, bg.size[0], bg.size[1], 0])
-        px = []
-        py = []
-        for lat, lon in zip(lats, lons):
-            xt, yt = latlon_to_tile(lat, lon, z)
-            px.append((xt - x0) * 256)
-            py.append((yt - y0) * 256)
-        ax.plot(px, py, color="#1f5fbf", linewidth=2.0)
-        ax.scatter([px[0]], [py[0]], c="#2ca02c", s=30, label="start", zorder=3)
-        ax.scatter([px[-1]], [py[-1]], c="#d62728", s=30, label="finish", zorder=3)
-        ax.set_title(f"{args.stage_id} Planimetry (OSM)")
-        ax.set_xticks([])
-        ax.set_yticks([])
-        ax.legend(loc="best")
-        fig.tight_layout()
-        fig.savefig(plan_path)
-        plt.close(fig)
-    except Exception:
-        # Fallback without basemap.
-        plt.figure(figsize=(8, 6), dpi=150)
-        plt.plot(lons, lats, color="#1f5fbf", linewidth=1.6)
-        plt.scatter([lons[0]], [lats[0]], c="#2ca02c", s=25, label="start")
-        plt.scatter([lons[-1]], [lats[-1]], c="#d62728", s=25, label="finish")
-        plt.title(f"{args.stage_id} Planimetry")
-        plt.xlabel("Longitude")
-        plt.ylabel("Latitude")
-        plt.legend(loc="best")
+        lats = [p[0] for p in pts]
+        lons = [p[1] for p in pts]
+
+        try:
+            bg, z, x0, y0, _, _ = build_osm_background(lats, lons)
+            fig, ax = plt.subplots(figsize=(8, 6), dpi=150)
+            ax.imshow(bg, extent=[0, bg.size[0], bg.size[1], 0])
+            px = []
+            py = []
+            for lat, lon in zip(lats, lons):
+                xt, yt = latlon_to_tile(lat, lon, z)
+                px.append((xt - x0) * 256)
+                py.append((yt - y0) * 256)
+            ax.plot(px, py, color="#1f5fbf", linewidth=2.0)
+            ax.scatter([px[0]], [py[0]], c="#2ca02c", s=30, label="start", zorder=3)
+            ax.scatter([px[-1]], [py[-1]], c="#d62728", s=30, label="finish", zorder=3)
+            ax.set_title(f"{stage_id} Planimetry (OSM)")
+            ax.set_xticks([])
+            ax.set_yticks([])
+            ax.legend(loc="best")
+            fig.tight_layout()
+            fig.savefig(plan_path)
+            plt.close(fig)
+        except Exception:
+            # Fallback without basemap.
+            plt.figure(figsize=(8, 6), dpi=150)
+            plt.plot(lons, lats, color="#1f5fbf", linewidth=1.6)
+            plt.scatter([lons[0]], [lats[0]], c="#2ca02c", s=25, label="start")
+            plt.scatter([lons[-1]], [lats[-1]], c="#d62728", s=25, label="finish")
+            plt.title(f"{stage_id} Planimetry")
+            plt.xlabel("Longitude")
+            plt.ylabel("Latitude")
+            plt.legend(loc="best")
+            plt.tight_layout()
+            plt.savefig(plan_path)
+            plt.close()
+
+        plt.figure(figsize=(10, 3.5), dpi=150)
+        plt.plot(d_km, ele, color="#d97706", linewidth=1.6)
+        plt.fill_between(d_km, ele, min(ele), color="#f7c97b", alpha=0.55)
+        plt.title(f"{stage_id} Elevation Profile")
+        plt.xlabel("Distance (km)")
+        plt.ylabel("Elevation (m)")
         plt.tight_layout()
-        plt.savefig(plan_path)
+        plt.savefig(elev_path)
         plt.close()
 
-    plt.figure(figsize=(10, 3.5), dpi=150)
-    plt.plot(d_km, ele, color="#d97706", linewidth=1.6)
-    plt.fill_between(d_km, ele, min(ele), color="#f7c97b", alpha=0.55)
-    plt.title(f"{args.stage_id} Elevation Profile")
-    plt.xlabel("Distance (km)")
-    plt.ylabel("Elevation (m)")
-    plt.tight_layout()
-    plt.savefig(elev_path)
-    plt.close()
-
-    rider = re.match(r"(B\d+)", gpx_path.name)
-    print(f"source_gpx={gpx_path}")
-    print(f"source_rider={rider.group(1) if rider else 'unknown'}")
-    print(f"planimetry={plan_path}")
-    print(f"elevation={elev_path}")
+        rider = re.match(r"(B\d+)", gpx_path.name)
+        print(f"[OK] {stage_id} rider={rider.group(1) if rider else 'unknown'}")
+        print(f"     planimetry={plan_path}")
+        print(f"     elevation={elev_path}")
     return 0
 
 

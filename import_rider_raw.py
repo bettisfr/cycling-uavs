@@ -58,7 +58,13 @@ def extract_pairs(
         date_node = entry.select_one('time[data-testid="date_at_time"]')
         if not date_node:
             continue
-        d = parse_date_label(date_node.get_text(" ", strip=True), today)
+        d = None
+        dt_attr = date_node.get("datetime")
+        if isinstance(dt_attr, str) and len(dt_attr) >= 10:
+            # Prefer absolute date from ISO-like datetime attribute when available.
+            d = dt_attr[:10]
+        if not d:
+            d = parse_date_label(date_node.get_text(" ", strip=True), today)
         if not d:
             continue
         dist_km = None
@@ -87,6 +93,16 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Import rider profile raw HTML and map activities to stages by date.")
     ap.add_argument("--rider-id", default=None, help="e.g. B002")
     ap.add_argument("--all", action="store_true", help="Process all raw rider files in dataset raw/riders/")
+    ap.add_argument(
+        "--include-yesterday",
+        action="store_true",
+        help="Allow mapping up to yesterday (default: strictly before yesterday).",
+    )
+    ap.add_argument(
+        "--include-today",
+        action="store_true",
+        help="Allow mapping up to today.",
+    )
     ap.add_argument("--html-file", default=None, help="Raw rider page HTML path")
     ap.add_argument("--dataset-dir", default="giro_2026")
     ap.add_argument("--year", type=int, default=2026)
@@ -95,7 +111,18 @@ def main() -> int:
     base = Path(args.dataset_dir)
     stages = json.loads((base / "stages.json").read_text(encoding="utf-8"))["stages"]
     stage_by_date = {s["date"]: s["stage_id"] for s in stages}
-    stage_dates = set(stage_by_date.keys())
+    today = date.today()
+    today_iso = today.isoformat()
+    yesterday_iso = (today - timedelta(days=1)).isoformat()
+    if args.include_today:
+        stage_dates = {d for d in stage_by_date.keys() if d <= today_iso}
+        cutoff_label = f"<= today ({today_iso})"
+    elif args.include_yesterday:
+        stage_dates = {d for d in stage_by_date.keys() if d <= yesterday_iso}
+        cutoff_label = f"<= yesterday ({yesterday_iso})"
+    else:
+        stage_dates = {d for d in stage_by_date.keys() if d < yesterday_iso}
+        cutoff_label = f"< yesterday ({yesterday_iso})"
     stage_meta_by_id = {s["stage_id"]: s for s in stages}
     overrides_path = base / "stage_links" / "manual_overrides.json"
     overrides = {}
@@ -180,6 +207,7 @@ def main() -> int:
         matched_dates = 0
         selected = 0
         skipped_no_candidate = 0
+        selected_rows: list[tuple[str, str, str, str, bool]] = []
         for d, candidates in by_day.items():
             sid = stage_by_date.get(d)
             if not sid:
@@ -214,7 +242,6 @@ def main() -> int:
             else:
                 chosen = max(valid, key=lambda c: float(c["distance_km"]))  # type: ignore[index]
             selected += 1
-
             aid = str(chosen["activity_id"])
             p = base / "stage_links" / f"{sid}.json"
             if not p.exists():
@@ -223,9 +250,13 @@ def main() -> int:
             row = next((a for a in payload.get("activities", []) if a.get("rider_id") == rider_id), None)
             if not row:
                 continue
+            chosen_km = chosen.get("distance_km")
+            km_text = f"{float(chosen_km):.2f}" if isinstance(chosen_km, (int, float)) else "-"
+            new_url = f"https://www.strava.com/activities/{aid}"
+            is_new = row.get("activity_url") != new_url
+            selected_rows.append((sid, d, str(chosen["activity_id"]), km_text, is_new))
             if bool(row.get("locked")):
                 continue
-            new_url = f"https://www.strava.com/activities/{aid}"
             if row.get("activity_url") != new_url:
                 row["activity_url"] = new_url
                 row["status"] = "found_public"
@@ -281,10 +312,14 @@ def main() -> int:
             f"fallback_first={skipped_no_candidate} "
             f"ignored_out={ignored_out_of_stage_calendar}"
         )
+        for sid, d, aid, km_text, is_new in sorted(selected_rows, key=lambda x: x[1], reverse=True):
+            suffix = " [new]" if is_new else ""
+            print(f"  - {sid} {d} -> {aid} ({km_text} km){suffix}")
 
     if args.all:
         print()
         print("=== Import Summary ===")
+        print(f"stage_date_cutoff: {cutoff_label}")
         print(f"riders_processed: {total_riders}")
         print(f"pairs_found: {total_pairs}")
         print(f"pairs_with_stage_date: {total_matched_dates}")

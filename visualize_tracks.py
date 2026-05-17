@@ -31,7 +31,7 @@ COLORS = [
     "#f781bf",
     "#999999",
 ]
-FLIGHT_COLOR = "#DFFF00"
+FLIGHT_COLOR = "#8B5A2B"
 
 
 def parse_iso_utc(value: str) -> datetime | None:
