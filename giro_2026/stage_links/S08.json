@@ -382,7 +382,7 @@
       "rider_id": "B061",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18545728445",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:35",
       "gpx_km": "154.4",
       "gpx_path": "giro_2026/courses/S08/B061__activity_18545728445.gpx"
