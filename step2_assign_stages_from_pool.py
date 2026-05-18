@@ -201,6 +201,10 @@ def main() -> int:
             if not sid:
                 ignored_nonstage += 1
                 continue
+            min_hhmm = min_start_by_stage.get(sid)
+            if min_hhmm and info.start_hhmm < min_hhmm:
+                ignored_nonstage += 1
+                continue
             if ws >= 0 and stage_num(sid) > ws:
                 ignored_withdraw += 1
                 continue
@@ -279,3 +283,7 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+    # Stage-specific start-time eligibility rules (local time HH:MM, inclusive).
+    min_start_by_stage = {
+        "S10": "13:00",
+    }

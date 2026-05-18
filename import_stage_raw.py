@@ -6,6 +6,8 @@ import html
 import json
 import math
 import re
+import shutil
+import subprocess
 import unicodedata
 import xml.etree.ElementTree as ET
 from datetime import date, timezone
@@ -19,6 +21,9 @@ ENTRY_RE = re.compile(
 ATHLETE_RE = re.compile(r'href="(/pros/[^"]+|/athletes/\d+)"')
 ACTIVITY_RE = re.compile(r'href="(/activities/\d+)"')
 NAME_RE = re.compile(r'<div class="G1c7V"><a href="[^"]+">(.*?)</a><div class="RTdgF">', re.S)
+PROS_ALIAS_TO_CANONICAL = {
+    "ilbandito": "2004466",
+}
 
 
 def normalize_name(value: str) -> str:
@@ -138,6 +143,11 @@ def resolve_rider_id(
         rid = by_pros_slug.get(slug)
         if rid:
             return rid
+        alias = PROS_ALIAS_TO_CANONICAL.get(slug)
+        if alias:
+            rid = by_pros_slug.get(normalize_slug(alias))
+            if rid:
+                return rid
         # Some /pros slugs include trailing athlete ids.
         m_embedded_id = re.search(r"-(\d+)$", slug_raw)
         if m_embedded_id:
@@ -661,6 +671,8 @@ def main() -> int:
     parser.add_argument("--stage-id", required=True, help="Stage id, e.g. S02")
     parser.add_argument("--dataset-dir", default="giro_2026")
     parser.add_argument("--raw-file", default=None, help="Raw HTML path (default: <dataset-dir>/raw/sXX.txt)")
+    parser.add_argument("--download-gpx", action="store_true", default=True, help="Download matched GPX to pool and link into stage folder.")
+    parser.add_argument("--local-tz", default="Europe/Rome")
     args = parser.parse_args()
 
     repo = Path.cwd()
@@ -700,8 +712,19 @@ def main() -> int:
     stage_payload = json.loads(stage_path.read_text(encoding="utf-8"))
     activities = stage_payload["activities"]
     by_rider_id = {row["rider_id"]: row for row in activities}
+    gpx_store_dir = dataset_dir / "gpx_store"
+    gpx_store_dir.mkdir(parents=True, exist_ok=True)
+    stage_courses_dir = dataset_dir / "courses" / args.stage_id
+    stage_courses_dir.mkdir(parents=True, exist_ok=True)
+    cookie_path = repo / "strava_session_cookie.txt"
+    cookie = cookie_path.read_text(encoding="utf-8").strip() if cookie_path.exists() else ""
 
     matched = 0
+    updated = 0
+    locked_skipped = 0
+    gpx_new = 0
+    gpx_existing = 0
+    gpx_fail = 0
     unmatched: list[dict[str, str]] = []
     seen_rider_ids: set[str] = set()
 
@@ -722,11 +745,58 @@ def main() -> int:
         if not row:
             unmatched.append(entry)
             continue
+        if bool(row.get("locked")):
+            locked_skipped += 1
+            continue
 
-        row["activity_url"] = entry["activity_url"]
-        row["status"] = "found_public"
+        if row.get("activity_url") != entry["activity_url"] or row.get("status") != "found_public":
+            row["activity_url"] = entry["activity_url"]
+            row["status"] = "found_public"
+            updated += 1
         matched += 1
         seen_rider_ids.add(rider_id)
+
+        if args.download_gpx:
+            m = re.search(r"/activities/(\d+)", entry["activity_url"])
+            if not m:
+                continue
+            aid = m.group(1)
+            name = f"{rider_id}__activity_{aid}.gpx"
+            store_path = gpx_store_dir / name
+            stage_link = stage_courses_dir / name
+
+            ok = False
+            if store_path.exists() and store_path.stat().st_size > 0:
+                ok = True
+                gpx_existing += 1
+            elif cookie:
+                cmd = [
+                    "/home/fra/pyvenv/bin/python",
+                    str(repo / "lib" / "strava_to_gpx.py"),
+                    "--session-cookie",
+                    cookie,
+                    "--local-tz",
+                    args.local_tz,
+                    entry["activity_url"],
+                    "-o",
+                    str(store_path),
+                ]
+                r = subprocess.run(cmd, capture_output=True, text=True)
+                if r.returncode == 0 and store_path.exists() and store_path.stat().st_size > 0:
+                    ok = True
+                    gpx_new += 1
+                else:
+                    gpx_fail += 1
+            else:
+                gpx_fail += 1
+
+            if ok:
+                if stage_link.exists() or stage_link.is_symlink():
+                    stage_link.unlink(missing_ok=True)
+                try:
+                    stage_link.symlink_to(Path("..") / ".." / "gpx_store" / name)
+                except Exception:
+                    shutil.copy2(store_path, stage_link)
 
     stage_path.write_text(json.dumps(stage_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     html_path = render_stage_html(dataset_dir, args.stage_id)
@@ -736,8 +806,14 @@ def main() -> int:
     print(f"stage={args.stage_id}")
     print(f"entries={len(entries)}")
     print(f"matched_now={matched}")
+    print(f"updated_now={updated}")
+    print(f"locked_skipped={locked_skipped}")
     print(f"distinct_riders_matched={len(seen_rider_ids)}")
     print(f"total_with_activity_url={with_url}")
+    if args.download_gpx:
+        print(f"gpx_new={gpx_new}")
+        print(f"gpx_existing={gpx_existing}")
+        print(f"gpx_fail={gpx_fail}")
     print(f"html_updated={html_path}")
     print(f"index_updated={index_path}")
     print(f"unmatched={len(unmatched)}")
