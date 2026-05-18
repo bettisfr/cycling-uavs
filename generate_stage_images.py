@@ -26,8 +26,44 @@ def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 def pick_first_gpx(stage_dir: Path) -> Path:
     files = sorted(stage_dir.glob("B*__activity_*.gpx"))
     if not files:
-        raise SystemExit(f"No GPX found in {stage_dir}")
+        raise RuntimeError(f"No GPX found in {stage_dir}")
     return files[0]
+
+
+def gpx_distance_km(gpx_path: Path) -> float:
+    with gpx_path.open("r", encoding="utf-8", errors="ignore") as f:
+        g = gpxpy.parse(f)
+    pts: list[tuple[float, float]] = []
+    for tr in g.tracks:
+        for seg in tr.segments:
+            for p in seg.points:
+                pts.append((p.latitude, p.longitude))
+    if len(pts) < 2:
+        return 0.0
+    dist_m = 0.0
+    for i in range(1, len(pts)):
+        a = pts[i - 1]
+        b = pts[i]
+        dist_m += haversine_m(a[0], a[1], b[0], b[1])
+    return dist_m / 1000.0
+
+
+def pick_median_gpx(stage_dir: Path) -> Path:
+    files = sorted(stage_dir.glob("B*__activity_*.gpx"))
+    if not files:
+        raise RuntimeError(f"No GPX found in {stage_dir}")
+    scored: list[tuple[float, Path]] = []
+    for p in files:
+        try:
+            km = gpx_distance_km(p)
+        except Exception:
+            continue
+        if km > 0:
+            scored.append((km, p))
+    if not scored:
+        return files[0]
+    scored.sort(key=lambda x: x[0])
+    return scored[len(scored) // 2][1]
 
 
 def latlon_to_tile(lat: float, lon: float, z: int) -> tuple[float, float]:
@@ -126,7 +162,7 @@ def main() -> int:
     for stage_id in stage_ids:
         gpx_dir = base / "courses" / stage_id
         try:
-            gpx_path = pick_first_gpx(gpx_dir)
+            gpx_path = pick_median_gpx(gpx_dir)
             pts = load_points(gpx_path)
         except Exception as exc:
             print(f"[SKIP] {stage_id} {exc}")

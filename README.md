@@ -133,7 +133,7 @@ Outputs:
 - `giro_2026/html/stages/assets/SXX/planimetry.png`
 - `giro_2026/html/stages/assets/SXX/elevation.png`
 
-### 8) Step 3: Refresh HTML + Maps
+### 8) Step 3: Refresh HTML + Maps + Stage Images
 
 ```bash
 /home/fra/pyvenv/bin/python step3_refresh_outputs.py
@@ -144,6 +144,11 @@ Regenerates:
 - `giro_2026/html/stages/SXX.html`
 - `giro_2026/html/riders/BXXX.html`
 - `giro_2026/html/maps/SXX.html`
+- `giro_2026/html/stages/assets/SXX/planimetry.png`
+- `giro_2026/html/stages/assets/SXX/elevation.png`
+
+Note:
+- Stage images are generated from the median-distance GPX of each stage.
 
 ### 9) Step 4: Lock confirmed activities (run only after visual map check)
 
