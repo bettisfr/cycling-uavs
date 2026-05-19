@@ -147,6 +147,11 @@ def main() -> int:
         help="Which GPX timestamp day to use for stage assignment (default: mid).",
     )
     args = ap.parse_args()
+    # Stage-specific start-time eligibility rules (local HH:MM, inclusive).
+    # S10 is an ITT day; morning reconnaissance should be ignored.
+    min_start_by_stage = {
+        "S10": "13:00",
+    }
 
     base = Path(args.dataset_dir)
     riders_payload = json.loads((base / "riders.json").read_text(encoding="utf-8"))

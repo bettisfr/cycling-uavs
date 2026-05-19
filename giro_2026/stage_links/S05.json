@@ -11,7 +11,8 @@
     {
       "rider_id": "B001",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B002",
@@ -61,7 +62,8 @@
     {
       "rider_id": "B007",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B008",
@@ -132,7 +134,8 @@
     {
       "rider_id": "B018",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B021",
@@ -209,7 +212,8 @@
     {
       "rider_id": "B031",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B032",
@@ -229,7 +233,8 @@
     {
       "rider_id": "B034",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B035",
@@ -282,7 +287,8 @@
     {
       "rider_id": "B043",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B044",
@@ -302,7 +308,8 @@
     {
       "rider_id": "B046",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B047",
@@ -316,7 +323,8 @@
     {
       "rider_id": "B048",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B051",
@@ -329,9 +337,12 @@
     },
     {
       "rider_id": "B052",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492821579",
+      "locked": false,
+      "gpx_start_hhmm": "00:05",
+      "gpx_km": "208.0",
+      "gpx_path": "giro_2026/courses/S05/B052__activity_18492821579.gpx"
     },
     {
       "rider_id": "B053",
@@ -417,12 +428,14 @@
     {
       "rider_id": "B064",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B065",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B066",
@@ -436,7 +449,8 @@
     {
       "rider_id": "B067",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B068",
@@ -447,7 +461,8 @@
     {
       "rider_id": "B071",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B072",
@@ -482,7 +497,8 @@
     {
       "rider_id": "B076",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B077",
@@ -505,7 +521,8 @@
     {
       "rider_id": "B081",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B082",
@@ -549,12 +566,14 @@
     {
       "rider_id": "B087",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B088",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B091",
@@ -586,13 +605,17 @@
     {
       "rider_id": "B094",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B095",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18492823768",
+      "locked": false,
+      "gpx_start_hhmm": "00:00",
+      "gpx_km": "210.6",
+      "gpx_path": "giro_2026/courses/S05/B095__activity_18492823768.gpx"
     },
     {
       "rider_id": "B096",
@@ -630,7 +653,8 @@
     {
       "rider_id": "B102",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B103",
@@ -707,7 +731,8 @@
     {
       "rider_id": "B113",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B114",
@@ -730,7 +755,8 @@
     {
       "rider_id": "B116",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B117",
@@ -750,7 +776,8 @@
     {
       "rider_id": "B121",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B122",
@@ -767,7 +794,8 @@
     {
       "rider_id": "B124",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B125",
@@ -790,7 +818,8 @@
     {
       "rider_id": "B127",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B128",
@@ -813,7 +842,8 @@
     {
       "rider_id": "B132",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B133",
@@ -854,7 +884,8 @@
     {
       "rider_id": "B137",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B138",
@@ -910,7 +941,8 @@
     {
       "rider_id": "B146",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B147",
@@ -1062,17 +1094,20 @@
     {
       "rider_id": "B171",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B172",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B173",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B174",
@@ -1122,7 +1157,8 @@
     {
       "rider_id": "B181",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B182",
@@ -1160,7 +1196,8 @@
     {
       "rider_id": "B186",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B187",
@@ -1183,7 +1220,8 @@
     {
       "rider_id": "B191",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B192",
@@ -1194,7 +1232,8 @@
     {
       "rider_id": "B193",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B194",
@@ -1214,7 +1253,8 @@
     {
       "rider_id": "B196",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B197",
@@ -1234,7 +1274,8 @@
     {
       "rider_id": "B201",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B202",
@@ -1248,7 +1289,8 @@
     {
       "rider_id": "B203",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B204",
@@ -1388,7 +1430,8 @@
     {
       "rider_id": "B225",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     },
     {
       "rider_id": "B226",
@@ -1408,7 +1451,8 @@
     {
       "rider_id": "B228",
       "status": "not_checked",
-      "activity_url": null
+      "activity_url": null,
+      "locked": false
     }
   ]
 }

@@ -237,11 +237,16 @@
       "stage_type": "individual_time_trial",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260519/1026Z/LIRP/LIRQ"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S10/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-19T18:25:11+02:00"
       }
     },
     {
