@@ -18,7 +18,7 @@
       "rider_id": "B002",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18597130682",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "181.0",
       "gpx_path": "giro_2026/courses/S12/B002__activity_18597130682.gpx"
@@ -27,7 +27,7 @@
       "rider_id": "B003",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596474541",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "174.1",
       "gpx_path": "giro_2026/courses/S12/B003__activity_18596474541.gpx"
@@ -48,7 +48,7 @@
       "rider_id": "B006",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18597494402",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:07",
       "gpx_km": "179.6",
       "gpx_path": "giro_2026/courses/S12/B006__activity_18597494402.gpx"
@@ -61,9 +61,12 @@
     },
     {
       "rider_id": "B008",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18597113418",
+      "locked": true,
+      "gpx_start_hhmm": "13:10",
+      "gpx_km": "177.7",
+      "gpx_path": "giro_2026/courses/S12/B008__activity_18597113418.gpx"
     },
     {
       "rider_id": "B011",
@@ -75,7 +78,7 @@
       "rider_id": "B012",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18597198623",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:11",
       "gpx_km": "177.6",
       "gpx_path": "giro_2026/courses/S12/B012__activity_18597198623.gpx"
@@ -84,7 +87,7 @@
       "rider_id": "B013",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596516834",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.7",
       "gpx_path": "giro_2026/courses/S12/B013__activity_18596516834.gpx"
@@ -99,7 +102,7 @@
       "rider_id": "B015",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596865671",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:07",
       "gpx_km": "180.3",
       "gpx_path": "giro_2026/courses/S12/B015__activity_18596865671.gpx"
@@ -108,7 +111,7 @@
       "rider_id": "B016",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18597376709",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "181.9",
       "gpx_path": "giro_2026/courses/S12/B016__activity_18597376709.gpx"
@@ -117,7 +120,7 @@
       "rider_id": "B017",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596607702",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:08",
       "gpx_km": "179.8",
       "gpx_path": "giro_2026/courses/S12/B017__activity_18596607702.gpx"
@@ -132,7 +135,7 @@
       "rider_id": "B021",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596515169",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "179.3",
       "gpx_path": "giro_2026/courses/S12/B021__activity_18596515169.gpx"
@@ -141,7 +144,7 @@
       "rider_id": "B022",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596662515",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "172.6",
       "gpx_path": "giro_2026/courses/S12/B022__activity_18596662515.gpx"
@@ -150,7 +153,7 @@
       "rider_id": "B023",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596637508",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.4",
       "gpx_path": "giro_2026/courses/S12/B023__activity_18596637508.gpx"
@@ -159,7 +162,7 @@
       "rider_id": "B024",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596597510",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "179.1",
       "gpx_path": "giro_2026/courses/S12/B024__activity_18596597510.gpx"
@@ -168,7 +171,7 @@
       "rider_id": "B025",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596724056",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "172.9",
       "gpx_path": "giro_2026/courses/S12/B025__activity_18596724056.gpx"
@@ -177,7 +180,7 @@
       "rider_id": "B026",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596613693",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "172.1",
       "gpx_path": "giro_2026/courses/S12/B026__activity_18596613693.gpx"
@@ -186,7 +189,7 @@
       "rider_id": "B027",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596816267",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "173.2",
       "gpx_path": "giro_2026/courses/S12/B027__activity_18596816267.gpx"
@@ -195,7 +198,7 @@
       "rider_id": "B028",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596704266",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "12.1",
       "gpx_path": "giro_2026/courses/S12/B028__activity_18596704266.gpx"
@@ -216,7 +219,7 @@
       "rider_id": "B033",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596549698",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:12",
       "gpx_km": "178.2",
       "gpx_path": "giro_2026/courses/S12/B033__activity_18596549698.gpx"
@@ -231,7 +234,7 @@
       "rider_id": "B035",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596401141",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "179.4",
       "gpx_path": "giro_2026/courses/S12/B035__activity_18596401141.gpx"
@@ -240,7 +243,7 @@
       "rider_id": "B036",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596752648",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:03",
       "gpx_km": "181.1",
       "gpx_path": "giro_2026/courses/S12/B036__activity_18596752648.gpx"
@@ -255,7 +258,7 @@
       "rider_id": "B038",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596616078",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:04",
       "gpx_km": "180.8",
       "gpx_path": "giro_2026/courses/S12/B038__activity_18596616078.gpx"
@@ -264,7 +267,7 @@
       "rider_id": "B041",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596644001",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "174.2",
       "gpx_path": "giro_2026/courses/S12/B041__activity_18596644001.gpx"
@@ -285,7 +288,7 @@
       "rider_id": "B044",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596459855",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "174.2",
       "gpx_path": "giro_2026/courses/S12/B044__activity_18596459855.gpx"
@@ -306,7 +309,7 @@
       "rider_id": "B047",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596472065",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.5",
       "gpx_path": "giro_2026/courses/S12/B047__activity_18596472065.gpx"
@@ -321,7 +324,7 @@
       "rider_id": "B051",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596785106",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "177.7",
       "gpx_path": "giro_2026/courses/S12/B051__activity_18596785106.gpx"
@@ -330,7 +333,7 @@
       "rider_id": "B052",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596593914",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:05",
       "gpx_km": "177.9",
       "gpx_path": "giro_2026/courses/S12/B052__activity_18596593914.gpx"
@@ -339,7 +342,7 @@
       "rider_id": "B053",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596861783",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "174.1",
       "gpx_path": "giro_2026/courses/S12/B053__activity_18596861783.gpx"
@@ -348,7 +351,7 @@
       "rider_id": "B054",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596582886",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:01",
       "gpx_km": "180.6",
       "gpx_path": "giro_2026/courses/S12/B054__activity_18596582886.gpx"
@@ -357,7 +360,7 @@
       "rider_id": "B055",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596512619",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:07",
       "gpx_km": "179.9",
       "gpx_path": "giro_2026/courses/S12/B055__activity_18596512619.gpx"
@@ -366,7 +369,7 @@
       "rider_id": "B056",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596543637",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.5",
       "gpx_path": "giro_2026/courses/S12/B056__activity_18596543637.gpx"
@@ -375,7 +378,7 @@
       "rider_id": "B057",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596491421",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.5",
       "gpx_path": "giro_2026/courses/S12/B057__activity_18596491421.gpx"
@@ -384,7 +387,7 @@
       "rider_id": "B058",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596466245",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "12:58",
       "gpx_km": "181.1",
       "gpx_path": "giro_2026/courses/S12/B058__activity_18596466245.gpx"
@@ -393,22 +396,25 @@
       "rider_id": "B061",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596704040",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "173.8",
       "gpx_path": "giro_2026/courses/S12/B061__activity_18596704040.gpx"
     },
     {
       "rider_id": "B062",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18596993370",
+      "locked": true,
+      "gpx_start_hhmm": "13:03",
+      "gpx_km": "181.2",
+      "gpx_path": "giro_2026/courses/S12/B062__activity_18596993370.gpx"
     },
     {
       "rider_id": "B063",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596556260",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "12:13",
       "gpx_km": "184.9",
       "gpx_path": "giro_2026/courses/S12/B063__activity_18596556260.gpx"
@@ -465,7 +471,7 @@
       "rider_id": "B074",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596757907",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.8",
       "gpx_path": "giro_2026/courses/S12/B074__activity_18596757907.gpx"
@@ -504,7 +510,7 @@
       "rider_id": "B082",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596634391",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.7",
       "gpx_path": "giro_2026/courses/S12/B082__activity_18596634391.gpx"
@@ -519,7 +525,7 @@
       "rider_id": "B084",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18597468044",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:11",
       "gpx_km": "178.8",
       "gpx_path": "giro_2026/courses/S12/B084__activity_18597468044.gpx"
@@ -528,7 +534,7 @@
       "rider_id": "B085",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596862875",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.3",
       "gpx_path": "giro_2026/courses/S12/B085__activity_18596862875.gpx"
@@ -561,7 +567,7 @@
       "rider_id": "B092",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596499009",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.8",
       "gpx_path": "giro_2026/courses/S12/B092__activity_18596499009.gpx"
@@ -582,7 +588,7 @@
       "rider_id": "B095",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596821555",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "182.2",
       "gpx_path": "giro_2026/courses/S12/B095__activity_18596821555.gpx"
@@ -591,7 +597,7 @@
       "rider_id": "B096",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596557607",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.8",
       "gpx_path": "giro_2026/courses/S12/B096__activity_18596557607.gpx"
@@ -600,7 +606,7 @@
       "rider_id": "B097",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596564524",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.3",
       "gpx_path": "giro_2026/courses/S12/B097__activity_18596564524.gpx"
@@ -615,7 +621,7 @@
       "rider_id": "B101",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596479171",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:09",
       "gpx_km": "178.6",
       "gpx_path": "giro_2026/courses/S12/B101__activity_18596479171.gpx"
@@ -630,7 +636,7 @@
       "rider_id": "B103",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596631812",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:09",
       "gpx_km": "179.1",
       "gpx_path": "giro_2026/courses/S12/B103__activity_18596631812.gpx"
@@ -639,16 +645,19 @@
       "rider_id": "B104",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596429935",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "181.1",
       "gpx_path": "giro_2026/courses/S12/B104__activity_18596429935.gpx"
     },
     {
       "rider_id": "B105",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18597010757",
+      "locked": true,
+      "gpx_start_hhmm": "12:57",
+      "gpx_km": "181.7",
+      "gpx_path": "giro_2026/courses/S12/B105__activity_18597010757.gpx"
     },
     {
       "rider_id": "B106",
@@ -660,7 +669,7 @@
       "rider_id": "B107",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596430757",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "12:27",
       "gpx_km": "185.8",
       "gpx_path": "giro_2026/courses/S12/B107__activity_18596430757.gpx"
@@ -691,9 +700,12 @@
     },
     {
       "rider_id": "B114",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18596771650",
+      "locked": true,
+      "gpx_start_hhmm": "13:05",
+      "gpx_km": "184.5",
+      "gpx_path": "giro_2026/courses/S12/B114__activity_18596771650.gpx"
     },
     {
       "rider_id": "B115",
@@ -717,7 +729,7 @@
       "rider_id": "B118",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596644893",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.7",
       "gpx_path": "giro_2026/courses/S12/B118__activity_18596644893.gpx"
@@ -750,7 +762,7 @@
       "rider_id": "B125",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596902257",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "174.8",
       "gpx_path": "giro_2026/courses/S12/B125__activity_18596902257.gpx"
@@ -759,7 +771,7 @@
       "rider_id": "B126",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596428713",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.2",
       "gpx_path": "giro_2026/courses/S12/B126__activity_18596428713.gpx"
@@ -774,7 +786,7 @@
       "rider_id": "B128",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596425272",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.8",
       "gpx_path": "giro_2026/courses/S12/B128__activity_18596425272.gpx"
@@ -783,7 +795,7 @@
       "rider_id": "B131",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596866981",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "181.0",
       "gpx_path": "giro_2026/courses/S12/B131__activity_18596866981.gpx"
@@ -802,15 +814,18 @@
     },
     {
       "rider_id": "B134",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18596570807",
+      "locked": true,
+      "gpx_start_hhmm": "00:00",
+      "gpx_km": "180.7",
+      "gpx_path": "giro_2026/courses/S12/B134__activity_18596570807.gpx"
     },
     {
       "rider_id": "B135",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596511311",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "181.7",
       "gpx_path": "giro_2026/courses/S12/B135__activity_18596511311.gpx"
@@ -819,7 +834,7 @@
       "rider_id": "B136",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596463188",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.3",
       "gpx_path": "giro_2026/courses/S12/B136__activity_18596463188.gpx"
@@ -840,7 +855,7 @@
       "rider_id": "B141",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596397596",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:07",
       "gpx_km": "180.2",
       "gpx_path": "giro_2026/courses/S12/B141__activity_18596397596.gpx"
@@ -855,7 +870,7 @@
       "rider_id": "B143",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596691034",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.6",
       "gpx_path": "giro_2026/courses/S12/B143__activity_18596691034.gpx"
@@ -864,7 +879,7 @@
       "rider_id": "B144",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596529347",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.4",
       "gpx_path": "giro_2026/courses/S12/B144__activity_18596529347.gpx"
@@ -909,7 +924,7 @@
       "rider_id": "B153",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596728291",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.2",
       "gpx_path": "giro_2026/courses/S12/B153__activity_18596728291.gpx"
@@ -918,7 +933,7 @@
       "rider_id": "B154",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596707486",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.1",
       "gpx_path": "giro_2026/courses/S12/B154__activity_18596707486.gpx"
@@ -927,7 +942,7 @@
       "rider_id": "B155",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596767978",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "179.6",
       "gpx_path": "giro_2026/courses/S12/B155__activity_18596767978.gpx"
@@ -936,7 +951,7 @@
       "rider_id": "B156",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596611678",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:09",
       "gpx_km": "178.8",
       "gpx_path": "giro_2026/courses/S12/B156__activity_18596611678.gpx"
@@ -945,7 +960,7 @@
       "rider_id": "B157",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596728045",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.2",
       "gpx_path": "giro_2026/courses/S12/B157__activity_18596728045.gpx"
@@ -954,7 +969,7 @@
       "rider_id": "B158",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596908509",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "179.2",
       "gpx_path": "giro_2026/courses/S12/B158__activity_18596908509.gpx"
@@ -963,7 +978,7 @@
       "rider_id": "B161",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596546275",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.2",
       "gpx_path": "giro_2026/courses/S12/B161__activity_18596546275.gpx"
@@ -978,7 +993,7 @@
       "rider_id": "B163",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18597229863",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:15",
       "gpx_km": "174.5",
       "gpx_path": "giro_2026/courses/S12/B163__activity_18597229863.gpx"
@@ -993,16 +1008,19 @@
       "rider_id": "B165",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596652571",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "174.0",
       "gpx_path": "giro_2026/courses/S12/B165__activity_18596652571.gpx"
     },
     {
       "rider_id": "B166",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18596794332",
+      "locked": true,
+      "gpx_start_hhmm": "13:05",
+      "gpx_km": "180.6",
+      "gpx_path": "giro_2026/courses/S12/B166__activity_18596794332.gpx"
     },
     {
       "rider_id": "B167",
@@ -1014,7 +1032,7 @@
       "rider_id": "B168",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596577854",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:21",
       "gpx_km": "172.8",
       "gpx_path": "giro_2026/courses/S12/B168__activity_18596577854.gpx"
@@ -1041,7 +1059,7 @@
       "rider_id": "B174",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596607842",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "181.2",
       "gpx_path": "giro_2026/courses/S12/B174__activity_18596607842.gpx"
@@ -1050,7 +1068,7 @@
       "rider_id": "B175",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596428010",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.9",
       "gpx_path": "giro_2026/courses/S12/B175__activity_18596428010.gpx"
@@ -1059,7 +1077,7 @@
       "rider_id": "B176",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596450390",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:07",
       "gpx_km": "180.3",
       "gpx_path": "giro_2026/courses/S12/B176__activity_18596450390.gpx"
@@ -1068,7 +1086,7 @@
       "rider_id": "B177",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596583731",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.1",
       "gpx_path": "giro_2026/courses/S12/B177__activity_18596583731.gpx"
@@ -1077,7 +1095,7 @@
       "rider_id": "B178",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596684903",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.6",
       "gpx_path": "giro_2026/courses/S12/B178__activity_18596684903.gpx"
@@ -1092,7 +1110,7 @@
       "rider_id": "B182",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596454386",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.7",
       "gpx_path": "giro_2026/courses/S12/B182__activity_18596454386.gpx"
@@ -1107,16 +1125,19 @@
       "rider_id": "B184",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596589908",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "181.2",
       "gpx_path": "giro_2026/courses/S12/B184__activity_18596589908.gpx"
     },
     {
       "rider_id": "B185",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18596596172",
+      "locked": true,
+      "gpx_start_hhmm": "13:06",
+      "gpx_km": "180.4",
+      "gpx_path": "giro_2026/courses/S12/B185__activity_18596596172.gpx"
     },
     {
       "rider_id": "B186",
@@ -1128,7 +1149,7 @@
       "rider_id": "B187",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596542682",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "179.8",
       "gpx_path": "giro_2026/courses/S12/B187__activity_18596542682.gpx"
@@ -1137,7 +1158,7 @@
       "rider_id": "B188",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596511191",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:04",
       "gpx_km": "183.8",
       "gpx_path": "giro_2026/courses/S12/B188__activity_18596511191.gpx"
@@ -1152,7 +1173,7 @@
       "rider_id": "B192",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596598167",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:05",
       "gpx_km": "180.2",
       "gpx_path": "giro_2026/courses/S12/B192__activity_18596598167.gpx"
@@ -1203,7 +1224,7 @@
       "rider_id": "B202",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596525676",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:09",
       "gpx_km": "179.3",
       "gpx_path": "giro_2026/courses/S12/B202__activity_18596525676.gpx"
@@ -1218,7 +1239,7 @@
       "rider_id": "B204",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18598438757",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "174.3",
       "gpx_path": "giro_2026/courses/S12/B204__activity_18598438757.gpx"
@@ -1227,7 +1248,7 @@
       "rider_id": "B205",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596659520",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.9",
       "gpx_path": "giro_2026/courses/S12/B205__activity_18596659520.gpx"
@@ -1242,7 +1263,7 @@
       "rider_id": "B207",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596814375",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:11",
       "gpx_km": "177.7",
       "gpx_path": "giro_2026/courses/S12/B207__activity_18596814375.gpx"
@@ -1275,7 +1296,7 @@
       "rider_id": "B214",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596440143",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:02",
       "gpx_km": "183.0",
       "gpx_path": "giro_2026/courses/S12/B214__activity_18596440143.gpx"
@@ -1284,22 +1305,25 @@
       "rider_id": "B215",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596574244",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "12:58",
       "gpx_km": "181.6",
       "gpx_path": "giro_2026/courses/S12/B215__activity_18596574244.gpx"
     },
     {
       "rider_id": "B216",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18597010404",
+      "locked": true,
+      "gpx_start_hhmm": "13:07",
+      "gpx_km": "180.3",
+      "gpx_path": "giro_2026/courses/S12/B216__activity_18597010404.gpx"
     },
     {
       "rider_id": "B217",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596605096",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:10",
       "gpx_km": "178.9",
       "gpx_path": "giro_2026/courses/S12/B217__activity_18596605096.gpx"
@@ -1326,7 +1350,7 @@
       "rider_id": "B223",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596776759",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.4",
       "gpx_path": "giro_2026/courses/S12/B223__activity_18596776759.gpx"
@@ -1335,7 +1359,7 @@
       "rider_id": "B224",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596434953",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:19",
       "gpx_km": "174.5",
       "gpx_path": "giro_2026/courses/S12/B224__activity_18596434953.gpx"
@@ -1356,7 +1380,7 @@
       "rider_id": "B227",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18596441922",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "13:06",
       "gpx_km": "180.5",
       "gpx_path": "giro_2026/courses/S12/B227__activity_18596441922.gpx"

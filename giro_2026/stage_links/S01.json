@@ -31,7 +31,7 @@
       "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "145.9",
-      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S01/B003__activity_18426492865.gpx"
+      "gpx_path": "giro_2026/courses/S01/B003__activity_18426492865.gpx"
     },
     {
       "rider_id": "B004",
@@ -165,7 +165,7 @@
       "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "142.2",
-      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S01/B022__activity_18426241136.gpx"
+      "gpx_path": "giro_2026/courses/S01/B022__activity_18426241136.gpx"
     },
     {
       "rider_id": "B023",
@@ -364,7 +364,7 @@
       "rider_id": "B052",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18426103012",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:09",
       "gpx_km": "147.4",
       "gpx_path": "giro_2026/courses/S01/B052__activity_18426103012.gpx"
@@ -652,7 +652,7 @@
       "rider_id": "B095",
       "status": "found_public",
       "activity_url": "https://www.strava.com/activities/18426246657",
-      "locked": false,
+      "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "153.7",
       "gpx_path": "giro_2026/courses/S01/B095__activity_18426246657.gpx"
@@ -715,7 +715,7 @@
       "locked": true,
       "gpx_start_hhmm": "00:01",
       "gpx_km": "151.4",
-      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S01/B104__activity_18426057010.gpx"
+      "gpx_path": "giro_2026/courses/S01/B104__activity_18426057010.gpx"
     },
     {
       "rider_id": "B105",
@@ -861,7 +861,7 @@
       "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "145.7",
-      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S01/B125__activity_18426314371.gpx"
+      "gpx_path": "giro_2026/courses/S01/B125__activity_18426314371.gpx"
     },
     {
       "rider_id": "B126",
@@ -917,7 +917,7 @@
       "locked": true,
       "gpx_start_hhmm": "00:00",
       "gpx_km": "151.7",
-      "gpx_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/courses/S01/B134__activity_18426219551.gpx"
+      "gpx_path": "giro_2026/courses/S01/B134__activity_18426219551.gpx"
     },
     {
       "rider_id": "B135",

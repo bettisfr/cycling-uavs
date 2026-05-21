@@ -484,8 +484,8 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
                     / f"{row['rider_id']}__activity_{aid}.gpx"
                 )
                 if gpx_path.exists() and gpx_path.stat().st_size > 0:
-                    safe_path = html.escape(str(gpx_path), quote=True)
-                    gpx_cell = f'<a href="file://{safe_path}" target="_blank" rel="noopener noreferrer">yes</a>'
+                    gpx_href = html.escape(f"../../courses/{stage_id}/{gpx_path.name}", quote=True)
+                    gpx_cell = f'<a href="{gpx_href}" target="_blank" rel="noopener noreferrer">yes</a>'
                     start_hhmm = row.get("gpx_start_hhmm") or "-"
                     gpx_km = row.get("gpx_km") or "-"
                     if start_hhmm == "-" or gpx_km == "-":
@@ -493,7 +493,9 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
                         gpx_km = _extract_distance_km_from_gpx(gpx_path)
                         row["gpx_start_hhmm"] = start_hhmm if start_hhmm != "-" else None
                         row["gpx_km"] = gpx_km if gpx_km != "-" else None
-                        row["gpx_path"] = str(gpx_path)
+                        row["gpx_path"] = str(
+                            Path(dataset_dir.name) / "courses" / stage_id / f"{row['rider_id']}__activity_{aid}.gpx"
+                        )
                         stage_payload_changed = True
                 else:
                     if row.get("gpx_start_hhmm") is not None or row.get("gpx_km") is not None:
