@@ -52,7 +52,7 @@
       "team_id": "T01",
       "team_name": "Alpecin–Premier Tech",
       "strava_athlete_url": "https://www.strava.com/athletes/31541211",
-      "withdraw_stage": -1
+      "withdraw_stage": 11
     },
     {
       "rider_id": "B006",
@@ -642,7 +642,7 @@
       "team_id": "T07",
       "team_name": "Lotto–Intermarché",
       "strava_athlete_url": "https://www.strava.com/athletes/6061359",
-      "withdraw_stage": -1
+      "withdraw_stage": 12
     },
     {
       "rider_id": "B081",
@@ -712,7 +712,7 @@
       "team_id": "T08",
       "team_name": "Movistar Team",
       "strava_athlete_url": "https://www.strava.com/athletes/21190846",
-      "withdraw_stage": -1
+      "withdraw_stage": 12
     },
     {
       "rider_id": "B088",
@@ -892,7 +892,7 @@
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/5706594",
-      "withdraw_stage": -1
+      "withdraw_stage": 12
     },
     {
       "rider_id": "B112",
@@ -1762,7 +1762,7 @@
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
       "strava_athlete_url": "https://www.strava.com/athletes/2008467",
-      "withdraw_stage": -1
+      "withdraw_stage": 11
     },
     {
       "rider_id": "B221",
@@ -1772,7 +1772,7 @@
       "team_id": "T22",
       "team_name": "XDS Astana Team",
       "strava_athlete_url": "https://www.strava.com/pros/b94",
-      "withdraw_stage": -1
+      "withdraw_stage": 11
     },
     {
       "rider_id": "B222",

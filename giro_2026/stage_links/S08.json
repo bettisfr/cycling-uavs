@@ -556,9 +556,12 @@
     },
     {
       "rider_id": "B086",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18531369427",
+      "locked": false,
+      "gpx_start_hhmm": "13:22",
+      "gpx_km": "159.6",
+      "gpx_path": "giro_2026/courses/S08/B086__activity_18531369427.gpx"
     },
     {
       "rider_id": "B087",
