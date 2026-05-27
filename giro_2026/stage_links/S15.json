@@ -403,9 +403,12 @@
     },
     {
       "rider_id": "B062",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18637685118",
+      "locked": true,
+      "gpx_start_hhmm": "13:54",
+      "gpx_km": "161.4",
+      "gpx_path": "giro_2026/courses/S15/B062__activity_18637685118.gpx"
     },
     {
       "rider_id": "B063",
@@ -658,9 +661,12 @@
     },
     {
       "rider_id": "B105",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18636954943",
+      "locked": true,
+      "gpx_start_hhmm": "13:34",
+      "gpx_km": "164.4",
+      "gpx_path": "giro_2026/courses/S15/B105__activity_18636954943.gpx"
     },
     {
       "rider_id": "B106",
@@ -1024,15 +1030,21 @@
     },
     {
       "rider_id": "B166",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18636945685",
+      "locked": true,
+      "gpx_start_hhmm": "13:46",
+      "gpx_km": "162.0",
+      "gpx_path": "giro_2026/courses/S15/B166__activity_18636945685.gpx"
     },
     {
       "rider_id": "B167",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18638004866",
+      "locked": true,
+      "gpx_start_hhmm": "13:46",
+      "gpx_km": "164.0",
+      "gpx_path": "giro_2026/courses/S15/B167__activity_18638004866.gpx"
     },
     {
       "rider_id": "B168",
@@ -1135,9 +1147,12 @@
     },
     {
       "rider_id": "B185",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18636876078",
+      "locked": true,
+      "gpx_start_hhmm": "13:50",
+      "gpx_km": "160.8",
+      "gpx_path": "giro_2026/courses/S15/B185__activity_18636876078.gpx"
     },
     {
       "rider_id": "B186",
