@@ -309,11 +309,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260522/0942Z/LIMZ/LIMF"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S13/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-27T09:22:36+02:00"
       }
     },
     {
@@ -328,11 +333,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260523/1003Z/LIMF/LIMF"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S14/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-27T09:23:18+02:00"
       }
     },
     {
@@ -347,11 +357,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260524/1050Z/LIMF/LIME"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S15/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-27T09:23:18+02:00"
       }
     },
     {
@@ -366,11 +381,16 @@
       "stage_type": "road",
       "profile": "unknown",
       "flight": {
-        "callsigns": [],
-        "source_urls": [],
-        "track_status": "not_checked",
-        "track_csv_path": null,
-        "notes": ""
+        "callsigns": [
+          "ASR251"
+        ],
+        "source_urls": [
+          "https://it.flightaware.com/live/flight/ASR251/history/20260526/1054Z/LIME/LIPO"
+        ],
+        "track_status": "found",
+        "track_csv_path": "/home/fra/Desktop/github/cycling-uavs/giro_2026/flights/S16/ASR251_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-27T09:24:01+02:00"
       }
     },
     {

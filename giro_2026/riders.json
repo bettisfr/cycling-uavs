@@ -242,7 +242,7 @@
       "team_id": "T03",
       "team_name": "Bardiani–CSF 7 Saber",
       "strava_athlete_url": "https://www.strava.com/athletes/4941184",
-      "withdraw_stage": -1
+      "withdraw_stage": 15
     },
     {
       "rider_id": "B031",
@@ -962,7 +962,7 @@
       "team_id": "T11",
       "team_name": "Pinarello–Q36.5 Pro Cycling Team",
       "strava_athlete_url": "https://www.strava.com/pros/5190714",
-      "withdraw_stage": -1
+      "withdraw_stage": 17
     },
     {
       "rider_id": "B121",
@@ -1142,7 +1142,7 @@
       "team_id": "T14",
       "team_name": "Team Jayco–AlUla",
       "strava_athlete_url": "https://www.strava.com/athletes/12274527",
-      "withdraw_stage": -1
+      "withdraw_stage": 16
     },
     {
       "rider_id": "B143",
@@ -1692,7 +1692,7 @@
       "team_id": "T21",
       "team_name": "Uno-X Mobility",
       "strava_athlete_url": "https://www.strava.com/athletes/4013766",
-      "withdraw_stage": -1
+      "withdraw_stage": 11
     },
     {
       "rider_id": "B212",
@@ -1822,7 +1822,7 @@
       "team_id": "T22",
       "team_name": "XDS Astana Team",
       "strava_athlete_url": "https://www.strava.com/athletes/18777210",
-      "withdraw_stage": -1
+      "withdraw_stage": 14
     },
     {
       "rider_id": "B227",

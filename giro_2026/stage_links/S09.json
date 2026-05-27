@@ -730,9 +730,12 @@
     },
     {
       "rider_id": "B115",
-      "status": "not_checked",
-      "activity_url": null,
-      "locked": false
+      "status": "found_public",
+      "activity_url": "https://www.strava.com/activities/18546096407",
+      "locked": true,
+      "gpx_start_hhmm": "12:56",
+      "gpx_km": "182.4",
+      "gpx_path": "giro_2026/courses/S09/B115__activity_18546096407.gpx"
     },
     {
       "rider_id": "B116",
