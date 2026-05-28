@@ -364,6 +364,7 @@ th, td { border-bottom: 1px solid var(--line); padding: 8px 9px; text-align: lef
 tbody tr:nth-child(even) { background: #f9fbff; }
 tr.team-sep td { border-top: 3px solid #9fb7e6; }
 .week-sep td { border-top: 3px solid #5e7fbd; }
+.withdrawn-row td { background: #ffe8e8 !important; }
 .start-midnight { color: #b00020; font-weight: 700; }
 .missing-activity { color: #b00020; font-weight: 700; }
 a { color: var(--accent); text-decoration: none; }
@@ -503,13 +504,16 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
                         row["gpx_km"] = None
                         stage_payload_changed = True
 
-        row_class = ""
+        row_classes: list[str] = []
         try:
             bib_int = int(bib)
             if bib_int % 10 == 1 and bib_int != 1:
-                row_class = ' class="team-sep"'
+                row_classes.append("team-sep")
         except Exception:
             pass
+        if withdrawn_now:
+            row_classes.append("withdrawn-row")
+        row_class = f' class="{" ".join(row_classes)}"' if row_classes else ""
 
         rider_page_rel = f"../riders/{row['rider_id']}.html"
         name_cell = f'<a href="{html.escape(rider_page_rel, quote=True)}">{html.escape(str(name))}</a>'
