@@ -6,9 +6,9 @@ import subprocess
 
 def main() -> int:
     cmds = [
-        ["/home/fra/pyvenv/bin/python", "refresh_html.py"],
         ["/home/fra/pyvenv/bin/python", "visualize_tracks.py", "--all"],
         ["/home/fra/pyvenv/bin/python", "generate_stage_images.py", "--all"],
+        ["/home/fra/pyvenv/bin/python", "refresh_html.py"],
     ]
     for cmd in cmds:
         r = subprocess.run(cmd)

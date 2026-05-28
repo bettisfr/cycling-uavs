@@ -48,22 +48,15 @@ def gpx_distance_km(gpx_path: Path) -> float:
     return dist_m / 1000.0
 
 
-def pick_median_gpx(stage_dir: Path) -> Path:
+def pick_default_gpx(stage_dir: Path) -> Path:
     files = sorted(stage_dir.glob("B*__activity_*.gpx"))
     if not files:
         raise RuntimeError(f"No GPX found in {stage_dir}")
-    scored: list[tuple[float, Path]] = []
+    # Fast default: use B002 when available, fallback to first GPX.
     for p in files:
-        try:
-            km = gpx_distance_km(p)
-        except Exception:
-            continue
-        if km > 0:
-            scored.append((km, p))
-    if not scored:
-        return files[0]
-    scored.sort(key=lambda x: x[0])
-    return scored[len(scored) // 2][1]
+        if p.name.startswith("B002__activity_"):
+            return p
+    return files[0]
 
 
 def latlon_to_tile(lat: float, lon: float, z: int) -> tuple[float, float]:
@@ -162,7 +155,7 @@ def main() -> int:
     for stage_id in stage_ids:
         gpx_dir = base / "courses" / stage_id
         try:
-            gpx_path = pick_median_gpx(gpx_dir)
+            gpx_path = pick_default_gpx(gpx_dir)
             pts = load_points(gpx_path)
         except Exception as exc:
             print(f"[SKIP] {stage_id} {exc}")
