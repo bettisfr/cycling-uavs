@@ -382,7 +382,7 @@
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/athletes/4848511",
-      "withdraw_stage": -1
+      "withdraw_stage": 19
     },
     {
       "rider_id": "B047",
@@ -392,7 +392,7 @@
       "team_id": "T05",
       "team_name": "EF Education–EasyPost",
       "strava_athlete_url": "https://www.strava.com/pros/2109462",
-      "withdraw_stage": -1
+      "withdraw_stage": 19
     },
     {
       "rider_id": "B048",
@@ -882,7 +882,7 @@
       "team_id": "T10",
       "team_name": "NSN Cycling Team",
       "strava_athlete_url": "https://www.strava.com/athletes/2348563",
-      "withdraw_stage": -1
+      "withdraw_stage": 19
     },
     {
       "rider_id": "B111",
@@ -1572,7 +1572,7 @@
       "team_id": "T19",
       "team_name": "UAE Team Emirates XRG",
       "strava_athlete_url": "https://www.strava.com/athletes/101626706",
-      "withdraw_stage": -1
+      "withdraw_stage": 19
     },
     {
       "rider_id": "B196",
