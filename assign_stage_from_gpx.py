@@ -7,8 +7,9 @@ import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from datetime import datetime
-from pathlib import Path
 from zoneinfo import ZoneInfo
+
+from competition import load_competition
 
 ACT_RE = re.compile(r"/activities/(\d+)")
 
@@ -38,14 +39,14 @@ def first_local_date_from_gpx(gpx_path: Path, tz_name: str) -> str | None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Reassign stage_links rows using GPX date (local timezone).")
-    ap.add_argument("--dataset-dir", default="giro_2026")
-    ap.add_argument("--local-tz", default="Europe/Rome")
+    ap.add_argument("--competition-dir", required=True)
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    base = Path(args.dataset_dir)
-    links_dir = base / "stage_links"
-    store = base / "gpx_store"
+    comp = load_competition(args.competition_dir)
+    base = comp.root
+    links_dir = comp.stage_links_dir
+    store = comp.gpx_store_dir
 
     stages_payload = json.loads((base / "stages.json").read_text(encoding="utf-8"))
     stages = stages_payload.get("stages", [])
@@ -95,7 +96,7 @@ def main() -> int:
             if not gpx.exists() or gpx.stat().st_size == 0:
                 missing_gpx += 1
                 continue
-            gpx_date = first_local_date_from_gpx(gpx, args.local_tz)
+            gpx_date = first_local_date_from_gpx(gpx, comp.timezone)
             if not gpx_date:
                 unresolved_date += 1
                 continue

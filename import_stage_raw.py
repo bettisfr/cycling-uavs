@@ -13,6 +13,7 @@ import xml.etree.ElementTree as ET
 from datetime import date, timezone
 from pathlib import Path
 
+from competition import load_competition
 
 ENTRY_RE = re.compile(
     r'<div class="x35YV" data-testid="entry">(.*?)</div><button class="i_Upj zyqUR _vKTN"',
@@ -374,8 +375,24 @@ a { color: var(--accent); text-decoration: none; }
     return style_path
 
 
+def _competition_page_title(dataset_dir: Path) -> str:
+    comp_path = dataset_dir / "competition.json"
+    try:
+        comp = json.loads(comp_path.read_text(encoding="utf-8"))
+    except Exception:
+        comp = {}
+    cid = str(comp.get("id", "")).strip().lower()
+    if cid == "giro_2026_w":
+        return "Giro 2026 Women"
+    if cid == "giro_2026":
+        return "Giro 2026"
+    name = str(comp.get("name", "")).strip()
+    return name or "Competition"
+
+
 def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
     ensure_stage_css(dataset_dir)
+    race_title = _competition_page_title(dataset_dir)
     riders_payload = json.loads((dataset_dir / "riders.json").read_text(encoding="utf-8"))
     riders = riders_payload["riders"]
     riders_by_id = {r["rider_id"]: r for r in riders}
@@ -541,12 +558,12 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Giro 2026 - {html.escape(stage_id)}</title>
+  <title>{html.escape(race_title)} - {html.escape(stage_id)}</title>
   <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
   <div class="wrap">
-  <h1>Stage {html.escape(stage_id)}</h1>
+  <h1>{html.escape(race_title)} - Stage {html.escape(stage_id)}</h1>
   <div class="meta-grid">
     <div class="meta-card"><b>Total riders:</b> {total}</div>
     <div class="meta-card"><b>Missing:</b> {missing}/{eligible}</div>
@@ -589,6 +606,7 @@ def render_stage_html(dataset_dir: Path, stage_id: str) -> Path:
 
 def render_stage_index_html(dataset_dir: Path) -> Path:
     ensure_stage_css(dataset_dir)
+    race_title = _competition_page_title(dataset_dir)
     stages_payload = json.loads((dataset_dir / "stages.json").read_text(encoding="utf-8"))
     stages = stages_payload["stages"]
     riders_payload = json.loads((dataset_dir / "riders.json").read_text(encoding="utf-8"))
@@ -645,12 +663,12 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Giro 2026 Stage Pages</title>
+  <title>{html.escape(race_title)} Stage Pages</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="wrap">
-  <h1>Giro 2026 - Stage HTML Pages</h1>
+  <h1>{html.escape(race_title)} - Stage HTML Pages</h1>
   <p>Per-stage pages with rider info, Strava profile links, and stage activity links.</p>
   <div class="tbl"><table>
     <thead>
@@ -675,34 +693,21 @@ def render_stage_index_html(dataset_dir: Path) -> Path:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Import Strava activities from raw stage HTML into stage_links JSON.")
     parser.add_argument("--stage-id", required=True, help="Stage id, e.g. S02")
-    parser.add_argument("--dataset-dir", default="giro_2026")
-    parser.add_argument("--raw-file", default=None, help="Raw HTML path (default: <dataset-dir>/raw/sXX.txt)")
+    parser.add_argument("--competition-dir", required=True)
+    parser.add_argument("--raw-file", default=None, help="Raw HTML path (default: <competition-dir>/raw/stages/SXX.txt)")
     parser.add_argument("--download-gpx", action="store_true", default=True, help="Download matched GPX to pool and link into stage folder.")
-    parser.add_argument("--local-tz", default="Europe/Rome")
     args = parser.parse_args()
 
-    repo = Path.cwd()
-    dataset_dir = repo / args.dataset_dir
+    repo = Path(__file__).resolve().parent
+    comp = load_competition(args.competition_dir)
+    dataset_dir = comp.root
     stage_path = dataset_dir / "stage_links" / f"{args.stage_id}.json"
     riders_path = dataset_dir / "riders.json"
 
     if args.raw_file:
         raw_path = Path(args.raw_file)
     else:
-        # Preferred: giro_2026/raw/stages/SXX.txt
-        raw_upper_new = dataset_dir / "raw" / "stages" / f"{args.stage_id}.txt"
-        raw_lower_new = dataset_dir / "raw" / "stages" / f"{args.stage_id.lower()}.txt"
-        # Backward compatibility: giro_2026/raw/SXX.txt
-        raw_upper_old = dataset_dir / "raw" / f"{args.stage_id}.txt"
-        raw_lower_old = dataset_dir / "raw" / f"{args.stage_id.lower()}.txt"
-        if raw_upper_new.exists():
-            raw_path = raw_upper_new
-        elif raw_lower_new.exists():
-            raw_path = raw_lower_new
-        elif raw_upper_old.exists():
-            raw_path = raw_upper_old
-        else:
-            raw_path = raw_lower_old
+        raw_path = dataset_dir / "raw" / "stages" / f"{args.stage_id}.txt"
     if not raw_path.exists():
         raise SystemExit(f"Raw file not found: {raw_path}")
     if not stage_path.exists():
@@ -782,7 +787,7 @@ def main() -> int:
                     "--session-cookie",
                     cookie,
                     "--local-tz",
-                    args.local_tz,
+                    comp.timezone,
                     entry["activity_url"],
                     "-o",
                     str(store_path),

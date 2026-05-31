@@ -11,6 +11,8 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from competition import load_competition
+
 GPX_RE = re.compile(r"^(B\d{3})__activity_(\d+)\.gpx$")
 
 
@@ -136,8 +138,7 @@ def stage_num(stage_id: str) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Step 2: assign stages from GPX pool by local GPX date.")
-    ap.add_argument("--dataset-dir", default="giro_2026")
-    ap.add_argument("--local-tz", default="Europe/Rome")
+    ap.add_argument("--competition-dir", required=True)
     ap.add_argument("--rider-id", default=None, help="Optional single rider (e.g. B002)")
     ap.add_argument("--lock", action="store_true", help="Set locked=true for assigned rows")
     ap.add_argument(
@@ -147,17 +148,13 @@ def main() -> int:
         help="Which GPX timestamp day to use for stage assignment (default: mid).",
     )
     args = ap.parse_args()
-    # Stage-specific start-time eligibility rules (local HH:MM, inclusive).
-    # S10 is an ITT day; morning reconnaissance should be ignored.
-    min_start_by_stage = {
-        "S10": "13:00",
-    }
+    comp = load_competition(args.competition_dir)
+    min_start_by_stage = comp.min_start_by_stage
 
-    base = Path(args.dataset_dir)
-    riders_payload = json.loads((base / "riders.json").read_text(encoding="utf-8"))
+    riders_payload = json.loads(comp.riders_json.read_text(encoding="utf-8"))
     riders = [r for r in riders_payload.get("riders", []) if isinstance(r, dict)]
 
-    stages_payload = json.loads((base / "stages.json").read_text(encoding="utf-8"))
+    stages_payload = json.loads(comp.stages_json.read_text(encoding="utf-8"))
     stages = [s for s in stages_payload.get("stages", []) if isinstance(s, dict)]
     date_to_stage = {s["date"]: s["stage_id"] for s in stages if s.get("date") and s.get("stage_id")}
     stage_ids = sorted({s["stage_id"] for s in stages if s.get("stage_id")}, key=stage_num)
@@ -166,15 +163,15 @@ def main() -> int:
     stage_json: dict[str, dict] = {}
     stage_rows: dict[str, dict[str, dict]] = {}
     for sid in stage_ids:
-        p = base / "stage_links" / f"{sid}.json"
+        p = comp.stage_links_dir / f"{sid}.json"
         if not p.exists():
             continue
         d = json.loads(p.read_text(encoding="utf-8"))
         stage_json[sid] = d
         stage_rows[sid] = {str(r.get("rider_id")): r for r in d.get("activities", []) if isinstance(r, dict)}
 
-    gpx_store = base / "gpx_store"
-    courses = base / "courses"
+    gpx_store = comp.gpx_store_dir
+    courses = comp.courses_dir
 
     riders_done = 0
     assigned_total = 0
@@ -193,7 +190,7 @@ def main() -> int:
         # Parse all GPX for rider from pool.
         infos: list[GpxInfo] = []
         for p in sorted(gpx_store.glob(f"{rid}__activity_*.gpx")):
-            info = parse_gpx_info(p, args.local_tz, date_mode=args.date_mode)
+            info = parse_gpx_info(p, comp.timezone, date_mode=args.date_mode)
             if info is not None:
                 infos.append(info)
 
@@ -277,7 +274,7 @@ def main() -> int:
 
     # Persist stage json updates.
     for sid, d in stage_json.items():
-        p = base / "stage_links" / f"{sid}.json"
+        p = comp.stage_links_dir / f"{sid}.json"
         p.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     print("\n=== Step2 Summary ===")
@@ -288,7 +285,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-    # Stage-specific start-time eligibility rules (local time HH:MM, inclusive).
-    min_start_by_stage = {
-        "S10": "13:00",
-    }

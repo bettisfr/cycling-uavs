@@ -14,6 +14,8 @@ import shutil
 
 import requests
 
+from competition import load_competition
+
 IGNORE_DOWNLOADS: set[tuple[str, str, str]] = {
     ("S02", "B063", "18441681959"),
 }
@@ -21,13 +23,12 @@ IGNORE_DOWNLOADS: set[tuple[str, str, str]] = {
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description='Download stage GPX files from stage_links JSON.')
+    p.add_argument('--competition-dir', required=True)
     p.add_argument('--stage-id', default=None, help='Stage id, e.g. S01')
     p.add_argument('--all', action='store_true', help='Process all stage_links/SXX.json files.')
-    p.add_argument('--repo-dir', default='/home/fra/Desktop/github/cycling-uavs')
     p.add_argument('--sleep', type=float, default=2.0, help='Base seconds between requests')
     p.add_argument('--jitter', type=float, default=1.0, help='Random seconds added to sleep')
     p.add_argument('--retries', type=int, default=2, help='Retries per activity on failure')
-    p.add_argument('--local-tz', default='Europe/Rome')
     p.add_argument(
         '--one',
         action='store_true',
@@ -40,11 +41,12 @@ def parse_args() -> argparse.Namespace:
 
 
 def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[str, int]:
-    stage_path = repo / 'giro_2026' / 'stage_links' / f'{stage_id}.json'
+    comp = load_competition(args.competition_dir)
+    stage_path = comp.stage_links_dir / f'{stage_id}.json'
     cookie_path = repo / 'strava_session_cookie.txt'
-    out_dir = repo / 'giro_2026' / 'courses' / stage_id
+    out_dir = comp.courses_dir / stage_id
     out_dir.mkdir(parents=True, exist_ok=True)
-    store_dir = repo / 'giro_2026' / 'gpx_store'
+    store_dir = comp.gpx_store_dir
     store_dir.mkdir(parents=True, exist_ok=True)
 
     if not stage_path.exists():
@@ -53,7 +55,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
         return {'ok': 0, 'fail': 0, 'pending': 0, 'processed': 0, 'total': 0}
 
     stage = json.loads(stage_path.read_text(encoding='utf-8'))
-    riders_path = repo / 'giro_2026' / 'riders.json'
+    riders_path = comp.riders_json
     riders_payload = json.loads(riders_path.read_text(encoding='utf-8')).get('riders', []) if riders_path.exists() else []
     withdraw_by_rider: dict[str, int] = {}
     enabled_by_rider: dict[str, bool] = {}
@@ -147,7 +149,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
             '--session-cookie',
             cookie,
             '--local-tz',
-            args.local_tz,
+            comp.timezone,
             url,
             '-o',
             str(store),
@@ -219,10 +221,11 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
 
 def main() -> int:
     args = parse_args()
-    repo = Path(args.repo_dir)
+    repo = Path(__file__).resolve().parent
+    comp = load_competition(args.competition_dir)
 
     if args.all:
-        stage_dir = repo / 'giro_2026' / 'stage_links'
+        stage_dir = comp.stage_links_dir
         stage_ids = sorted(p.stem for p in stage_dir.glob('S*.json'))
     else:
         stage_ids = [args.stage_id]

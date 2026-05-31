@@ -9,6 +9,8 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
+from competition import load_competition
+
 ACT_RE = re.compile(r"/activities/(\d+)")
 
 
@@ -29,11 +31,12 @@ def extract_first_time_date(gpx_path: Path) -> str | None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Validate stage_links consistency (duplicate activity IDs + GPX date checks).")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     args = ap.parse_args()
 
-    base = Path(args.dataset_dir)
-    stages_payload = json.loads((base / "stages.json").read_text(encoding="utf-8"))
+    comp = load_competition(args.competition_dir)
+    base = comp.root
+    stages_payload = json.loads(comp.stages_json.read_text(encoding="utf-8"))
     stage_date = {s["stage_id"]: s["date"] for s in stages_payload.get("stages", [])}
 
     by_activity: dict[str, list[tuple[str, str]]] = defaultdict(list)

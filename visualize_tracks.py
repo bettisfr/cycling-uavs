@@ -13,13 +13,8 @@ from typing import Any
 import folium
 import gpxpy
 from branca.element import Element
+from competition import load_competition
 import import_stage_raw
-
-BASE_DIR = Path(__file__).resolve().parent
-OUTPUT_DIR = BASE_DIR / "output"
-DATASET_DIR = BASE_DIR / "giro_2026"
-COURSES_DIR = DATASET_DIR / "courses"
-FLIGHTS_DIR = DATASET_DIR / "flights"
 
 COLORS = [
     "#e41a1c",
@@ -143,9 +138,10 @@ def default_flight_offset_for_stage(stage_id: str) -> float:
 
 
 def render_stage_map(args: argparse.Namespace, stage_id: str, flight_offset_min: float) -> int:
+    comp = load_competition(args.competition_dir)
     courses_dir = Path(args.courses_dir) / stage_id
     flights_dir = Path(args.flights_dir) / stage_id
-    out = DATASET_DIR / "html" / "maps" / f"{stage_id}.html"
+    out = comp.html_dir / "maps" / f"{stage_id}.html"
     out.parent.mkdir(parents=True, exist_ok=True)
 
     tracks: list[dict[str, Any]] = []
@@ -342,24 +338,30 @@ padding: 10px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); font-family: sans-se
 
 def run() -> int:
     parser = argparse.ArgumentParser(description="Create Folium map with static tracks + single nearest markers.")
-    parser.add_argument("--stage-id", default=None, help="Stage id (e.g. S01). Uses giro_2026/courses/<stage> and flights/<stage>.")
-    parser.add_argument("--courses-dir", default=str(COURSES_DIR))
-    parser.add_argument("--flights-dir", default=str(FLIGHTS_DIR))
-    parser.add_argument("-o", "--output", default=None, help="Output HTML path. Default: giro_2026/html/maps/<stage>.html when --stage-id is set.")
+    parser.add_argument("--competition-dir", required=True)
+    parser.add_argument("--stage-id", default=None, help="Stage id (e.g. S01).")
+    parser.add_argument("--courses-dir", default=None)
+    parser.add_argument("--flights-dir", default=None)
+    parser.add_argument("-o", "--output", default=None, help="Unused. Maps are always written to <competition-dir>/html/maps/SXX.html.")
     parser.add_argument("--max-points-per-track", type=int, default=600)
     parser.add_argument("--max-timeline-steps", type=int, default=1800)
     parser.add_argument("--course-tracks", type=int, default=5, help="Number of rider GPX tracks to load.")
     parser.add_argument("--bibs", nargs="*", type=int, default=None, help="Explicit rider bib list (e.g. --bibs 6 131 192).")
     parser.add_argument("--flight-offset-min", type=float, default=60.0, help="Offset (minutes) applied to flight timestamps.")
-    parser.add_argument("--all", action="store_true", help="Generate maps for all stages in giro_2026/stages.json.")
+    parser.add_argument("--all", action="store_true", help="Generate maps for all stages in <competition-dir>/stages.json.")
     args = parser.parse_args()
+    comp = load_competition(args.competition_dir)
+    if not args.courses_dir:
+        args.courses_dir = str(comp.courses_dir)
+    if not args.flights_dir:
+        args.flights_dir = str(comp.flights_dir)
 
     if args.all:
-        stages_path = DATASET_DIR / "stages.json"
+        stages_path = comp.stages_json
         stages = json.loads(stages_path.read_text(encoding="utf-8")).get("stages", [])
         stage_ids = [s.get("stage_id") for s in stages if s.get("stage_id")]
         if not stage_ids:
-            raise RuntimeError("No stages found in giro_2026/stages.json")
+            raise RuntimeError(f"No stages found in {stages_path}")
         print(f"Generating maps for {len(stage_ids)} stages...")
         total_tracks = 0
         ok = 0
@@ -390,7 +392,7 @@ def run() -> int:
         print(f"tracks_loaded_total: {n}")
 
     try:
-        import_stage_raw.render_stage_index_html(DATASET_DIR)
+        import_stage_raw.render_stage_index_html(comp.root)
     except Exception:
         # Keep map generation successful even if index refresh fails.
         pass

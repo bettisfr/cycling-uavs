@@ -3,22 +3,23 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 
+from competition import load_competition
 from generate_rider_html import generate_rider_page
 from import_stage_raw import render_stage_html, render_stage_index_html
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Regenerate stage/rider HTML pages.")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     ap.add_argument("--stage-id", default=None, help="Only regenerate one stage page (e.g. S03)")
     ap.add_argument("--skip-riders", action="store_true", help="Skip rider pages regeneration")
     args = ap.parse_args()
 
-    base = Path(args.dataset_dir)
-    stages = json.loads((base / "stages.json").read_text(encoding="utf-8"))["stages"]
-    riders = json.loads((base / "riders.json").read_text(encoding="utf-8"))["riders"]
+    comp = load_competition(args.competition_dir)
+    base = comp.root
+    stages = json.loads(comp.stages_json.read_text(encoding="utf-8"))["stages"]
+    riders = json.loads(comp.riders_json.read_text(encoding="utf-8"))["riders"]
 
     stage_links: dict[str, dict] = {}
     for s in stages:

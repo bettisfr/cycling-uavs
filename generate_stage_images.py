@@ -11,6 +11,7 @@ from urllib.request import Request, urlopen
 import gpxpy
 import matplotlib.pyplot as plt
 from PIL import Image
+from competition import load_competition
 
 
 def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -141,12 +142,13 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Generate stage planimetry/elevation PNG images from first GPX.")
     ap.add_argument("--stage-id", default=None, help="e.g. S06")
     ap.add_argument("--all", action="store_true", help="Generate images for all SXX folders in courses/")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     args = ap.parse_args()
     if not args.all and not args.stage_id:
         ap.error("either --stage-id or --all is required")
 
-    base = Path(args.dataset_dir)
+    comp = load_competition(args.competition_dir)
+    base = comp.root
     if args.all:
         stage_ids = sorted(p.name for p in (base / "courses").glob("S*") if p.is_dir())
     else:

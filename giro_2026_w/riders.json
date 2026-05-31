@@ -1,0 +1,1478 @@
+{
+  "version": 6,
+  "race": "Giro d'Italia Women",
+  "edition": 2026,
+  "notes": "Imported from PCS HTML: /home/fra/Downloads/Startlist for Giro d'Italia Women 2026.html. nationality uses PCS flag code. | bib normalized by team blocks (x1..x7).",
+  "riders": [
+    {
+      "rider_id": "B001",
+      "bib": 1,
+      "name": "Elisa Longo Borghini",
+      "nationality": "Italy",
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "strava_athlete_url": "https://www.strava.com/pros/1189566",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B002",
+      "bib": 2,
+      "name": "Alena Amialiusik",
+      "nationality": "Belarus",
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "strava_athlete_url": "https://www.strava.com/athletes/4601735",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B003",
+      "bib": 3,
+      "name": "Mavi García",
+      "nationality": "Spain",
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "strava_athlete_url": "https://www.strava.com/pros/4592180",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B004",
+      "bib": 4,
+      "name": "Eleonora Camilla Gasparrini",
+      "nationality": "Italy",
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "strava_athlete_url": "https://www.strava.com/athletes/1215177",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B005",
+      "bib": 5,
+      "name": "Lara Gillespie",
+      "nationality": "Ireland",
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B006",
+      "bib": 6,
+      "name": "Erica Magnaldi",
+      "nationality": "Italy",
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "strava_athlete_url": "https://www.strava.com/pros/2321117",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B007",
+      "bib": 7,
+      "name": "Silvia Persico",
+      "nationality": "Italy",
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "strava_athlete_url": "https://www.strava.com/athletes/40115427",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B011",
+      "bib": 11,
+      "name": "Urška Žigart",
+      "nationality": "Slovenia",
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "strava_athlete_url": "https://www.strava.com/pros/urska-zigart-4930343",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B012",
+      "bib": 12,
+      "name": "Mireia Benito",
+      "nationality": "Spain",
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "strava_athlete_url": "https://www.strava.com/athletes/1176964",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B013",
+      "bib": 13,
+      "name": "Lore de Schepper",
+      "nationality": "Belgium",
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "strava_athlete_url": "https://www.strava.com/athletes/39144149",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B014",
+      "bib": 14,
+      "name": "Justine Ghekiere",
+      "nationality": "Belgium",
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "strava_athlete_url": "https://www.strava.com/athletes/71864846",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B015",
+      "bib": 15,
+      "name": "Ilse Pluimers",
+      "nationality": "Netherlands",
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "strava_athlete_url": "https://www.strava.com/pros/7453808",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B016",
+      "bib": 16,
+      "name": "Julie van de Velde",
+      "nationality": "Belgium",
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B017",
+      "bib": 17,
+      "name": "Gladys Verhulst-Wild",
+      "nationality": "France",
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "strava_athlete_url": "https://www.strava.com/pros/3823574",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B021",
+      "bib": 21,
+      "name": "Irene Affolati",
+      "nationality": "Italy",
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "strava_athlete_url": "https://www.strava.com/athletes/39978343",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B022",
+      "bib": 22,
+      "name": "Fanny Bonini",
+      "nationality": "Italy",
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B023",
+      "bib": 23,
+      "name": "Maya Kingma",
+      "nationality": "Netherlands",
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "strava_athlete_url": "https://www.strava.com/pros/20416841",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B024",
+      "bib": 24,
+      "name": "Eleonora la Bella",
+      "nationality": "Italy",
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "strava_athlete_url": "https://www.strava.com/athletes/127694942",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B025",
+      "bib": 25,
+      "name": "Argiro Milaki",
+      "nationality": "Greece",
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B026",
+      "bib": 26,
+      "name": "Valentina Venerucci",
+      "nationality": "San Marino",
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B027",
+      "bib": 27,
+      "name": "Petra Zsankó",
+      "nationality": "Hungary",
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "strava_athlete_url": "https://www.strava.com/pros/65299476",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B031",
+      "bib": 31,
+      "name": "Antonia Niedermaier",
+      "nationality": "Germany",
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B032",
+      "bib": 32,
+      "name": "Chiara Consonni",
+      "nationality": "Italy",
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B033",
+      "bib": 33,
+      "name": "Justyna Czapla",
+      "nationality": "Germany",
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B034",
+      "bib": 34,
+      "name": "Anastasiya Kolesava",
+      "nationality": "Belarus",
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "strava_athlete_url": "https://www.strava.com/pros/34699185",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B035",
+      "bib": 35,
+      "name": "Cecilie Uttrup Ludwig",
+      "nationality": "Denmark",
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B036",
+      "bib": 36,
+      "name": "Soraya Paladin",
+      "nationality": "Italy",
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "strava_athlete_url": "https://www.strava.com/pros/6943107",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B037",
+      "bib": 37,
+      "name": "Maike van der Duin",
+      "nationality": "Netherlands",
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "strava_athlete_url": "https://www.strava.com/athletes/4713571",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B041",
+      "bib": 41,
+      "name": "Magdeleine Vallieres",
+      "nationality": "Canada",
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "strava_athlete_url": "https://www.strava.com/athletes/8879730",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B042",
+      "bib": 42,
+      "name": "Nina Berton",
+      "nationality": "Luxembourg",
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "strava_athlete_url": "https://www.strava.com/pros/35177957",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B043",
+      "bib": 43,
+      "name": "Kristen Faulkner",
+      "nationality": "United States",
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "strava_athlete_url": "https://www.strava.com/pros/16855613",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B044",
+      "bib": 44,
+      "name": "Stina Kagevi",
+      "nationality": "Sweden",
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "strava_athlete_url": "https://www.strava.com/athletes/26437534",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B045",
+      "bib": 45,
+      "name": "Mirre Knaven",
+      "nationality": "Netherlands",
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "strava_athlete_url": "https://www.strava.com/athletes/54947486",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B046",
+      "bib": 46,
+      "name": "Alexis Magner",
+      "nationality": "United States",
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "strava_athlete_url": "https://www.strava.com/athletes/11668",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B047",
+      "bib": 47,
+      "name": "Alexandra Volstad",
+      "nationality": "Canada",
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "strava_athlete_url": "https://www.strava.com/pros/29459702",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B051",
+      "bib": 51,
+      "name": "Demi Vollering",
+      "nationality": "Netherlands",
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "strava_athlete_url": "https://www.strava.com/athletes/16080090",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B052",
+      "bib": 52,
+      "name": "Célia Gery",
+      "nationality": "France",
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B053",
+      "bib": 53,
+      "name": "Lauren Dickson",
+      "nationality": "United Kingdom",
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B054",
+      "bib": 54,
+      "name": "Vittoria Guazzini",
+      "nationality": "Italy",
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "strava_athlete_url": "https://www.strava.com/athletes/21204679",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B055",
+      "bib": 55,
+      "name": "Amber Kraak",
+      "nationality": "Netherlands",
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "strava_athlete_url": "https://www.strava.com/athletes/23883806",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B056",
+      "bib": 56,
+      "name": "Eva van AGT",
+      "nationality": "Netherlands",
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "strava_athlete_url": "https://www.strava.com/athletes/47212528",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B057",
+      "bib": 57,
+      "name": "Ally Wollaston",
+      "nationality": "New Zealand",
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "strava_athlete_url": "https://www.strava.com/athletes/52558237",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B061",
+      "bib": 61,
+      "name": "Charlotte Kool",
+      "nationality": "Netherlands",
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "strava_athlete_url": "https://www.strava.com/pros/4640473",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B062",
+      "bib": 62,
+      "name": "Millie Couzens",
+      "nationality": "United Kingdom",
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "strava_athlete_url": "https://strava.com/athletes/12657155",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B063",
+      "bib": 63,
+      "name": "Mylène de Zoete",
+      "nationality": "Netherlands",
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "strava_athlete_url": "https://www.strava.com/athletes/2575267",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B064",
+      "bib": 64,
+      "name": "Evy Kuijpers",
+      "nationality": "Netherlands",
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "strava_athlete_url": "https://strava.com/athletes/5677506",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B065",
+      "bib": 65,
+      "name": "Flora Perkins",
+      "nationality": "United Kingdom",
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B066",
+      "bib": 66,
+      "name": "Christina Schweinberger",
+      "nationality": "Austria",
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "strava_athlete_url": "https://www.strava.com/pros/31013039",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B067",
+      "bib": 67,
+      "name": "Marthe Truyen",
+      "nationality": "Belgium",
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "strava_athlete_url": "https://strava.com/athletes/7994009",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B071",
+      "bib": 71,
+      "name": "Barbara Malcotti",
+      "nationality": "Italy",
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "strava_athlete_url": "https://www.strava.com/athletes/34889258",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B072",
+      "bib": 72,
+      "name": "Nina Buijsman",
+      "nationality": "Netherlands",
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "strava_athlete_url": "https://www.strava.com/athletes/11634440",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B073",
+      "bib": 73,
+      "name": "Carlotta Cipressi",
+      "nationality": "Italy",
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B074",
+      "bib": 74,
+      "name": "Maggie Coles-Lyster",
+      "nationality": "Canada",
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B075",
+      "bib": 75,
+      "name": "Thalita de Jong",
+      "nationality": "Netherlands",
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "strava_athlete_url": "https://strava.com/athletes/7244211",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B076",
+      "bib": 76,
+      "name": "Marit Raaijmakers",
+      "nationality": "Netherlands",
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "strava_athlete_url": "https://www.strava.com/athletes/28262875",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B077",
+      "bib": 77,
+      "name": "Lily Williams",
+      "nationality": "United States",
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "strava_athlete_url": "https://www.strava.com/athletes/12016362",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B081",
+      "bib": 81,
+      "name": "Anita Baima",
+      "nationality": "Italy",
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B082",
+      "bib": 82,
+      "name": "Giulia Bisso",
+      "nationality": "Italy",
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B083",
+      "bib": 83,
+      "name": "Lara Crestanello",
+      "nationality": "Italy",
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B084",
+      "bib": 84,
+      "name": "Valeria Curnis",
+      "nationality": "Italy",
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "strava_athlete_url": "https://www.strava.com/athletes/46929706",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B085",
+      "bib": 85,
+      "name": "Chantal Pegolo",
+      "nationality": "Italy",
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B086",
+      "bib": 86,
+      "name": "Martina Silvestri",
+      "nationality": "Italy",
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B087",
+      "bib": 87,
+      "name": "Valentina Zanzi",
+      "nationality": "Italy",
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "strava_athlete_url": "https://www.strava.com/athletes/77085852",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B091",
+      "bib": 91,
+      "name": "Naia Amondarain",
+      "nationality": "Spain",
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B092",
+      "bib": 92,
+      "name": "Yuliia Biriukova",
+      "nationality": "Ukraine",
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B093",
+      "bib": 93,
+      "name": "Sara Fiorin",
+      "nationality": "Italy",
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "strava_athlete_url": "https://www.strava.com/athletes/65339803",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B094",
+      "bib": 94,
+      "name": "Tiril Jørgensen",
+      "nationality": "Norway",
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "strava_athlete_url": "https://www.strava.com/athletes/24239334",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B095",
+      "bib": 95,
+      "name": "Debora Silvestri",
+      "nationality": "Italy",
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B096",
+      "bib": 96,
+      "name": "Cristina Tonetti",
+      "nationality": "Italy",
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "strava_athlete_url": "https://www.strava.com/athletes/16950044",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B097",
+      "bib": 97,
+      "name": "Marjolein van 'T Geloof",
+      "nationality": "Netherlands",
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "strava_athlete_url": "https://www.strava.com/athletes/49313736",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B101",
+      "bib": 101,
+      "name": "Niamh Fisher-Black",
+      "nationality": "New Zealand",
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "strava_athlete_url": "https://www.strava.com/athletes/12282041",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B102",
+      "bib": 102,
+      "name": "Elisa Balsamo",
+      "nationality": "Italy",
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B103",
+      "bib": 103,
+      "name": "Lucinda Brand",
+      "nationality": "Netherlands",
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "strava_athlete_url": "https://www.strava.com/pros/2371741",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B104",
+      "bib": 104,
+      "name": "Isabella Holmgren",
+      "nationality": "Canada",
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "strava_athlete_url": "https://www.strava.com/athletes/52564717",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B105",
+      "bib": 105,
+      "name": "Fleur Moors",
+      "nationality": "Belgium",
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "strava_athlete_url": "https://www.strava.com/athletes/56699464",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B106",
+      "bib": 106,
+      "name": "Amanda Spratt",
+      "nationality": "Australia",
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "strava_athlete_url": "https://www.strava.com/pros/14026904",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B107",
+      "bib": 107,
+      "name": "Shirin van Anrooij",
+      "nationality": "Netherlands",
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "strava_athlete_url": "https://strava.com/athletes/53544750",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B111",
+      "bib": 111,
+      "name": "Monica Trinca Colonel",
+      "nationality": "Italy",
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "strava_athlete_url": "https://www.strava.com/athletes/57756853?oq=moni",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B112",
+      "bib": 112,
+      "name": "Caroline Andersson",
+      "nationality": "Sweden",
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "strava_athlete_url": "https://www.strava.com/pros/22138001",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B113",
+      "bib": 113,
+      "name": "Georgia Baker",
+      "nationality": "Australia",
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B114",
+      "bib": 114,
+      "name": "Nadia Gontova",
+      "nationality": "Canada",
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "strava_athlete_url": "https://www.strava.com/pros/292683",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B115",
+      "bib": 115,
+      "name": "Silke Smulders",
+      "nationality": "Netherlands",
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "strava_athlete_url": "https://www.strava.com/athletes/6662450",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B116",
+      "bib": 116,
+      "name": "Quinty TON",
+      "nationality": "Netherlands",
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "strava_athlete_url": "https://www.strava.com/athletes/13903633",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B117",
+      "bib": 117,
+      "name": "Matilde Vitillo",
+      "nationality": "Italy",
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B121",
+      "bib": 121,
+      "name": "Marlen Reusser",
+      "nationality": "Switzerland",
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B122",
+      "bib": 122,
+      "name": "Francesca Barale",
+      "nationality": "Italy",
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": "https://www.strava.com/athletes/44377069",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B123",
+      "bib": 123,
+      "name": "Aude Biannic",
+      "nationality": "France",
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": "https://www.strava.com/athletes/6678278",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B124",
+      "bib": 124,
+      "name": "Sheyla Gutiérrez",
+      "nationality": "Spain",
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": "https://www.strava.com/athletes/sgutiierrez",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B125",
+      "bib": 125,
+      "name": "Ana Vitória Magalhães",
+      "nationality": "Brazil",
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": "https://www.strava.com/pros/9752016",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B126",
+      "bib": 126,
+      "name": "Mareille Meijer",
+      "nationality": "Netherlands",
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": "https://www.strava.com/athletes/36866870",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B127",
+      "bib": 127,
+      "name": "Arlenis Sierra",
+      "nationality": "Cuba",
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B131",
+      "bib": 131,
+      "name": "Clara Emond",
+      "nationality": "Canada",
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "strava_athlete_url": "https://www.strava.com/pros/14492550",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B132",
+      "bib": 132,
+      "name": "Alicia González",
+      "nationality": "Spain",
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "strava_athlete_url": "https://www.strava.com/athletes/8683989",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B133",
+      "bib": 133,
+      "name": "Alison Jackson",
+      "nationality": "Canada",
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "strava_athlete_url": "https://www.strava.com/athletes/3435263",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B134",
+      "bib": 134,
+      "name": "Clémence Chereau",
+      "nationality": "France",
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B135",
+      "bib": 135,
+      "name": "Émilie Morier",
+      "nationality": "France",
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "strava_athlete_url": "https://www.strava.com/athletes/43341742",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B136",
+      "bib": 136,
+      "name": "Solène Muller",
+      "nationality": "France",
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B137",
+      "bib": 137,
+      "name": "Caroline Wreszin",
+      "nationality": "United States",
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "strava_athlete_url": "https://www.strava.com/pros/10543179",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B141",
+      "bib": 141,
+      "name": "Camilla Bezzone",
+      "nationality": "Italy",
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B142",
+      "bib": 142,
+      "name": "Eleonora Deotto",
+      "nationality": "Italy",
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B143",
+      "bib": 143,
+      "name": "Giulia Giuliani",
+      "nationality": "Italy",
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B144",
+      "bib": 144,
+      "name": "Ilaria Marinetto",
+      "nationality": "Italy",
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B145",
+      "bib": 145,
+      "name": "Katelyn Nicholson",
+      "nationality": "Australia",
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "strava_athlete_url": "https://www.strava.com/athletes/33100056",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B146",
+      "bib": 146,
+      "name": "Sara Segala",
+      "nationality": "Italy",
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "strava_athlete_url": "https://www.strava.com/athletes/98534509",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B147",
+      "bib": 147,
+      "name": "Giorgia Serena",
+      "nationality": "Italy",
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B151",
+      "bib": 151,
+      "name": "Rachele Barbieri",
+      "nationality": "Italy",
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "strava_athlete_url": "https://www.strava.com/pros/20246771",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B152",
+      "bib": 152,
+      "name": "Robyn Clay",
+      "nationality": "United Kingdom",
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "strava_athlete_url": "https://www.strava.com/athletes/18256297",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B153",
+      "bib": 153,
+      "name": "Pfeiffer Georgi",
+      "nationality": "United Kingdom",
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "strava_athlete_url": "https://www.strava.com/pros/10809463",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B154",
+      "bib": 154,
+      "name": "Gaia Masetti",
+      "nationality": "Italy",
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "strava_athlete_url": "https://www.strava.com/pros/61299758",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B155",
+      "bib": 155,
+      "name": "Josie Nelson",
+      "nationality": "United Kingdom",
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "strava_athlete_url": "https://www.strava.com/athletes/19115285",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B156",
+      "bib": 156,
+      "name": "Mara Roldan",
+      "nationality": "Canada",
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "strava_athlete_url": "https://www.strava.com/athletes/47206832",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B157",
+      "bib": 157,
+      "name": "Becky Storrie",
+      "nationality": "United Kingdom",
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "strava_athlete_url": "https://www.strava.com/athletes/4483577",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B161",
+      "bib": 161,
+      "name": "Anna van der Breggen",
+      "nationality": "Netherlands",
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B162",
+      "bib": 162,
+      "name": "Valentina Cavallar",
+      "nationality": "Austria",
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "strava_athlete_url": "https://www.strava.com/athletes/94592890",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B163",
+      "bib": 163,
+      "name": "Elena Cecchini",
+      "nationality": "Italy",
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B164",
+      "bib": 164,
+      "name": "Femke Gerritse",
+      "nationality": "Netherlands",
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "strava_athlete_url": "https://www.strava.com/pros/19079190",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B165",
+      "bib": 165,
+      "name": "Barbara Guarischi",
+      "nationality": "Italy",
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "strava_athlete_url": "https://www.strava.com/athletes/4741717",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B166",
+      "bib": 166,
+      "name": "Mikayla Harvey",
+      "nationality": "New Zealand",
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "strava_athlete_url": "https://www.strava.com/pros/20857517",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B167",
+      "bib": 167,
+      "name": "Lorena Wiebes",
+      "nationality": "Netherlands",
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "strava_athlete_url": "https://www.strava.com/athletes/7703167",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B171",
+      "bib": 171,
+      "name": "Marion Bunel",
+      "nationality": "France",
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "strava_athlete_url": "https://www.strava.com/athletes/2042551",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B172",
+      "bib": 172,
+      "name": "Viktória Chladoňová",
+      "nationality": "Slovakia",
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "strava_athlete_url": "https://www.strava.com/athletes/118888030",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B173",
+      "bib": 173,
+      "name": "Femke de Vries",
+      "nationality": "Netherlands",
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "strava_athlete_url": "https://www.strava.com/athletes/8047810",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B174",
+      "bib": 174,
+      "name": "Daniek Hengeveld",
+      "nationality": "Netherlands",
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "strava_athlete_url": "https://www.strava.com/pros/19078930",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B175",
+      "bib": 175,
+      "name": "Rosita Reijnhout",
+      "nationality": "Netherlands",
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "strava_athlete_url": "https://www.strava.com/athletes/78460172",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B176",
+      "bib": 176,
+      "name": "Nienke Veenhoven",
+      "nationality": "Netherlands",
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "strava_athlete_url": "https://www.strava.com/athletes/82719778",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B177",
+      "bib": 177,
+      "name": "Margaux Vigié",
+      "nationality": "France",
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "strava_athlete_url": "https://www.strava.com/pros/12161382",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B181",
+      "bib": 181,
+      "name": "Elisa de Vallier",
+      "nationality": "Italy",
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "strava_athlete_url": "https://www.strava.com/athletes/43362891",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B182",
+      "bib": 182,
+      "name": "Sara Luccon",
+      "nationality": "Italy",
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B183",
+      "bib": 183,
+      "name": "Marta Pavesi",
+      "nationality": "Italy",
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "strava_athlete_url": "https://www.strava.com/athletes/1881268",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B184",
+      "bib": 184,
+      "name": "Chiara Reghini",
+      "nationality": "Italy",
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B185",
+      "bib": 185,
+      "name": "Irma Siri",
+      "nationality": "Italy",
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B186",
+      "bib": 186,
+      "name": "Sharon Spimi",
+      "nationality": "Italy",
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "strava_athlete_url": "https://www.strava.com/pros/23729361",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B187",
+      "bib": 187,
+      "name": "Alessia Zambelli",
+      "nationality": "Italy",
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B191",
+      "bib": 191,
+      "name": "Susanne Andersen",
+      "nationality": "Norway",
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B192",
+      "bib": 192,
+      "name": "Teuntje Beekhuis",
+      "nationality": "Netherlands",
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": "https://www.strava.com/athletes/16947839",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B193",
+      "bib": 193,
+      "name": "Marte Berg Edseth",
+      "nationality": "Norway",
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": "https://www.strava.com/pros/9207691",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B194",
+      "bib": 194,
+      "name": "Sigrid Ytterhus Haugset",
+      "nationality": "Norway",
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B195",
+      "bib": 195,
+      "name": "Mie Bjørndal Ottestad",
+      "nationality": "Norway",
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B196",
+      "bib": 196,
+      "name": "Alessia Vigilia",
+      "nationality": "Italy",
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B197",
+      "bib": 197,
+      "name": "Linda Zanetti",
+      "nationality": "Switzerland",
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B201",
+      "bib": 201,
+      "name": "Gaia Segato",
+      "nationality": "Italy",
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B202",
+      "bib": 202,
+      "name": "Sofia Arici",
+      "nationality": "Italy",
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "strava_athlete_url": "https://www.strava.com/athletes/77764637",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B203",
+      "bib": 203,
+      "name": "Andrea Casagranda",
+      "nationality": "Italy",
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "strava_athlete_url": "https://www.strava.com/athletes/20098983",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B204",
+      "bib": 204,
+      "name": "Marina Garau",
+      "nationality": "Spain",
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "strava_athlete_url": "https://www.strava.com/athletes/131339557",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B205",
+      "bib": 205,
+      "name": "Fariba Hashimi",
+      "nationality": "Afghanistan",
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "strava_athlete_url": "https://www.strava.com/athletes/116559455",
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B206",
+      "bib": 206,
+      "name": "Nora Jenčušová",
+      "nationality": "Slovakia",
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "strava_athlete_url": null,
+      "withdraw_stage": -1
+    },
+    {
+      "rider_id": "B207",
+      "bib": 207,
+      "name": "Irene Cagnazzo",
+      "nationality": "Italy",
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "strava_athlete_url": "https://www.strava.com/athletes/57591522",
+      "withdraw_stage": -1
+    }
+  ]
+}

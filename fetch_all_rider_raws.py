@@ -9,6 +9,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
+from competition import load_competition
 from import_rider_raw import extract_pairs
 
 MONTH_HASH = "interval_type?chart_type=miles&interval_type=month&interval=202605&year_offset=0"
@@ -22,7 +23,7 @@ def with_month_hash(url: str) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Fetch rendered raw rider pages for all enabled riders.")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     ap.add_argument("--timeout-sec", type=int, default=10)
     ap.add_argument("--headless", action="store_true")
     ap.add_argument("--scroll-steps", type=int, default=0, help="Forwarded to fetch_rider_raw_brave.py")
@@ -32,9 +33,10 @@ def main() -> int:
 
     repo = Path(__file__).resolve().parent
     cookie_file = repo / "strava_session_cookie.txt"
-    dataset_dir = Path(args.dataset_dir)
-    riders = json.loads((dataset_dir / "riders.json").read_text(encoding="utf-8"))["riders"]
-    stages = json.loads((dataset_dir / "stages.json").read_text(encoding="utf-8"))["stages"]
+    comp = load_competition(args.competition_dir)
+    dataset_dir = comp.root
+    riders = json.loads(comp.riders_json.read_text(encoding="utf-8"))["riders"]
+    stages = json.loads(comp.stages_json.read_text(encoding="utf-8"))["stages"]
     by_date = {s.get("date"): s.get("stage_id") for s in stages if isinstance(s, dict)}
     fetch_script = repo / "fetch_rider_raw_brave.py"
 
@@ -60,8 +62,8 @@ def main() -> int:
             with_month_hash(str(url)),
             "--rider-id",
             rid,
-            "--dataset-dir",
-            str(dataset_dir),
+            "--competition-dir",
+            str(comp.root),
             "--session-cookie-file",
             str(cookie_file),
             "--timeout-sec",

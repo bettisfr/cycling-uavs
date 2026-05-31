@@ -9,6 +9,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+from competition import load_competition
 from lib.flightaware_to_csv import (
     extract_ident as fa_extract_ident,
     extract_track_points as fa_extract_track_points,
@@ -28,9 +29,6 @@ BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "output"
 STRAVA_OUTPUT_DIR = OUTPUT_DIR / "courses"
 FLIGHT_OUTPUT_DIR = OUTPUT_DIR / "flights"
-DEFAULT_DATASET_DIR = BASE_DIR / "giro_2026"
-DATASET_COURSES_DIR = DEFAULT_DATASET_DIR / "courses"
-DATASET_FLIGHTS_DIR = DEFAULT_DATASET_DIR / "flights"
 
 
 def now_iso_local() -> str:
@@ -155,6 +153,7 @@ def update_stage_flight_record(
 
 
 def cmd_strava(args: argparse.Namespace) -> int:
+    comp = load_competition(args.competition_dir)
     activity_id = strava_parse_activity_id(args.activity)
     activity_url = (
         args.activity if str(args.activity).startswith("http") else f"https://www.strava.com/activities/{activity_id}"
@@ -162,7 +161,7 @@ def cmd_strava(args: argparse.Namespace) -> int:
     if args.output:
         output_path = Path(args.output)
     elif args.stage_id and args.rider_id:
-        output_path = DATASET_COURSES_DIR / args.stage_id / f"{args.rider_id}__activity_{activity_id}.gpx"
+        output_path = comp.courses_dir / args.stage_id / f"{args.rider_id}__activity_{activity_id}.gpx"
     else:
         output_path = STRAVA_OUTPUT_DIR / f"activity_{activity_id}.gpx"
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -172,7 +171,7 @@ def cmd_strava(args: argparse.Namespace) -> int:
         session_cookie = strava_load_session_cookie_from_browser(args.browser_cookie)
 
     web_session = strava_create_web_session(session_cookie)
-    activity = strava_fetch_activity_web(web_session, activity_id, local_tz=args.local_tz)
+    activity = strava_fetch_activity_web(web_session, activity_id, local_tz=args.local_tz or comp.timezone)
     streams = strava_fetch_streams_web(web_session, activity_id)
 
     gpx = strava_build_gpx(activity, streams)
@@ -181,7 +180,7 @@ def cmd_strava(args: argparse.Namespace) -> int:
 
     if args.stage_id and args.rider_id:
         update_stage_link_record(
-            dataset_dir=Path(args.dataset_dir),
+            dataset_dir=comp.root,
             stage_id=args.stage_id,
             rider_id=args.rider_id,
             activity_url=activity_url,
@@ -194,13 +193,14 @@ def cmd_strava(args: argparse.Namespace) -> int:
 
 
 def cmd_flightaware(args: argparse.Namespace) -> int:
+    comp = load_competition(args.competition_dir)
     html = fa_fetch_html(args.url)
     points = fa_extract_track_points(html)
     ident = fa_extract_ident(html)
     if args.output:
         output = Path(args.output)
     elif args.stage_id:
-        output = DATASET_FLIGHTS_DIR / args.stage_id / f"{ident}_track.csv"
+        output = comp.flights_dir / args.stage_id / f"{ident}_track.csv"
     else:
         output = FLIGHT_OUTPUT_DIR / f"{ident}_track.csv"
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -208,7 +208,7 @@ def cmd_flightaware(args: argparse.Namespace) -> int:
 
     if args.stage_id:
         update_stage_flight_record(
-            dataset_dir=Path(args.dataset_dir),
+            dataset_dir=comp.root,
             stage_id=args.stage_id,
             source_url=args.url,
             output_path=output,
@@ -254,11 +254,7 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Rider identifier from riders.json, e.g. B001. Used with --stage-id.",
     )
-    strava.add_argument(
-        "--dataset-dir",
-        default=str(DEFAULT_DATASET_DIR),
-        help="Dataset folder containing stages.json and stage_links/ (default: giro_2026).",
-    )
+    strava.add_argument("--competition-dir", required=True, help="Competition directory containing competition.json.")
     strava.add_argument(
         "-o",
         "--output",
@@ -274,11 +270,7 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Stage identifier, e.g. S01. Enables per-stage output path and stages.json update.",
     )
-    flightaware.add_argument(
-        "--dataset-dir",
-        default=str(DEFAULT_DATASET_DIR),
-        help="Dataset folder containing stages.json (default: giro_2026).",
-    )
+    flightaware.add_argument("--competition-dir", required=True, help="Competition directory containing competition.json.")
     flightaware.add_argument("-o", "--output", default=None, help="Output CSV path")
     flightaware.set_defaults(func=cmd_flightaware)
 

@@ -8,6 +8,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from bs4 import BeautifulSoup
+from competition import load_competition
 
 
 DATE_RE = re.compile(r"\bMay\s+(\d{1,2}),\s+2026\b")
@@ -104,11 +105,12 @@ def main() -> int:
         help="Allow mapping up to today.",
     )
     ap.add_argument("--html-file", default=None, help="Raw rider page HTML path")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     ap.add_argument("--year", type=int, default=2026)
     args = ap.parse_args()
 
-    base = Path(args.dataset_dir)
+    comp = load_competition(args.competition_dir)
+    base = comp.root
     stages = json.loads((base / "stages.json").read_text(encoding="utf-8"))["stages"]
     stage_by_date = {s["date"]: s["stage_id"] for s in stages}
     today = date.today()

@@ -1,0 +1,11 @@
+{
+  "id": "giro_2026",
+  "name": "Giro d'Italia 2026",
+  "timezone": "Europe/Rome",
+  "flight_callsign": "ASR251",
+  "stage_rules": {
+    "min_start_hhmm_by_stage": {
+      "S10": "13:00"
+    }
+  }
+}

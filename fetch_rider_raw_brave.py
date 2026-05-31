@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from competition import load_competition
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
@@ -12,7 +13,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Fetch rendered rider page HTML using local Brave profile.")
     ap.add_argument("--url", required=True, help="Rider URL, e.g. https://www.strava.com/pros/8409483")
     ap.add_argument("--rider-id", required=True, help="Rider id label for output file, e.g. B002")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     ap.add_argument("--brave-bin", default="/usr/bin/brave-browser")
     ap.add_argument("--session-cookie-file", default="strava_session_cookie.txt")
     ap.add_argument("--headless", action="store_true", help="Run headless (default: headed)")
@@ -21,7 +22,8 @@ def main() -> int:
     ap.add_argument("--scroll-wait-ms", type=int, default=1200, help="Wait between scroll steps in milliseconds")
     args = ap.parse_args()
 
-    out_dir = Path(args.dataset_dir) / "raw" / "riders"
+    comp = load_competition(args.competition_dir)
+    out_dir = comp.raw_riders_dir
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{args.rider_id}.txt"
 

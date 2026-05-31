@@ -7,6 +7,8 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+from competition import load_competition
+
 
 def extract_start_hhmm(gpx_path: Path) -> str:
     try:
@@ -138,7 +140,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Generate rider HTML summaries across all stages.")
     ap.add_argument("--rider-id", help="Rider id, e.g. B006")
     ap.add_argument("--all", action="store_true", help="Generate pages for all riders")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     args = ap.parse_args()
 
     if not args.all and not args.rider_id:
@@ -146,9 +148,10 @@ def main() -> int:
     if args.all and args.rider_id:
         ap.error("use either --all or --rider-id")
 
-    base = Path(args.dataset_dir)
-    riders = json.loads((base / "riders.json").read_text(encoding="utf-8"))["riders"]
-    stages = json.loads((base / "stages.json").read_text(encoding="utf-8"))["stages"]
+    comp = load_competition(args.competition_dir)
+    base = comp.root
+    riders = json.loads(comp.riders_json.read_text(encoding="utf-8"))["riders"]
+    stages = json.loads(comp.stages_json.read_text(encoding="utf-8"))["stages"]
     stage_links: dict[str, dict] = {}
     for s in stages:
         sid = s["stage_id"]

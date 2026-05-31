@@ -3,16 +3,17 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
+
+from competition import load_competition
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Step 4: lock all currently assigned activity rows in stage_links.")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     args = ap.parse_args()
 
-    base = Path(args.dataset_dir)
-    links = base / "stage_links"
+    comp = load_competition(args.competition_dir)
+    links = comp.stage_links_dir
 
     files_updated = 0
     rows_locked = 0

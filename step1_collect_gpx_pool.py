@@ -10,6 +10,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
+from competition import load_competition
 from import_rider_raw import extract_pairs
 
 MONTH_HASH = "interval_type?chart_type=miles&interval_type=month&interval=202605&year_offset=0"
@@ -24,32 +25,38 @@ def main() -> int:
     ap = argparse.ArgumentParser(
         description="Step 1 pipeline: fetch rider raw pages, parse activities, download GPX to pool."
     )
-    ap.add_argument("--dataset-dir", default="giro_2026")
-    ap.add_argument("--from-date", default="2026-05-08", help="Inclusive YYYY-MM-DD")
+    ap.add_argument("--competition-dir", required=True)
+    ap.add_argument("--from-date", default=None, help="Inclusive YYYY-MM-DD (default: first stage date from stages.json)")
     ap.add_argument("--timeout-sec", type=int, default=20)
     ap.add_argument("--headless", action="store_true", default=True)
     ap.add_argument("--scroll-steps", type=int, default=12)
     ap.add_argument("--scroll-wait-ms", type=int, default=1200)
     ap.add_argument("--sleep", type=float, default=2.0)
-    ap.add_argument("--local-tz", default="Europe/Rome")
     ap.add_argument("--from-rider-id", default=None)
     args = ap.parse_args()
 
     repo = Path(__file__).resolve().parent
-    dataset_dir = Path(args.dataset_dir)
+    comp = load_competition(args.competition_dir)
     cookie_file = repo / "strava_session_cookie.txt"
     cookie = cookie_file.read_text(encoding="utf-8").strip()
     if not cookie:
         raise SystemExit("Empty strava_session_cookie.txt")
 
-    from_date = date.fromisoformat(args.from_date)
+    if args.from_date:
+        from_date = date.fromisoformat(args.from_date)
+    else:
+        stages_payload = json.loads(comp.stages_json.read_text(encoding="utf-8"))
+        stage_dates = [date.fromisoformat(str(s.get("date"))) for s in stages_payload.get("stages", []) if s.get("date")]
+        if not stage_dates:
+            raise SystemExit("No stage dates found in stages.json; pass --from-date explicitly.")
+        from_date = min(stage_dates)
 
-    riders = json.loads((dataset_dir / "riders.json").read_text(encoding="utf-8")).get("riders", [])
+    riders = json.loads(comp.riders_json.read_text(encoding="utf-8")).get("riders", [])
     riders = sorted([r for r in riders if isinstance(r, dict)], key=lambda r: r.get("rider_id", ""))
 
     fetch_script = repo / "fetch_rider_raw_brave.py"
     gpx_script = repo / "lib" / "strava_to_gpx.py"
-    gpx_store = dataset_dir / "gpx_store"
+    gpx_store = comp.gpx_store_dir
     gpx_store.mkdir(parents=True, exist_ok=True)
 
     total_riders = 0
@@ -81,8 +88,8 @@ def main() -> int:
             with_month_hash(url),
             "--rider-id",
             rid,
-            "--dataset-dir",
-            str(dataset_dir),
+            "--competition-dir",
+            str(comp.root),
             "--session-cookie-file",
             str(cookie_file),
             "--timeout-sec",
@@ -102,7 +109,7 @@ def main() -> int:
             total_fail += 1
             continue
 
-        raw_path = dataset_dir / "raw" / "riders" / f"{rid}.txt"
+        raw_path = comp.raw_riders_dir / f"{rid}.txt"
         if not raw_path.exists():
             print(f"FAIL {rid} raw_missing {raw_path}")
             total_fail += 1
@@ -152,7 +159,7 @@ def main() -> int:
                 "--session-cookie",
                 cookie,
                 "--local-tz",
-                args.local_tz,
+                comp.timezone,
                 f"https://www.strava.com/activities/{aid}",
                 "-o",
                 str(out),

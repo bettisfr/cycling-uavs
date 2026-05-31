@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "race": "Giro d'Italia Women",
+  "edition": 2026,
+  "timezone": "Europe/Rome",
+  "rest_days": [],
+  "stages": [
+    {
+      "stage_id": "S01",
+      "date": "2026-05-30",
+      "name": "Stage 1",
+      "start_city": "Cesenatico",
+      "start_country": null,
+      "finish_city": "Ravenna",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [
+          "ASR254"
+        ],
+        "source_urls": [
+          "https://www.flightradar24.com/data/flights/asr254#3ff1f280"
+        ],
+        "track_status": "found",
+        "track_csv_path": "flights/S01/ASR254_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-31T22:56:21+02:00"
+      }
+    },
+    {
+      "stage_id": "S02",
+      "date": "2026-05-31",
+      "name": "Stage 2",
+      "start_city": "Roncade",
+      "start_country": null,
+      "finish_city": "Caorle",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [
+          "ASR254"
+        ],
+        "source_urls": [
+          "https://www.flightradar24.com/data/flights/asr254#3ff4ff24"
+        ],
+        "track_status": "found",
+        "track_csv_path": "flights/S02/ASR254_track.csv",
+        "notes": "",
+        "checked_at": "2026-05-31T22:56:21+02:00"
+      }
+    },
+    {
+      "stage_id": "S03",
+      "date": "2026-06-01",
+      "name": "Stage 3",
+      "start_city": "Bibione",
+      "start_country": null,
+      "finish_city": "Buja",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": "",
+        "checked_at": null
+      }
+    },
+    {
+      "stage_id": "S04",
+      "date": "2026-06-02",
+      "name": "Stage 4",
+      "start_city": "Belluno",
+      "start_country": null,
+      "finish_city": "Nevegal",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": "",
+        "checked_at": null
+      }
+    },
+    {
+      "stage_id": "S05",
+      "date": "2026-06-03",
+      "name": "Stage 5",
+      "start_city": "Longarone",
+      "start_country": null,
+      "finish_city": "Santo Stefano di Cadore",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": "",
+        "checked_at": null
+      }
+    },
+    {
+      "stage_id": "S06",
+      "date": "2026-06-04",
+      "name": "Stage 6",
+      "start_city": "Ala",
+      "start_country": null,
+      "finish_city": "Brescello",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": "",
+        "checked_at": null
+      }
+    },
+    {
+      "stage_id": "S07",
+      "date": "2026-06-05",
+      "name": "Stage 7",
+      "start_city": "Sorbolo Mezzani",
+      "start_country": null,
+      "finish_city": "Salice Terme",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": "",
+        "checked_at": null
+      }
+    },
+    {
+      "stage_id": "S08",
+      "date": "2026-06-06",
+      "name": "Stage 8",
+      "start_city": "Rivoli",
+      "start_country": null,
+      "finish_city": "Sestriere",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": "",
+        "checked_at": null
+      }
+    },
+    {
+      "stage_id": "S09",
+      "date": "2026-06-07",
+      "name": "Stage 9",
+      "start_city": "Saluzzo",
+      "start_country": null,
+      "finish_city": "Saluzzo",
+      "finish_country": null,
+      "distance_km": null,
+      "stage_type": "road",
+      "profile": "unknown",
+      "flight": {
+        "callsigns": [],
+        "source_urls": [],
+        "track_status": "not_checked",
+        "track_csv_path": null,
+        "notes": "",
+        "checked_at": null
+      }
+    }
+  ]
+}

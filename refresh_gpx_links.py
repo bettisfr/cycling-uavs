@@ -7,20 +7,22 @@ import re
 import shutil
 from pathlib import Path
 
+from competition import load_competition
+
 ACT_RE = re.compile(r"/activities/(\d+)")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Rebuild courses/SXX GPX links from stage_links and gpx_store.")
-    ap.add_argument("--dataset-dir", default="giro_2026")
+    ap.add_argument("--competition-dir", required=True)
     ap.add_argument("--copy-instead-of-symlink", action="store_true")
     ap.add_argument("--seed-store-from-courses", action="store_true", help="Copy existing courses/SXX GPX into gpx_store before relinking.")
     args = ap.parse_args()
 
-    base = Path(args.dataset_dir)
-    links_dir = base / "stage_links"
-    courses_dir = base / "courses"
-    store_dir = base / "gpx_store"
+    comp = load_competition(args.competition_dir)
+    links_dir = comp.stage_links_dir
+    courses_dir = comp.courses_dir
+    store_dir = comp.gpx_store_dir
     courses_dir.mkdir(parents=True, exist_ok=True)
     store_dir.mkdir(parents=True, exist_ok=True)
 

@@ -1,0 +1,113 @@
+{
+  "version": 3,
+  "race": "Giro d'Italia Women",
+  "edition": 2026,
+  "notes": "Imported from PCS HTML: /home/fra/Downloads/Startlist for Giro d'Italia Women 2026.html",
+  "teams": [
+    {
+      "team_id": "T01",
+      "team_name": "UAE Team ADQ",
+      "country": null
+    },
+    {
+      "team_id": "T02",
+      "team_name": "AG Insurance - Soudal Team",
+      "country": null
+    },
+    {
+      "team_id": "T03",
+      "team_name": "Aromitalia Vaiano",
+      "country": null
+    },
+    {
+      "team_id": "T04",
+      "team_name": "CANYON//SRAM",
+      "country": null
+    },
+    {
+      "team_id": "T05",
+      "team_name": "EF Education-Oatly",
+      "country": null
+    },
+    {
+      "team_id": "T06",
+      "team_name": "FDJ United - SUEZ",
+      "country": null
+    },
+    {
+      "team_id": "T07",
+      "team_name": "Fenix-Premier Tech",
+      "country": null
+    },
+    {
+      "team_id": "T08",
+      "team_name": "Human Powered Health",
+      "country": null
+    },
+    {
+      "team_id": "T09",
+      "team_name": "Isolmant - Premac - Vittoria",
+      "country": null
+    },
+    {
+      "team_id": "T10",
+      "team_name": "Laboral Kutxa - Fundación Euskadi",
+      "country": null
+    },
+    {
+      "team_id": "T11",
+      "team_name": "Lidl - Trek",
+      "country": null
+    },
+    {
+      "team_id": "T12",
+      "team_name": "Liv AlUla Jayco",
+      "country": null
+    },
+    {
+      "team_id": "T13",
+      "team_name": "Movistar Team",
+      "country": null
+    },
+    {
+      "team_id": "T14",
+      "team_name": "St Michel - Preference Home - Auber93",
+      "country": null
+    },
+    {
+      "team_id": "T15",
+      "team_name": "Team Mendelspeck E-Work",
+      "country": null
+    },
+    {
+      "team_id": "T16",
+      "team_name": "Team Picnic PostNL",
+      "country": null
+    },
+    {
+      "team_id": "T17",
+      "team_name": "Team SD Worx - Protime",
+      "country": null
+    },
+    {
+      "team_id": "T18",
+      "team_name": "Team Visma | Lease a Bike",
+      "country": null
+    },
+    {
+      "team_id": "T19",
+      "team_name": "Top Girls Fassa Bortolo",
+      "country": null
+    },
+    {
+      "team_id": "T20",
+      "team_name": "Uno-X Mobility",
+      "country": null
+    },
+    {
+      "team_id": "T21",
+      "team_name": "Vini Fantini - BePink",
+      "country": null
+    }
+  ]
+}
