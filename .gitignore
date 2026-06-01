@@ -19,3 +19,9 @@ strava_session_cookie.txt
 .codex-project-id
 
 giro_2026/gpx_store/
+
+giro_2026_w/courses/
+giro_2026_w/flights/
+giro_2026_w/raw/
+giro_2026_w/html/
+giro_2026_w/gpx_store/

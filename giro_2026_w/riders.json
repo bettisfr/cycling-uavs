@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 9,
   "race": "Giro d'Italia Women",
   "edition": 2026,
   "notes": "Imported from PCS HTML: /home/fra/Downloads/Startlist for Giro d'Italia Women 2026.html. nationality uses PCS flag code. | bib normalized by team blocks (x1..x7).",
@@ -41,7 +41,7 @@
       "nationality": "Italy",
       "team_id": "T01",
       "team_name": "UAE Team ADQ",
-      "strava_athlete_url": "https://www.strava.com/athletes/1215177",
+      "strava_athlete_url": "https://www.strava.com/athletes/24010998",
       "withdraw_stage": -1
     },
     {
@@ -111,7 +111,7 @@
       "nationality": "Belgium",
       "team_id": "T02",
       "team_name": "AG Insurance - Soudal Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/71864846",
+      "strava_athlete_url": "https://www.strava.com/athletes/25176995",
       "withdraw_stage": -1
     },
     {
@@ -181,7 +181,7 @@
       "nationality": "Italy",
       "team_id": "T03",
       "team_name": "Aromitalia Vaiano",
-      "strava_athlete_url": "https://www.strava.com/athletes/127694942",
+      "strava_athlete_url": null,
       "withdraw_stage": -1
     },
     {
@@ -251,7 +251,7 @@
       "nationality": "Belarus",
       "team_id": "T04",
       "team_name": "CANYON//SRAM",
-      "strava_athlete_url": "https://www.strava.com/pros/34699185",
+      "strava_athlete_url": null,
       "withdraw_stage": -1
     },
     {
@@ -321,7 +321,7 @@
       "nationality": "Sweden",
       "team_id": "T05",
       "team_name": "EF Education-Oatly",
-      "strava_athlete_url": "https://www.strava.com/athletes/26437534",
+      "strava_athlete_url": "https://strava.com/athletes/25144986",
       "withdraw_stage": -1
     },
     {
@@ -391,7 +391,7 @@
       "nationality": "Italy",
       "team_id": "T06",
       "team_name": "FDJ United - SUEZ",
-      "strava_athlete_url": "https://www.strava.com/athletes/21204679",
+      "strava_athlete_url": "https://www.strava.com/athletes/28103104",
       "withdraw_stage": -1
     },
     {
@@ -461,7 +461,7 @@
       "nationality": "Netherlands",
       "team_id": "T07",
       "team_name": "Fenix-Premier Tech",
-      "strava_athlete_url": "https://strava.com/athletes/5677506",
+      "strava_athlete_url": "https://www.strava.com/athletes/6783087",
       "withdraw_stage": -1
     },
     {
@@ -531,7 +531,7 @@
       "nationality": "Canada",
       "team_id": "T08",
       "team_name": "Human Powered Health",
-      "strava_athlete_url": null,
+      "strava_athlete_url": "https://www.strava.com/athletes/48657274",
       "withdraw_stage": -1
     },
     {
@@ -601,7 +601,7 @@
       "nationality": "Italy",
       "team_id": "T09",
       "team_name": "Isolmant - Premac - Vittoria",
-      "strava_athlete_url": "https://www.strava.com/athletes/46929706",
+      "strava_athlete_url": "https://www.strava.com/athletes/24820354",
       "withdraw_stage": -1
     },
     {
@@ -671,7 +671,7 @@
       "nationality": "Norway",
       "team_id": "T10",
       "team_name": "Laboral Kutxa - Fundación Euskadi",
-      "strava_athlete_url": "https://www.strava.com/athletes/24239334",
+      "strava_athlete_url": "https://www.strava.com/athletes/25105755",
       "withdraw_stage": -1
     },
     {
@@ -741,7 +741,7 @@
       "nationality": "Canada",
       "team_id": "T11",
       "team_name": "Lidl - Trek",
-      "strava_athlete_url": "https://www.strava.com/athletes/52564717",
+      "strava_athlete_url": "https://www.strava.com/pros/57478620",
       "withdraw_stage": -1
     },
     {
@@ -811,7 +811,7 @@
       "nationality": "Canada",
       "team_id": "T12",
       "team_name": "Liv AlUla Jayco",
-      "strava_athlete_url": "https://www.strava.com/pros/292683",
+      "strava_athlete_url": "https://www.strava.com/pros/52319907",
       "withdraw_stage": -1
     },
     {
@@ -881,7 +881,7 @@
       "nationality": "Spain",
       "team_id": "T13",
       "team_name": "Movistar Team",
-      "strava_athlete_url": "https://www.strava.com/athletes/sgutiierrez",
+      "strava_athlete_url": null,
       "withdraw_stage": -1
     },
     {
@@ -1091,7 +1091,7 @@
       "nationality": "Italy",
       "team_id": "T16",
       "team_name": "Team Picnic PostNL",
-      "strava_athlete_url": "https://www.strava.com/pros/61299758",
+      "strava_athlete_url": "https://www.strava.com/pros/20086366",
       "withdraw_stage": -1
     },
     {
@@ -1161,7 +1161,7 @@
       "nationality": "Netherlands",
       "team_id": "T17",
       "team_name": "Team SD Worx - Protime",
-      "strava_athlete_url": "https://www.strava.com/pros/19079190",
+      "strava_athlete_url": "https://www.strava.com/athletes/3542350",
       "withdraw_stage": -1
     },
     {
@@ -1231,7 +1231,7 @@
       "nationality": "Netherlands",
       "team_id": "T18",
       "team_name": "Team Visma | Lease a Bike",
-      "strava_athlete_url": "https://www.strava.com/pros/19078930",
+      "strava_athlete_url": "https://www.strava.com/pros/39502275",
       "withdraw_stage": -1
     },
     {
@@ -1301,7 +1301,7 @@
       "nationality": "Italy",
       "team_id": "T19",
       "team_name": "Top Girls Fassa Bortolo",
-      "strava_athlete_url": null,
+      "strava_athlete_url": "https://www.strava.com/athletes/128455379",
       "withdraw_stage": -1
     },
     {
@@ -1371,7 +1371,7 @@
       "nationality": "Norway",
       "team_id": "T20",
       "team_name": "Uno-X Mobility",
-      "strava_athlete_url": null,
+      "strava_athlete_url": "https://www.strava.com/athletes/25034588",
       "withdraw_stage": -1
     },
     {
@@ -1441,7 +1441,7 @@
       "nationality": "Spain",
       "team_id": "T21",
       "team_name": "Vini Fantini - BePink",
-      "strava_athlete_url": "https://www.strava.com/athletes/131339557",
+      "strava_athlete_url": "https://www.strava.com/athletes/18640164",
       "withdraw_stage": -1
     },
     {
