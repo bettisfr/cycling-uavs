@@ -129,7 +129,9 @@ def downsample_timeline(times_ms: list[int], max_steps: int) -> list[int]:
     return out
 
 
-def default_flight_offset_for_stage(stage_id: str) -> float:
+def default_flight_offset_for_stage(stage_id: str, competition_id: str) -> float:
+    if competition_id == "giro_2026_w":
+        return 0.0
     try:
         n = int(stage_id[1:])
     except Exception:
@@ -367,7 +369,7 @@ def run() -> int:
         ok = 0
         fail = 0
         for sid in stage_ids:
-            auto_offset = default_flight_offset_for_stage(str(sid))
+            auto_offset = default_flight_offset_for_stage(str(sid), comp.id)
             try:
                 n = render_stage_map(args, str(sid), auto_offset)
                 total_tracks += n
