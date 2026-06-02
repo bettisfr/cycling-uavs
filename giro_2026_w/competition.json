@@ -1,9 +1,0 @@
-{
-  "id": "giro_2026_w",
-  "name": "Giro d'Italia Women 2026",
-  "timezone": "Europe/Rome",
-  "flight_callsign": "",
-  "stage_rules": {
-    "min_start_hhmm_by_stage": {}
-  }
-}
