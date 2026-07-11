@@ -7,7 +7,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from competition import load_competition
+from pipeline.competition import load_competition
 
 
 def extract_start_hhmm(gpx_path: Path) -> str:

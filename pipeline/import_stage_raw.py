@@ -13,7 +13,7 @@ import xml.etree.ElementTree as ET
 from datetime import date, timezone
 from pathlib import Path
 
-from competition import load_competition
+from pipeline.competition import load_competition
 
 ENTRY_RE = re.compile(
     r'<div class="x35YV" data-testid="entry">(.*?)</div><button class="i_Upj zyqUR _vKTN"',
@@ -698,7 +698,7 @@ def main() -> int:
     parser.add_argument("--download-gpx", action="store_true", default=True, help="Download matched GPX to pool and link into stage folder.")
     args = parser.parse_args()
 
-    repo = Path(__file__).resolve().parent
+    repo = Path(__file__).resolve().parents[1]
     comp = load_competition(args.competition_dir)
     dataset_dir = comp.root
     stage_path = dataset_dir / "stage_links" / f"{args.stage_id}.json"
@@ -783,7 +783,8 @@ def main() -> int:
             elif cookie:
                 cmd = [
                     "/home/fra/pyvenv/bin/python",
-                    str(repo / "lib" / "strava_to_gpx.py"),
+                    "-m",
+                    "pipeline.lib.strava_to_gpx",
                     "--session-cookie",
                     cookie,
                     "--local-tz",
@@ -792,7 +793,7 @@ def main() -> int:
                     "-o",
                     str(store_path),
                 ]
-                r = subprocess.run(cmd, capture_output=True, text=True)
+                r = subprocess.run(cmd, capture_output=True, text=True, cwd=repo)
                 if r.returncode == 0 and store_path.exists() and store_path.stat().st_size > 0:
                     ok = True
                     gpx_new += 1

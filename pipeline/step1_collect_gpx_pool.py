@@ -10,8 +10,8 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
-from competition import load_competition
-from import_rider_raw import extract_pairs
+from pipeline.competition import load_competition
+from pipeline.import_rider_raw import extract_pairs
 
 MONTH_HASH = "interval_type?chart_type=miles&interval_type=month&interval=202605&year_offset=0"
 
@@ -35,7 +35,7 @@ def main() -> int:
     ap.add_argument("--from-rider-id", default=None)
     args = ap.parse_args()
 
-    repo = Path(__file__).resolve().parent
+    repo = Path(__file__).resolve().parents[1]
     comp = load_competition(args.competition_dir)
     cookie_file = repo / "strava_session_cookie.txt"
     cookie = cookie_file.read_text(encoding="utf-8").strip()
@@ -54,8 +54,6 @@ def main() -> int:
     riders = json.loads(comp.riders_json.read_text(encoding="utf-8")).get("riders", [])
     riders = sorted([r for r in riders if isinstance(r, dict)], key=lambda r: r.get("rider_id", ""))
 
-    fetch_script = repo / "fetch_rider_raw_brave.py"
-    gpx_script = repo / "lib" / "strava_to_gpx.py"
     gpx_store = comp.gpx_store_dir
     gpx_store.mkdir(parents=True, exist_ok=True)
 
@@ -83,7 +81,8 @@ def main() -> int:
 
         cmd_fetch = [
             "/home/fra/pyvenv/bin/python",
-            str(fetch_script),
+            "-m",
+            "pipeline.fetch_rider_raw_brave",
             "--url",
             with_month_hash(url),
             "--rider-id",
@@ -102,7 +101,7 @@ def main() -> int:
         if args.headless:
             cmd_fetch.append("--headless")
 
-        rf = subprocess.run(cmd_fetch, capture_output=True, text=True)
+        rf = subprocess.run(cmd_fetch, capture_output=True, text=True, cwd=repo)
         if rf.returncode != 0:
             err = ((rf.stderr or rf.stdout) or "").strip().replace("\n", " | ")
             print(f"FAIL {rid} fetch {err}")
@@ -155,7 +154,8 @@ def main() -> int:
 
             cmd_gpx = [
                 "/home/fra/pyvenv/bin/python",
-                str(gpx_script),
+                "-m",
+                "pipeline.lib.strava_to_gpx",
                 "--session-cookie",
                 cookie,
                 "--local-tz",
@@ -164,7 +164,7 @@ def main() -> int:
                 "-o",
                 str(out),
             ]
-            rg = subprocess.run(cmd_gpx, capture_output=True, text=True)
+            rg = subprocess.run(cmd_gpx, capture_output=True, text=True, cwd=repo)
             if rg.returncode == 0 and out.exists() and out.stat().st_size > 0:
                 rider_new += 1
                 total_new += 1

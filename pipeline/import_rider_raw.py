@@ -8,7 +8,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from bs4 import BeautifulSoup
-from competition import load_competition
+from pipeline.competition import load_competition
 
 
 DATE_RE = re.compile(r"\bMay\s+(\d{1,2}),\s+2026\b")

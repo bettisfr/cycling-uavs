@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 from collections import defaultdict
 
-from experiments.algorithms.milp import Point, distance_m
+from simulator.src.algorithms import Point, distance_m
 
 
 ENERGY_TOLERANCE_J = 1e-3

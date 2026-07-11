@@ -5,22 +5,22 @@ Giro 2026 dataset already collected in this repository.
 
 The legacy scripts in the repository root are left untouched. Preprocessing,
 instance generation, optimization, and visualization code live in importable
-Python modules under `experiments/`. The only runnable entrypoint is
-`experiments.main`.
+Python modules under `simulator/`. The only runnable entrypoint is
+`simulator.main`.
 
 ## Build a Normalized Stage Trace
 
 ```bash
-/home/fra/pyvenv/bin/python -m experiments.main --stage-id S18 --preprocess --only-preprocess
+/home/fra/pyvenv/bin/python -m simulator.main --stage-id S18 --preprocess --only-preprocess
 ```
 
 The entrypoint reads `giro_2026/stage_links/SXX.json`, keeps usable rider GPX
 traces, and writes both CSV and Parquet outputs:
 
 ```text
-experiments/outputs/traces/S18_rider_points.csv
-experiments/outputs/traces/S18_rider_points.parquet
-experiments/outputs/traces/S18_summary.json
+simulator/output/traces/S18_rider_points.csv
+simulator/output/traces/S18_rider_points.parquet
+simulator/output/traces/S18_summary.json
 ```
 
 Default filters:
@@ -38,7 +38,7 @@ instances.
 ## Solve a Small MILP Instance
 
 ```bash
-/home/fra/pyvenv/bin/python -m experiments.main --stage-id S18 --algorithm alg0
+/home/fra/pyvenv/bin/python -m simulator.main --stage-id S18 --algorithm alg0
 ```
 
 The initial MILP model is a smoke-test optimizer. It reads the normalized
@@ -69,7 +69,7 @@ rider is not treated as the cyclist to cover; its GPX only identifies the road.
 ## Run an Experiment
 
 ```bash
-/home/fra/pyvenv/bin/python -m experiments.main \
+/home/fra/pyvenv/bin/python -m simulator.main \
   --stage-id S18 \
   --algorithm alg1 \
   --reference-gpx B047 \
@@ -95,11 +95,11 @@ when a separate run artifact is useful.
 ## Render a Solution Map
 
 ```bash
-/home/fra/pyvenv/bin/python -m experiments.main \
+/home/fra/pyvenv/bin/python -m simulator.main \
   --stage-id S18 \
   --algorithm alg1 \
   --render-map
 ```
 
-The map is written under `experiments/outputs/` and shows the reference route,
+The map is written under `simulator/output/` and shows the reference route,
 charging stations, and UAV positions with a time slider.

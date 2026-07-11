@@ -6,7 +6,7 @@ import argparse
 import math
 from statistics import median
 
-from experiments.algorithms.milp import (
+from simulator.src.algorithms import (
     Cluster,
     Waypoint,
     choose_reference_gpx,

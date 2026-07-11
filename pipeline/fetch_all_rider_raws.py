@@ -9,8 +9,8 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
-from competition import load_competition
-from import_rider_raw import extract_pairs
+from pipeline.competition import load_competition
+from pipeline.import_rider_raw import extract_pairs
 
 MONTH_HASH = "interval_type?chart_type=miles&interval_type=month&interval=202605&year_offset=0"
 
@@ -31,14 +31,13 @@ def main() -> int:
     ap.add_argument("--from-rider-id", default=None, help="Start from rider id (inclusive), e.g. B026")
     args = ap.parse_args()
 
-    repo = Path(__file__).resolve().parent
+    repo = Path(__file__).resolve().parents[1]
     cookie_file = repo / "strava_session_cookie.txt"
     comp = load_competition(args.competition_dir)
     dataset_dir = comp.root
     riders = json.loads(comp.riders_json.read_text(encoding="utf-8"))["riders"]
     stages = json.loads(comp.stages_json.read_text(encoding="utf-8"))["stages"]
     by_date = {s.get("date"): s.get("stage_id") for s in stages if isinstance(s, dict)}
-    fetch_script = repo / "fetch_rider_raw_brave.py"
 
     ok = 0
     fail = 0
@@ -57,7 +56,8 @@ def main() -> int:
 
         cmd = [
             "/home/fra/pyvenv/bin/python",
-            str(fetch_script),
+            "-m",
+            "pipeline.fetch_rider_raw_brave",
             "--url",
             with_month_hash(str(url)),
             "--rider-id",
@@ -76,7 +76,7 @@ def main() -> int:
         if args.headless:
             cmd.append("--headless")
 
-        proc = subprocess.run(cmd, capture_output=True, text=True)
+        proc = subprocess.run(cmd, capture_output=True, text=True, cwd=repo)
         if proc.returncode == 0:
             ok += 1
             out_text = (proc.stdout or "")

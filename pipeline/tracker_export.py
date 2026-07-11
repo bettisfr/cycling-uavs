@@ -9,14 +9,14 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from competition import load_competition
-from lib.flightaware_to_csv import (
+from pipeline.competition import load_competition
+from pipeline.lib.flightaware_to_csv import (
     extract_ident as fa_extract_ident,
     extract_track_points as fa_extract_track_points,
     fetch_html as fa_fetch_html,
     write_csv as fa_write_csv,
 )
-from lib.strava_to_gpx import (
+from pipeline.lib.strava_to_gpx import (
     build_gpx as strava_build_gpx,
     create_web_session as strava_create_web_session,
     fetch_activity_web as strava_fetch_activity_web,
@@ -25,7 +25,7 @@ from lib.strava_to_gpx import (
     parse_activity_id as strava_parse_activity_id,
 )
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = BASE_DIR / "output"
 STRAVA_OUTPUT_DIR = OUTPUT_DIR / "courses"
 FLIGHT_OUTPUT_DIR = OUTPUT_DIR / "flights"

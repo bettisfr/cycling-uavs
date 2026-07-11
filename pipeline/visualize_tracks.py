@@ -13,8 +13,8 @@ from typing import Any
 import folium
 import gpxpy
 from branca.element import Element
-from competition import load_competition
-import import_stage_raw
+from pipeline.competition import load_competition
+from pipeline import import_stage_raw
 
 COLORS = [
     "#e41a1c",

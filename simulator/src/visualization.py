@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 from branca.element import Element
 import folium
 
-from experiments.algorithms.milp import greedy_clusters, read_bucketed_rider_positions
+from simulator.src.algorithms import greedy_clusters, read_bucketed_rider_positions
 
 
 UAV_COLORS = [

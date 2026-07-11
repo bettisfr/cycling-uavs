@@ -7,7 +7,7 @@ import re
 import shutil
 from pathlib import Path
 
-from competition import load_competition
+from pipeline.competition import load_competition
 
 ACT_RE = re.compile(r"/activities/(\d+)")
 

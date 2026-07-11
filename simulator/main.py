@@ -9,17 +9,11 @@ from pathlib import Path
 import sys
 from types import SimpleNamespace
 
-from experiments.algorithms.greedy import solve_greedy
-from experiments.algorithms.milp import build_instance, repo_root, solve_instance
-from experiments.preprocessing.stage_trace import build_stage_trace
-from experiments.validation import check_feasible
-from experiments.visualization.solution_map import render_map
+from simulator.src.algorithms import ALGORITHM_NAMES, build_instance, repo_root, solve_algorithm
+from simulator.src.preprocessing import build_stage_trace
+from simulator.src.validation import check_feasible
+from simulator.src.visualization import render_map
 
-
-ALGORITHMS = {
-    "alg0": "MILP",
-    "alg1": "greedy",
-}
 
 STATION_LAYOUTS_KM = {
     "dense": 5.0,
@@ -37,8 +31,8 @@ CHARGING_PROFILES_MIN = {
 def default_trace_path(stage_id: str) -> Path:
     return (
         repo_root()
-        / "experiments"
-        / "outputs"
+        / "simulator"
+        / "output"
         / "traces"
         / f"{stage_id.upper()}_rider_points.parquet"
     )
@@ -49,7 +43,7 @@ def default_output_json(args: argparse.Namespace) -> Path:
         f"{args.stage_id.upper()}_{args.algorithm}_uav{args.num_uavs}_"
         f"{args.time_step_sec}s"
     )
-    return repo_root() / "experiments" / "outputs" / "solutions" / f"{tag}.json"
+    return repo_root() / "simulator" / "output" / "solutions" / f"{tag}.json"
 
 
 def default_output_html(args: argparse.Namespace) -> Path:
@@ -57,7 +51,7 @@ def default_output_html(args: argparse.Namespace) -> Path:
         f"{args.stage_id.upper()}_{args.algorithm}_uav{args.num_uavs}_"
         f"{args.time_step_sec}s"
     )
-    return repo_root() / "experiments" / "outputs" / f"{tag}_map.html"
+    return repo_root() / "simulator" / "output" / f"{tag}_map.html"
 
 
 def ensure_trace(args: argparse.Namespace) -> Path:
@@ -131,7 +125,7 @@ def summarize_result(args: argparse.Namespace, result: dict, output_json: Path, 
     return {
         "stage_id": args.stage_id.upper(),
         "algorithm": args.algorithm,
-        "algorithm_name": ALGORITHMS[args.algorithm],
+        "algorithm_name": ALGORITHM_NAMES[args.algorithm],
         "status_name": result.get("status_name"),
         "feasible": result.get("feasible"),
         "objective": objective,
@@ -154,15 +148,10 @@ def run_experiment(args: argparse.Namespace) -> dict:
 
     instance = build_instance(solver_args)
 
-    if args.algorithm == "alg0":
-        result = solve_instance(solver_args, instance)
-    elif args.algorithm == "alg1":
-        result = solve_greedy(solver_args, instance)
-    else:
-        raise ValueError(f"Unsupported algorithm: {args.algorithm}")
+    result = solve_algorithm(args.algorithm, solver_args, instance)
 
     result["algorithm"] = args.algorithm
-    result["algorithm_name"] = ALGORITHMS[args.algorithm]
+    result["algorithm_name"] = ALGORITHM_NAMES[args.algorithm]
     if args.algorithm == "alg1":
         result["feasible"] = check_feasible(solver_args, result)
         if not result["feasible"]:
@@ -192,7 +181,7 @@ def run_experiment(args: argparse.Namespace) -> dict:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stage-id", default="S18")
-    parser.add_argument("--algorithm", choices=sorted(ALGORITHMS), default="alg1")
+    parser.add_argument("--algorithm", choices=sorted(ALGORITHM_NAMES), default="alg1")
     parser.add_argument("--tag", help="Output filename stem.")
     parser.add_argument("--trace-parquet", type=Path)
     parser.add_argument(
@@ -210,7 +199,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--trace-output-dir",
         type=Path,
-        default=Path("experiments/outputs/traces"),
+        default=Path("simulator/output/traces"),
     )
     parser.add_argument("--include-unlocked", action="store_true")
     parser.add_argument("--include-midnight", action="store_true")

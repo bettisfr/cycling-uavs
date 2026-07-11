@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 
-from competition import load_competition
+from pipeline.competition import load_competition
 
 
 def main() -> int:

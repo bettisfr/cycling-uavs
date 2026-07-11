@@ -14,7 +14,7 @@ import shutil
 
 import requests
 
-from competition import load_competition
+from pipeline.competition import load_competition
 
 IGNORE_DOWNLOADS: set[tuple[str, str, str]] = {
     ("S02", "B063", "18441681959"),
@@ -145,7 +145,8 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
 
         cmd = [
             '/home/fra/pyvenv/bin/python',
-            str(repo / 'lib' / 'strava_to_gpx.py'),
+            '-m',
+            'pipeline.lib.strava_to_gpx',
             '--session-cookie',
             cookie,
             '--local-tz',
@@ -158,7 +159,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
         success = False
         last_err = ''
         for attempt in range(args.retries + 1):
-            r = subprocess.run(cmd, capture_output=True, text=True)
+            r = subprocess.run(cmd, capture_output=True, text=True, cwd=repo)
             if r.returncode == 0:
                 success = True
                 break
@@ -221,7 +222,7 @@ def process_stage(args: argparse.Namespace, repo: Path, stage_id: str) -> dict[s
 
 def main() -> int:
     args = parse_args()
-    repo = Path(__file__).resolve().parent
+    repo = Path(__file__).resolve().parents[1]
     comp = load_competition(args.competition_dir)
 
     if args.all:

@@ -536,3 +536,21 @@ def status_name(status: int) -> str:
         GRB.INF_OR_UNBD: "INF_OR_UNBD",
     }
     return names.get(status, str(status))
+
+
+# Expose alg1 beside the alg0 MILP through this module's public interface.
+from simulator.src.partition import solve_greedy  # noqa: E402
+
+
+ALGORITHM_NAMES = {
+    "alg0": "MILP",
+    "alg1": "partition baseline",
+}
+
+
+def solve_algorithm(name: str, args: argparse.Namespace, instance: dict) -> dict:
+    if name == "alg0":
+        return solve_instance(args, instance)
+    if name == "alg1":
+        return solve_greedy(args, instance)
+    raise ValueError(f"Unsupported algorithm: {name}")

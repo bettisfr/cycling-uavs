@@ -11,7 +11,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from competition import load_competition
+from pipeline.competition import load_competition
 
 GPX_RE = re.compile(r"^(B\d{3})__activity_(\d+)\.gpx$")
 

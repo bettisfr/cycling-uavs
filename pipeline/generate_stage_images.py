@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 import gpxpy
 import matplotlib.pyplot as plt
 from PIL import Image
-from competition import load_competition
+from pipeline.competition import load_competition
 
 
 def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

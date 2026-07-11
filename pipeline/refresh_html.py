@@ -4,9 +4,9 @@ from __future__ import annotations
 import argparse
 import json
 
-from competition import load_competition
-from generate_rider_html import generate_rider_page
-from import_stage_raw import render_stage_html, render_stage_index_html
+from pipeline.competition import load_competition
+from pipeline.generate_rider_html import generate_rider_page
+from pipeline.import_stage_raw import render_stage_html, render_stage_index_html
 
 
 def main() -> int:
