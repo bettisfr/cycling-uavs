@@ -133,7 +133,7 @@ def render_map(args: argparse.Namespace) -> Path:
     buckets = data.get("time_buckets", [])
     clusters = data.get("clusters", [])
     rider_points = data.get("rider_points", [])
-    if args.full_stage_trace:
+    if args.full_stage_trace and not clusters:
         full_buckets, full_rider_points, full_clusters = build_full_stage_layers(
             args.full_stage_trace,
             int(data.get("time_step_sec") or args.time_step_sec),
@@ -341,7 +341,7 @@ window.addEventListener('load', function() {{
         opacity: 0.75
       }}).addTo(mapObj);
       layer.bindTooltip(
-        `cluster ${{c.cluster}}<br>riders: ${{c.weight}}<br>${{hasSolution ? (covered ? 'covered' : 'uncovered') : 'no solution in this slot'}}`,
+        `cluster ${{c.cluster}}<br>role: ${{c.role || '-'}}<br>riders: ${{c.rider_count ?? '-'}}<br>weight: ${{c.weight}}<br>${{hasSolution ? (covered ? 'covered' : 'uncovered') : 'no solution in this slot'}}`,
         {{sticky: true}}
       );
       clusterLayers.push(layer);
@@ -389,8 +389,11 @@ window.addEventListener('load', function() {{
 
     const elapsed = index * payload.time_step_sec;
     label.textContent = `slot ${{index + 1}}/${{payload.buckets.length}} | bucket ${{bucket}} | +${{elapsed}}s`;
+    const objectivePercent = payload.total_cluster_weight
+      ? 100 * payload.objective / payload.total_cluster_weight
+      : 0;
     stats.textContent = hasSolution
-      ? `UAVs: ${{payload.num_uavs}} | riders shown: ${{riders.length}} | slot coverage: ${{coveredWeight}} / ${{totalWeight}} riders | objective: ${{payload.objective}} / ${{payload.total_cluster_weight}}`
+      ? `UAVs: ${{payload.num_uavs}} | riders shown: ${{riders.length}} | slot weight: ${{coveredWeight.toFixed(1)}} / ${{totalWeight.toFixed(1)}} | objective: ${{Number(payload.objective).toFixed(1)}} / ${{Number(payload.total_cluster_weight).toFixed(1)}} (${{objectivePercent.toFixed(1)}}%)`
       : `riders shown: ${{riders.length}} | clusters: ${{clusters.length}} | no solution in this slot`;
   }}
 

@@ -127,7 +127,16 @@ def choose_leg_target(
     raise RuntimeError("alg1 partition baseline stranded a UAV away from a station")
 
 
-def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
+def solve_partition(
+    args: argparse.Namespace,
+    instance: dict,
+    drones_per_segment: int,
+) -> dict:
+    if args.num_uavs % drones_per_segment != 0:
+        raise ValueError(
+            f"The fleet size {args.num_uavs} is not divisible by "
+            f"{drones_per_segment} drones per segment"
+        )
     stations: list[Waypoint] = instance["stations"]
     race_clusters: list[list[Cluster]] = instance["clusters"]
     race_riders: list[list[dict]] = instance["rider_points"]
@@ -140,22 +149,26 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
     max_step_m = args.max_speed_mps * args.time_step_sec
     reserve_j = 0.1 * args.battery_capacity
     finish = stations[-1]
+    num_segments = args.num_uavs // drones_per_segment
 
     route_length_m = route_progress[-1]
     segment_boundaries = [
-        route_length_m * d / args.num_uavs
-        for d in range(args.num_uavs + 1)
+        route_length_m * segment / num_segments
+        for segment in range(num_segments + 1)
     ]
-    segment_starts = [
+    starts_by_segment = [
         next(
             (t for t, progress in enumerate(group_progress) if progress >= boundary),
             race_slots - 1,
         )
         for boundary in segment_boundaries[:-1]
     ]
-    segment_ends = segment_starts[1:] + [race_slots]
-    segment_ends = [end - 1 for end in segment_ends]
-    segment_ends[-1] = race_slots - 1
+    ends_by_segment = starts_by_segment[1:] + [race_slots]
+    ends_by_segment = [end - 1 for end in ends_by_segment]
+    ends_by_segment[-1] = race_slots - 1
+    uav_segments = [d // drones_per_segment for d in range(args.num_uavs)]
+    segment_starts = [starts_by_segment[segment] for segment in uav_segments]
+    segment_ends = [ends_by_segment[segment] for segment in uav_segments]
     boundary_points = [
         route[
             min(
@@ -184,7 +197,7 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
     t = 0
     while t < race_slots or not all(same_position(position, finish) for position in positions):
         if t >= race_slots + max_post_race_slots:
-            raise RuntimeError("alg1 partition baseline did not finish within the post-race horizon")
+            raise RuntimeError("partition baseline did not finish within the post-race horizon")
         if t >= len(all_buckets):
             all_buckets.append(all_buckets[-1] + 1)
             all_clusters.append([])
@@ -196,6 +209,7 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
 
         for d in range(args.num_uavs):
             current = positions[d]
+            segment = uav_segments[d]
             start = segment_starts[d]
             end = segment_ends[d]
 
@@ -204,12 +218,40 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
                 continue
 
             if t < start:
-                rendezvous = boundary_points[d]
-                staging = staging_stations[d]
+                rendezvous = boundary_points[segment]
+                staging = staging_stations[segment]
                 launch_slots = math.ceil(distance_m(staging, rendezvous) / max_step_m)
                 goal = rendezvous if t >= start - launch_slots else staging
             elif t <= end and t < race_slots:
-                goal = group_positions[t]
+                if drones_per_segment == 1:
+                    goal = group_positions[t]
+                else:
+                    role_index = d % drones_per_segment
+                    target = next(
+                        (
+                            cluster
+                            for cluster in race_clusters[t]
+                            if (
+                                role_index == 0
+                                and cluster.role in {"breakaway", "breakaway_main_group"}
+                            )
+                            or (
+                                role_index == 1
+                                and cluster.role in {"main_group", "breakaway_main_group"}
+                            )
+                        ),
+                        None,
+                    )
+                    goal = (
+                        Waypoint(
+                            target.lat,
+                            target.lon,
+                            "editorial_cluster",
+                            f"{target.role}_{t}",
+                        )
+                        if target is not None
+                        else group_positions[t]
+                    )
                 covering[d] = True
             else:
                 goal = finish
@@ -252,7 +294,7 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
                 not (chosen.kind == "station" and same_position(current, chosen))
                 and energy_cost(args, current, chosen) > batteries[d]
             ):
-                raise RuntimeError(f"alg1 partition baseline stranded UAV {d} at slot {t}")
+                raise RuntimeError(f"partition baseline stranded UAV {d} at slot {t}")
             if covering[d] and leg_target.kind == "station":
                 covering[d] = False
             chosen_targets.append(chosen)
@@ -288,7 +330,7 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
                     "landed": landed,
                     "recharging": is_recharging,
                     "covering": covering[d] and not landed,
-                    "segment": d,
+                    "segment": uav_segments[d],
                 }
             )
 
@@ -308,7 +350,11 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
 
     return {
         "status": 2,
-        "status_name": "PARTITION_BASELINE",
+        "status_name": (
+            "PARTITION_BASELINE"
+            if drones_per_segment == 1
+            else "DUAL_PARTITION_BASELINE"
+        ),
         "objective": float(objective),
         "best_bound": None,
         "gap": None,
@@ -329,6 +375,9 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
                     "lat": cluster.lat,
                     "lon": cluster.lon,
                     "weight": cluster.weight,
+                    "rider_count": cluster.rider_count,
+                    "role": cluster.role,
+                    "route_progress_m": cluster.route_progress_m,
                 }
                 for k, cluster in enumerate(clusters)
             ]
@@ -357,3 +406,11 @@ def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
         "recharge_per_step": args.recharge_per_step,
         "placements": placements,
     }
+
+
+def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
+    return solve_partition(args, instance, drones_per_segment=1)
+
+
+def solve_dual_partition(args: argparse.Namespace, instance: dict) -> dict:
+    return solve_partition(args, instance, drones_per_segment=2)

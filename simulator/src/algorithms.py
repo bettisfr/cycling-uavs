@@ -37,7 +37,10 @@ class Waypoint:
 class Cluster:
     lat: float
     lon: float
-    weight: int
+    weight: float
+    rider_count: int = 0
+    role: str = ""
+    route_progress_m: float = 0.0
 
 
 def repo_root() -> Path:
@@ -234,10 +237,24 @@ def greedy_clusters(points: list[Point], radius_m: float) -> list[Cluster]:
 
 def build_instance(args: argparse.Namespace) -> dict:
     by_bucket = read_bucketed_rider_positions(args.trace_parquet, args.time_step_sec)
+    cluster_table = pq.read_table(args.cluster_parquet).to_pydict()
+    weighted_by_bucket: dict[int, list[Cluster]] = defaultdict(list)
+    for bucket, lat, lon, rider_count, role, weight, progress in zip(
+        cluster_table["bucket"],
+        cluster_table["lat"],
+        cluster_table["lon"],
+        cluster_table["rider_count"],
+        cluster_table["role"],
+        cluster_table["editorial_weight"],
+        cluster_table["route_progress_m"],
+        strict=True,
+    ):
+        weighted_by_bucket[bucket].append(
+            Cluster(lat, lon, weight, rider_count, role, progress)
+        )
     selected_buckets = [
         bucket
-        for bucket in sorted(by_bucket)
-        if len(by_bucket[bucket]) >= args.min_riders_per_bucket
+        for bucket in sorted(weighted_by_bucket)
     ][: args.max_time_buckets]
     if not selected_buckets:
         raise RuntimeError(
@@ -252,9 +269,7 @@ def build_instance(args: argparse.Namespace) -> dict:
             {"rider_id": rider_id, "lat": point.lat, "lon": point.lon}
             for rider_id, point in sorted(by_bucket[bucket].items())
         ]
-        points = [Point(p["lat"], p["lon"]) for p in rider_points]
-        clusters = greedy_clusters(points, args.cluster_radius_m)
-        clusters_by_t.append(clusters)
+        clusters_by_t.append(weighted_by_bucket[bucket])
         rider_points_by_t.append(rider_points)
 
     stations, station_metadata = station_waypoints_from_gpx(args)
@@ -496,6 +511,9 @@ def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
                     "lat": cluster.lat,
                     "lon": cluster.lon,
                     "weight": cluster.weight,
+                    "rider_count": cluster.rider_count,
+                    "role": cluster.role,
+                    "route_progress_m": cluster.route_progress_m,
                 }
                 for k, cluster in enumerate(clusters)
             ]
@@ -539,12 +557,13 @@ def status_name(status: int) -> str:
 
 
 # Expose alg1 beside the alg0 MILP through this module's public interface.
-from simulator.src.partition import solve_greedy  # noqa: E402
+from simulator.src.partition import solve_dual_partition, solve_greedy  # noqa: E402
 
 
 ALGORITHM_NAMES = {
     "alg0": "MILP",
     "alg1": "partition baseline",
+    "alg2": "dual partition baseline",
 }
 
 
@@ -553,4 +572,6 @@ def solve_algorithm(name: str, args: argparse.Namespace, instance: dict) -> dict
         return solve_instance(args, instance)
     if name == "alg1":
         return solve_greedy(args, instance)
+    if name == "alg2":
+        return solve_dual_partition(args, instance)
     raise ValueError(f"Unsupported algorithm: {name}")

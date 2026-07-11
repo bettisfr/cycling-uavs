@@ -23,6 +23,20 @@ simulator/output/traces/S18_rider_points.parquet
 simulator/output/traces/S18_summary.json
 ```
 
+The simulator derives deterministic weighted clusters without modifying these
+rider traces. For each 30-second bucket, riders connected within 80 meters form
+one cluster. Clusters are ordered by progress along the reference road and
+assigned editorial roles and weights: breakaway and main group `1.0`, clusters
+between them `0.1`, and trailing clusters `0.05`.
+
+```text
+simulator/output/clusters/S18_30s_r80m_clusters.parquet
+simulator/output/clusters/S18_30s_r80m_clusters_summary.json
+```
+
+All algorithms consume this shared cluster artifact. It is generated
+automatically when missing or rebuilt with `--preprocess-clusters`.
+
 Default filters:
 
 - `status == found_public`
@@ -82,6 +96,9 @@ Algorithms:
 - `alg1`: deterministic spatial-partition baseline. The road is split into one
   segment per UAV; each UAV prepositions, covers only its assigned segment, then
   stops covering and recharges as needed to reach the common finish.
+- `alg2`: dual spatial-partition baseline. The road is split into `n/2`
+  segments; each segment is assigned two UAVs, one tracking the breakaway and
+  one tracking the main group.
 
 The main entrypoint loads the normalized stage trace, builds the discretized
 instance, runs the selected algorithm, writes a solution JSON, and optionally
