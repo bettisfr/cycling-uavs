@@ -3,3 +3,4 @@ requests==2.32.3
 browser-cookie3==0.19.1
 folium==0.20.0
 pyarrow
+scipy

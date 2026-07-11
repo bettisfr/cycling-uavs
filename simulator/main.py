@@ -18,6 +18,7 @@ from simulator.src.algorithms import (
 )
 from simulator.src.clustering import WEIGHT_POLICY, build_weighted_clusters
 from simulator.src.preprocessing import build_stage_trace
+from simulator.src.stages import official_window_utc
 from simulator.src.validation import check_feasible
 from simulator.src.visualization import render_map
 
@@ -109,6 +110,7 @@ def ensure_clusters(args: argparse.Namespace, trace_parquet: Path) -> Path:
         and not (args.preprocess or args.preprocess_clusters)
     ):
         metadata = json.loads(summary_path.read_text(encoding="utf-8"))
+        start_ts, finish_ts = official_window_utc(args.stage_id)
         expected = {
             "trace_parquet": str(trace_parquet),
             "route_gpx": str(route_gpx),
@@ -116,6 +118,9 @@ def ensure_clusters(args: argparse.Namespace, trace_parquet: Path) -> Path:
             "cluster_radius_m": args.cluster_radius_m,
             "min_riders_per_bucket": args.min_riders_per_bucket,
             "weight_policy": WEIGHT_POLICY,
+            "grouping_metric": "absolute_route_progress_difference",
+            "race_window_start_ts": start_ts,
+            "race_window_finish_ts": finish_ts,
         }
         if all(metadata.get(key) == value for key, value in expected.items()):
             return cluster_parquet
@@ -163,6 +168,8 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
         initial_battery=args.initial_battery,
         hover_energy_per_step=args.hover_energy_per_step,
         move_energy_per_meter=args.move_energy_per_meter,
+        safety_reserve_fraction=args.safety_reserve_fraction,
+        waypoint_spacing_m=args.waypoint_spacing_m,
         recharge_per_step=(
             args.recharge_per_step
             if args.recharge_per_step is not None
@@ -285,7 +292,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     parser.add_argument("--time-step-sec", type=int, default=30)
     parser.add_argument("--max-time-buckets", type=int, default=10000)
-    parser.add_argument("--min-riders-per-bucket", type=int, default=20)
+    parser.add_argument("--min-riders-per-bucket", type=int, default=1)
     parser.add_argument("--cluster-radius-m", type=float, default=80.0)
     parser.add_argument("--coverage-radius-m", type=float, default=250.0)
     parser.add_argument("--max-speed-mps", type=float, default=120.0 / 3.6)
@@ -293,8 +300,10 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 
     parser.add_argument("--battery-capacity", type=float, default=10_000_000.0)
     parser.add_argument("--initial-battery", type=float, default=10_000_000.0)
-    parser.add_argument("--hover-energy-per-step", type=float, default=50_000.0)
+    parser.add_argument("--hover-energy-per-step", type=float, default=15_000.0)
     parser.add_argument("--move-energy-per-meter", type=float, default=150.0)
+    parser.add_argument("--safety-reserve-fraction", type=float, default=0.1)
+    parser.add_argument("--waypoint-spacing-m", type=float, default=250.0)
     parser.add_argument(
         "--charging-profile",
         choices=sorted(CHARGING_PROFILES_MIN),

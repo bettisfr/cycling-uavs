@@ -37,6 +37,7 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
         for station in stations
     }
     max_step_m = args.max_speed_mps * args.time_step_sec
+    reserve_j = args.safety_reserve_fraction * args.battery_capacity
 
     for uav in range(num_uavs):
         trajectory = by_uav.get(uav, [])
@@ -100,6 +101,11 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
             if not -ENERGY_TOLERANCE_J <= actual_battery <= args.battery_capacity + ENERGY_TOLERANCE_J:
                 return False
             if abs(actual_battery - expected_battery) > ENERGY_TOLERANCE_J:
+                return False
+            return_energy = args.move_energy_per_meter * min(
+                distance_m(current, station) for station in station_points.values()
+            )
+            if actual_battery + ENERGY_TOLERANCE_J < reserve_j + return_energy:
                 return False
 
             previous = current

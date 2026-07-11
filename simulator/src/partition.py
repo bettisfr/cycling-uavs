@@ -147,7 +147,7 @@ def solve_partition(
     )
     race_slots = len(race_buckets)
     max_step_m = args.max_speed_mps * args.time_step_sec
-    reserve_j = 0.1 * args.battery_capacity
+    reserve_j = args.safety_reserve_fraction * args.battery_capacity
     finish = stations[-1]
     num_segments = args.num_uavs // drones_per_segment
 
@@ -233,11 +233,11 @@ def solve_partition(
                             for cluster in race_clusters[t]
                             if (
                                 role_index == 0
-                                and cluster.role in {"breakaway", "breakaway_main_group"}
+                                and cluster.role in {"frontmost_group", "frontmost_main_group"}
                             )
                             or (
                                 role_index == 1
-                                and cluster.role in {"main_group", "breakaway_main_group"}
+                                and cluster.role in {"main_group", "frontmost_main_group"}
                             )
                         ),
                         None,
@@ -404,6 +404,9 @@ def solve_partition(
         "battery_capacity": args.battery_capacity,
         "initial_battery": args.initial_battery,
         "recharge_per_step": args.recharge_per_step,
+        "safety_reserve_fraction": args.safety_reserve_fraction,
+        "hover_energy_per_step": args.hover_energy_per_step,
+        "move_energy_per_meter": args.move_energy_per_meter,
         "placements": placements,
     }
 

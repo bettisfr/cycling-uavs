@@ -1,0 +1,29 @@
+{
+  "time_zone": "Europe/Rome",
+  "utc_offset": "+02:00",
+  "time_step_seconds": 30,
+  "notes": "Official schedule times use CEST, including stages S01-S03 held in Bulgaria. S10 is an individual time trial and is excluded from group-based experiments.",
+  "stages": {
+    "S01": {"date": "2026-05-08", "start": "14:00:00", "winner_time": "03:21:08", "last_rider_delay": "00:00:00", "winner_finish": "17:21:08", "last_finish": "17:21:08"},
+    "S02": {"date": "2026-05-09", "start": "12:05:00", "winner_time": "05:39:25", "last_rider_delay": "00:17:30", "winner_finish": "17:44:25", "last_finish": "18:01:55"},
+    "S03": {"date": "2026-05-10", "start": "13:15:00", "winner_time": "04:09:42", "last_rider_delay": "00:00:00", "winner_finish": "17:24:42", "last_finish": "17:24:42"},
+    "S04": {"date": "2026-05-12", "start": "14:00:00", "winner_time": "03:08:46", "last_rider_delay": "00:18:12", "winner_finish": "17:08:46", "last_finish": "17:26:58"},
+    "S05": {"date": "2026-05-13", "start": "12:25:00", "winner_time": "05:07:51", "last_rider_delay": "00:28:09", "winner_finish": "17:32:51", "last_finish": "18:01:00"},
+    "S06": {"date": "2026-05-14", "start": "14:05:00", "winner_time": "03:19:30", "last_rider_delay": "00:00:00", "winner_finish": "17:24:30", "last_finish": "17:24:30", "note": "The reported zero delay is marked with an asterisk in the source data."},
+    "S07": {"date": "2026-05-15", "start": "10:55:00", "winner_time": "06:09:15", "last_rider_delay": "00:39:39", "winner_finish": "17:04:15", "last_finish": "17:43:54"},
+    "S08": {"date": "2026-05-16", "start": "13:35:00", "winner_time": "03:27:26", "last_rider_delay": "00:17:57", "winner_finish": "17:02:26", "last_finish": "17:20:23"},
+    "S09": {"date": "2026-05-17", "start": "12:50:00", "winner_time": "04:20:21", "last_rider_delay": "00:27:19", "winner_finish": "17:10:21", "last_finish": "17:37:40"},
+    "S10": {"date": "2026-05-19", "stage_type": "individual_time_trial", "first_rider_start": "13:15:00", "last_rider_start": "16:31:00", "winner_time": "00:45:53", "last_starter_delay": "00:04:57", "last_starter_time": "00:50:50", "last_starter_finish": "17:21:50", "group_model_status": "excluded", "reason": "Staggered individual starts are incompatible with breakaway and main-group roles."},
+    "S11": {"date": "2026-05-20", "start": "12:30:00", "winner_time": "04:33:43", "last_rider_delay": "00:31:26", "winner_finish": "17:03:43", "last_finish": "17:35:09"},
+    "S12": {"date": "2026-05-21", "start": "13:15:00", "winner_time": "03:53:00", "last_rider_delay": "00:15:06", "winner_finish": "17:08:00", "last_finish": "17:23:06"},
+    "S13": {"date": "2026-05-22", "start": "12:55:00", "winner_time": "03:51:33", "last_rider_delay": "00:21:56", "winner_finish": "16:46:33", "last_finish": "17:08:29"},
+    "S14": {"date": "2026-05-23", "start": "13:05:00", "winner_time": "03:53:01", "last_rider_delay": "00:45:27", "winner_finish": "16:58:01", "last_finish": "17:43:28"},
+    "S15": {"date": "2026-05-24", "start": "13:55:00", "winner_time": "03:03:18", "last_rider_delay": "00:04:47", "winner_finish": "16:58:18", "last_finish": "17:03:05"},
+    "S16": {"date": "2026-05-26", "start": "14:00:00", "winner_time": "02:57:40", "last_rider_delay": "00:33:17", "winner_finish": "16:57:40", "last_finish": "17:30:57"},
+    "S17": {"date": "2026-05-27", "start": "12:20:00", "winner_time": "04:41:33", "last_rider_delay": "00:20:15", "winner_finish": "17:01:33", "last_finish": "17:21:48"},
+    "S18": {"date": "2026-05-28", "start": "13:30:00", "winner_time": "03:46:50", "last_rider_delay": "00:08:23", "winner_finish": "17:16:50", "last_finish": "17:25:13"},
+    "S19": {"date": "2026-05-29", "start": "12:45:00", "winner_time": "04:28:33", "last_rider_delay": "00:46:42", "winner_finish": "17:13:33", "last_finish": "18:00:15"},
+    "S20": {"date": "2026-05-30", "start": "11:00:00", "winner_time": "05:03:55", "last_rider_delay": "00:40:46", "winner_finish": "16:03:55", "last_finish": "16:44:41"},
+    "S21": {"date": "2026-05-31", "start": "15:45:00", "winner_time": "03:05:50", "last_rider_delay": "00:02:39", "winner_finish": "18:50:50", "last_finish": "18:53:29"}
+  }
+}

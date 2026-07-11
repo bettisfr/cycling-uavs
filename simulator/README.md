@@ -24,10 +24,11 @@ simulator/output/traces/S18_summary.json
 ```
 
 The simulator derives deterministic weighted clusters without modifying these
-rider traces. For each 30-second bucket, riders connected within 80 meters form
+rider traces. It first restricts each stage to its official race window. For
+each 30-second bucket, riders connected within 80 meters of route progress form
 one cluster. Clusters are ordered by progress along the reference road and
-assigned editorial roles and weights: breakaway and main group `1.0`, clusters
-between them `0.1`, and trailing clusters `0.05`.
+assigned proxy broadcast roles and weights: frontmost and main group `1.0`,
+clusters between them `0.1`, and trailing clusters `0.05`.
 
 ```text
 simulator/output/clusters/S18_30s_r80m_clusters.parquet
@@ -49,6 +50,12 @@ The normalized trace is the first preprocessing artifact used to build
 time-aligned rider traces, cyclist clusters, MILP instances, and greedy-oracle
 instances.
 
+Official start and finish windows are recorded in `simulator/stage_windows.json`.
+The schedule uses CEST for every stage, including the opening stages held in
+Bulgaria. Stage S10 records its first and last individual starts, but is excluded
+from group-based experiments because its staggered starts require dedicated
+preprocessing and editorial roles.
+
 ## Solve a Small MILP Instance
 
 ```bash
@@ -56,20 +63,20 @@ instances.
 ```
 
 The initial MILP model is a smoke-test optimizer. It reads the normalized
-Parquet trace, aggregates rider positions into fixed time buckets, greedily
-clusters nearby riders, creates one candidate UAV waypoint per cluster, adds
-recharging stations at approximately equidistant points along a reference GPX
-route, and maximizes weighted cluster coverage subject to waypoint mobility,
-per-UAV movement budget, battery, and recharging constraints.
-By default, buckets with fewer than 20 riders are skipped to avoid optimizing
-over pre-race or isolated activity fragments.
+Parquet trace, restricts it to the official race window, aggregates rider
+positions into fixed time buckets, and consumes the shared route-aware cluster
+artifact. Static UAV waypoints are sampled every 250 meters along the reference
+route; start, finish, and recharging stations are included and duplicates are
+removed. The model maximizes weighted cluster coverage subject to waypoint
+mobility, per-UAV movement budget, battery, recharging, and 10% safe-return
+reserve constraints.
 The current defaults use 30-second time slots, 6 UAVs, and the baseline station
 layout, which places stations approximately every 7.5 km, including the start
 and finish. Alternative layouts are `dense` (5 km) and `sparse` (10 km).
 UAVs start fully charged at station waypoints unless `--free-start` is used.
 The default performance profile uses a maximum UAV speed of 120 km/h and a
 10 MJ battery. Battery values are expressed in joules. Each UAV
-uses 50 kJ per 30-second hovering/coverage slot or 150 J per meter traveled.
+uses 15 kJ per 30-second hovering/coverage slot or 150 J per meter traveled.
 These costs are mode-specific and are not added together. Charging
 profiles refill an empty battery in 15 (`fast`), 20 (`baseline`), or 25 (`slow`)
 minutes. A charging UAV remains landed, consumes no flight energy, and provides
@@ -97,8 +104,8 @@ Algorithms:
   segment per UAV; each UAV prepositions, covers only its assigned segment, then
   stops covering and recharges as needed to reach the common finish.
 - `alg2`: dual spatial-partition baseline. The road is split into `n/2`
-  segments; each segment is assigned two UAVs, one tracking the breakaway and
-  one tracking the main group.
+  segments; each segment is assigned two UAVs, one tracking the frontmost group
+  and one tracking the main group.
 
 The main entrypoint loads the normalized stage trace, builds the discretized
 instance, runs the selected algorithm, writes a solution JSON, and optionally

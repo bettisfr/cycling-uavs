@@ -10,12 +10,14 @@ from pathlib import Path
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+from scipy.spatial import cKDTree
 
 from simulator.src.preprocessing import iter_gpx_points
+from simulator.src.stages import official_window_utc
 
 
 EARTH_RADIUS_M = 6_371_000.0
-WEIGHT_POLICY = "editorial-v2-1_1_0.1_0.05"
+WEIGHT_POLICY = "editorial-v3-frontmost_1_main_1_intermediate_0.1_trailing_0.05"
 
 
 def timestamp(value: str) -> int:
@@ -49,15 +51,22 @@ def route_samples(gpx_path: Path, spacing_m: float = 50.0) -> tuple[list[tuple[f
     return samples, progress
 
 
-def bucketed_riders(trace_parquet: Path, time_step_sec: int) -> dict[int, dict[str, tuple[float, float]]]:
+def bucketed_riders(
+    trace_parquet: Path,
+    time_step_sec: int,
+    start_ts: int,
+    finish_ts: int,
+) -> dict[int, dict[str, tuple[float, float]]]:
     table = pq.read_table(trace_parquet, columns=["rider_id", "time_utc", "lat", "lon"])
     data = table.to_pydict()
-    minimum = min(timestamp(value) for value in data["time_utc"])
     totals: dict[tuple[int, str], list[float]] = defaultdict(lambda: [0.0, 0.0, 0.0])
     for rider, time_utc, lat, lon in zip(
         data["rider_id"], data["time_utc"], data["lat"], data["lon"], strict=True
     ):
-        bucket = (timestamp(time_utc) - minimum) // time_step_sec
+        time_ts = timestamp(time_utc)
+        if not start_ts <= time_ts <= finish_ts:
+            continue
+        bucket = (time_ts - start_ts) // time_step_sec
         values = totals[(bucket, rider)]
         values[0] += lat
         values[1] += lon
@@ -68,10 +77,27 @@ def bucketed_riders(trace_parquet: Path, time_step_sec: int) -> dict[int, dict[s
     return dict(result)
 
 
-def connected_components(
-    riders: dict[str, tuple[float, float]], radius_m: float
-) -> list[list[str]]:
+def project_to_route(
+    riders: dict[str, tuple[float, float]],
+    route: list[tuple[float, float]],
+    route_progress: list[float],
+) -> dict[str, float]:
+    mean_lat = math.radians(sum(lat for lat, _lon in route) / len(route))
+    scale_x = EARTH_RADIUS_M * math.cos(mean_lat) * math.pi / 180.0
+    scale_y = EARTH_RADIUS_M * math.pi / 180.0
+    tree = cKDTree([(lon * scale_x, lat * scale_y) for lat, lon in route])
     ids = sorted(riders)
+    _distances, indices = tree.query(
+        [(riders[rider][1] * scale_x, riders[rider][0] * scale_y) for rider in ids]
+    )
+    return {
+        rider: route_progress[int(route_idx)]
+        for rider, route_idx in zip(ids, indices, strict=True)
+    }
+
+
+def connected_components(rider_progress: dict[str, float], radius_m: float) -> list[list[str]]:
+    ids = sorted(rider_progress)
     parent = list(range(len(ids)))
 
     def find(index: int) -> int:
@@ -88,7 +114,7 @@ def connected_components(
 
     for left in range(len(ids)):
         for right in range(left + 1, len(ids)):
-            if distance_m(riders[ids[left]], riders[ids[right]]) <= radius_m:
+            if abs(rider_progress[ids[left]] - rider_progress[ids[right]]) <= radius_m:
                 union(left, right)
     groups: dict[int, list[str]] = defaultdict(list)
     for index, rider in enumerate(ids):
@@ -105,7 +131,10 @@ def build_weighted_clusters(
     cluster_radius_m: float,
     min_riders_per_bucket: int,
 ) -> dict:
-    riders_by_bucket = bucketed_riders(trace_parquet, time_step_sec)
+    start_ts, finish_ts = official_window_utc(stage_id)
+    riders_by_bucket = bucketed_riders(
+        trace_parquet, time_step_sec, start_ts, finish_ts
+    )
     route, route_progress = route_samples(route_gpx)
     rows: dict[str, list] = defaultdict(list)
 
@@ -113,21 +142,19 @@ def build_weighted_clusters(
         riders = riders_by_bucket[bucket]
         if len(riders) < min_riders_per_bucket:
             continue
+        rider_progress = project_to_route(riders, route, route_progress)
         raw_clusters = []
-        for members in connected_components(riders, cluster_radius_m):
+        for members in connected_components(rider_progress, cluster_radius_m):
             lat = sum(riders[rider][0] for rider in members) / len(members)
             lon = sum(riders[rider][1] for rider in members) / len(members)
-            route_idx = min(
-                range(len(route)),
-                key=lambda idx: (distance_m((lat, lon), route[idx]), idx),
-            )
             raw_clusters.append(
                 {
                     "lat": lat,
                     "lon": lon,
                     "rider_ids": members,
                     "rider_count": len(members),
-                    "route_progress_m": route_progress[route_idx],
+                    "route_progress_m": sum(rider_progress[rider] for rider in members)
+                    / len(members),
                 }
             )
         raw_clusters.sort(
@@ -145,10 +172,10 @@ def build_weighted_clusters(
         )
         for cluster_id, cluster in enumerate(raw_clusters):
             if cluster_id == 0 and main_idx == 0:
-                role = "breakaway_main_group"
+                role = "frontmost_main_group"
                 weight = 1.0
             elif cluster_id == 0:
-                role = "breakaway"
+                role = "frontmost_group"
                 weight = 1.0
             elif cluster_id == main_idx:
                 role = "main_group"
@@ -182,6 +209,9 @@ def build_weighted_clusters(
         "route_gpx": str(route_gpx),
         "time_step_sec": time_step_sec,
         "cluster_radius_m": cluster_radius_m,
+        "grouping_metric": "absolute_route_progress_difference",
+        "race_window_start_ts": start_ts,
+        "race_window_finish_ts": finish_ts,
         "min_riders_per_bucket": min_riders_per_bucket,
         "weight_policy": WEIGHT_POLICY,
         "buckets": len(set(rows["bucket"])),

@@ -15,6 +15,8 @@ import gurobipy as gp
 from gurobipy import GRB
 import pyarrow.parquet as pq
 
+from simulator.src.stages import official_window_utc
+
 
 EARTH_RADIUS_M = 6_371_000.0
 
@@ -59,10 +61,6 @@ def distance_m(a: Point | Waypoint | Cluster, b: Point | Waypoint | Cluster) -> 
     mean_lat = (lat1 + lat2) / 2.0
     x = dlon * math.cos(mean_lat)
     return EARTH_RADIUS_M * math.hypot(x, dlat)
-
-
-def waypoint_from_cluster(cluster: Cluster, label: str) -> Waypoint:
-    return Waypoint(cluster.lat, cluster.lon, "cluster", label)
 
 
 def local_name(tag: str) -> str:
@@ -172,7 +170,11 @@ def station_waypoints_from_gpx(args: argparse.Namespace) -> tuple[list[Waypoint]
         )
         while idx + 1 < len(cumulative) and cumulative[idx + 1] < target:
             idx += 1
-        point = points[idx]
+        candidate_indices = [idx]
+        if idx + 1 < len(points):
+            candidate_indices.append(idx + 1)
+        nearest_idx = min(candidate_indices, key=lambda i: abs(cumulative[i] - target))
+        point = points[nearest_idx]
         stations.append(Waypoint(point.lat, point.lon, "station", f"station_{station_idx}"))
 
     return stations, {
@@ -184,16 +186,49 @@ def station_waypoints_from_gpx(args: argparse.Namespace) -> tuple[list[Waypoint]
     }
 
 
+def route_waypoints_from_gpx(
+    args: argparse.Namespace,
+    stations: list[Waypoint],
+) -> list[Waypoint]:
+    gpx_path, _rider_id = choose_reference_gpx(args)
+    points = list(iter_gpx_points(gpx_path))
+    if len(points) < 2:
+        raise RuntimeError(f"Reference GPX has too few points: {gpx_path}")
+
+    selected = [points[0]]
+    cumulative_m = 0.0
+    last_selected_m = 0.0
+    for previous, current in zip(points, points[1:], strict=False):
+        cumulative_m += distance_m(previous, current)
+        if cumulative_m - last_selected_m >= args.waypoint_spacing_m:
+            selected.append(current)
+            last_selected_m = cumulative_m
+    if distance_m(selected[-1], points[-1]) > 1.0:
+        selected.append(points[-1])
+
+    waypoints = []
+    for point in selected:
+        if any(distance_m(point, station) <= 1.0 for station in stations):
+            continue
+        if any(distance_m(point, waypoint) <= 1.0 for waypoint in waypoints):
+            continue
+        waypoints.append(
+            Waypoint(point.lat, point.lon, "route", f"route_{len(waypoints)}")
+        )
+    return waypoints
+
+
 def read_bucketed_rider_positions(
     parquet_path: Path,
     time_step_sec: int,
+    stage_id: str,
 ) -> dict[int, dict[str, Point]]:
     table = pq.read_table(
         parquet_path,
         columns=["rider_id", "time_utc", "lat", "lon"],
     )
     data = table.to_pydict()
-    min_ts = min(parse_time_utc(t) for t in data["time_utc"])
+    start_ts, finish_ts = official_window_utc(stage_id)
 
     acc: dict[tuple[int, str], list[float]] = defaultdict(lambda: [0.0, 0.0, 0.0])
     for rider_id, time_utc, lat, lon in zip(
@@ -203,7 +238,10 @@ def read_bucketed_rider_positions(
         data["lon"],
         strict=True,
     ):
-        bucket = (parse_time_utc(time_utc) - min_ts) // time_step_sec
+        time_ts = parse_time_utc(time_utc)
+        if not start_ts <= time_ts <= finish_ts:
+            continue
+        bucket = (time_ts - start_ts) // time_step_sec
         key = (bucket, rider_id)
         acc[key][0] += lat
         acc[key][1] += lon
@@ -236,7 +274,9 @@ def greedy_clusters(points: list[Point], radius_m: float) -> list[Cluster]:
 
 
 def build_instance(args: argparse.Namespace) -> dict:
-    by_bucket = read_bucketed_rider_positions(args.trace_parquet, args.time_step_sec)
+    by_bucket = read_bucketed_rider_positions(
+        args.trace_parquet, args.time_step_sec, args.stage_id
+    )
     cluster_table = pq.read_table(args.cluster_parquet).to_pydict()
     weighted_by_bucket: dict[int, list[Cluster]] = defaultdict(list)
     for bucket, lat, lon, rider_count, role, weight, progress in zip(
@@ -257,10 +297,7 @@ def build_instance(args: argparse.Namespace) -> dict:
         for bucket in sorted(weighted_by_bucket)
     ][: args.max_time_buckets]
     if not selected_buckets:
-        raise RuntimeError(
-            "No time bucket has enough riders. Lower --min-riders-per-bucket "
-            "or check the normalized trace."
-        )
+        raise RuntimeError("No cluster time bucket is available for this stage.")
 
     clusters_by_t: list[list[Cluster]] = []
     rider_points_by_t: list[list[dict]] = []
@@ -273,13 +310,17 @@ def build_instance(args: argparse.Namespace) -> dict:
         rider_points_by_t.append(rider_points)
 
     stations, station_metadata = station_waypoints_from_gpx(args)
-    candidates_by_t: list[list[Waypoint]] = []
-    for t, clusters in enumerate(clusters_by_t):
-        cluster_waypoints = [
-            waypoint_from_cluster(cluster, f"cluster_{t}_{k}")
-            for k, cluster in enumerate(clusters)
-        ]
-        candidates_by_t.append(cluster_waypoints + stations)
+    route_waypoints = route_waypoints_from_gpx(args, stations)
+    candidates = stations + route_waypoints
+    candidates_by_t = [candidates for _clusters in clusters_by_t]
+    station_metadata.update(
+        {
+            "waypoint_spacing_m": args.waypoint_spacing_m,
+            "num_route_waypoints": len(route_waypoints),
+            "num_waypoints": len(candidates),
+            "waypoint_policy": "static_route_sampling_with_station_deduplication",
+        }
+    )
 
     return {
         "buckets": selected_buckets,
@@ -406,20 +447,31 @@ def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
                     name=f"flow_in[{d},{t},{v}]",
                 )
 
+            recharge_terms = [
+                var
+                for (dd, tt, u, v), var in move.items()
+                if dd == d and tt == t
+                and candidates_by_t[t][u].kind == "station"
+                and candidates_by_t[t + 1][v].kind == "station"
+                and distance_m(candidates_by_t[t][u], candidates_by_t[t + 1][v]) <= 1.0
+            ]
+            recharge = gp.quicksum(recharge_terms)
             energy_terms = [
                 (
-                    args.hover_energy_per_step
-                    + args.move_energy_per_meter * move_distance[d, t, u, v]
+                    0.0
+                    if (
+                        candidates_by_t[t][u].kind == "station"
+                        and candidates_by_t[t + 1][v].kind == "station"
+                        and move_distance[d, t, u, v] <= 1.0
+                    )
+                    else args.hover_energy_per_step
+                    if move_distance[d, t, u, v] <= 1.0
+                    else args.move_energy_per_meter * move_distance[d, t, u, v]
                 )
                 * var
                 for (dd, tt, u, v), var in move.items()
                 if dd == d and tt == t
             ]
-            station_next = gp.quicksum(
-                x[d, t + 1, v]
-                for v, candidate in enumerate(candidates_by_t[t + 1])
-                if candidate.kind == "station"
-            )
             energy_spent = gp.quicksum(energy_terms)
             model.addConstr(
                 battery[d, t] >= energy_spent,
@@ -429,13 +481,30 @@ def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
                 battery[d, t + 1]
                 == battery[d, t]
                 - energy_spent
-                + args.recharge_per_step * station_next
+                + args.recharge_per_step * recharge
                 - spill[d, t],
                 name=f"battery_update[{d},{t}]",
             )
             model.addConstr(
-                spill[d, t] <= args.recharge_per_step * station_next,
+                spill[d, t] <= args.recharge_per_step * recharge,
                 name=f"spill_only_at_station[{d},{t}]",
+            )
+
+    reserve_j = args.safety_reserve_fraction * args.battery_capacity
+    for d in drones:
+        for t, candidates in enumerate(candidates_by_t):
+            return_energy = gp.quicksum(
+                (
+                    reserve_j
+                    + args.move_energy_per_meter
+                    * min(distance_m(candidate, station) for station in instance["stations"])
+                )
+                * x[d, t, v]
+                for v, candidate in enumerate(candidates)
+            )
+            model.addConstr(
+                battery[d, t] >= return_energy,
+                name=f"safe_return[{d},{t}]",
             )
 
     for t, clusters in enumerate(clusters_by_t):
@@ -444,7 +513,12 @@ def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
             for d in drones:
                 for v, candidate in enumerate(candidates_by_t[t]):
                     if distance_m(candidate, cluster) <= args.coverage_radius_m:
-                        covering_positions.append(x[d, t, v])
+                        availability = x[d, t, v]
+                        if t < time_count - 1 and candidate.kind == "station":
+                            recharge_var = move.get((d, t, v, v))
+                            if recharge_var is not None:
+                                availability -= recharge_var
+                        covering_positions.append(availability)
             model.addConstr(
                 z[t, k] <= gp.quicksum(covering_positions),
                 name=f"covered_if_reached[{t},{k}]",
@@ -540,6 +614,9 @@ def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
         "battery_capacity": args.battery_capacity,
         "initial_battery": args.initial_battery,
         "recharge_per_step": args.recharge_per_step,
+        "safety_reserve_fraction": args.safety_reserve_fraction,
+        "hover_energy_per_step": args.hover_energy_per_step,
+        "move_energy_per_meter": args.move_energy_per_meter,
         "placements": placements,
     }
 
