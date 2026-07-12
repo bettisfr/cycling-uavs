@@ -5,23 +5,38 @@ from __future__ import annotations
 import argparse
 from collections import defaultdict
 
-from simulator.src.algorithms import Point, distance_m
+from simulator.src.algorithms import Point, Waypoint, distance_m
+from simulator.src.partition import transfer_energy
 
 
 ENERGY_TOLERANCE_J = 1e-3
-DISTANCE_TOLERANCE_M = 1e-3
+DISTANCE_TOLERANCE_M = 1.0
 
 
 def check_feasible(args: argparse.Namespace, result: dict) -> bool:
-    """Return whether an alg1 solution satisfies its operational constraints."""
-    stations = result.get("stations", [])
+    """Return whether a continuous-position partition solution is feasible."""
+    station_rows = result.get("stations", [])
     buckets = result.get("time_buckets", [])
     placements = result.get("placements", [])
     num_uavs = result.get("num_uavs")
-    if not stations or not buckets or not isinstance(num_uavs, int) or num_uavs <= 0:
+    if (
+        len(station_rows) < 2
+        or not buckets
+        or not isinstance(num_uavs, int)
+        or num_uavs <= 0
+    ):
         return False
     if len(placements) != num_uavs * len(buckets):
         return False
+
+    stations = [
+        Waypoint(row["lat"], row["lon"], "station", row["label"])
+        for row in station_rows
+    ]
+    start = stations[0]
+    finish = stations[-1]
+    max_step_m = args.max_speed_mps * args.time_step_sec
+    reserve_j = args.safety_reserve_fraction * args.battery_capacity
 
     by_uav: dict[int, list[dict]] = defaultdict(list)
     for placement in placements:
@@ -29,15 +44,6 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
         if not isinstance(uav, int) or not 0 <= uav < num_uavs:
             return False
         by_uav[uav].append(placement)
-
-    start = Point(stations[0]["lat"], stations[0]["lon"])
-    finish = Point(stations[-1]["lat"], stations[-1]["lon"])
-    station_points = {
-        station["label"]: Point(station["lat"], station["lon"])
-        for station in stations
-    }
-    max_step_m = args.max_speed_mps * args.time_step_sec
-    reserve_j = args.safety_reserve_fraction * args.battery_capacity
 
     for uav in range(num_uavs):
         trajectory = by_uav.get(uav, [])
@@ -53,7 +59,7 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
         if distance_m(last, finish) > DISTANCE_TOLERANCE_M:
             return False
 
-        previous = start
+        previous = Point(start.lat, start.lon)
         battery = args.initial_battery
         for index, placement in enumerate(trajectory):
             current = Point(placement["lat"], placement["lon"])
@@ -61,35 +67,40 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
             if movement_m > max_step_m + DISTANCE_TOLERANCE_M:
                 return False
 
-            if placement.get("kind") == "station":
-                station = station_points.get(placement.get("label"))
-                if station is None or distance_m(current, station) > DISTANCE_TOLERANCE_M:
-                    return False
-
+            station_index = next(
+                (
+                    station_index
+                    for station_index, station in enumerate(stations)
+                    if distance_m(current, station) <= DISTANCE_TOLERANCE_M
+                ),
+                None,
+            )
             is_recharging = placement.get("recharging") is True
             is_landed = placement.get("landed") is True
+            completed = station_index == len(stations) - 1 and is_landed
             if is_recharging:
-                if index == 0 or not is_landed or placement.get("kind") != "station":
-                    return False
-                if movement_m > DISTANCE_TOLERANCE_M:
+                if (
+                    index == 0
+                    or not is_landed
+                    or station_index is None
+                    or station_index == len(stations) - 1
+                    or movement_m > DISTANCE_TOLERANCE_M
+                ):
                     return False
                 expected_battery = min(
                     args.battery_capacity,
                     battery + args.recharge_per_step,
                 )
             elif is_landed:
-                if index == 0 or placement.get("kind") != "station":
-                    return False
-                if movement_m > DISTANCE_TOLERANCE_M:
+                if index == 0 or station_index is None or movement_m > DISTANCE_TOLERANCE_M:
                     return False
                 expected_battery = battery
             elif index == 0:
                 expected_battery = battery
             else:
                 spent = (
-                    args.hover_energy_per_step
-                    if movement_m <= 1.0
-                    else args.move_energy_per_meter * movement_m
+                    args.airborne_energy_per_step
+                    + args.move_energy_per_meter * movement_m
                 )
                 if spent > battery + ENERGY_TOLERANCE_J:
                     return False
@@ -102,11 +113,14 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
                 return False
             if abs(actual_battery - expected_battery) > ENERGY_TOLERANCE_J:
                 return False
-            return_energy = args.move_energy_per_meter * min(
-                distance_m(current, station) for station in station_points.values()
-            )
-            if actual_battery + ENERGY_TOLERANCE_J < reserve_j + return_energy:
-                return False
+
+            if not completed:
+                return_energy = transfer_energy(
+                    args,
+                    min(distance_m(current, station) for station in stations),
+                )
+                if actual_battery + ENERGY_TOLERANCE_J < reserve_j + return_energy:
+                    return False
 
             previous = current
             battery = actual_battery

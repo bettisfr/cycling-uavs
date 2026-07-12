@@ -47,8 +47,7 @@ Default filters:
 - GPX file exists
 
 The normalized trace is the first preprocessing artifact used to build
-time-aligned rider traces, cyclist clusters, MILP instances, and greedy-oracle
-instances.
+time-aligned rider traces, cyclist clusters, and routing instances.
 
 Official start and finish windows are recorded in `simulator/stage_windows.json`.
 The schedule uses CEST for every stage, including the opening stages held in
@@ -56,13 +55,14 @@ Bulgaria. Stage S10 records its first and last individual starts, but is exclude
 from group-based experiments because its staggered starts require dedicated
 preprocessing and editorial roles.
 
-## Solve a Small MILP Instance
+## Legacy Small MILP Instance
 
 ```bash
 /home/fra/pyvenv/bin/python -m simulator.main --stage-id S18 --algorithm alg0
 ```
 
-The initial MILP model is a smoke-test optimizer. It reads the normalized
+The initial MILP model is retained as a legacy smoke-test optimizer and is not
+used by the current paper model. It reads the normalized
 Parquet trace, restricts it to the official race window, aggregates rider
 positions into fixed time buckets, and consumes the shared route-aware cluster
 artifact. Static UAV waypoints are sampled every 250 meters along the reference
@@ -76,12 +76,10 @@ and finish. Alternative layouts are `dense` (5 km) and `sparse` (10 km).
 UAVs start fully charged at station waypoints unless `--free-start` is used.
 The default performance profile uses a maximum UAV speed of 120 km/h and a
 10 MJ battery. Battery values are expressed in joules. Each UAV
-uses 15 kJ per 30-second hovering/coverage slot or 150 J per meter traveled.
-These costs are mode-specific and are not added together. Charging
+uses 15 kJ per 30-second airborne slot plus 150 J per meter traveled. Charging
 profiles refill an empty battery in 15 (`fast`), 20 (`baseline`), or 25 (`slow`)
 minutes. A charging UAV remains landed, consumes no flight energy, and provides
-no coverage. Flights between stations and rider clusters are direct and need not
-follow the road geometry.
+no coverage. The legacy optimizer remains waypoint-discretized.
 
 The official road geometry is selected automatically from a clean GPX sample for
 the stage, or can be selected by sample bib with `--reference-gpx`. The selected
@@ -107,7 +105,14 @@ Algorithms:
   segments; each segment is assigned two UAVs, one tracking the frontmost group
   and one tracking the main group.
 
-The main entrypoint loads the normalized stage trace, builds the discretized
+`alg1` and `alg2` use continuous ground-projected positions rather than route
+waypoints. A UAV flies directly toward its current target at the configured
+maximum speed; a long transfer spans multiple slots and may cut across bends in
+the road. Route samples are used only to estimate race progress and segment
+boundaries. The feasibility checker validates per-slot speed, battery evolution,
+charging, reserve energy, common deployment, and terminal recovery.
+
+The main entrypoint loads the normalized stage trace, builds the routing
 instance, runs the selected algorithm, writes a solution JSON, and optionally
 renders the Folium map.
 If the normalized trace is missing, or if `--preprocess` is passed, the main

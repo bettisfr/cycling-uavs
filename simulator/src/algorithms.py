@@ -6,6 +6,7 @@ import argparse
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
+import heapq
 import json
 import math
 from pathlib import Path
@@ -45,6 +46,85 @@ class Cluster:
     route_progress_m: float = 0.0
 
 
+class WaypointRouter:
+    """Shortest-path queries over the shared one-slot waypoint graph."""
+
+    def __init__(
+        self,
+        waypoints: list[Waypoint],
+        neighbors: list[list[int]],
+    ) -> None:
+        self.waypoints = waypoints
+        self.neighbors = neighbors
+        self._cache: dict[int, tuple[list[float], list[int | None]]] = {}
+
+    def _search(self, source: int) -> tuple[list[float], list[int | None]]:
+        cached = self._cache.get(source)
+        if cached is not None:
+            return cached
+
+        distances = [math.inf] * len(self.waypoints)
+        predecessors: list[int | None] = [None] * len(self.waypoints)
+        distances[source] = 0.0
+        queue = [(0.0, source)]
+        while queue:
+            current_distance, current = heapq.heappop(queue)
+            if current_distance > distances[current]:
+                continue
+            for neighbor in self.neighbors[current]:
+                if neighbor == current:
+                    continue
+                candidate = current_distance + distance_m(
+                    self.waypoints[current],
+                    self.waypoints[neighbor],
+                )
+                if candidate >= distances[neighbor]:
+                    continue
+                distances[neighbor] = candidate
+                predecessors[neighbor] = current
+                heapq.heappush(queue, (candidate, neighbor))
+
+        self._cache[source] = (distances, predecessors)
+        return distances, predecessors
+
+    def distance(self, source: int, target: int) -> float:
+        return self._search(source)[0][target]
+
+    def next_hop(self, source: int, target: int) -> int:
+        if source == target:
+            return source
+        distances, predecessors = self._search(source)
+        if math.isinf(distances[target]):
+            raise RuntimeError(
+                f"No waypoint path connects {source} to {target}"
+            )
+        current = target
+        while predecessors[current] != source:
+            predecessor = predecessors[current]
+            if predecessor is None:
+                raise RuntimeError(
+                    f"No waypoint predecessor connects {source} to {target}"
+                )
+            current = predecessor
+        return current
+
+    def hop_count(self, source: int, target: int) -> int:
+        if source == target:
+            return 0
+        _distances, predecessors = self._search(source)
+        current = target
+        hops = 0
+        while current != source:
+            predecessor = predecessors[current]
+            if predecessor is None:
+                raise RuntimeError(
+                    f"No waypoint path connects {source} to {target}"
+                )
+            current = predecessor
+            hops += 1
+        return hops
+
+
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
@@ -61,6 +141,33 @@ def distance_m(a: Point | Waypoint | Cluster, b: Point | Waypoint | Cluster) -> 
     mean_lat = (lat1 + lat2) / 2.0
     x = dlon * math.cos(mean_lat)
     return EARTH_RADIUS_M * math.hypot(x, dlat)
+
+
+def nearest_waypoint_index(
+    waypoints: list[Waypoint],
+    point: Point | Waypoint | Cluster,
+) -> int:
+    return min(
+        range(len(waypoints)),
+        key=lambda index: distance_m(waypoints[index], point),
+    )
+
+
+def waypoint_neighbors(
+    waypoints: list[Waypoint],
+    max_step_m: float,
+) -> list[list[int]]:
+    neighbors: list[list[int]] = []
+    for source, source_waypoint in enumerate(waypoints):
+        reachable = [
+            target
+            for target, target_waypoint in enumerate(waypoints)
+            if distance_m(source_waypoint, target_waypoint) <= max_step_m
+        ]
+        if source not in reachable:
+            reachable.append(source)
+        neighbors.append(reachable)
+    return neighbors
 
 
 def local_name(tag: str) -> str:
@@ -310,26 +417,42 @@ def build_instance(args: argparse.Namespace) -> dict:
         rider_points_by_t.append(rider_points)
 
     stations, station_metadata = station_waypoints_from_gpx(args)
-    route_waypoints = route_waypoints_from_gpx(args, stations)
-    candidates = stations + route_waypoints
-    candidates_by_t = [candidates for _clusters in clusters_by_t]
-    station_metadata.update(
-        {
-            "waypoint_spacing_m": args.waypoint_spacing_m,
-            "num_route_waypoints": len(route_waypoints),
-            "num_waypoints": len(candidates),
-            "waypoint_policy": "static_route_sampling_with_station_deduplication",
-        }
-    )
-
-    return {
+    instance = {
         "buckets": selected_buckets,
         "clusters": clusters_by_t,
         "rider_points": rider_points_by_t,
-        "candidates": candidates_by_t,
         "stations": stations,
         "station_metadata": station_metadata,
     }
+    if getattr(args, "algorithm", "alg0") == "alg0":
+        route_waypoints = route_waypoints_from_gpx(args, stations)
+        candidates = stations + route_waypoints
+        instance.update(
+            {
+                "candidates": [candidates for _clusters in clusters_by_t],
+                "waypoints": candidates,
+                "waypoint_neighbors": waypoint_neighbors(
+                    candidates,
+                    args.max_speed_mps * args.time_step_sec,
+                ),
+                "start_index": 0,
+                "finish_index": len(stations) - 1,
+                "station_indices": list(range(len(stations))),
+            }
+        )
+        station_metadata.update(
+            {
+                "waypoint_spacing_m": args.waypoint_spacing_m,
+                "num_route_waypoints": len(route_waypoints),
+                "num_waypoints": len(candidates),
+                "waypoint_policy": "legacy_alg0_route_sampling",
+            }
+        )
+    else:
+        station_metadata["motion_model"] = (
+            "continuous_positions_straight_line_multi_slot"
+        )
+    return instance
 
 
 def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
@@ -464,7 +587,7 @@ def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
                         and candidates_by_t[t + 1][v].kind == "station"
                         and move_distance[d, t, u, v] <= 1.0
                     )
-                    else args.hover_energy_per_step
+                    else args.airborne_energy_per_step
                     if move_distance[d, t, u, v] <= 1.0
                     else args.move_energy_per_meter * move_distance[d, t, u, v]
                 )
@@ -615,7 +738,7 @@ def solve_instance(args: argparse.Namespace, instance: dict) -> dict:
         "initial_battery": args.initial_battery,
         "recharge_per_step": args.recharge_per_step,
         "safety_reserve_fraction": args.safety_reserve_fraction,
-        "hover_energy_per_step": args.hover_energy_per_step,
+        "airborne_energy_per_step": args.airborne_energy_per_step,
         "move_energy_per_meter": args.move_energy_per_meter,
         "placements": placements,
     }

@@ -147,6 +147,7 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
     cluster_parquet = ensure_clusters(args, trace_parquet)
 
     return SimpleNamespace(
+        algorithm=args.algorithm,
         stage_id=args.stage_id.upper(),
         trace_parquet=trace_parquet,
         cluster_parquet=cluster_parquet,
@@ -166,7 +167,7 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
         max_movement_m=args.max_movement_m,
         battery_capacity=args.battery_capacity,
         initial_battery=args.initial_battery,
-        hover_energy_per_step=args.hover_energy_per_step,
+        airborne_energy_per_step=args.airborne_energy_per_step,
         move_energy_per_meter=args.move_energy_per_meter,
         safety_reserve_fraction=args.safety_reserve_fraction,
         waypoint_spacing_m=args.waypoint_spacing_m,
@@ -225,7 +226,7 @@ def run_experiment(args: argparse.Namespace) -> dict:
     if args.algorithm in {"alg1", "alg2"}:
         result["feasible"] = check_feasible(solver_args, result)
         if not result["feasible"]:
-            raise RuntimeError("alg1 produced an infeasible solution")
+            raise RuntimeError(f"{args.algorithm} produced an infeasible solution")
 
     output_json = args.output_json or default_output_json(args)
     output_json.parent.mkdir(parents=True, exist_ok=True)
@@ -300,7 +301,14 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 
     parser.add_argument("--battery-capacity", type=float, default=10_000_000.0)
     parser.add_argument("--initial-battery", type=float, default=10_000_000.0)
-    parser.add_argument("--hover-energy-per-step", type=float, default=15_000.0)
+    parser.add_argument(
+        "--airborne-energy-per-step",
+        "--hover-energy-per-step",
+        dest="airborne_energy_per_step",
+        type=float,
+        default=15_000.0,
+        help="Base energy in joules incurred in every airborne slot.",
+    )
     parser.add_argument("--move-energy-per-meter", type=float, default=150.0)
     parser.add_argument("--safety-reserve-fraction", type=float, default=0.1)
     parser.add_argument("--waypoint-spacing-m", type=float, default=250.0)

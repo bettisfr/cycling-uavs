@@ -1,4 +1,4 @@
-"""Build a deterministic partition baseline for full-stage UAV coverage."""
+"""Build deterministic full-stage partition baselines for UAV coverage."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ from statistics import median
 
 from simulator.src.algorithms import (
     Cluster,
+    Point,
     Waypoint,
     choose_reference_gpx,
     distance_m,
@@ -15,38 +16,46 @@ from simulator.src.algorithms import (
 )
 
 
-def energy_cost(args: argparse.Namespace, src: Waypoint, dst: Waypoint) -> float:
-    movement_m = distance_m(src, dst)
-    if movement_m <= 1.0:
-        return args.hover_energy_per_step
-    return args.move_energy_per_meter * movement_m
+POSITION_TOLERANCE_M = 1.0
 
 
-def same_position(a: Waypoint, b: Waypoint, tolerance_m: float = 1.0) -> bool:
-    return distance_m(a, b) <= tolerance_m
-
-
-def nearest_station(stations: list[Waypoint], point: Waypoint | Cluster) -> Waypoint:
-    return min(stations, key=lambda station: distance_m(station, point))
-
-
-def step_toward(src: Waypoint, dst: Waypoint, max_distance_m: float, label: str) -> Waypoint:
-    distance = distance_m(src, dst)
-    if distance <= max_distance_m:
-        return dst
-    fraction = 0.999 * max_distance_m / distance
-    return Waypoint(
-        src.lat + fraction * (dst.lat - src.lat),
-        src.lon + fraction * (dst.lon - src.lon),
-        "transit",
-        label,
+def step_toward(current: Point, target: Point, max_step_m: float) -> Point:
+    """Advance in a straight line, reaching the target when it is one slot away."""
+    distance = distance_m(current, target)
+    if distance <= max_step_m:
+        return Point(target.lat, target.lon)
+    ratio = max_step_m / distance
+    return Point(
+        current.lat + ratio * (target.lat - current.lat),
+        current.lon + ratio * (target.lon - current.lon),
     )
+
+
+def energy_cost(args: argparse.Namespace, src: Point, dst: Point) -> float:
+    movement_m = distance_m(src, dst)
+    return args.airborne_energy_per_step + args.move_energy_per_meter * movement_m
+
+
+def transfer_energy(args: argparse.Namespace, distance: float) -> float:
+    """Energy for the minimum-slot direct flight over a given distance."""
+    if distance <= POSITION_TOLERANCE_M:
+        return 0.0
+    max_step_m = args.max_speed_mps * args.time_step_sec
+    slots = math.ceil(distance / max_step_m)
+    return slots * args.airborne_energy_per_step + args.move_energy_per_meter * distance
+
+
+def station_at(position: Point, stations: list[Waypoint]) -> int | None:
+    for index, station in enumerate(stations):
+        if distance_m(position, station) <= POSITION_TOLERANCE_M:
+            return index
+    return None
 
 
 def route_and_group_progress(
     args: argparse.Namespace,
     instance: dict,
-) -> tuple[list[Waypoint], list[float], list[Waypoint], list[float]]:
+) -> tuple[list[Waypoint], list[float], list[Point], list[float]]:
     gpx_path, _rider_id = choose_reference_gpx(args)
     raw_points = list(iter_gpx_points(gpx_path))
     if len(raw_points) < 2:
@@ -65,18 +74,16 @@ def route_and_group_progress(
             route_progress.append(cumulative_m)
             last_sample_m = cumulative_m
     final = raw_points[-1]
-    if distance_m(route[-1], final) > 1.0:
+    if distance_m(route[-1], final) > POSITION_TOLERANCE_M:
         route.append(Waypoint(final.lat, final.lon, "route", f"route_{len(route)}"))
         route_progress.append(cumulative_m)
 
     group_positions = []
     group_progress = []
-    for t, points in enumerate(instance["rider_points"]):
-        group = Waypoint(
+    for points in instance["rider_points"]:
+        group = Point(
             median(point["lat"] for point in points),
             median(point["lon"] for point in points),
-            "race_group",
-            f"race_group_{t}",
         )
         nearest_idx = min(
             range(len(route)),
@@ -90,41 +97,48 @@ def route_and_group_progress(
 
 def choose_leg_target(
     args: argparse.Namespace,
-    current: Waypoint,
+    current: Point,
     battery: float,
-    goal: Waypoint,
+    goal: Point,
     stations: list[Waypoint],
     reserve_j: float,
-) -> Waypoint:
-    goal_station = nearest_station(stations, goal)
-    energy_via_goal = args.move_energy_per_meter * (
-        distance_m(current, goal) + distance_m(goal, goal_station)
-    )
-    if goal.kind == "station":
-        energy_via_goal = args.move_energy_per_meter * distance_m(current, goal)
-    if energy_via_goal + reserve_j <= battery:
-        return goal
+) -> tuple[Point, int | None]:
+    goal_station = min(stations, key=lambda station: distance_m(goal, station))
+    goal_is_station = station_at(goal, stations) is not None
+    current_goal_m = distance_m(current, goal)
+    required = transfer_energy(args, current_goal_m)
+    if not goal_is_station:
+        required += transfer_energy(args, distance_m(goal, goal_station))
+    if current_goal_m <= POSITION_TOLERANCE_M and not goal_is_station:
+        required += args.airborne_energy_per_step
+    if required + reserve_j <= battery:
+        return goal, None
 
     current_goal_distance = distance_m(current, goal)
     reachable = [
-        station
-        for station in stations
-        if not same_position(current, station)
-        and args.move_energy_per_meter * distance_m(current, station) + reserve_j
+        (index, station)
+        for index, station in enumerate(stations)
+        if distance_m(current, station) > POSITION_TOLERANCE_M
+        and transfer_energy(args, distance_m(current, station)) + reserve_j
         <= battery
     ]
     advancing = [
-        station
-        for station in reachable
+        (index, station)
+        for index, station in reachable
         if distance_m(station, goal) < current_goal_distance
     ]
     if advancing:
-        return min(advancing, key=lambda station: distance_m(station, goal))
-    if current.kind == "station":
-        return current
+        index, station = min(advancing, key=lambda item: distance_m(item[1], goal))
+        return Point(station.lat, station.lon), index
+
+    current_station = station_at(current, stations)
+    if current_station is not None:
+        station = stations[current_station]
+        return Point(station.lat, station.lon), current_station
     if reachable:
-        return min(reachable, key=lambda station: distance_m(current, station))
-    raise RuntimeError("alg1 partition baseline stranded a UAV away from a station")
+        index, station = min(reachable, key=lambda item: distance_m(current, item[1]))
+        return Point(station.lat, station.lon), index
+    raise RuntimeError("partition baseline stranded a UAV away from a station")
 
 
 def solve_partition(
@@ -137,7 +151,10 @@ def solve_partition(
             f"The fleet size {args.num_uavs} is not divisible by "
             f"{drones_per_segment} drones per segment"
         )
+
     stations: list[Waypoint] = instance["stations"]
+    start = Point(stations[0].lat, stations[0].lon)
+    finish = Point(stations[-1].lat, stations[-1].lon)
     race_clusters: list[list[Cluster]] = instance["clusters"]
     race_riders: list[list[dict]] = instance["rider_points"]
     race_buckets: list[int] = instance["buckets"]
@@ -146,9 +163,8 @@ def solve_partition(
         instance,
     )
     race_slots = len(race_buckets)
-    max_step_m = args.max_speed_mps * args.time_step_sec
     reserve_j = args.safety_reserve_fraction * args.battery_capacity
-    finish = stations[-1]
+    max_step_m = args.max_speed_mps * args.time_step_sec
     num_segments = args.num_uavs // drones_per_segment
 
     route_length_m = route_progress[-1]
@@ -179,23 +195,26 @@ def solve_partition(
         for boundary in segment_boundaries[:-1]
     ]
     staging_stations = [
-        nearest_station(stations, boundary)
+        min(range(len(stations)), key=lambda index: distance_m(stations[index], boundary))
         for boundary in boundary_points
     ]
 
-    positions = [stations[0] for _ in range(args.num_uavs)]
+    positions = [start for _ in range(args.num_uavs)]
     batteries = [args.initial_battery for _ in range(args.num_uavs)]
-    committed_targets: list[Waypoint | None] = [None] * args.num_uavs
+    committed_stations: list[int | None] = [None] * args.num_uavs
     placements: list[dict] = []
     all_buckets = list(race_buckets)
     all_clusters = list(race_clusters)
     all_riders = list(race_riders)
-    objective = 0
-    total_weight = 0
+    objective = 0.0
+    total_weight = 0.0
 
     max_post_race_slots = 4 * race_slots
     t = 0
-    while t < race_slots or not all(same_position(position, finish) for position in positions):
+    while t < race_slots or not all(
+        distance_m(position, finish) <= POSITION_TOLERANCE_M
+        for position in positions
+    ):
         if t >= race_slots + max_post_race_slots:
             raise RuntimeError("partition baseline did not finish within the post-race horizon")
         if t >= len(all_buckets):
@@ -204,25 +223,30 @@ def solve_partition(
             all_riders.append([])
 
         clusters = all_clusters[t]
-        chosen_targets: list[Waypoint] = []
+        chosen_positions: list[Point] = []
         covering = [False] * args.num_uavs
 
         for d in range(args.num_uavs):
             current = positions[d]
             segment = uav_segments[d]
-            start = segment_starts[d]
-            end = segment_ends[d]
+            start_slot = segment_starts[d]
+            end_slot = segment_ends[d]
 
             if t == 0:
-                chosen_targets.append(current)
+                chosen_positions.append(current)
                 continue
 
-            if t < start:
+            if t < start_slot:
                 rendezvous = boundary_points[segment]
-                staging = staging_stations[segment]
+                staging_index = staging_stations[segment]
+                staging = stations[staging_index]
                 launch_slots = math.ceil(distance_m(staging, rendezvous) / max_step_m)
-                goal = rendezvous if t >= start - launch_slots else staging
-            elif t <= end and t < race_slots:
+                goal: Point = (
+                    Point(rendezvous.lat, rendezvous.lon)
+                    if t >= start_slot - launch_slots
+                    else Point(staging.lat, staging.lon)
+                )
+            elif t <= end_slot and t < race_slots:
                 if drones_per_segment == 1:
                     goal = group_positions[t]
                 else:
@@ -233,47 +257,33 @@ def solve_partition(
                             for cluster in race_clusters[t]
                             if (
                                 role_index == 0
-                                and cluster.role in {"frontmost_group", "frontmost_main_group"}
+                                and cluster.role
+                                in {"frontmost_group", "frontmost_main_group"}
                             )
                             or (
                                 role_index == 1
-                                and cluster.role in {"main_group", "frontmost_main_group"}
+                                and cluster.role
+                                in {"main_group", "frontmost_main_group"}
                             )
                         ),
                         None,
                     )
-                    goal = (
-                        Waypoint(
-                            target.lat,
-                            target.lon,
-                            "editorial_cluster",
-                            f"{target.role}_{t}",
-                        )
-                        if target is not None
-                        else group_positions[t]
-                    )
+                    goal = target if target is not None else group_positions[t]
                 covering[d] = True
             else:
                 goal = finish
 
-            committed = committed_targets[d]
-            if committed is not None and same_position(current, committed):
-                committed_targets[d] = None
+            committed = committed_stations[d]
+            if committed is not None and distance_m(current, stations[committed]) <= POSITION_TOLERANCE_M:
+                committed_stations[d] = None
                 committed = None
 
-            if covering[d]:
-                leg_target = choose_leg_target(
-                    args,
-                    current,
-                    batteries[d],
-                    goal,
-                    stations,
-                    reserve_j,
-                )
-            elif committed is not None:
-                leg_target = committed
+            if committed is not None:
+                station = stations[committed]
+                leg_target = Point(station.lat, station.lon)
+                target_station = committed
             else:
-                leg_target = choose_leg_target(
+                leg_target, target_station = choose_leg_target(
                     args,
                     current,
                     batteries[d],
@@ -281,55 +291,60 @@ def solve_partition(
                     stations,
                     reserve_j,
                 )
-                if leg_target.kind == "station" and not same_position(current, leg_target):
-                    committed_targets[d] = leg_target
-
-            chosen = step_toward(
-                current,
-                leg_target,
-                max_step_m,
-                f"transit_to_{leg_target.label}",
-            )
-            if (
-                not (chosen.kind == "station" and same_position(current, chosen))
-                and energy_cost(args, current, chosen) > batteries[d]
-            ):
-                raise RuntimeError(f"partition baseline stranded UAV {d} at slot {t}")
-            if covering[d] and leg_target.kind == "station":
+            if target_station is not None and distance_m(current, leg_target) > POSITION_TOLERANCE_M:
+                committed_stations[d] = target_station
+            if covering[d] and target_station is not None:
                 covering[d] = False
-            chosen_targets.append(chosen)
+
+            chosen = step_toward(current, leg_target, max_step_m)
+            if energy_cost(args, current, chosen) > batteries[d]:
+                raise RuntimeError(f"partition baseline stranded UAV {d} at slot {t}")
+            chosen_positions.append(chosen)
 
         recharging = []
-        for d, chosen in enumerate(chosen_targets):
-            landed = (
+        for d, chosen in enumerate(chosen_positions):
+            current = positions[d]
+            current_station = station_at(current, stations)
+            chosen_station = station_at(chosen, stations)
+            stationary_at_station = (
                 t > 0
-                and chosen.kind == "station"
-                and same_position(positions[d], chosen)
+                and current_station is not None
+                and current_station == chosen_station
+                and distance_m(current, chosen) <= POSITION_TOLERANCE_M
             )
-            is_recharging = landed and batteries[d] < args.battery_capacity
-            if landed:
-                if is_recharging:
-                    batteries[d] = min(
-                        args.battery_capacity,
-                        batteries[d] + args.recharge_per_step,
-                    )
-            elif t > 0:
-                batteries[d] -= energy_cost(args, positions[d], chosen)
+            completed = chosen_station == len(stations) - 1 and stationary_at_station
+            is_recharging = (
+                stationary_at_station
+                and not completed
+                and batteries[d] < args.battery_capacity
+            )
+            if is_recharging:
+                batteries[d] = min(
+                    args.battery_capacity,
+                    batteries[d] + args.recharge_per_step,
+                )
+            elif t > 0 and not completed and not stationary_at_station:
+                batteries[d] -= energy_cost(args, current, chosen)
             positions[d] = chosen
             recharging.append(is_recharging)
+            kind = "station" if chosen_station is not None else "flight"
+            label = (
+                stations[chosen_station].label
+                if chosen_station is not None
+                else "in_flight"
+            )
             placements.append(
                 {
                     "uav": d,
                     "bucket": all_buckets[t],
-                    "candidate": None,
-                    "kind": chosen.kind,
-                    "label": chosen.label,
+                    "kind": kind,
+                    "label": label,
                     "lat": chosen.lat,
                     "lon": chosen.lon,
                     "battery": batteries[d],
-                    "landed": landed,
+                    "landed": stationary_at_station,
                     "recharging": is_recharging,
-                    "covering": covering[d] and not landed,
+                    "covering": covering[d] and not stationary_at_station,
                     "segment": uav_segments[d],
                 }
             )
@@ -405,8 +420,10 @@ def solve_partition(
         "initial_battery": args.initial_battery,
         "recharge_per_step": args.recharge_per_step,
         "safety_reserve_fraction": args.safety_reserve_fraction,
-        "hover_energy_per_step": args.hover_energy_per_step,
+        "airborne_energy_per_step": args.airborne_energy_per_step,
         "move_energy_per_meter": args.move_energy_per_meter,
+        "max_speed_mps": args.max_speed_mps,
+        "motion_model": "continuous_positions_straight_line_multi_slot",
         "placements": placements,
     }
 
