@@ -224,7 +224,7 @@ def solve_partition(
 
         clusters = all_clusters[t]
         chosen_positions: list[Point] = []
-        covering = [False] * args.num_uavs
+        actively_tracking = [False] * args.num_uavs
 
         for d in range(args.num_uavs):
             current = positions[d]
@@ -269,7 +269,7 @@ def solve_partition(
                         None,
                     )
                     goal = target if target is not None else group_positions[t]
-                covering[d] = True
+                actively_tracking[d] = True
             else:
                 goal = finish
 
@@ -293,8 +293,8 @@ def solve_partition(
                 )
             if target_station is not None and distance_m(current, leg_target) > POSITION_TOLERANCE_M:
                 committed_stations[d] = target_station
-            if covering[d] and target_station is not None:
-                covering[d] = False
+            if actively_tracking[d] and target_station is not None:
+                actively_tracking[d] = False
 
             chosen = step_toward(current, leg_target, max_step_m)
             if energy_cost(args, current, chosen) > batteries[d]:
@@ -302,6 +302,7 @@ def solve_partition(
             chosen_positions.append(chosen)
 
         recharging = []
+        airborne = []
         for d, chosen in enumerate(chosen_positions):
             current = positions[d]
             current_station = station_at(current, stations)
@@ -327,6 +328,8 @@ def solve_partition(
                 batteries[d] -= energy_cost(args, current, chosen)
             positions[d] = chosen
             recharging.append(is_recharging)
+            is_airborne = t > 0 and not stationary_at_station
+            airborne.append(is_airborne)
             kind = "station" if chosen_station is not None else "flight"
             label = (
                 stations[chosen_station].label
@@ -344,7 +347,8 @@ def solve_partition(
                     "battery": batteries[d],
                     "landed": stationary_at_station,
                     "recharging": is_recharging,
-                    "covering": covering[d] and not stationary_at_station,
+                    "airborne": is_airborne,
+                    "covering": actively_tracking[d] and is_airborne,
                     "segment": uav_segments[d],
                 }
             )
@@ -355,8 +359,7 @@ def solve_partition(
                 cluster.weight
                 for cluster in clusters
                 if any(
-                    covering[d]
-                    and not recharging[d]
+                    airborne[d]
                     and distance_m(position, cluster) <= args.coverage_radius_m
                     for d, position in enumerate(positions)
                 )

@@ -99,8 +99,9 @@ Algorithms:
 
 - `alg0`: exact MILP model.
 - `alg1`: deterministic spatial-partition baseline. The road is split into one
-  segment per UAV; each UAV prepositions, covers only its assigned segment, then
-  stops covering and recharges as needed to reach the common finish.
+  segment per UAV; each UAV prepositions, actively tracks only its assigned
+  segment, then recharges as needed to reach the common finish. Incidental
+  coverage produced while the UAV is airborne is still included in the objective.
 - `alg2`: dual spatial-partition baseline. The road is split into `n/2`
   segments; each segment is assigned two UAVs, one tracking the frontmost group
   and one tracking the main group.
