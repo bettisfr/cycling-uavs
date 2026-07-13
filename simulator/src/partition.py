@@ -209,7 +209,7 @@ def solve_partition(
     objective = 0.0
     total_weight = 0.0
 
-    max_post_race_slots = 4 * race_slots
+    max_post_race_slots = math.ceil(3600 / args.time_step_sec)
     t = 0
     while t < race_slots or not all(
         distance_m(position, finish) <= POSITION_TOLERANCE_M
