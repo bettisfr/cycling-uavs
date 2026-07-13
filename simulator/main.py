@@ -9,14 +9,9 @@ from pathlib import Path
 import sys
 from types import SimpleNamespace
 
-from simulator.src.algorithms import (
-    ALGORITHM_NAMES,
-    build_instance,
-    choose_reference_gpx,
-    repo_root,
-    solve_algorithm,
-)
+from simulator.src.algorithms import ALGORITHM_NAMES, solve_algorithm
 from simulator.src.clustering import WEIGHT_POLICY, build_weighted_clusters
+from simulator.src.instance import build_instance, choose_reference_gpx, repo_root
 from simulator.src.preprocessing import build_stage_trace
 from simulator.src.stages import official_window_utc
 from simulator.src.validation import check_feasible
@@ -147,30 +142,20 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
     cluster_parquet = ensure_clusters(args, trace_parquet)
 
     return SimpleNamespace(
-        algorithm=args.algorithm,
         stage_id=args.stage_id.upper(),
         trace_parquet=trace_parquet,
         cluster_parquet=cluster_parquet,
         num_uavs=args.num_uavs,
-        num_stations=args.num_stations,
-        station_spacing_m=(
-            STATION_LAYOUTS_KM[args.station_layout] * 1000.0
-            if args.algorithm in {"alg1", "alg2"}
-            else None
-        ),
+        station_spacing_m=STATION_LAYOUTS_KM[args.station_layout] * 1000.0,
         time_step_sec=args.time_step_sec,
         max_time_buckets=args.max_time_buckets,
-        min_riders_per_bucket=args.min_riders_per_bucket,
-        cluster_radius_m=args.cluster_radius_m,
         coverage_radius_m=args.coverage_radius_m,
         max_speed_mps=args.max_speed_mps,
-        max_movement_m=args.max_movement_m,
         battery_capacity=args.battery_capacity,
         initial_battery=args.initial_battery,
         airborne_energy_per_step=args.airborne_energy_per_step,
         move_energy_per_meter=args.move_energy_per_meter,
         safety_reserve_fraction=args.safety_reserve_fraction,
-        waypoint_spacing_m=args.waypoint_spacing_m,
         recharge_per_step=(
             args.recharge_per_step
             if args.recharge_per_step is not None
@@ -178,14 +163,7 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
             * args.time_step_sec
             / (CHARGING_PROFILES_MIN[args.charging_profile] * 60.0)
         ),
-        recharge_threshold=args.recharge_threshold,
-        station_recharge_bonus=args.station_recharge_bonus,
         reference_gpx=args.reference_gpx,
-        free_start=args.free_start,
-        allow_same_waypoint=args.allow_same_waypoint,
-        station_capacity=args.station_capacity,
-        time_limit_sec=args.time_limit_sec,
-        verbose=args.verbose,
     )
 
 
@@ -223,10 +201,9 @@ def run_experiment(args: argparse.Namespace) -> dict:
 
     result["algorithm"] = args.algorithm
     result["algorithm_name"] = ALGORITHM_NAMES[args.algorithm]
-    if args.algorithm in {"alg1", "alg2"}:
-        result["feasible"] = check_feasible(solver_args, result)
-        if not result["feasible"]:
-            raise RuntimeError(f"{args.algorithm} produced an infeasible solution")
+    result["feasible"] = check_feasible(solver_args, result)
+    if not result["feasible"]:
+        raise RuntimeError(f"{args.algorithm} produced an infeasible solution")
 
     output_json = args.output_json or default_output_json(args)
     output_json.parent.mkdir(parents=True, exist_ok=True)
@@ -239,10 +216,6 @@ def run_experiment(args: argparse.Namespace) -> dict:
             solution_json=output_json,
             output_html=output_html,
             max_route_points=args.max_route_points,
-            full_stage_trace=solver_args.trace_parquet if args.full_stage_slider else None,
-            time_step_sec=args.time_step_sec,
-            min_riders_per_bucket=args.min_riders_per_bucket,
-            cluster_radius_m=args.cluster_radius_m,
         )
         render_map(render_args)
 
@@ -284,12 +257,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--min-start-hhmm", default="06:00")
 
     parser.add_argument("--num-uavs", type=int, default=6)
-    parser.add_argument("--num-stations", type=int, default=25)
     parser.add_argument(
         "--station-layout",
         choices=sorted(STATION_LAYOUTS_KM),
         default="baseline",
-        help="alg1 station spacing: dense=5 km, baseline=7.5 km, sparse=10 km.",
+        help="Station spacing: dense=5 km, baseline=7.5 km, sparse=10 km.",
     )
     parser.add_argument("--time-step-sec", type=int, default=30)
     parser.add_argument("--max-time-buckets", type=int, default=10000)
@@ -297,21 +269,17 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--cluster-radius-m", type=float, default=80.0)
     parser.add_argument("--coverage-radius-m", type=float, default=250.0)
     parser.add_argument("--max-speed-mps", type=float, default=120.0 / 3.6)
-    parser.add_argument("--max-movement-m", type=float, default=300_000.0)
 
     parser.add_argument("--battery-capacity", type=float, default=10_000_000.0)
     parser.add_argument("--initial-battery", type=float, default=10_000_000.0)
     parser.add_argument(
         "--airborne-energy-per-step",
-        "--hover-energy-per-step",
-        dest="airborne_energy_per_step",
         type=float,
         default=15_000.0,
         help="Base energy in joules incurred in every airborne slot.",
     )
     parser.add_argument("--move-energy-per-meter", type=float, default=150.0)
     parser.add_argument("--safety-reserve-fraction", type=float, default=0.1)
-    parser.add_argument("--waypoint-spacing-m", type=float, default=250.0)
     parser.add_argument(
         "--charging-profile",
         choices=sorted(CHARGING_PROFILES_MIN),
@@ -323,20 +291,10 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         type=float,
         help="Optional charging energy per slot in joules; overrides the profile.",
     )
-    parser.add_argument("--recharge-threshold", type=float, default=3_750_000.0)
-    parser.add_argument("--station-recharge-bonus", type=float, default=1000.0)
-
-    parser.add_argument("--free-start", action="store_true")
-    parser.add_argument("--allow-same-waypoint", action="store_true")
-    parser.add_argument("--station-capacity", type=int, default=6)
-    parser.add_argument("--time-limit-sec", type=float, default=60.0)
-
     parser.add_argument("--output-json", type=Path)
     parser.add_argument("--render-map", action="store_true")
     parser.add_argument("--output-html", type=Path)
-    parser.add_argument("--full-stage-slider", action="store_true")
     parser.add_argument("--max-route-points", type=int, default=3000)
-    parser.add_argument("--verbose", action="store_true")
     return parser.parse_args(argv)
 
 

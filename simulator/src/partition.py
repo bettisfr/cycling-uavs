@@ -6,14 +6,8 @@ import argparse
 import math
 from statistics import median
 
-from simulator.src.algorithms import (
-    Cluster,
-    Point,
-    Waypoint,
-    choose_reference_gpx,
-    distance_m,
-    iter_gpx_points,
-)
+from simulator.src.instance import choose_reference_gpx, iter_gpx_points
+from simulator.src.model import Cluster, Point, Station, distance_m
 
 
 POSITION_TOLERANCE_M = 1.0
@@ -45,7 +39,7 @@ def transfer_energy(args: argparse.Namespace, distance: float) -> float:
     return slots * args.airborne_energy_per_step + args.move_energy_per_meter * distance
 
 
-def station_at(position: Point, stations: list[Waypoint]) -> int | None:
+def station_at(position: Point, stations: list[Station]) -> int | None:
     for index, station in enumerate(stations):
         if distance_m(position, station) <= POSITION_TOLERANCE_M:
             return index
@@ -55,27 +49,25 @@ def station_at(position: Point, stations: list[Waypoint]) -> int | None:
 def route_and_group_progress(
     args: argparse.Namespace,
     instance: dict,
-) -> tuple[list[Waypoint], list[float], list[Point], list[float]]:
+) -> tuple[list[Point], list[float], list[Point], list[float]]:
     gpx_path, _rider_id = choose_reference_gpx(args)
     raw_points = list(iter_gpx_points(gpx_path))
     if len(raw_points) < 2:
         raise RuntimeError(f"Reference route has too few points: {gpx_path}")
 
-    route = [Waypoint(raw_points[0].lat, raw_points[0].lon, "route", "route_0")]
+    route = [Point(raw_points[0].lat, raw_points[0].lon)]
     route_progress = [0.0]
     cumulative_m = 0.0
     last_sample_m = 0.0
     for previous, current in zip(raw_points, raw_points[1:], strict=False):
         cumulative_m += distance_m(previous, current)
         if cumulative_m - last_sample_m >= 100.0:
-            route.append(
-                Waypoint(current.lat, current.lon, "route", f"route_{len(route)}")
-            )
+            route.append(Point(current.lat, current.lon))
             route_progress.append(cumulative_m)
             last_sample_m = cumulative_m
     final = raw_points[-1]
     if distance_m(route[-1], final) > POSITION_TOLERANCE_M:
-        route.append(Waypoint(final.lat, final.lon, "route", f"route_{len(route)}"))
+        route.append(Point(final.lat, final.lon))
         route_progress.append(cumulative_m)
 
     group_positions = []
@@ -100,7 +92,7 @@ def choose_leg_target(
     current: Point,
     battery: float,
     goal: Point,
-    stations: list[Waypoint],
+    stations: list[Station],
     reserve_j: float,
 ) -> tuple[Point, int | None]:
     goal_station = min(stations, key=lambda station: distance_m(goal, station))
@@ -152,7 +144,7 @@ def solve_partition(
             f"{drones_per_segment} drones per segment"
         )
 
-    stations: list[Waypoint] = instance["stations"]
+    stations: list[Station] = instance["stations"]
     start = Point(stations[0].lat, stations[0].lon)
     finish = Point(stations[-1].lat, stations[-1].lon)
     race_clusters: list[list[Cluster]] = instance["clusters"]
@@ -431,7 +423,7 @@ def solve_partition(
     }
 
 
-def solve_greedy(args: argparse.Namespace, instance: dict) -> dict:
+def solve_single_partition(args: argparse.Namespace, instance: dict) -> dict:
     return solve_partition(args, instance, drones_per_segment=1)
 
 

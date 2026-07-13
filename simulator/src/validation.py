@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 from collections import defaultdict
 
-from simulator.src.algorithms import Point, Waypoint, distance_m
+from simulator.src.model import Point, Station, distance_m
 from simulator.src.partition import transfer_energy
 
 
@@ -30,7 +30,7 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
         return False
 
     stations = [
-        Waypoint(row["lat"], row["lon"], "station", row["label"])
+        Station(row["lat"], row["lon"], row["label"])
         for row in station_rows
     ]
     start = stations[0]

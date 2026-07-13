@@ -10,9 +10,6 @@ import xml.etree.ElementTree as ET
 from branca.element import Element
 import folium
 
-from simulator.src.algorithms import greedy_clusters, read_bucketed_rider_positions
-
-
 UAV_COLORS = [
     "#1f77b4",
     "#d62728",
@@ -79,51 +76,6 @@ def load_gpx_coords(path_text: str | None, max_points: int) -> list[tuple[float,
     return [points[i] for i in choose_indices(len(points), max_points)]
 
 
-def build_full_stage_layers(
-    trace_parquet: Path,
-    time_step_sec: int,
-    min_riders_per_bucket: int,
-    cluster_radius_m: float,
-) -> tuple[list[int], list[list[dict]], list[list[dict]]]:
-    by_bucket = read_bucketed_rider_positions(trace_parquet, time_step_sec)
-    buckets = [
-        bucket
-        for bucket in sorted(by_bucket)
-        if len(by_bucket[bucket]) >= min_riders_per_bucket
-    ]
-
-    all_riders: list[list[dict]] = []
-    all_clusters: list[list[dict]] = []
-    for bucket in buckets:
-        rider_points = [
-            {
-                "bucket": bucket,
-                "rider_id": rider_id,
-                "lat": point.lat,
-                "lon": point.lon,
-            }
-            for rider_id, point in sorted(by_bucket[bucket].items())
-        ]
-        clusters = greedy_clusters(
-            list(by_bucket[bucket].values()),
-            cluster_radius_m,
-        )
-        cluster_points = [
-            {
-                "bucket": bucket,
-                "cluster": cluster_idx,
-                "lat": cluster.lat,
-                "lon": cluster.lon,
-                "weight": cluster.weight,
-            }
-            for cluster_idx, cluster in enumerate(clusters)
-        ]
-        all_riders.append(rider_points)
-        all_clusters.append(cluster_points)
-
-    return buckets, all_riders, all_clusters
-
-
 def render_map(args: argparse.Namespace) -> Path:
     data = json.loads(args.solution_json.read_text(encoding="utf-8"))
     algorithm_name = data.get("algorithm_name") or data.get("status_name") or "experiment"
@@ -133,25 +85,6 @@ def render_map(args: argparse.Namespace) -> Path:
     buckets = data.get("time_buckets", [])
     clusters = data.get("clusters", [])
     rider_points = data.get("rider_points", [])
-    if args.full_stage_trace and not clusters:
-        full_buckets, full_rider_points, full_clusters = build_full_stage_layers(
-            args.full_stage_trace,
-            int(data.get("time_step_sec") or args.time_step_sec),
-            args.min_riders_per_bucket,
-            args.cluster_radius_m,
-        )
-        layer_by_bucket = {
-            bucket: (points, bucket_clusters)
-            for bucket, points, bucket_clusters in zip(
-                full_buckets,
-                full_rider_points,
-                full_clusters,
-                strict=True,
-            )
-        }
-        buckets = data.get("time_buckets", full_buckets)
-        rider_points = [layer_by_bucket.get(bucket, ([], []))[0] for bucket in buckets]
-        clusters = [layer_by_bucket.get(bucket, ([], []))[1] for bucket in buckets]
     route = load_gpx_coords(
         data.get("station_metadata", {}).get("reference_gpx"),
         args.max_route_points,
