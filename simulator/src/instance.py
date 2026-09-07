@@ -8,6 +8,7 @@ from datetime import datetime
 import json
 import math
 from pathlib import Path
+from statistics import median
 import xml.etree.ElementTree as ET
 
 import pyarrow.parquet as pq
@@ -101,11 +102,21 @@ def choose_reference_gpx(args: argparse.Namespace) -> tuple[Path, str | None]:
     if not usable:
         raise RuntimeError(f"No reference GPX candidate found in {stage_path}")
 
-    usable.sort(
-        key=lambda activity: float(activity.get("gpx_km") or 0.0),
-        reverse=True,
+    measured = [
+        activity
+        for activity in usable
+        if activity.get("gpx_km") is not None
+    ]
+    if not measured:
+        raise RuntimeError(f"No measured reference GPX candidate found in {stage_path}")
+    median_km = median(float(activity["gpx_km"]) for activity in measured)
+    chosen = min(
+        measured,
+        key=lambda activity: (
+            abs(float(activity["gpx_km"]) - median_km),
+            activity.get("rider_id", ""),
+        ),
     )
-    chosen = usable[0]
     return resolve_path(chosen["gpx_path"], repo_root()), chosen.get("rider_id")
 
 

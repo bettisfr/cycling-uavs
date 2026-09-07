@@ -69,20 +69,35 @@ preprocessing and editorial roles.
 ```bash
 /home/fra/pyvenv/bin/python -m simulator.main \
   --stage-id S18 \
-  --algorithm alg1 \
+  --algorithm bs1 \
+  --drones-per-segment 1 \
   --reference-gpx B047 \
   --render-map
 ```
 
+Without `--reference-gpx`, the simulator chooses the valid public GPX whose
+recorded distance is closest to the stage median, reducing the effect of
+outlier activities with extra distance.
+
 Algorithms:
 
-- `alg1`: deterministic spatial-partition baseline. The road is split into one
-  segment per UAV; each UAV prepositions, actively tracks only its assigned
-  segment, then recharges as needed to reach the common finish. Incidental
-  coverage produced while the UAV is airborne is still included in the objective.
-- `alg2`: dual spatial-partition baseline. The road is split into `n/2`
-  segments; each segment is assigned two UAVs, one tracking the frontmost group
-  and one tracking the main group.
+- `alg1`: trajectory-pool marginal greedy. It simulates a finite set of
+  complete one-UAV missions defined by target, recharge-threshold, and station
+  policies, plus prepositioned frontmost/main handoff missions at several route
+  granularities. It discards infeasible candidates, then greedily selects up
+  to `n` missions by marginal weighted coverage.
+- `bs1`: fixed route-partition baseline. The road is split into
+  `n / drones-per-segment` equal-length segments; each UAV prepositions,
+  actively tracks only its assigned segment, then recharges as needed to reach
+  the common finish. Use `--drones-per-segment 1` or `2`. Incidental coverage
+  produced while the UAV is airborne is still included in the objective.
+- `bs2`: look-ahead greedy target-chasing baseline. At every slot, available
+  UAVs are processed in index order and assigned to reachable cluster positions
+  from the next 4 minutes. The score discounts editorial weight by look-ahead
+  time; assignments to the same high-value role are staggered by five minutes
+  to preposition handoffs. A UAV that cannot safely pursue a target heads to
+  the nearest reachable station and recharges.
+  The default look-ahead and role-spacing parameters are 4 and 3 minutes.
 
 Both algorithms use continuous ground-projected positions. A UAV flies directly
 toward its current target at the configured maximum speed; a long transfer spans
@@ -117,7 +132,8 @@ when a separate run artifact is useful.
 ```bash
 /home/fra/pyvenv/bin/python -m simulator.main \
   --stage-id S18 \
-  --algorithm alg1 \
+  --algorithm bs1 \
+  --drones-per-segment 1 \
   --render-map
 ```
 

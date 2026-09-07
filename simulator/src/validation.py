@@ -64,7 +64,11 @@ def check_feasible(args: argparse.Namespace, result: dict) -> bool:
         for index, placement in enumerate(trajectory):
             current = Point(placement["lat"], placement["lon"])
             movement_m = distance_m(previous, current)
-            if movement_m > max_step_m + DISTANCE_TOLERANCE_M:
+            # ``step_toward`` interpolates latitude/longitude while
+            # ``distance_m`` uses a local projection. Allow their bounded
+            # numerical discrepancy without relaxing the physical speed cap.
+            speed_tolerance_m = max_step_m * 1e-3 + DISTANCE_TOLERANCE_M
+            if movement_m > max_step_m + speed_tolerance_m:
                 return False
 
             station_index = next(

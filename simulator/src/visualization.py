@@ -110,7 +110,7 @@ def render_map(args: argparse.Namespace) -> Path:
     solution_coords = [(p["lat"], p["lon"]) for p in placements] + cluster_coords + rider_coords
     center_coords = solution_coords or coords
     center = center_coords[len(center_coords) // 2]
-    m = folium.Map(location=center, zoom_start=10, tiles="CartoDB positron")
+    m = folium.Map(location=center, zoom_start=10, tiles="OpenStreetMap")
 
     if route:
         folium.PolyLine(

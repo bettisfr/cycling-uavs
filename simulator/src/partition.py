@@ -39,6 +39,30 @@ def transfer_energy(args: argparse.Namespace, distance: float) -> float:
     return slots * args.airborne_energy_per_step + args.move_energy_per_meter * distance
 
 
+def post_race_horizon_slots(
+    args: argparse.Namespace,
+    stations: list[Station],
+) -> int:
+    """Return a conservative, finite bound for terminal recovery.
+
+    A UAV may traverse every inter-station hop and recharge once at each stop
+    before reaching the finish. The limit is instance-derived rather than an
+    arbitrary wall-clock interval.
+    """
+    if len(stations) < 2:
+        return 1
+    max_hop_m = max(
+        distance_m(previous, current)
+        for previous, current in zip(stations, stations[1:], strict=False)
+    )
+    flight_slots = max(
+        1,
+        math.ceil(max_hop_m / (args.max_speed_mps * args.time_step_sec)),
+    )
+    recharge_slots = math.ceil(args.battery_capacity / args.recharge_per_step)
+    return (len(stations) + 1) * (flight_slots + recharge_slots + 1)
+
+
 def station_at(position: Point, stations: list[Station]) -> int | None:
     for index, station in enumerate(stations):
         if distance_m(position, station) <= POSITION_TOLERANCE_M:
@@ -201,7 +225,7 @@ def solve_partition(
     objective = 0.0
     total_weight = 0.0
 
-    max_post_race_slots = math.ceil(3600 / args.time_step_sec)
+    max_post_race_slots = post_race_horizon_slots(args, stations)
     t = 0
     while t < race_slots or not all(
         distance_m(position, finish) <= POSITION_TOLERANCE_M

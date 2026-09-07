@@ -53,18 +53,18 @@ def default_cluster_path(args: argparse.Namespace) -> Path:
 
 
 def default_output_json(args: argparse.Namespace) -> Path:
-    tag = args.tag or (
-        f"{args.stage_id.upper()}_{args.algorithm}_uav{args.num_uavs}_"
-        f"{args.time_step_sec}s"
-    )
+    default_tag = f"{args.stage_id.upper()}_{args.algorithm}"
+    if args.algorithm == "bs1":
+        default_tag += f"_seg{args.drones_per_segment}"
+    tag = args.tag or f"{default_tag}_uav{args.num_uavs}_{args.time_step_sec}s"
     return repo_root() / "simulator" / "output" / "solutions" / f"{tag}.json"
 
 
 def default_output_html(args: argparse.Namespace) -> Path:
-    tag = args.tag or (
-        f"{args.stage_id.upper()}_{args.algorithm}_uav{args.num_uavs}_"
-        f"{args.time_step_sec}s"
-    )
+    default_tag = f"{args.stage_id.upper()}_{args.algorithm}"
+    if args.algorithm == "bs1":
+        default_tag += f"_seg{args.drones_per_segment}"
+    tag = args.tag or f"{default_tag}_uav{args.num_uavs}_{args.time_step_sec}s"
     return repo_root() / "simulator" / "output" / f"{tag}_map.html"
 
 
@@ -146,6 +146,9 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
         trace_parquet=trace_parquet,
         cluster_parquet=cluster_parquet,
         num_uavs=args.num_uavs,
+        drones_per_segment=args.drones_per_segment,
+        greedy_lookahead_minutes=args.greedy_lookahead_minutes,
+        greedy_role_spacing_minutes=args.greedy_role_spacing_minutes,
         station_spacing_m=STATION_LAYOUTS_KM[args.station_layout] * 1000.0,
         time_step_sec=args.time_step_sec,
         max_time_buckets=args.max_time_buckets,
@@ -225,7 +228,7 @@ def run_experiment(args: argparse.Namespace) -> dict:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stage-id", default="S18")
-    parser.add_argument("--algorithm", choices=sorted(ALGORITHM_NAMES), default="alg1")
+    parser.add_argument("--algorithm", choices=sorted(ALGORITHM_NAMES), default="bs1")
     parser.add_argument("--tag", help="Output filename stem.")
     parser.add_argument("--trace-parquet", type=Path)
     parser.add_argument("--cluster-parquet", type=Path)
@@ -257,6 +260,25 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--min-start-hhmm", default="06:00")
 
     parser.add_argument("--num-uavs", type=int, default=6)
+    parser.add_argument(
+        "--drones-per-segment",
+        type=int,
+        choices=(1, 2),
+        default=1,
+        help="UAVs assigned to each static route segment for bs1.",
+    )
+    parser.add_argument(
+        "--greedy-lookahead-minutes",
+        type=float,
+        default=4.0,
+        help="Forecast horizon used by bs2.",
+    )
+    parser.add_argument(
+        "--greedy-role-spacing-minutes",
+        type=float,
+        default=3.0,
+        help="Minimum temporal spacing between bs2 assignments to one high-value role.",
+    )
     parser.add_argument(
         "--station-layout",
         choices=sorted(STATION_LAYOUTS_KM),
