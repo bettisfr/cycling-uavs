@@ -217,10 +217,20 @@ def _best_single_uav(
                     previous = best_by_state.get(key)
                     if previous is None or successor.value > previous.value:
                         best_by_state[key] = successor
-        labels = sorted(best_by_state.values(), key=lambda item: -item.value)[: args.dp_label_limit]
+        labels = sorted(best_by_state.values(), key=lambda item: -item.value)
         if not labels:
             return None
-    return max(labels, key=lambda item: item.value, default=None)
+    for label in labels:
+        recovery = _recover_fleet(
+            args,
+            stations,
+            (label.position,),
+            (label.battery,),
+            instance["buckets"][-1],
+        )
+        if recovery is not None:
+            return label
+    return None
 
 
 def solve_dynamic_programming_greedy(args: argparse.Namespace, instance: dict) -> dict:
@@ -288,7 +298,6 @@ def solve_dynamic_programming_greedy(args: argparse.Namespace, instance: dict) -
         "rider_points": incumbent["rider_points"][: len(instance["clusters"])] + [[] for _ in range(post_slots)],
         "placements": placements,
         "dp_block_slots": args.dp_block_slots,
-        "dp_label_limit": args.dp_label_limit,
         "dp_battery_bin_j": args.dp_battery_bin_j,
         "dp_incumbent_objective": incumbent["objective"],
     }

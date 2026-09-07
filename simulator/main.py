@@ -150,7 +150,6 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
         greedy_lookahead_minutes=args.greedy_lookahead_minutes,
         greedy_role_spacing_minutes=args.greedy_role_spacing_minutes,
         dp_block_slots=args.dp_block_slots,
-        dp_label_limit=args.dp_label_limit,
         dp_battery_bin_j=args.dp_battery_bin_j,
         station_spacing_m=STATION_LAYOUTS_KM[args.station_layout] * 1000.0,
         time_step_sec=args.time_step_sec,
@@ -283,7 +282,6 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Minimum temporal spacing between bs2 assignments to one high-value role.",
     )
     parser.add_argument("--dp-block-slots", type=int, default=10)
-    parser.add_argument("--dp-label-limit", type=int, default=128)
     parser.add_argument("--dp-battery-bin-j", type=float, default=500_000.0)
     parser.add_argument(
         "--station-layout",
