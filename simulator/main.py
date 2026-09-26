@@ -4,15 +4,18 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 import sys
+import time
 from types import SimpleNamespace
 
 from simulator.src.algorithms import ALGORITHM_NAMES, solve_algorithm
 from simulator.src.clustering import WEIGHT_POLICY, build_weighted_clusters
 from simulator.src.instance import build_instance, choose_reference_gpx, repo_root
 from simulator.src.preprocessing import build_stage_trace
+from simulator.src.results import generate_results_artifacts
 from simulator.src.stages import official_window_utc
 from simulator.src.validation import check_feasible
 from simulator.src.visualization import render_map
@@ -150,6 +153,7 @@ def make_solver_args(args: argparse.Namespace) -> SimpleNamespace:
         greedy_lookahead_minutes=args.greedy_lookahead_minutes,
         greedy_role_spacing_minutes=args.greedy_role_spacing_minutes,
         dp_block_slots=args.dp_block_slots,
+        dp_label_limit=args.dp_label_limit,
         dp_battery_bin_j=args.dp_battery_bin_j,
         station_spacing_m=STATION_LAYOUTS_KM[args.station_layout] * 1000.0,
         time_step_sec=args.time_step_sec,
@@ -179,6 +183,7 @@ def summarize_result(args: argparse.Namespace, result: dict, output_json: Path, 
         "stage_id": args.stage_id.upper(),
         "algorithm": args.algorithm,
         "algorithm_name": ALGORITHM_NAMES[args.algorithm],
+        "num_uavs": args.num_uavs,
         "status_name": result.get("status_name"),
         "feasible": result.get("feasible"),
         "objective": objective,
@@ -186,12 +191,16 @@ def summarize_result(args: argparse.Namespace, result: dict, output_json: Path, 
         "coverage_ratio": objective / total if objective is not None and total else None,
         "time_buckets": len(result.get("time_buckets", [])),
         "time_step_sec": result.get("time_step_sec"),
+        "preparation_seconds": result.get("preparation_seconds"),
+        "solver_seconds": result.get("solver_seconds"),
+        "total_seconds": result.get("total_seconds"),
         "output_json": str(output_json),
         "output_html": str(output_html) if output_html else None,
     }
 
 
 def run_experiment(args: argparse.Namespace) -> dict:
+    started_at = time.perf_counter()
     solver_args = make_solver_args(args)
     if args.only_preprocess:
         return {
@@ -201,8 +210,13 @@ def run_experiment(args: argparse.Namespace) -> dict:
         }
 
     instance = build_instance(solver_args)
+    preparation_seconds = time.perf_counter() - started_at
 
+    solver_started_at = time.perf_counter()
     result = solve_algorithm(args.algorithm, solver_args, instance)
+    result["preparation_seconds"] = preparation_seconds
+    result["solver_seconds"] = time.perf_counter() - solver_started_at
+    result["total_seconds"] = time.perf_counter() - started_at
 
     result["algorithm"] = args.algorithm
     result["algorithm_name"] = ALGORITHM_NAMES[args.algorithm]
@@ -225,6 +239,33 @@ def run_experiment(args: argparse.Namespace) -> dict:
         render_map(render_args)
 
     return summarize_result(args, result, output_json, output_html)
+
+
+def run_paper_suite(args: argparse.Namespace) -> dict:
+    """Regenerate the proposed-method solutions and persist per-run timings."""
+    rows: list[dict] = []
+    for stage_number in range(1, 22):
+        if stage_number == 10:
+            continue
+        for algorithm in ("alg1", "alg2"):
+            for num_uavs in (4, 6):
+                run_args = argparse.Namespace(**vars(args))
+                run_args.stage_id = f"S{stage_number:02d}"
+                run_args.algorithm = algorithm
+                run_args.num_uavs = num_uavs
+                run_args.output_json = None
+                run_args.output_html = None
+                run_args.render_map = False
+                summary = run_experiment(run_args)
+                rows.append(summary)
+
+    args.plots_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = args.plots_dir / "runtime_by_stage.csv"
+    with csv_path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    return {"runs": len(rows), "runtime_csv": str(csv_path)}
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -282,6 +323,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Minimum temporal spacing between bs2 assignments to one high-value role.",
     )
     parser.add_argument("--dp-block-slots", type=int, default=10)
+    parser.add_argument("--dp-label-limit", type=int, default=128)
     parser.add_argument("--dp-battery-bin-j", type=float, default=500_000.0)
     parser.add_argument(
         "--station-layout",
@@ -321,12 +363,39 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--render-map", action="store_true")
     parser.add_argument("--output-html", type=Path)
     parser.add_argument("--max-route-points", type=int, default=3000)
+    parser.add_argument(
+        "--analyze-results",
+        action="store_true",
+        help="Aggregate saved paper solutions into CSV tables and exploratory plots.",
+    )
+    parser.add_argument(
+        "--run-paper-suite",
+        action="store_true",
+        help="Regenerate TPMG and MADP paper runs and write per-stage timings.",
+    )
+    parser.add_argument(
+        "--solutions-dir",
+        type=Path,
+        default=repo_root() / "simulator" / "output" / "solutions",
+        help="Directory containing saved solution JSON files.",
+    )
+    parser.add_argument(
+        "--plots-dir",
+        type=Path,
+        default=repo_root() / "simulator" / "plots",
+        help="Destination directory for CSV tables and Matplotlib plots.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
-    summary = run_experiment(args)
+    if args.run_paper_suite:
+        summary = run_paper_suite(args)
+    elif args.analyze_results:
+        summary = generate_results_artifacts(args.solutions_dir, args.plots_dir)
+    else:
+        summary = run_experiment(args)
     print(json.dumps(summary, indent=2))
     return 0
 

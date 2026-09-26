@@ -16,7 +16,7 @@ from simulator.src.partition import (
     step_toward,
     transfer_energy,
 )
-from simulator.src.trajectory_pool import CandidatePolicy, choose_target, solve_trajectory_pool
+from simulator.src.trajectory_pool import CandidatePolicy, choose_target
 
 
 POLICIES = (
@@ -217,7 +217,7 @@ def _best_single_uav(
                     previous = best_by_state.get(key)
                     if previous is None or successor.value > previous.value:
                         best_by_state[key] = successor
-        labels = sorted(best_by_state.values(), key=lambda item: -item.value)
+        labels = sorted(best_by_state.values(), key=lambda item: -item.value)[: args.dp_label_limit]
         if not labels:
             return None
     for label in labels:
@@ -235,7 +235,6 @@ def _best_single_uav(
 
 def solve_dynamic_programming_greedy(args: argparse.Namespace, instance: dict) -> dict:
     """Select complete UAV missions by repeated macro-action dynamic programs."""
-    incumbent = solve_trajectory_pool(args, instance)
     weights = {
         (slot, cluster_index): cluster.weight
         for slot, clusters in enumerate(instance["clusters"])
@@ -245,14 +244,12 @@ def solve_dynamic_programming_greedy(args: argparse.Namespace, instance: dict) -
     selected: list[Label] = []
     for _uav in range(args.num_uavs):
         label = _best_single_uav(args, instance, residual, weights)
-        if label is None or label.value <= 0.0:
+        if label is None:
             break
         selected.append(label)
         residual.difference_update(label.pairs)
     if len(selected) != args.num_uavs:
-        incumbent["status_name"] = "DP_MACRO_GREEDY_FALLBACK"
-        incumbent["dp_incumbent_objective"] = incumbent["objective"]
-        return incumbent
+        raise RuntimeError("MADP could not construct a complete feasible fleet")
 
     stations: list[Station] = instance["stations"]
     recovery_data = []
@@ -261,9 +258,7 @@ def solve_dynamic_programming_greedy(args: argparse.Namespace, instance: dict) -
             args, stations, (label.position,), (label.battery,), instance["buckets"][-1]
         )
         if recovery is None:
-            incumbent["status_name"] = "DP_MACRO_GREEDY_FALLBACK"
-            incumbent["dp_incumbent_objective"] = incumbent["objective"]
-            return incumbent
+            raise RuntimeError("MADP produced a mission without terminal recovery")
         recovery_data.append(recovery)
     post_slots = max(len(buckets) for buckets, _steps in recovery_data)
     all_buckets = list(instance["buckets"])
@@ -286,23 +281,66 @@ def solve_dynamic_programming_greedy(args: argparse.Namespace, instance: dict) -
             )
         placements.extend(rows)
     covered = set(weights).difference(residual)
+    all_clusters = instance["clusters"] + [[] for _ in range(post_slots)]
+    all_riders = instance["rider_points"] + [[] for _ in range(post_slots)]
     result = {
-        **incumbent,
+        "status": 2,
         "status_name": "DP_MACRO_GREEDY",
         "objective": float(sum(weights[pair] for pair in covered)),
+        "best_bound": None,
+        "gap": None,
+        "num_uavs": args.num_uavs,
+        "time_step_sec": args.time_step_sec,
+        "coverage_radius_m": args.coverage_radius_m,
         "time_buckets": all_buckets,
         "race_time_buckets": instance["buckets"],
         "post_race_slots": post_slots,
-        "clusters_per_bucket": [len(clusters) for clusters in instance["clusters"]] + [0] * post_slots,
-        "clusters": incumbent["clusters"][: len(instance["clusters"])] + [[] for _ in range(post_slots)],
-        "rider_points": incumbent["rider_points"][: len(instance["clusters"])] + [[] for _ in range(post_slots)],
+        "clusters_per_bucket": [len(clusters) for clusters in all_clusters],
+        "clusters": [
+            [
+                {
+                    "bucket": all_buckets[t],
+                    "cluster": cluster_index,
+                    "lat": cluster.lat,
+                    "lon": cluster.lon,
+                    "weight": cluster.weight,
+                    "rider_count": cluster.rider_count,
+                    "role": cluster.role,
+                    "route_progress_m": cluster.route_progress_m,
+                }
+                for cluster_index, cluster in enumerate(clusters)
+            ]
+            for t, clusters in enumerate(all_clusters)
+        ],
+        "rider_points": [
+            [
+                {
+                    "bucket": all_buckets[t],
+                    "rider_id": point["rider_id"],
+                    "lat": point["lat"],
+                    "lon": point["lon"],
+                }
+                for point in points
+            ]
+            for t, points in enumerate(all_riders)
+        ],
+        "total_cluster_weight": float(sum(weights.values())),
+        "stations": [
+            {"label": station.label, "lat": station.lat, "lon": station.lon}
+            for station in instance["stations"]
+        ],
+        "station_metadata": instance["station_metadata"],
+        "battery_capacity": args.battery_capacity,
+        "initial_battery": args.initial_battery,
+        "recharge_per_step": args.recharge_per_step,
+        "safety_reserve_fraction": args.safety_reserve_fraction,
+        "airborne_energy_per_step": args.airborne_energy_per_step,
+        "move_energy_per_meter": args.move_energy_per_meter,
+        "max_speed_mps": args.max_speed_mps,
+        "motion_model": "continuous_positions_straight_line_multi_slot",
         "placements": placements,
         "dp_block_slots": args.dp_block_slots,
+        "dp_label_limit": args.dp_label_limit,
         "dp_battery_bin_j": args.dp_battery_bin_j,
-        "dp_incumbent_objective": incumbent["objective"],
     }
-    if result["objective"] < incumbent["objective"]:
-        incumbent["status_name"] = "DP_MACRO_GREEDY_FALLBACK"
-        incumbent["dp_incumbent_objective"] = incumbent["objective"]
-        return incumbent
     return result
